@@ -1,0 +1,9 @@
+db_data
+server
+site
+
+www/.env
+www/.env.dev
+www/.env.prod
+
+docker-compose.yml
