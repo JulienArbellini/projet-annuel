@@ -4,6 +4,8 @@
 		<meta charset="UTF-8">
 		<title>Template de Front</title>
 		<meta name="description" content="ceci est la page de front">
+		<link rel="stylesheet" href="CSS/framework.css">
+		<link rel="stylesheet" href="CSS/style.css">
 	</head>
 	<body>
 		<header>
