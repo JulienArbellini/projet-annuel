@@ -7,3 +7,4 @@ www/.env.dev
 www/.env.prod
 
 docker-compose.yml
+.DS_Store

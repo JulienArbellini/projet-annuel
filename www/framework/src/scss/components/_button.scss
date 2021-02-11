@@ -1,0 +1,31 @@
+.button{
+	border: none;
+	background: none;
+	background-color: purple;
+	color: $white;
+	padding: 1em 2em;
+	display: inline-block;
+	transition: all 0.3s;	
+	text-decoration: none;
+	@media screen and (max-width: $mobile-width){
+	font-size: rem(12);
+	}
+
+	&:hover{
+		background-color: lighten($grey, 10%);
+	}
+	&--success{
+		background-color: $green;
+		&:hover{
+		background-color: lighten($green, 10%);
+		}
+	}
+	&--alert{
+		background-color: $red;
+		&:hover{
+		background-color: lighten($red, 10%);
+		}
+	}
+
+}
+
