@@ -1,0 +1,13 @@
+.text_area{
+    width: 400px;
+    height: 143px;
+    border: 1px solid #328DAA;
+    background-color: #DAEFFE;
+    box-shadow: 0px 4px 4px rgba(50, 141, 170, 0.1);
+    border-radius: 5px;
+    color: #22263C;
+    &::placeholder{
+        color: #328DAA;
+    }
+}
+

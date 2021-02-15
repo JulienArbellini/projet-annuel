@@ -168,3 +168,39 @@ body {
   border-radius: 10px;
 }
 
+.text_area {
+  width: 400px;
+  height: 143px;
+  border: 1px solid #328DAA;
+  background-color: #DAEFFE;
+  box-shadow: 0px 4px 4px rgba(50, 141, 170, 0.1);
+  border-radius: 5px;
+  color: #22263C;
+}
+
+.text_area::-moz-placeholder {
+  color: #328DAA;
+}
+
+.text_area:-ms-input-placeholder {
+  color: #328DAA;
+}
+
+.text_area::placeholder {
+  color: #328DAA;
+}
+
+.line {
+  width: 990px;
+  border: 1px solid #000;
+}
+
+select {
+  width: 107px;
+  height: 18px;
+  background-color: #DAEFFE;
+  border: 1px solid rgba(50, 141, 170, 0.3);
+  border-radius: 4px;
+  color: #328DAA;
+}
+
