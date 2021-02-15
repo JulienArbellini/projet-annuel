@@ -34,6 +34,33 @@ p {
   padding: 20px 0;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#primary-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+#nav-left {
+  width: 224px;
+}
+
+#content {
+  width: 100%;
+}
+
 body {
   background-color: #F0F4F7;
 }
@@ -134,7 +161,6 @@ body {
   outline: none;
   cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  background-image: url(/images/add.png?a79e02f6ceccd402b404f153796695de);
 }
 
 .button:hover {
@@ -149,9 +175,6 @@ body {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
   color: #AA4DC8;
-  /*&:visited{
-      color: $link-color-hover;
-  }*/
 }
 
 .link:hover {
@@ -202,5 +225,227 @@ select {
   border: 1px solid rgba(50, 141, 170, 0.3);
   border-radius: 4px;
   color: #328DAA;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: #F0F4F7;
+  border: 1px solid rgba(205, 104, 237, 0.2);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.05));
+  box-sizing: border-box;
+  display: flex;
+  font-style: normal;
+  font-size: 20px;
+  width: 100%;
+  height: 67px;
+  justify-content: space-between;
+}
+
+#nav-top-left {
+  margin-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  width: 30%;
+  height: 67px;
+  justify-content: space-between;
+}
+
+#nav-top-right {
+  display: flex;
+  justify-content: flex-end;
+  width: 10%;
+  height: 67px;
+}
+
+.link-nav-bar {
+  display: flex;
+  width: 150px;
+  height: 67px;
+  align-items: center;
+  margin-left: 9px;
+  justify-content: center;
+  transform: perspective(1px) translateZ(0);
+}
+
+.link-nav-bar:hover {
+  color: #328DAA;
+}
+
+.link-nav-bar:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: #328DAA;
+  height: 4px;
+  transition-property: left, right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.link-nav-bar:hover:before,
+.link-nav-barfocus:before,
+.link-nav-baractive:before {
+  left: 0;
+  right: 0;
+}
+
+.link-nav-bar img {
+  width: 19px;
+  height: 18px;
+  margin-right: 9px;
+}
+
+.link-nav-bar img:hover {
+  transition: all 2s;
+  transform: rotate(1080deg);
+}
+
+.user {
+  display: flex;
+  font-size: 20px;
+  width: 150px;
+  height: 67px;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.user img {
+  width: 19px;
+  height: 18px;
+  margin-left: 15px;
+}
+
+/* Grow */
+
+.logo {
+  justify-content: center;
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: #2098D1;
+  height: 4px;
+  transition-property: left, right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.logo:hover:before,
+.logo:focus:before,
+.logo:active:before {
+  left: 0;
+  right: 0;
+}
+
+/* Progress Bar */
+
+.progress {
+  background: #DAEFFE;
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  padding: 0 2px;
+  display: flex;
+  height: 22px;
+  width: 226px;
+  border-color: rgba(50, 141, 170, 0.7);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.progress-value {
+  -webkit-animation: load 3s normal forwards;
+          animation: load 3s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
+  border-radius: 20px;
+  background: rgba(170, 77, 200, 0.5);
+  height: 17px;
+  width: 0;
+}
+
+@-webkit-keyframes load {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 50%;
+  }
+}
+
+@keyframes load {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 50%;
+  }
+}
+
+/* Search box */
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  background-color: #DAEFFE;
+  border-radius: 11px;
+  border-color: #328DAA;
+  border-width: 1px;
+  color: #328DAA;
+  width: 679px;
+}
+
+::-moz-placeholder {
+  color: #328DAA;
+  left: 20px;
+}
+
+:-ms-input-placeholder {
+  color: #328DAA;
+  left: 20px;
+}
+
+::placeholder {
+  color: #328DAA;
+  left: 20px;
+}
+
+input[type=text]::-moz-placeholder {
+  padding-left: 10px;
+}
+
+input[type=text]:-ms-input-placeholder {
+  padding-left: 10px;
+}
+
+input[type=text]::placeholder {
+  padding-left: 10px;
+}
+
+#nav-left {
+  background-color: #22263C;
 }
 

@@ -14,7 +14,6 @@
 	outline: none;
 	cursor: pointer;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-	background-image: url("../../../img/add.png");
 	&:hover{
 		background-color: lighten($purple, 6%);
 	}
