@@ -4,8 +4,13 @@
 
 body{
 	margin: 0;
+<<<<<<< HEAD
 	font-family: $roboto;
 	background-color: #F0F4F7;
+=======
+	font-family: $font1;
+	background-color: $theme-grey;
+>>>>>>> feature/julien
 }
 
 
@@ -32,3 +37,36 @@ p{
 		padding: 20px 0;
 	}
 }
+
+
+
+
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#primary-container{
+    display: flex;
+    // background-color: red;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+#nav-left{
+    width: 224px;
+    // background-color: blue;
+}
+#content{
+    width: 100%;
+    // background-color: green;
+}
+
+
