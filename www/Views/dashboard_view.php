@@ -3,3 +3,4 @@
 </section>
 
 <button class="button">Cliquez ici</button>
+<button class="button">Cliquez ici</button>
