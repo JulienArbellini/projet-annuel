@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.setPublicPath('../CSS');
+mix.setPublicPath('../framework/dist/');
 
 // mix.babel([
 //  '../src/js/vendor/lazysizes/lazysizes.min.js',
