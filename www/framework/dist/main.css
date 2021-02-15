@@ -36,47 +36,90 @@ p {
   padding: 20px 0;
 }
 
-.button {
-  border: none;
-  background: none;
-  background-color: purple;
-  color: #FFF;
-  padding: 1em 2em;
-  display: inline-block;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-
-@media screen and (max-width: 720px) {
-  .button {
-    font-size: 0.75rem;
-  }
-}
-
-.button:hover {
-  background-color: #c4c4c4;
-}
-
-.button--success {
-  background-color: #31aa66;
-}
-
-.button--success:hover {
-  background-color: #45c97f;
-}
-
-.button--alert {
-  background-color: #ce0a0a;
-}
-
-.button--alert:hover {
-  background-color: #f41717;
-}
-
 body {
   background-color: grey;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: center;
+  margin: 0 calc(20px/-2);
+}
+
+.col-1 {
+  flex-basis: 8.3333333333%;
+  width: 8.3333333333%;
+  padding: 0 calc(20px/2);
+}
+
+.col-2 {
+  flex-basis: 16.6666666667%;
+  width: 16.6666666667%;
+  padding: 0 calc(20px/2);
+}
+
+.col-3 {
+  flex-basis: 25%;
+  width: 25%;
+  padding: 0 calc(20px/2);
+}
+
+.col-4 {
+  flex-basis: 33.3333333333%;
+  width: 33.3333333333%;
+  padding: 0 calc(20px/2);
+}
+
+.col-5 {
+  flex-basis: 41.6666666667%;
+  width: 41.6666666667%;
+  padding: 0 calc(20px/2);
+}
+
+.col-6 {
+  flex-basis: 50%;
+  width: 50%;
+  padding: 0 calc(20px/2);
+}
+
+.col-7 {
+  flex-basis: 58.3333333333%;
+  width: 58.3333333333%;
+  padding: 0 calc(20px/2);
+}
+
+.col-8 {
+  flex-basis: 66.6666666667%;
+  width: 66.6666666667%;
+  padding: 0 calc(20px/2);
+}
+
+.col-9 {
+  flex-basis: 75%;
+  width: 75%;
+  padding: 0 calc(20px/2);
+}
+
+.col-10 {
+  flex-basis: 83.3333333333%;
+  width: 83.3333333333%;
+  padding: 0 calc(20px/2);
+}
+
+.col-11 {
+  flex-basis: 91.6666666667%;
+  width: 91.6666666667%;
+  padding: 0 calc(20px/2);
+}
+
+.col-12 {
+  flex-basis: 100%;
+  width: 100%;
+  padding: 0 calc(20px/2);
+}
+
 .button {
   border: none;
   background: none;
@@ -112,5 +155,41 @@ body {
 
 .button--alert:hover {
   background-color: #f41717;
+}
+
+.text_area {
+  width: 400px;
+  height: 143px;
+  border: 1px solid #328DAA;
+  background-color: #DAEFFE;
+  box-shadow: 0px 4px 4px rgba(50, 141, 170, 0.1);
+  border-radius: 5px;
+  color: #22263C;
+}
+
+.text_area::-moz-placeholder {
+  color: #328DAA;
+}
+
+.text_area:-ms-input-placeholder {
+  color: #328DAA;
+}
+
+.text_area::placeholder {
+  color: #328DAA;
+}
+
+.line {
+  width: 990px;
+  border: 1px solid #000;
+}
+
+select {
+  width: 107px;
+  height: 18px;
+  background-color: #DAEFFE;
+  border: 1px solid rgba(50, 141, 170, 0.3);
+  border-radius: 4px;
+  color: #328DAA;
 }
 
