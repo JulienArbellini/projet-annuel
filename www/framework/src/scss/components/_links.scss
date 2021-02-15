@@ -1,0 +1,14 @@
+.link{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: underline;
+    color: $link-color;
+    &:hover{
+        color: $link-color-hover;
+    }
+    /*&:visited{
+        color: $link-color-hover;
+    }*/
+}
