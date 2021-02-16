@@ -24,8 +24,8 @@
         <a href="#" class="link">Mon premier article</a>
         <p>le 10/09/2020 à 10h00</p>
         <p>John Doe</p>
-        <img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15">
-        <img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15">
+        <a href="#"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a>
+        <a href="#"><img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15"></a>
     </div>
 
     <div class="separator"></div>
@@ -34,8 +34,8 @@
         <a href="#" class="link">Mon deuxième article</a>
         <p>le 15/11/2020 à 18h40</p>
         <p>John Doe</p>
-        <img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15">
-        <img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15">
+        <a href="#"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a>
+        <a href="#"><img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15"></a>
     </div>
 
     <div class="separator"></div>
@@ -44,8 +44,8 @@
         <a href="#" class="link">Mon troisième article</a>
         <p>le 21/01/2021 à 13h10</p>
         <p>John Doe</p>
-        <img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15">
-        <img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15">
+        <a href="#"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a>
+        <a href="#"><img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15"></a>
     </div>
 
     <div class="separator"></div>
@@ -54,8 +54,8 @@
         <a href="#" class="link">Mon quatrième article</a>
         <p>le 19/02/2021 à 21h55</p>
         <p>John Doe</p>
-        <img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15">
-        <img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15">
+        <a href="#"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a>
+        <a href="#"><img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15"></a>
     </div>
 
 
