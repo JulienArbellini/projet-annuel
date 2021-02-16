@@ -1,4 +1,11 @@
 .separator{
-    width: 990px;
-    border: 1px solid #000;
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid $black;
+    // border-top-left-radius: 20px;
+    // border-top-right-radius: 20px;
+    // border-bottom-right-radius: 20px;
+    // border-bottom-left-radius: 20px;
+    border-width: 0.5px;
 }

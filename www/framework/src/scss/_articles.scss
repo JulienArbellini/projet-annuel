@@ -1,1 +1,41 @@
 //Mediaqueries etc
+h1{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.article-search-group{
+    display: flex;
+    justify-content: space-around;
+}
+/*
+.add-article{
+    display: flex;
+}
+
+.picture{
+    display: flex;
+}
+
+.picture-text{
+    display: flex;
+}
+*/
+
+.shadow-box-square{
+    margin: 0 auto;
+}
+
+.name-column{
+    margin-top: 25px;
+    width: 780px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-flexbox{
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
