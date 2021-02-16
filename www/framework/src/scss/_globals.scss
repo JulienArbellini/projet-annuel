@@ -79,6 +79,7 @@ main{
 				justify-content: space-between;
 				&:hover{
 					color: $dark-blue;
+					cursor: pointer;
 					// text-decoration: underline;
 
 				}
@@ -88,11 +89,6 @@ main{
 					}
 				}
 				
-				#fleche{
-					// margin-left: 30px;
-					// background-color: red;
-					
-				}
 			}
 		}
 		

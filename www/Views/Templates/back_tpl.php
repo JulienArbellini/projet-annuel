@@ -79,7 +79,7 @@
 					</div>
 					<div class="menu faq">
 						<div class="text-img">
-							<img src="../../framework/img/FAQ.png" alt="logo FAQ" >FAQ</img>
+							<img src="../../framework/img/faq.png" alt="logo FAQ" >FAQ</img>
 						</div>
 						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
 					</div>

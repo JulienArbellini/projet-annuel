@@ -84,6 +84,7 @@ main #nav-left #liste .menu {
 
 main #nav-left #liste .menu:hover {
   color: #328DAA;
+  cursor: pointer;
 }
 
 main #nav-left #liste .menu .text-img img {
