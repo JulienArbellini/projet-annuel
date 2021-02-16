@@ -1,17 +1,17 @@
-<h1>Articles</h1>
-
-<div class="article-search-group">
-    <div class="add-article">
-        <div class="picture"><img src="../../framework/img/add.png" width="12" height="12"></div>
-        <div class="picture-text"><p>Ajouter un article</p></div>
-    </div>
-
-    <div class="search-box">
-        <input type="text" placeholder="Rechercher un article">
+<div class="article-search-group">   
+    <h1>Articles</h1>
+    <div class="add-article-search"> 
+        <div class="add-article">
+            <p>+</p>
+            <div class="picture-text"><p>Ajouter un article</p></div>
+        </div>
+        <div class="search-box" style="width:339px">
+            <input type="text" placeholder="Rechercher un article">
+        </div>
     </div>
 </div>
 
-<div class="shadow-box-square--article">
+<div class="shadow-box-square">
     <div class="name-column">
         <p><strong>Nom article</strong></p>
         <p><strong>Dernières modifications</strong></p>
