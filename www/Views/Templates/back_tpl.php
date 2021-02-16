@@ -32,19 +32,75 @@
 
 		</header>
 		
-		<div id="primary-container">
+		<main>
 			<div id="nav-left">
-      		</div>
+				<div id="liste">
+					<div class="menu dashboard">
+						<div class="text-img">
+							<img src="../../framework/img/dashboard.png" alt="logo dashboard">Tableau de bord</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+					<div class="menu apparence">
+						<div class="text-img">
+							<img src="../../framework/img/paint.png" alt="logo apparence">Apparence</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+					<div class="menu articles">
+						<div class="text-img">
+							<img src="../../framework/img/articles.png" alt="logo articles">Articles</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+					<div class="menu pages">
+						<div class="text-img">
+							<img src="../../framework/img/pages.png" alt="logo pages" >Pages</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+					<div class="menu commentaires">
+						<div class="text-img">
+							<img src="../../framework/img/commentaires.png" alt="logo commentaires" >Commentaires</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+					<div class="menu medias">
+						<div class="text-img">
+							<img src="../../framework/img/medias.png" alt="logo médias" >Médias</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+					<div class="menu utlilisateurs">
+						<div class="text-img">
+							<img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" >Utilisateurs</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+					<div class="menu faq">
+						<div class="text-img">
+							<img src="../../framework/img/FAQ.png" alt="logo FAQ" >FAQ</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+					<div class="menu parametres">
+						<div class="text-img">
+							<img src="../../framework/img/parametre.png" alt="logo parametres" >Paramètres</img>
+						</div>
+						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
+					</div>
+				</div>
+			</div>
 			<div id="content">
-			
+				<!-- intégrer le vue -->
+				<?php include $this->view ?>
 			</div>
 
-		</div>
+		</main>
 		
 
 
-		<!-- intégrer le vue -->
-		<?php include $this->view ?>
+		
 
 	</body>
 </html>
