@@ -39,5 +39,9 @@ class Base{
 	
 	}
 
+	public function articlesAction(){
+		$view = new View("articles", "back");
+	}
+
 
 }

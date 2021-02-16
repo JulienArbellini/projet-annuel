@@ -92,15 +92,8 @@
 				</div>
 			</div>
 			<div id="content">
-				<!-- intégrer le vue -->
 				<?php include $this->view ?>
 			</div>
-
 		</main>
-		
-
-
-		
-
 	</body>
 </html>

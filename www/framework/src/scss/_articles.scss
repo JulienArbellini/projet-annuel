@@ -1,0 +1,58 @@
+//Mediaqueries etc
+#content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.article-search-group{
+    width: 1084px;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-article-search{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    & a{
+        text-decoration: none;
+        color: $black;
+    }
+}
+
+.add-article{
+    display: flex;
+    & > p{
+        margin-right: 3px;
+        font-weight: bold;
+    }
+}
+
+.shadow-box-square{
+    margin: 0 auto;
+    width: 1084px;
+    height: 601px;
+}
+
+.name-column{
+    margin-top: 25px;
+    width: 780px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-flexbox{
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

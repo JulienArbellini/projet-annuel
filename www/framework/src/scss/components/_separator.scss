@@ -1,4 +1,7 @@
-.line{
-    width: 990px;
-    border: 1px solid #000;
+.separator{
+    width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid $black;
+    border-width: 0.5px;
 }
