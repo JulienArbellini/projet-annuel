@@ -28,3 +28,7 @@
 /liste-des-utilisateurs:
   controller: Security
   action: listofusers
+
+/articles:
+  controller: Base
+  action: articles

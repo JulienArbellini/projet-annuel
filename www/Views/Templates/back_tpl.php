@@ -36,15 +36,15 @@
 			<div id="nav-left">
       		</div>
 			<div id="content">
-			
+				<?php include $this->view ?>
 			</div>
 
 		</div>
 		
 
 
-		<!-- intégrer le vue -->
-		<?php include $this->view ?>
+		<!-- intégrer la vue -->
+		
 
 	</body>
 </html>
