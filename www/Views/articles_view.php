@@ -1,10 +1,10 @@
 <div class="article-search-group">   
     <h1>Articles</h1>
     <div class="add-article-search"> 
-        <div class="add-article">
+        <a href="#"><div class="add-article">
             <p>+</p>
             <div class="picture-text"><p>Ajouter un article</p></div>
-        </div>
+        </div></a>
         <div class="search-box" style="width:339px">
             <input type="text" placeholder="Rechercher un article">
         </div>

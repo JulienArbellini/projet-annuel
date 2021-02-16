@@ -23,6 +23,10 @@ h1{
     width: 50%;
     display: flex;
     justify-content: space-between;
+    & a{
+        text-decoration: none;
+        color: $black;
+    }
 }
 
 .add-article{
