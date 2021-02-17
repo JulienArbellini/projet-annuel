@@ -4,4 +4,8 @@
     margin-right: auto;
     border: solid $black;
     border-width: 0.5px;
+    
+    @media (max-width: 1024px){
+        width: 865px;
+    }
 }
