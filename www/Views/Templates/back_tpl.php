@@ -14,11 +14,11 @@
 				<div class="logo">
 					<img src="framework/img/Logo teach'r.svg">
 				</div>
-				<div class="link-nav-bar mon_site">
+				<div class="link-nav-bar--mon_site">
 					<img src="framework/img/home.png" alt="Home button" width="19" height="18"></img>
 					Mon site
 				</div>
-				<div class="link-nav-bar create">
+				<div class="link-nav-bar--create">
 					<img src="framework/img/add.png" alt="plus button" width="19" height="18"></img>
 					Créer
 				</div>

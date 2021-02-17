@@ -63,6 +63,12 @@ main #nav-left {
   flex-direction: column;
 }
 
+@media (max-width: 1024px) {
+  main #nav-left {
+    height: 115%;
+  }
+}
+
 main #nav-left #liste {
   display: flex;
   flex-direction: column;
@@ -108,12 +114,6 @@ body {
   align-items: center;
 }
 
-@media (max-width: 1024px) {
-  #content {
-    padding-bottom: 10%;
-  }
-}
-
 .article-search-group {
   width: 1084px;
   height: 15%;
@@ -127,12 +127,6 @@ body {
   font-weight: bold;
 }
 
-@media (max-width: 1024px) {
-  .article-search-group h1 {
-    margin-left: 110px;
-  }
-}
-
 .add-article-search {
   width: 50%;
   display: flex;
@@ -142,12 +136,6 @@ body {
 .add-article-search a {
   text-decoration: none;
   color: #000000;
-}
-
-@media (max-width: 1024px) {
-  .add-article-search {
-    margin-right: 30px;
-  }
 }
 
 .add-article {
@@ -165,25 +153,11 @@ body {
   height: 601px;
 }
 
-@media (max-width: 1024px) {
-  .shadow-box-square {
-    width: 950px;
-    height: 467px;
-    margin-left: 26px;
-  }
-}
-
 .name-column {
   margin-top: 25px;
   width: 780px;
   display: flex;
   justify-content: space-around;
-}
-
-@media (max-width: 1024px) {
-  .name-column {
-    margin-top: 7px;
-  }
 }
 
 .container-flexbox {
@@ -193,7 +167,30 @@ body {
   align-items: center;
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
+  #content {
+    padding-bottom: 10%;
+  }
+
+  .article-search-group h1 {
+    margin-left: 45px;
+  }
+
+  .add-article-search a {
+    margin-right: 30px;
+  }
+
+  .shadow-box-square {
+    width: 1025px;
+    height: 467px;
+    margin-left: 26px;
+    margin-right: 26px;
+  }
+
+  .name-column {
+    margin-top: 7px;
+  }
+
   .container-flexbox {
     height: 100px;
   }
@@ -353,7 +350,7 @@ body {
   border-width: 0.5px;
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .separator {
     width: 865px;
   }
@@ -387,6 +384,12 @@ header {
   width: 100%;
   height: 67px;
   justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+  header {
+    width: 113.5%;
+  }
 }
 
 #nav-top-left {
@@ -451,6 +454,18 @@ header {
   transform: rotate(1080deg);
 }
 
+@media (max-width: 1024px) {
+  .link-nav-bar--mon_site {
+    padding-left: 15vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .link-nav-bar--create {
+    padding-left: 15vh;
+  }
+}
+
 .user {
   display: flex;
   font-size: 20px;
@@ -473,6 +488,12 @@ header {
   transform: perspective(1px) translateZ(0);
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .logo {
+    width: 200vh;
+  }
 }
 
 .logo:before {

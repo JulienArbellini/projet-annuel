@@ -5,9 +5,9 @@
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 1024px){
-       padding-bottom: 10%;
-    }
+    // @media screen and (max-width: 1200px){
+    //    padding-bottom: 10%;
+    // }
 }
 
 .article-search-group{
@@ -20,9 +20,9 @@
         text-decoration: underline;
         font-weight: bold;
 
-        @media (max-width: 1024px){
-            margin-left: 110px;
-        }
+        // @media screen and (max-width: 1200px){
+            // margin-left: 45px;
+        // }
     }
     // @media (max-width: 1024px){
     //     margin-bottom: 10%;
@@ -37,9 +37,9 @@
         text-decoration: none;
         color: $black;
     }
-    @media (max-width: 1024px){
-        margin-right: 30px;
-    }
+    // @media screen and (max-width: 1200px){
+    //     margin-right: 30px;
+    // }
 
 }
 
@@ -56,11 +56,11 @@
     width: 1084px;
     height: 601px;
 
-    @media (max-width: 1024px){
-        width: 950px;
-        height: 467px;
-        margin-left: 26px;
-    }
+    // @media screen and (max-width: 1200px){
+    //     width: 1025px;
+    //     height: 467px;
+    //     margin-left: 26px;
+    // }
 }
 
 .name-column{
@@ -69,9 +69,9 @@
     display: flex;
     justify-content: space-around;
 
-    @media (max-width: 1024px){
-        margin-top: 7px;
-    }
+    // @media screen and (max-width: 1200px){
+    //     margin-top: 7px;
+    // }
 }
 
 .container-flexbox{
@@ -80,8 +80,39 @@
     justify-content: space-around;
     align-items: center;
 
-    @media (max-width: 1024px){
-        //align-items: stretch;
+    // @media screen and (max-width: 1200px){
+    //     //align-items: stretch;
+    //     height: 100px;
+    // }
+}
+
+@media screen and (max-width: 1200px){
+
+    #content{
+        padding-bottom: 10%;
+    }
+
+    .article-search-group h1{
+        margin-left: 45px;
+    }
+
+    .add-article-search a{
+        margin-right: 30px;
+    }
+
+    .shadow-box-square{
+        width: 1025px;
+        height: 467px;
+        margin-left: 26px;
+        margin-right: 26px;
+    }
+
+    .name-column{
+        margin-top: 7px;
+    }
+
+    .container-flexbox{
         height: 100px;
     }
-}
+ }
+

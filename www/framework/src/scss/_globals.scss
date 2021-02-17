@@ -58,6 +58,11 @@ main{
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
+
+		@media (max-width: 1024px){
+			height: 115%;
+		}
+
 		#liste{
 			display: flex;
 			flex-direction: column;
