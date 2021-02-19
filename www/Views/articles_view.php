@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="shadow-box-square col-s-10 col-m-8 col-m-center">
+    <div class="shadow-box-square col-s-10 col-m-10 col-m-center">
         <div class="name-column">
             <div class="col-m-3 col-m-push-1"><p><strong>Nom article</strong></p></div>
             <div class="col-m-3 col-m-push-1"><p><strong>Dernières modifications</strong></p></div>
