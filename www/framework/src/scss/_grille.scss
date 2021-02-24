@@ -1,0 +1,132 @@
+*{
+    box-sizing: border-box;
+}
+
+/* -----------------
+    MIXINS
+-------------------*/
+
+@mixin responsive-columns($suffix: ''){
+    @for $i from 1 through $columns{
+        @if $i != 0{
+            .col#{$suffix}-#{$i}{
+                width: $i / $columns * 100%;
+            }
+        }
+        .col#{$suffix}-center{
+            margin: 0 auto;
+            float: none;
+        }
+        .col#{$suffix}-push-#{$i}{
+            left: $i / $columns * 100%;
+        }
+        .col#{$suffix}-pull-#{$i}{
+            right: $i / $columns * 100%;
+        }
+        .col#{$suffix}-down-#{$i}{
+            margin-top: $i * 5px;
+        }
+        .col#{$suffix}-long{
+            height: 100vh;
+        }
+        .col#{$suffix}-large{
+            width: 100vh;
+        }
+    }
+}
+
+/* -----------------
+    EXTEND
+-------------------*/
+
+
+%col{
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding: 0 $gutter * 0.5;
+
+    //border: 1px solid black;
+}
+
+%clearfix{
+    &:before,
+    &:after{
+        content:"";
+        display: table;
+    }
+    &:after{
+        clear: both;
+    }
+    &{
+        zoom: 1;
+    }
+}
+
+/* -----------------
+    CLASS
+-------------------*/
+
+.row{
+    margin: 0 $gutter * -0.5;
+    @extend %clearfix;
+
+}
+
+/* -----------------
+    GRID
+-------------------*/
+
+@for $i from 1 through $columns{
+    .col-s-#{$i}, .col-m-#{$i}, .col-l-#{$i}{
+        @extend %col;
+    }
+}
+
+.m-show{
+    display: none;
+}
+.l-show{
+    display: none;
+}
+@include responsive-columns('-s');
+
+
+/* -----------------
+    RESPONSIVE
+-------------------*/
+
+//Medium Screen
+@media only screen and (min-width: $medium){
+    @include responsive-columns('-m');
+
+    .m-hidden{ 
+        display: none;
+    }
+    .m-show{
+        display: block;
+    }
+    .s-show{
+        display: none;
+    }
+    
+}
+
+// Large Screen
+@media only screen and (min-width: $large){
+    @include responsive-columns('-l');
+
+    .l-hidden{ 
+        display: none;
+    }
+    .l-show{
+        display: block;
+    }
+    .m-show{
+        display: none;
+    }
+    
+}
+
+
+

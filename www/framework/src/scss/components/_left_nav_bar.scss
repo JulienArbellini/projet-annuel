@@ -1,14 +1,37 @@
 
 #nav-left{
-    background-color:$theme-dark-grey;
-    // position: fixed;
+    background-color: $theme-dark-grey;
+    height: 100%;
 }
 
+main{
+    display: flex;
+    justify-content: space-between;
+}
 
-// header{
-//     background-color: ;
-// }
+#liste{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    color: #ffff;
+}
 
-// #coucou{
-//     background-color: red;
-// }
+.menu{
+    display: flex;
+    //font-weight: bolder;
+    font-size: 17px;
+    letter-spacing: 1px;
+    margin: 2px;
+    height: 100vh;
+    &:hover{
+        color: #328DAA;
+        cursor: pointer;
+    }
+    
+}
+
+.container-flexbox-nav{ 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

@@ -19,7 +19,6 @@
 }
 
 .add-article-search{
-    width: 50%;
     display: flex;
     justify-content: space-between;
     & a{
@@ -28,25 +27,10 @@
     }
 }
 
-.add-article{
-    display: flex;
-    & > p{
-        margin-right: 3px;
-        font-weight: bold;
-    }
-}
-
-.shadow-box-square{
-    margin: 0 auto;
-    width: 1084px;
-    height: 601px;
-}
-
 .name-column{
     margin-top: 25px;
-    width: 780px;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 
 .container-flexbox{
@@ -55,3 +39,5 @@
     justify-content: space-around;
     align-items: center;
 }
+
+

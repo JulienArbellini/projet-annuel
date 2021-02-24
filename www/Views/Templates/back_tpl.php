@@ -10,87 +10,79 @@
 	<body>
 		
 		<header>
-			<div id="nav-top-left">
-				<div class="logo">
-					<img src="framework/img/Logo teach'r.svg">
-				</div>
-				<div class="link-nav-bar mon_site">
-					<img src="framework/img/home.png" alt="Home button" width="19" height="18"></img>
-					Mon site
-				</div>
-				<div class="link-nav-bar create">
-					<img src="framework/img/add.png" alt="plus button" width="19" height="18"></img>
-					Créer
-				</div>
-			</div>
-			<div id="nav-top-right">
-				<div class="link-nav-bar user">
-					John Doe
-					<img src="framework/img/user.png" alt="user button" width="19" height="18"></img>
-				</div>
-			</div>
-
+			<div class="row col-m-12">
+                <div id="nav-top-left">
+                    <div class="logo col-s-3 col-m-2 col-l-2">
+                        <img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60">
+                    </div>
+                    <div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
+                        <img src="../../framework/img/home.png" alt="Home button" width="19" height="18"></img>
+                        Mon site
+                    </div>
+                    <div class="link-nav-bar col-m-2 col-l-pull-4">
+                        <img src="../../framework/img/add.png" alt="plus button" width="19" height="18"></img>
+                        Créer
+                    </div>
+                    <div class="link-nav-bar col-s-2 col-m-2 col-l-1">
+                        John Doe
+                        <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
+                    </div>
+                </div>
+            </div>
 		</header>
 		
 		<main>
-			<div id="nav-left">
-				<div id="liste">
-					<div class="menu dashboard">
-						<div class="text-img">
-							<img src="../../framework/img/dashboard.png" alt="logo dashboard">Tableau de bord</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-					<div class="menu apparence">
-						<div class="text-img">
-							<img src="../../framework/img/paint.png" alt="logo apparence">Apparence</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-					<div class="menu articles">
-						<div class="text-img">
-							<img src="../../framework/img/articles.png" alt="logo articles">Articles</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-					<div class="menu pages">
-						<div class="text-img">
-							<img src="../../framework/img/pages.png" alt="logo pages" >Pages</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-					<div class="menu commentaires">
-						<div class="text-img">
-							<img src="../../framework/img/commentaires.png" alt="logo commentaires" >Commentaires</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-					<div class="menu medias">
-						<div class="text-img">
-							<img src="../../framework/img/medias.png" alt="logo médias" >Médias</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-					<div class="menu utlilisateurs">
-						<div class="text-img">
-							<img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" >Utilisateurs</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-					<div class="menu faq">
-						<div class="text-img">
-							<img src="../../framework/img/faq.png" alt="logo FAQ" >FAQ</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-					<div class="menu parametres">
-						<div class="text-img">
-							<img src="../../framework/img/parametre.png" alt="logo parametres" >Paramètres</img>
-						</div>
-						<img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img>
-					</div>
-				</div>
-			</div>
+			<div class="row">
+                <div id="nav-left">
+                    <div id="liste">
+                        <div class="menu container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12">
+                                <div class="col-m-2"><img src="../../framework/img/dashboard.png" alt="logo dashboard"></div>
+                                <div class="col-m-9"><p>Tableau de bord</p></div>
+                            	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                        <div class="menu container-flexbox-nav apparence cols-s-12 col-m-12 col-l-12">
+                                <div class="col-m-2"><img src="../../framework/img/paint.png" alt="logo apparence"></div>
+                                <div class="col-m-8"><p>Apparence</p></div>
+                            	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                        <div class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12">
+                                <div class="col-m-2"><img src="../../framework/img/articles.png" alt="logo articles"></div>
+                                <div class="col-m-8"><p>Articles</p></div>
+                            	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                        <div class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12">
+                            	<div class="col-m-2"><img src="../../framework/img/pages.png" alt="logo pages"></div>
+                                <div class="col-m-8"><p>Pages</p></div>
+                           		<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                        <div class="menu container-flexbox-nav commentaires col-s-12 col-m-12 col-l-12">
+                                <div class="col-m-2"><img src="../../framework/img/commentaires.png" alt="logo commentaires" ></div>
+                                <div class="col-m-8"><p>Commentaires</p></div>
+                            	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                        <div class="menu container-flexbox-nav medias col-s-12 col-m-12 col-l-12">
+                                <div class="col-m-2"><img src="../../framework/img/medias.png" alt="logo médias" ></div>
+                                <div class="col-m-8"><p>Medias</p></div>
+                            	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                        <div class="menu container-flexbox-nav utlilisateurs col-s-12 col-m-12 col-l-12">
+                                <div class="col-m-2"><img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" ></div>
+                                <div class="col-m-8"><p>Utilisateur</p></div>
+                            	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                        <div class="menu container-flexbox-nav faq col-s-12 col-m-12 col-l-12">
+                                <div class="col-m-2"><img src="../../framework/img/faq.png" alt="logo FAQ" ></div>
+                                <div class="col-m-8"><p>FAQ</p></div>
+                            	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                        <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
+                                <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div>
+                                <div class="col-m-8"><p>Paramètres</p></div>
+                            	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 			<div id="content">
 				<?php include $this->view ?>
 			</div>
