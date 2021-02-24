@@ -3,16 +3,13 @@
 .progress {
     background: #DAEFFE;
     justify-content: flex-start;
-    border-radius: 100px;
     align-items: center;
-    position: relative;
-    padding: 0 2px;
     display: flex;
-    height: 22px;
-    width: 226px;
-    border-color: rgba(50, 141, 170, 0.7);
     border-style: solid;
-    border-width: 1px;
+    border-radius: 100px;
+    padding: 0 2px;
+    border-color: rgba(50, 141, 170, 0.7);  
+    border-width: 1px; 
   }
   
   .progress-value {
@@ -21,12 +18,12 @@
     border-radius: 20px;
   
     background: rgba(170, 77, 200, 0.5);
-    height: 17px;
+    height: 90%;
     width: 0;
   }
 
   @keyframes load {
     0% { width: 0; }
-    100% { width: 50%; }
+    100% { width: $percent; }
   }
   
