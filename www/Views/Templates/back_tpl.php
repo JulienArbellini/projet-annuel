@@ -2,6 +2,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="vieuxport" content="width=device-width, initial-scale=1.0">
 		<title>Template de Back</title>
 		<meta name="description" content="ceci est la page de template">
 		<link rel="stylesheet" href="framework/dist/main.css">
