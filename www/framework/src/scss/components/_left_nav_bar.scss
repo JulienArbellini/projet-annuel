@@ -1,18 +1,24 @@
+#row{
+    height:100%;
+    // background-color: red;
+}
 
 #nav-left{
     background-color: $theme-dark-grey;
     height: 100%;
+    width: 15%;
 }
 
 main{
     display: flex;
     justify-content: space-between;
+    height: 100%;
 }
 
 #liste{
     display: flex;
     flex-direction: column;
-    height: 95vh;
+    height: 100%;
     color: #ffff;
 }
 
@@ -22,7 +28,7 @@ main{
     font-size: 17px;
     letter-spacing: 1px;
     margin: 2px;
-    height: 100vh;
+    height: 100%;
     &:hover{
         color: #328DAA;
         cursor: pointer;

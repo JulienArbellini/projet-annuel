@@ -7,48 +7,25 @@ body{
 }
 
 header{
-  
   background-color: $theme-grey;
   border: 1px solid $theme_purple;
   filter: drop-shadow(0px 4px 4px $shadow-blocks);
-  //box-sizing: border-box;
-  display: flex;
-  font-style: normal;
-  font-size: 20px;
-  //width: 100%;
-  //height: 67px;
-  // background-color: red;
-  justify-content: space-between;
-
-  // @media (max-width: 1024px) {
-  //   width: 113.5%;
-  // }
 }
 
 #nav-top-left{
-  //margin-left: 20px;
   display: flex;
-  //justify-content: flex-start;
-  //width: 30%;
-  //height: 67px;
+  align-items: center;
   justify-content: space-between;
-  // background-color: red;
-  // background-image: url("../../../img/home.png");
 }
 
 #nav-top-right{
   display: flex;
-  //justify-content: flex-end;
-  //width: 10%;
-  //height: 67px;
+  align-items: center;
 }
 
 .link-nav-bar{
   display: flex;
-  //width:150px;
-  //height: 67px;
   align-items: center;
-  //margin-left: 9px;
 	justify-content: center;
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
@@ -61,7 +38,7 @@ header{
 	  z-index: -1;
 	  left: 51%;
 	  right: 51%;
-	  bottom: 0;
+    top: 42px;
 	  background: $dark-blue;
 	  height: 4px;
 	  -webkit-transition-property: left, right;
@@ -84,45 +61,10 @@ header{
 		  transform: rotate(1080deg);
 		}
 	}
-  // &--mon_site{
-  //   @media (max-width: 1024px){
-  //     padding-left: 15vh;
-  //   }
-  // }
-  // &--create{
-  //   @media (max-width: 1024px){
-  //     padding-left: 15vh;
-  //   }
-  // }
+
 }
 
 
-.user {
-  display: flex;
-  font-size: 20px;
-  //width:150px;
-  //height: 67px;
-  align-items: center;
-  //margin-right: 15px;
-	// img{
-	// 	width: 19px;
-	//   height: 18px;
-	//   margin-left: 15px;
-	// }
-}
-
-/* Grow */
-.logo {
-  justify-content: center;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  position: relative;
-  //overflow: hidden;
-  
-  @media (max-width: 1024px){
-    width: 200vh;
-  }
-}
 .logo:before {
   content: "";
   position: absolute;
@@ -143,3 +85,11 @@ header{
   left: 0;
   right: 0;
 }
+
+#profile_id{
+  img{
+    margin-left: 10px;
+  }
+}
+
+

@@ -16,6 +16,7 @@ body{ font-size:1.4vw; }
         h2{
             font-size: 24px;
         }
+        
     }
 }
 
@@ -27,6 +28,36 @@ body{ font-size:1.4vw; }
         }
         h2{
             font-size: 24px;
+        }
+        #avancement{
+            // height: 60%;
+            // background-color: red;
+            .progress{
+                height: 50%;
+                // background-color: blue;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:1200px) and  (max-width:1600px){
+	body{ 
+        // color: green;
+        font-size: 23px;
+        h1{
+            font-size: 25px;
+        }
+        h2{
+            font-size: 24px;
+        }
+        #avancement{
+            // height: 60%;
+            // background-color: green;
+            .progress{
+                height: 50%;
+                // background-color: blue;
+                
+            }
         }
     }
 }
@@ -40,6 +71,10 @@ body{ font-size:1.4vw; }
         h2{
             font-size: 25px;
         }
+        .progress{
+                height: 100%;
+                // background-color: blue;
+            }
     }
 }
 
@@ -109,10 +144,11 @@ body{ font-size:1.4vw; }
                 box-sizing: border-box;
                 display: flex;
                 align-items: center;
+                // background-color: red;
                 .progress{
                     margin-left: 5%;
                     margin-right: 5%;
-                    height: 100%;
+                    // height: 100%;
                     width: 40%;
                 }
             }
@@ -195,8 +231,6 @@ body{ font-size:1.4vw; }
             box-sizing: border-box;
             h1{
                 text-decoration: underline;
-            }
-            h2{
             }
             p{
                 font-style: oblique;

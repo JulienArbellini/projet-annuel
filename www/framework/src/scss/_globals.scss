@@ -2,24 +2,8 @@
 // 	box-sizing: border-box;
 // }
 
-body{
-	margin: 0;
-	font-family: $roboto;
-	background-color: $theme-grey;
-}
 
 
-h1,h2{
-	font-family: $roboto;
-}
-
-h1{
-	font-size: rem(24);
-}
-
-h2{
-	font-size: rem(16);
-}
 
 // p{
 // 	line-height: 1.4em;
@@ -36,21 +20,37 @@ h2{
 
 
 
-// html{
-//     height: 100%;
-// }
-// body{
-//     display: flex;
-//     flex-direction: column;
-//     height: 100%;
-//     margin: 0;
-//     padding: 0;
-// }
+html{
+    height: 100%;
+	// background-color: red;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+	font-family: $roboto;
+	background-color: $theme-grey;
+	// background-color: blue;
 
-#content{
-	width: 90%;
 }
 
+#content{
+	width: 85%;
+}
+
+h1,h2{
+	font-family: $roboto;
+}
+
+h1{
+	font-size: rem(24);
+}
+
+h2{
+	font-size: rem(16);
+}
 
 
 

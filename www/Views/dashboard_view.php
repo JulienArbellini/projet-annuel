@@ -62,9 +62,9 @@
 </div>
 	
 
-<div class="progress">
+<!-- <div class="progress">
     <div class="progress-value"></div>
-</div>
+</div> -->
 
 
 

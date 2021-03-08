@@ -27,11 +27,11 @@
             margin-top: $i * 5px;
         }
         .col#{$suffix}-long{
-            height: 100vh;
+            // height: 95vh;
         }
         .col#{$suffix}-large{
-            width: 100vh;
-            height: 5vh;
+            // width: 100vh;
+            // height: 5vh;
         }
     }
 }
@@ -128,6 +128,5 @@
     }
     
 }
-
 
 
