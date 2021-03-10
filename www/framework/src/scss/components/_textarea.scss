@@ -1,6 +1,6 @@
 .text_area{
-    // width: 400px;
-    // height: 143px;
+    //  width: 400px;
+    //  height: 143px;
     border: 1px solid #328DAA;
     background-color: #DAEFFE;
     box-shadow: 0px 4px 4px rgba(50, 141, 170, 0.1);
@@ -8,8 +8,8 @@
     color: $dark-blue;
     outline: none;
     resize: none;
+    font-size: 16px;
     &::placeholder{
         color: #328DAA;
     }
 }
-

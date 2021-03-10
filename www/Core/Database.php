@@ -16,6 +16,10 @@ class Database
 			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     		$this->pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 
+			//echo "connexion réussie";
+
+		
+
 		}catch(Exception $e){
 			die ("Erreur SQL ".$e->getMessage());
 		}
@@ -23,7 +27,7 @@ class Database
 		//echo get_called_class(); //  App\Models\User ici on peut récupérer le nom de la table
 		$classExploded = explode("\\", get_called_class());
 		$this->table = DBPREFIX.end($classExploded);
-		// echo "Nom de la table : " .$this->table. "</br>";
+		 //echo "Nom de la table : " .$this->table. "</br>";
 	}
 
 	public function save(){
@@ -53,6 +57,8 @@ class Database
 											:".implode(",:", $columns)."
 											)");
 
+			
+
 		}else{
 			
 			//UPDATE 
@@ -66,6 +72,14 @@ class Database
 
 		$query->execute($data);
 
+	}
+
+	public function getArticle(){
+
+		$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
+		$query->execute();
+		$donnees = $query->fetchall();
+		return $donnees;
 	}
 
 }

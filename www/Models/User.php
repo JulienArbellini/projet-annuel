@@ -5,54 +5,54 @@ use App\Core\Database;
 
 class User extends Database
 {
-	private $id=null;
-	protected $firstname;
+	private $idUser=null;
 	protected $lastname;
+	protected $firstname;
 	protected $email;
-	protected $pwd;
-	protected $country;
-	protected $status = 0;
-	protected $role = 0;
-	protected $isDeleted = 0;
+	protected $password;
+	//protected $country;
+	//protected $status = 0;
+	//protected $role = 0;
+	//protected $isDeleted = 0;
 
 	public function __construct(){
 		parent::__construct();
 	}
 
-	public function setId($id){
+	public function setId($idUser){
 		//Il va chercher en BDD toutes les informations de l'utilisateur
 		//et il va alimenter l'objet avec toutes ces données
-		$this->id = $id;
+		$this->idUser = $idUser;
 	}
 
 	public function getId(){
-		return $this->id;
+		return $this->idUser;
 	}
 
-	public function setFirstname($firstname){
-		$this->firstname = $firstname;
-	}
 	public function setLastname($lastname){
 		$this->lastname = $lastname;
+	}
+	public function setFirstname($firstname){
+		$this->firstname = $firstname;
 	}
 	public function setEmail($email){
 		$this->email = $email;
 	}
-	public function setPwd($pwd){
-		$this->pwd = $pwd;
+	public function setPwd($password){
+		$this->password = $password;
 	}
-	public function setCountry($country){
-		$this->country = $country;
-	}
-	public function setStatus($status){
-		$this->status = $status;
-	}
+	// public function setCountry($country){
+	// 	$this->country = $country;
+	// }
+	// public function setStatus($status){
+	// 	$this->status = $status;
+	// }
 	public function setRole($role){
 		$this->role = $role;
 	}
-	public function setIsDeleted($isDeleted){
-		$this->isDeleted = $isDeleted;
-	}
+	// public function setIsDeleted($isDeleted){
+	// 	$this->isDeleted = $isDeleted;
+	// }
 
 
 	public function buildFormRegister(){
@@ -65,6 +65,14 @@ class User extends Database
 					"class"=>"form_register"
 				],
 				"input"=>[
+					"lastname"=>[
+									"type"=>"text",
+									"lengthMax"=>"255",
+									"lengthMin"=>"2",
+									"required"=>true,
+									"error"=>"Votre nom doit faire entre 2 et 255 caractères",
+									"placeholder"=>"Votre nom"
+									],
 					"firstname"=>[
 									"type"=>"text",
 									"class"=>"form_input",
@@ -74,14 +82,6 @@ class User extends Database
 									"required"=>true,
 									"error"=>"Votre prénom doit faire entre 2 et 120 caractères",
 									"placeholder"=>"Votre prénom"
-									],
-					"lastname"=>[
-									"type"=>"text",
-									"lengthMax"=>"255",
-									"lengthMin"=>"2",
-									"required"=>true,
-									"error"=>"Votre nom doit faire entre 2 et 255 caractères",
-									"placeholder"=>"Votre nom"
 									],
 					"email"=>[
 									"type"=>"email",

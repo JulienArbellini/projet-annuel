@@ -4,6 +4,8 @@ namespace App;
 
 use App\Core\Security;
 use App\Core\View;
+use App\Core\Database;
+use App\Models\Article;
 
 
 class Base{
@@ -41,6 +43,14 @@ class Base{
 
 	public function articlesAction(){
 		$view = new View("articles", "back");
+		$article = new Article();
+		$donnees = $article->getArticle();
+		$view->assign("donnees", $donnees);
+
+		// $tab = $article->getArticle();
+		// $view->assign("tab", $tab);
+
+		
 	}
 
 

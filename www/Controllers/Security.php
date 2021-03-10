@@ -7,7 +7,9 @@ use App\Core\Database;
 use App\Core\View;
 use App\Core\Form;
 use App\Core\ConstantManager;
+use App\Core\AddArticleForm;
 use App\Models\User;
+use App\Models\Article;
 
 class Security{
 
@@ -21,20 +23,19 @@ class Security{
 
 
 		$user = new User();
-		$view = new View("register");
+		$view = new View("register", "back");
 		$form = $user->buildFormRegister();
 		$view->assign("form", $form);
 
-		if(!empty($_POST)){
-			$errors = Form::validator($_POST, $form);
+	    if(!empty($_POST)){
+		 	$errors = Form::validator($_POST, $form);
 
 			if(empty($errors)){
-				
-				$user->setFirstname($_POST["firstname"]);
 				$user->setLastname($_POST["lastname"]);
+				$user->setFirstname($_POST["firstname"]);
 				$user->setEmail($_POST["email"]);
 				$user->setPwd($_POST["pwd"]);
-				$user->setCountry("fr");
+				//$user->setCountry("fr");
 				$user->save();
 
 			}else{
@@ -45,6 +46,30 @@ class Security{
 		
 		
 
+	}
+
+	public function addArticleAction(){
+
+
+		$article = new Article();
+		$view = new View("addArticles", "back");
+		$form = $article->buildFormAddArticle();
+		$view->assign("form", $form);
+
+		 if(!empty($_POST)){
+		 	$errors = AddArticleForm::validatorAddArticle($_POST, $form);
+
+			if(empty($errors)){
+				
+				$article->setTitle($_POST["titre"]);
+				$article->setContent($_POST["contenu"]);
+				$article->save();
+
+			}else{
+				$view->assign("formErrors", $errors);
+			}
+
+		}
 	}
 
 	public function loginAction(){
@@ -64,5 +89,6 @@ class Security{
 
 		echo "Là je liste tous les utilisateurs";
 	}
+
 
 }
