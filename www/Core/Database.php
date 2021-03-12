@@ -76,7 +76,21 @@ class Database
 
 	public function getArticle(){
 
-		$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
+		$dataArticle = array_diff_key (
+					
+			get_object_vars($this), 
+
+			get_class_vars(get_class())
+
+		);
+
+		 $columns_article = array_keys($dataArticle);
+
+		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
+		$query = $this->pdo->prepare("SELECT a.".implode(",",$columns_article).", u.firstname
+									  FROM ".$this->table." AS a 
+									  INNER JOIN tr_user_has_Article AS l ON a.idArticle = l.Article_idArticle
+									  INNER JOIN tr_user AS u ON u.idUser = l.User_idUser");
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;

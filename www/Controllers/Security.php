@@ -50,7 +50,6 @@ class Security{
 
 	public function addArticleAction(){
 
-
 		$article = new Article();
 		$view = new View("addArticles", "back");
 		$form = $article->buildFormAddArticle();

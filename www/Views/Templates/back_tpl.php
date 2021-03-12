@@ -8,12 +8,6 @@
 		<link rel="stylesheet" href="framework/dist/main.css">
         <script type="text/javascript" src="dist/main.js"></script>
         <script type="text/javascript" src="framework/src/js/ckeditor/ckeditor.js"></script>
-        <!-- <script src="https://cdn.tiny.cloud/1/mjnpm2l72h6sj005erpt6zyf48lyj7tq7zh85ni1366esn67/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        <script> tinymce.init({
-                    selector: '#mytextarea'
-        });
-        </script>  -->
-
 	</head>
 	<body>
 		

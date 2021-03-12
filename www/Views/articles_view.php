@@ -23,7 +23,7 @@
                     $html = "<div class=\"container-flexbox\">
                                 <a href=\"#\" class=\"link\">".($value["title"])."</a>
                                 <p>".($value["createdAt"])."</p>
-                                <p>John Doe</p>
+                                <p>".($value["firstname"])."</p>
                                 <a href=\"#\"><img src=\"../../framework/img/pen-edit.svg\" alt=\"pen-edit\" width=\"15\" height=\"15\"></a>
                                 <a href=\"#\"><img src=\"../../framework/img/cross-delete.svg\" alt=\"cross-delete\" width=\"15\" height=\"15\"></a>
                             </div>

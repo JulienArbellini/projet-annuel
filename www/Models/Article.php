@@ -10,6 +10,7 @@ class Article extends Database
     private $idArticle;
     protected $title;
     protected $content;
+    protected $createdAt;
 
     public function __construct(){
         parent::__construct();
