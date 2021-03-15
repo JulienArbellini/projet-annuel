@@ -47,10 +47,9 @@ class Base{
 		$donnees = $article->getArticle();
 		$view->assign("donnees", $donnees);
 
-		// $tab = $article->getArticle();
-		// $view->assign("tab", $tab);
-
-		
+		$delete_article = new Article();
+		//$delete_article->getId();
+		$delete_article->deleteArticle();
 	}
 
 

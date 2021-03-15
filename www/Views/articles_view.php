@@ -5,21 +5,21 @@
             <a href="/articles-add"><p>+ Ajouter un article</p></a>
         </a>
 
-        <div class="search-box">
+        <!-- <div class="search-box">
             <input type="text" placeholder="Rechercher un article">
-        </div>
+        </div> -->
     </div>
 
     <div class="shadow-box-square col-s-10 col-m-10 col-m-center">
 
-         <div class="name-column">
+         <!-- <div class="name-column">
             <div class="col-m-3 col-m-push-1"><p><strong>Nom article</strong></p></div>
             <div class="col-m-3 col-m-push-1"><p><strong>Dernières modifications</strong></p></div>
             <div class="col-m-3 col-m-push-1"><p><strong>Auteur</strong></p></div>
-        </div>
+         </div> -->
 
             <?php
-                foreach($donnees as $key => $value){
+                /*foreach($donnees as $key => $value){
                     $html = "<div class=\"container-flexbox\">
                                 <a href=\"#\" class=\"link\">".($value["title"])."</a>
                                 <p>".($value["createdAt"])."</p>
@@ -30,8 +30,33 @@
                             <div class=\"separator\"></div>";
 
                     echo $html;
-                }
-            ?>
+                }*/
+            ?> 
+
+            <table id='tab' class='display'>
+                <caption>Articles</caption>
+                <thead>
+                    <tr><th>Nom Article</th><th>Auteur</th><th>Dernières modifications</th><th>Modifier</th><th>Supprimer</th></tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        foreach ($donnees as $key => $value){
+                            
+                            $html = "<tr><td>".($value["title"])."</td><td>".($value["firstname"])."</td><td>".($value["createdAt"])."</td>
+                            <td><a href=\"\"><img src=\"../../framework/img/pen-edit.svg\" alt=\"pen-edit\" width=\"15\" height=\"15\"></a></td>
+                            <td><a href=\"\"><img src=\"../../framework/img/cross-delete.svg\" alt=\"cross-delete\" width=\"15\" height=\"15\"></a></td></tr>";
+
+                            echo $html;
+                        }
+                    ?>
+                </tbody>
+            </table>
+
+            <script>
+                $(document).ready(function () {
+                    $('#tab').DataTable();
+                });
+            </script>
 
         <!-- <div class="name-column">
             <div class="col-m-3 col-m-push-1"><p><strong>Nom article</strong></p></div>
@@ -83,6 +108,8 @@
     </div>
 
 </div>
+
+           
 
 <?php
     // foreach($donnees as $key => $value){

@@ -96,4 +96,13 @@ class Database
 		return $donnees;
 	}
 
+	public function deleteArticle(){
+		//Requête delete avec un where qui récupère l'id de l'article avec $_GET["idArticle"]
+
+		$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE 'idArticle' = 1");
+
+		$donnees = $query->fetchall();
+
+	}
+
 }
