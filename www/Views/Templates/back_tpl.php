@@ -9,8 +9,9 @@
         <script type="text/javascript" src="dist/main.js"></script>
         <script type="text/javascript" src="framework/src/js/ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
-        <script type="text/javascript" src="framework/src/js/Datatables/media/js/jquery.dataTables.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="framework/src/js/Datatables/media/css/jquery.dataTables.min.css">
+        <script type="text/javascript" src="framework/src/js/Datatables/media/js/jquery.dataTables.js"></script>
+        <!-- <script type="text/javascript" src="framework/src/js/jquery-3.5.1.min.js"></script> -->
+        <link rel="stylesheet" type="text/css" href="framework/src/js/Datatables/media/css/jquery.dataTables.css">
 	</head>
 	<body>
 		

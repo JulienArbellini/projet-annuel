@@ -87,7 +87,7 @@ class Database
 		 $columns_article = array_keys($dataArticle);
 
 		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
-		$query = $this->pdo->prepare("SELECT a.".implode(",",$columns_article).", u.firstname
+		$query = $this->pdo->prepare("SELECT a.".implode(",",$columns_article).", u.firstname, a.idArticle
 									  FROM ".$this->table." AS a 
 									  INNER JOIN tr_user_has_Article AS l ON a.idArticle = l.Article_idArticle
 									  INNER JOIN tr_user AS u ON u.idUser = l.User_idUser");
@@ -98,11 +98,19 @@ class Database
 
 	public function deleteArticle(){
 		//Requête delete avec un where qui récupère l'id de l'article avec $_GET["idArticle"]
+		//$idArticle = $_GET['idArticle'];
 
-		$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE 'idArticle' = 1");
 
-		$donnees = $query->fetchall();
-
+		if(!empty($_GET['id'])){
+			$Del_Id = $_GET['id'];
+			$query1 = $this->pdo->prepare("DELETE FROM tr_user_has_Article WHERE Article_idArticle=".$Del_Id);
+			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE idArticle=".$Del_Id);
+			//var_dump($query1);
+			//var_dump($query2);
+			//var_dump($_GET['id']);
+			$query1->execute();
+			$query2->execute();
+		}
 	}
 
 }
