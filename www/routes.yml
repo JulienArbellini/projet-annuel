@@ -32,3 +32,7 @@
 /articles:
   controller: Base
   action: articles
+
+/utilisateurs:
+  controller: Base
+  action: users

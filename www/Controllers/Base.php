@@ -4,6 +4,7 @@ namespace App;
 
 use App\Core\Security;
 use App\Core\View;
+use App\Models\User;
 
 
 class Base{
@@ -43,5 +44,13 @@ class Base{
 		$view = new View("articles", "back");
 	}
 
+	public function usersAction(){
+		$view = new View("users", "back");
+		$userSelect = new User();
+		$donnees = $userSelect->userShow();
+		$view->assign("donnees", $donnees);
+		$donnees = $userSelect->requestRole();
+		$view->assign("donnees", $donnees);
+	}
 
 }

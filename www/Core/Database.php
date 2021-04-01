@@ -42,7 +42,7 @@ class Database
 
 		if(is_null($this->getId())){
 		
-			echo $this->getId();
+			//echo $this->getId();
 
 			//INSERT 
 
@@ -68,4 +68,17 @@ class Database
 
 	}
 
+	public function userShow(){
+		$query = $this->pdo->prepare("SELECT * FROM ".$this->table);
+		$query->execute();
+		$donnees = $query->fetchall();
+		return $donnees;
+	}
+
+	public function requestRole(){
+		$query = $this->pdo->prepare("SELECT * FROM tr_role as r INNER JOIN ".$this->table. " as u ON r.idRole = u.Role_idRole");
+		$query->execute();
+		$donnees = $query->fetchall();
+		return $donnees;
+	}
 }
