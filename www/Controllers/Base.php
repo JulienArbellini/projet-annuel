@@ -49,14 +49,14 @@ class Base{
 
 		$article2 = new Article();
 		$article2->deleteArticle();
-		//$view->assign("test", $test);
 
-		// $delete_article = new Article();
-		// $donnees_af_supp = $delete_article->deleteArticle();
+	}
 
-		//$delete_article = new Article();
-		//$delete_article->getId();
-		//$delete_article->deleteArticle();
+	public function editArticleAction(){
+		$view = new View("edit-article", "back");
+		$article = new Article();
+		$donnees = $article->getArticle();
+		$view->assign("donnees", $donnees);
 	}
 
 

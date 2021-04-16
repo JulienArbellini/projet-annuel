@@ -36,3 +36,7 @@
 /articles-add:
   controller: Security
   action: addArticle
+
+/articles-edit:
+  controller: Base
+  action: editArticle

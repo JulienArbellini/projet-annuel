@@ -58,6 +58,7 @@ class AddArticleForm{
                         ".((!empty($dataInput["required"]))?"required='required'":"")."
                         >";
             $html .= "</div>";
+
         }
 
         foreach ($form["textarea"] as $name => $dataInput) {

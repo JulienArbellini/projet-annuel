@@ -105,8 +105,8 @@ class Database
 			$Del_Id = $_GET['id'];
 			$query1 = $this->pdo->prepare("DELETE FROM tr_user_has_Article WHERE Article_idArticle=".$Del_Id);
 			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE idArticle=".$Del_Id);
-			//var_dump($query1);
-			//var_dump($query2);
+			// var_dump($query1);
+			// var_dump($query2);
 			//var_dump($_GET['id']);
 			$query1->execute();
 			$query2->execute();
