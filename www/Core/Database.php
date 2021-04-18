@@ -23,7 +23,7 @@ class Database
 		//echo get_called_class(); //  App\Models\User ici on peut récupérer le nom de la table
 		$classExploded = explode("\\", get_called_class());
 		$this->table = DBPREFIX.end($classExploded);
-		// echo "Nom de la table : " .$this->table. "</br>";
+		//echo "Nom de la table : " .$this->table. "</br>";
 	}
 
 	public function save(){
@@ -37,12 +37,13 @@ class Database
 					get_class_vars(get_class())
 
 				);
+		//var_dump($data);
 	
 
 
 		if(is_null($this->getId())){
 		
-			echo $this->getId();
+			//	echo $this->getId();
 
 			//INSERT 
 

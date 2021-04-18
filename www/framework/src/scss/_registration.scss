@@ -1,0 +1,88 @@
+.center-logo{
+    display: flex;
+   justify-content: center;
+}
+
+.logo {
+   background: url("../../img/Logo teach'r.svg");
+   display: flex;
+   padding: 40px 0 40px 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center-shadow-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.shadow-box-square {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px   ;
+    //width: 40vw;
+   //height: 40vw;
+    margin-bottom: 30px;
+}
+
+.checkbox-label {
+    font-family: Roboto, sans-serif;
+    padding-left: 5px;
+    font-weight: 100;
+    font-style: italic ;
+}
+
+.form-group-btn{
+    display: flex;
+    align-items: center;
+}
+.button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 40px;
+    margin-top: 30px;
+}
+
+/*
+.button_register {
+    background: $purple;
+	border-radius: 10px;
+	font-family: $roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	color: $white;
+	outline: none;
+	cursor: pointer;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    top: 420px;
+	&:hover{
+		background-color: lighten($purple, 6%);
+	}
+}*/
+
+
+/* -----------------
+    RESPONSIVE
+-------------------*/
+
+//Medium Screen
+@media only screen and (min-width: $medium){
+
+}
+
+// Large Screen
+@media only screen and (min-width: $large){
+   
+    
+}

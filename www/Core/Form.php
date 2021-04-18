@@ -35,13 +35,16 @@ class Form
 
 
 	public static function showForm($form){
+		//$html ="<div class='row col-m-12 col-m-up-2'>";
 
 		$html = "<form class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
-
-
+		//echo "<pre>";
+		//print_r ($form["input"]["checkbox_register"]["name"]);
+		
 		foreach ($form["input"] as $name => $dataInput) {
-
-			$html .= "<input 
+			if ($name === "checkbox")
+			{
+				$html .= "<div class='form-group'> <input 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
 						name='".$name."'
@@ -49,13 +52,25 @@ class Form
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
 						>";
+				$html .="<label class='checkbox-label' for='".$name."'>".($dataInput["label"]??"")." </label> </div>";
+			} else {
+				$html .="<div class='form-group'> <label  class='control-label' for='".$name."'>".($dataInput["label"]??"")." </label>";
+				$html .= "<input
+						autocomplete='".($dataInput["autocomplete"]??"")."'
+						id='".$name."'
+			 			class='".($dataInput["class"]??"")."' 
+						name='".$name."'
+						type='".($dataInput["type"] ?? "text")."'
+						placeholder='".($dataInput["placeholder"] ?? "")."'
+						".((!empty($dataInput["required"]))?"required='required'":"")."
+						> </div>";
+			
 
+			}	
 
 		}
-		
 
-		$html .= "<input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
-
+		$html .= "<div class = form-group> <input type='submit' class ='button' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'> </div> </form>";
 
 		echo $html;
 	}

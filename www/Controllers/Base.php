@@ -43,5 +43,9 @@ class Base{
 		$view = new View("articles", "back");
 	}
 
+	public function registerAction(){
+		$view = new View("register", "back");
+	}
+
 
 }

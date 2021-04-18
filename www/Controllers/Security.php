@@ -34,7 +34,7 @@ class Security{
 				$user->setLastname($_POST["lastname"]);
 				$user->setEmail($_POST["email"]);
 				$user->setPwd($_POST["pwd"]);
-				$user->setCountry("fr");
+				
 				$user->save();
 
 			}else{
