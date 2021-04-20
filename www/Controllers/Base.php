@@ -55,9 +55,18 @@ class Base{
 	public function editArticleAction(){
 		$view = new View("edit-article", "back");
 		$article = new Article();
-		$donnees = $article->getArticle();
-		$view->assign("donnees", $donnees);
+		// $donnees = $article->getArticle();
+		// $view->assign("donnees", $donnees);
+
+		$data = $article->getContent();
+		$view->assign("data", $data);
+
+		if(!empty($_POST)){ 
+			//echo "coucou";
+			$article->setId($_GET['idArticle']);
+			$article->setTitle($_POST["titre_article"]);
+			$article->setContent($_POST["contenu_article"]);
+			$article->saveArticle();
+	   }
 	}
-
-
 }

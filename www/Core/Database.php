@@ -62,14 +62,17 @@ class Database
 		}else{
 			
 			//UPDATE 
+			$columns = array_keys($data);
 			foreach ($columns as $column) {
 
-				$columnsTopdate[] = $column."=:".$column;
+				$columnsToUpdate[] = $column."=:".$column;
+				//var_dump($columnsTopdate);
         	}
+			//var_dump($columnsToUpdate);
 
         $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		}
-
+		//var_dump($query);
 		$query->execute($data);
 
 	}
@@ -111,6 +114,70 @@ class Database
 			$query1->execute();
 			$query2->execute();
 		}
+	}
+
+	public function getContent(){
+		if(!empty($_GET['idArticle'])){
+			$content = $_GET['idArticle'];
+			$query = $this->pdo->prepare("SELECT content, title FROM tr_article WHERE idArticle =".$content);
+			$query->execute();
+			$data = $query->fetchall();
+			return $data;
+		}
+	}
+
+	public function saveArticle(){
+
+
+
+		$data = array_diff_key (
+					
+					get_object_vars($this), 
+
+					get_class_vars(get_class())
+
+				);
+	
+
+
+		if(is_null($this->getId())){
+		
+			echo $this->getId();
+
+			//INSERT 
+
+			$columns = array_keys($data); 
+			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
+											".implode(",", $columns)."
+											) VALUES (
+											:".implode(",:", $columns)."
+											)");
+			
+			
+
+		}else{
+			
+			//UPDATE 
+			$columns = array_keys($data);
+			foreach ($columns as $column) {
+
+				$columnsToUpdate[] = $column."=:".$column;
+				//var_dump($columnsTopdate);
+        	}
+			//var_dump($columnsToUpdate);
+
+        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE idArticle=".$this->getId());
+		}
+		//var_dump($query);
+		$query->execute($data);
+
+	}
+
+	public function triggerArticle(){
+
+		$query = $this->pdo->prepare("INSERT INTO tr_user_has_Article (User_idUser, Article_idArticle) 
+							 		  VALUES ('1', '29')");
+		$query->execute();
 	}
 
 }
