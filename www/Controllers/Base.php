@@ -69,4 +69,12 @@ class Base{
 			$article->saveArticle();
 	   }
 	}
+
+	public function displayArticleAction(){
+		$view = new View("displayArticle", "back");
+		$article = new Article();
+
+		$data = $article->getContent();
+		$view->assign("data", $data);
+	}
 }

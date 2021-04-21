@@ -173,11 +173,4 @@ class Database
 
 	}
 
-	public function triggerArticle(){
-
-		$query = $this->pdo->prepare("INSERT INTO tr_user_has_Article (User_idUser, Article_idArticle) 
-							 		  VALUES ('1', '29')");
-		$query->execute();
-	}
-
 }

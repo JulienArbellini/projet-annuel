@@ -1,10 +1,18 @@
-<div class="row col-m-12">
-    <div class="add-article-search col-s-10 col-m-8 col-m-center">
-        <h1>Articles</h1>
-        <a href="#" class="col-s-10 col-m-2 col-m-push-3 col-m-down-3">
-            <a href="/articles-add"><p>+ Ajouter un article</p></a>
-        </a>
+<div class="row col-m-12 col-m-up-2">
+        <div class="col-m-3 col-m-center">
+            <h1 class="h1-article">Articles</h1>
+        </div>
     </div>
+
+<div class="row col-m-12 col-m-up-4">
+    <!-- <div class="add-article-search col-s-10 col-m-8 col-m-center"> -->
+    
+        <!-- <div class="row col-m-10 col-m-up-3"> -->
+            <div class="col-m-9 col-m-padding-1 col-m-center">
+                <a href="/articles-add" class="link-add-article"><p>+ Ajouter un article</p></a>
+            </div>
+        <!-- </div> -->
+    <!-- </div> -->
 
     
 
@@ -21,7 +29,7 @@
                             
                             $html = "
                             <tr>
-                                <td><a href=\"#\" class=\"link\">".($value["title"])."</a></td><td>".($value["firstname"])."</td>
+                                <td><a href=\"/display-articles?idArticle=".($value["idArticle"])."\" class=\"link\">".($value["title"])."</a></td><td>".($value["firstname"])."</td>
                                 <td>".($value["createdAt"])."</td>
                                 <td id=\"content\" style=\"display: none;\">".($value["content"])."</td>
                                 <td><a href=\"/articles-edit?&idArticle=".($value['idArticle'])."&module=base&action=editArticle\" id=\"pen\" onclick='document.getElementById('content').style.color='red';' class=\"edit\"><img src=\"../../framework/img/pen-edit.svg\" alt=\"pen-edit\" width=\"15\" height=\"15\"></a></td>

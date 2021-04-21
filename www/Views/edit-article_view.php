@@ -24,3 +24,5 @@
             </div>
         </form>
     </div>
+
+<script type="text/javascript" src="framework/src/js/ckeditor/styles.js"></script>

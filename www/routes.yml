@@ -40,3 +40,7 @@
 /articles-edit:
   controller: Base
   action: editArticle
+
+/display-articles:
+  controller: Base
+  action: displayArticle
