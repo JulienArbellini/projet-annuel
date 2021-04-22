@@ -4,6 +4,8 @@ namespace App;
 
 use App\Core\Security;
 use App\Core\View;
+use App\Core\Database;
+use App\Models\Article;
 
 
 class Base{
@@ -41,7 +43,38 @@ class Base{
 
 	public function articlesAction(){
 		$view = new View("articles", "back");
+		$article = new Article();
+		$donnees = $article->getArticle();
+		$view->assign("donnees", $donnees);
+
+		$article2 = new Article();
+		$article2->deleteArticle();
+
 	}
 
+	public function editArticleAction(){
+		$view = new View("edit-article", "back");
+		$article = new Article();
+		// $donnees = $article->getArticle();
+		// $view->assign("donnees", $donnees);
 
+		$data = $article->getContent();
+		$view->assign("data", $data);
+
+		if(!empty($_POST)){ 
+			//echo "coucou";
+			$article->setId($_GET['idArticle']);
+			$article->setTitle($_POST["titre_article"]);
+			$article->setContent($_POST["contenu_article"]);
+			$article->saveArticle();
+	   }
+	}
+
+	public function displayArticleAction(){
+		$view = new View("displayArticle", "back");
+		$article = new Article();
+
+		$data = $article->getContent();
+		$view->assign("data", $data);
+	}
 }

@@ -32,3 +32,15 @@
 /articles:
   controller: Base
   action: articles
+
+/articles-add:
+  controller: Security
+  action: addArticle
+
+/articles-edit:
+  controller: Base
+  action: editArticle
+
+/display-articles:
+  controller: Base
+  action: displayArticle

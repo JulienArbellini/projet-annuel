@@ -1,63 +1,78 @@
-<div class="row col-m-12">
-    <div class="add-article-search col-s-10 col-m-8 col-m-center">
-        <h1>Articles</h1>
-        <a href="#" class="col-s-10 col-m-2 col-m-push-3 col-m-down-3">
-            <p>+ Ajouter un article</p>
-        </a>
-
-        <div class="search-box">
-            <input type="text" placeholder="Rechercher un article">
+<div class="row col-m-12 col-m-up-2">
+        <div class="col-m-3 col-m-center">
+            <h1 class="h1-article">Articles</h1>
         </div>
     </div>
 
-    <div class="shadow-box-square col-s-10 col-m-10 col-m-center">
-        <div class="name-column">
-            <div class="col-m-3 col-m-push-1"><p><strong>Nom article</strong></p></div>
-            <div class="col-m-3 col-m-push-1"><p><strong>Dernières modifications</strong></p></div>
-            <div class="col-m-3 col-m-push-1"><p><strong>Auteur</strong></p></div>
-        </div>
-
-        <div class="separator"></div>
-
-        <div class="container-flexbox">
-            <a href="#" class="link">Mon premier article</a>
-            <p>le 10/09/2020 à 10h00</p>
-            <p>John Doe</p>
-            <a href="#"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a>
-            <a href="#"><img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15"></a>
-        </div>
-
-        <div class="separator"></div>
-
-        <div class="container-flexbox">
-            <a href="#" class="link">Mon deuxième article</a>
-            <p>le 15/11/2020 à 18h40</p>
-            <p>John Doe</p>
-            <a href="#"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a>
-            <a href="#"><img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15"></a>
-        </div>
-
-        <div class="separator"></div>
-
-        <div class="container-flexbox">
-            <a href="#" class="link">Mon troisième article</a>
-            <p>le 21/01/2021 à 13h10</p>
-            <p>John Doe</p>
-            <a href="#"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a>
-            <a href="#"><img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15"></a>
-        </div>
-
-        <div class="separator"></div>
-
-        <div class="container-flexbox">
-            <a href="#" class="link">Mon quatrième article</a>
-            <p>le 19/02/2021 à 21h55</p>
-            <p>John Doe</p>
-            <a href="#"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a>
-            <a href="#"><img src="../../framework/img/cross-delete.svg" alt="cross-delete" width="15" height="15"></a>
-        </div>
+<div class="row col-m-12 col-m-up-4">
+    <!-- <div class="add-article-search col-s-10 col-m-8 col-m-center"> -->
+    
+        <!-- <div class="row col-m-10 col-m-up-3"> -->
+            <div class="col-m-3 col-m-padding-1 col-m-center col-m-pull-3">
+                <a href="/articles-add" class="link-add-article"><p>+ Ajouter un article</p></a>
+            </div>
+        <!-- </div> -->
+    <!-- </div> -->
 
     
-    </div>
 
-</div>
+    <div class="shadow-box-square col-s-10 col-m-10 col-m-center">
+
+            <table id='tab' class='display'>
+                <!-- <caption>Articles</caption> -->
+                <thead>
+                    <tr><th>Nom Article</th><th>Auteur</th><th>Dernières modifications</th><th>Modifier</th><th>Supprimer</th><th style="display: none;">Contenu</th></tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        foreach ($donnees as $key => $value){
+                            
+                            $html = "
+                            <tr>
+                                <td><a href=\"/display-articles?idArticle=".($value["idArticle"])."\" class=\"link\">".($value["title"])."</a></td><td>".($value["firstname"])."</td>
+                                <td>".($value["createdAt"])."</td>
+                                <td id=\"content\" style=\"display: none;\">".($value["content"])."</td>
+                                <td><a href=\"/articles-edit?&idArticle=".($value['idArticle'])."&module=base&action=editArticle\" id=\"pen\" onclick='document.getElementById('content').style.color='red';' class=\"edit\"><img src=\"../../framework/img/pen-edit.svg\" alt=\"pen-edit\" width=\"15\" height=\"15\"></a></td>
+                                <td><a href=\"#modal".($value["idArticle"])."\" class=\"js-modal supp\">&#x2717;</a></td>
+                            </tr>
+                            ";
+
+                            echo $html;
+
+                        }
+                    ?>
+
+                </tbody>
+            </table>
+            
+            <?php 
+                foreach ($donnees as $key => $value){
+                    $modal = "  <aside id=\"modal".($value["idArticle"])."\" class=\"modal\" aria-hidden=\"true\" role=\"dialog\" aria-labelledby=\"titlemodal\" style=\"display:none;\">
+                                    <div class=\"modal-wrapper js-modal-stop\">
+                                        <div class=\"container1\">
+                                            <h1 id=\"titlemodal\">Voulez-vous vraiment supprimer cet article ?</h1>
+                                            <p><strong>Nom de l'article : </strong>".($value['title'])."</p>
+                                            <p><strong>Auteur : </strong>".($value['firstname'])."</p>
+
+                                            <div class=\"container2\">
+                                                <button class=\"js-modal-close\">Annuler</button>
+                                              
+                                                <button class=\"\" onclick=\"window.location.href='/articles?id=".($value['idArticle'])."&module=base&action=articles'\">Supprimer</button>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aside>";
+
+                    echo $modal;
+                }
+            ?>
+           
+            <script type="text/javascript" src="framework/src/js/int-datatables.js"></script>
+            <script type="text/javascript" src="framework/src/js/modal.js"></script>
+            
+
+
+            <!-- <script type="text/javascript" src="framework/src/js/Ajax.js"></script> -->
+
+       

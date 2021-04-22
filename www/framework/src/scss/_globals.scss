@@ -4,6 +4,17 @@
 
 
 
+h1,h2{
+	font-family: $roboto;
+}
+
+h1{
+	font-size: rem(32);
+}
+
+h2{
+	font-size: rem(16);
+}
 
 // p{
 // 	line-height: 1.4em;

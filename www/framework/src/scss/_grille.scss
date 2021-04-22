@@ -26,6 +26,9 @@
         .col#{$suffix}-down-#{$i}{
             margin-top: $i * 5px;
         }
+        .col#{$suffix}-up-#{$i}{
+            margin-bottom: $i * 5vh;
+        }
         .col#{$suffix}-long{
             // height: 95vh;
         }
@@ -33,6 +36,18 @@
             // width: 100vh;
             // height: 5vh;
         }
+        .col#{$suffix}-height-#{$i}{
+            height: $i * 5vh;
+        }
+
+        .col#{$suffix}-padding-#{$i}{
+            padding-bottom: $i * 2vh;
+        }
+
+        .col#{$suffix}-padding-down-#{$i}{
+            padding-top: $i * 2vh;
+        }
+        
     }
 }
 
