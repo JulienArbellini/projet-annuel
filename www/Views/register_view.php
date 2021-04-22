@@ -5,10 +5,17 @@
 		<li><?= $error ;?>
 	<?php endforeach;?>
 <?php endif;?>
-<div class = center-logo>
-	<div class="logo col-s-3 col-m-2 col-l-2">
-		<img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg">
-	</div>  
-</div> 
-<div class=container>                 
-<?php App\Core\Form::showForm($form); ?>
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Inscription</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<link rel="stylesheet" href="framework/dist/main.css">
+	</head>
+	<body>
+		<div class=container>
+			<div class="logo col-l-3">
+				<img class="" src="../../framework/img/Logo teach'r.svg">
+			</div>             
+<?php App\Core\Form::showForm($form);?>

@@ -10,17 +10,18 @@ class Form
 
 		// Vérifier si on a le bon nombre d'inputs
 		if( count($data) == count($config["input"])){
-
+			//echo "<pre>";
+			//print_r($config["input"]);
 			foreach ($config["input"] as $name => $configInput) {
 				
-				if( !empty($configInput["lengthMin"]) 
+				if(!empty($configInput["lengthMin"]) 
 					&& is_numeric($configInput["lengthMin"]) 
-					&& strlen($data[$name])<$configInput["lengthMin"] ){
+					&& strlen($data[$name])<$configInput["lengthMin"] 
+					&& $config["input"]["pwd"] != $config["input"]["pwdConfirm"]){
 					
 					$errors[] = $configInput["error"];
 
 				}
-
 			}
 
 		}else{
@@ -29,9 +30,6 @@ class Form
 
 		return $errors; //tableau des erreurs
 	}
-
-
-
 
 
 	public static function showForm($form){

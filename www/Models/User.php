@@ -64,7 +64,7 @@ class User extends Database
 				"method"=>"POST",
 				"Action"=>"",
 				"Submit"=>"S'inscrire",
-				"class"=>"shadow-box-square"
+				"class"=>"shadow-box-square col-m-8 col-l-5"
 			],
 
 			"input"=>[
@@ -118,9 +118,10 @@ class User extends Database
 				],
 				"checkbox"=>[
 					"type"=>"checkbox",
-					"label"=>"J'ai lu et j'accepte la politique de confidentialité",
+					"label"=>"J'ai lu et j'accepte la <a href ='#'>politique de confidentialité</a>",
 					"class"=>"",
-					"required"=>true
+					"required"=>true,
+					"error"=>"Les mots de passe ne correspondent pas"
 				]		
 			]
 		];

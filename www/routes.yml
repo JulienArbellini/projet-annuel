@@ -1,6 +1,6 @@
 /:
   controller: Base
-  action: Default
+  action: default
 
 /tableau-de-bord:
   controller: Base
@@ -13,7 +13,7 @@
 
 /login:
   controller: Security
-  action: login
+  action: register
 
 /se-connecter:
   controller: Security
