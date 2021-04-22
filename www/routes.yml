@@ -16,7 +16,7 @@
   action: login
 
 /se-connecter:
-  controller: Security
+  controller: Base
   action: login
 
 
