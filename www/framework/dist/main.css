@@ -2732,7 +2732,7 @@ input:checked + .slider:before {
   color: #FFF;
   cursor: pointer;
   outline: none;
-  width: 65px;
+  width: 75px;
   height: 25px;
   border-style: none;
   border-radius: 5px;
