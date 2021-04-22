@@ -3,9 +3,6 @@
 @import "fonts";
 @import "globals";
 
-@import "form-group";
-@import "control-label";
-
 @import "dashboard";
 @import "articles";
 @import "grille";
@@ -25,6 +22,7 @@
 @import "components/left_nav_bar";
 @import "components/switch_button";
 @import "components/textarea";
-@import "components/input"
-
+@import "components/input";
+@import "components/form-group";
+@import "components/control-label";
 

@@ -64,7 +64,7 @@ class User extends Database
 				"method"=>"POST",
 				"Action"=>"",
 				"Submit"=>"S'inscrire",
-				"class"=>"shadow-box-square col-m-8 col-l-5"
+				"class"=>"shadow-box-square col-m-8 col-l-4"
 			],
 
 			"input"=>[

@@ -27,14 +27,6 @@ label {
   width: 90%;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
-
-.control-label {
-  padding-bottom: 5px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -1938,5 +1930,13 @@ input:checked + .slider:before {
   height: 30px;
   width: 100%;
   padding: 14px 16px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.control-label {
+  padding-bottom: 5px;
 }
 
