@@ -27,6 +27,7 @@ class Database
 		//echo get_called_class(); //  App\Models\User ici on peut récupérer le nom de la table
 		$classExploded = explode("\\", get_called_class());
 		$this->table = DBPREFIX.end($classExploded);
+		$this->table=strtolower($this->table);
 		 //echo "Nom de la table : " .$this->table. "</br>";
 	}
 
