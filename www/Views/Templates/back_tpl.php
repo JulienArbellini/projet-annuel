@@ -2,11 +2,14 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="vieuxport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Template de Back</title>
 		<meta name="description" content="ceci est la page de template">
 		<link rel="stylesheet" href="framework/dist/main.css">
-        <script type="text/javascript" src="dist/main.js"></script>
+        <!-- <script type="text/javascript" src="dist/main.js"></script> -->
+        <link rel="stylesheet" type="text/css" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
+        <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
+        <script type="text/javascript" src="framework/src/js/Datatables/media/js/jquery.dataTables.min.js"></script>
 	</head>
 	<body>
 		
@@ -38,7 +41,7 @@
                     <div id="liste">
                         <div class="menu container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12">
                                 <div class="col-m-2"><img src="../../framework/img/dashboard.png" alt="logo dashboard"></div>
-                                <div class="col-m-9"><p>Tableau de bord</p></div>
+                                <div class="col-m-9"><p>Tableau de bord</a></p></div>
                             	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                         </div>
                         <div class="menu container-flexbox-nav apparence cols-s-12 col-m-12 col-l-12">
@@ -48,7 +51,7 @@
                         </div>
                         <div class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12">
                                 <div class="col-m-2"><img src="../../framework/img/articles.png" alt="logo articles"></div>
-                                <div class="col-m-8"><p>Articles</p></div>
+                                <div class="col-m-8"><p>Articles</a></p></div>
                             	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                         </div>
                         <div class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12">
@@ -68,7 +71,7 @@
                         </div>
                         <div class="menu container-flexbox-nav utlilisateurs col-s-12 col-m-12 col-l-12">
                                 <div class="col-m-2"><img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" ></div>
-                                <div class="col-m-8"><p>Utilisateur</p></div>
+                                <div class="col-m-8"><p>Utilisateur</a></p></div>
                             	<div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                         </div>
                         <div class="menu container-flexbox-nav faq col-s-12 col-m-12 col-l-12">

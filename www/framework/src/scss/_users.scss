@@ -1,0 +1,13 @@
+.title-modal 
+    h1 {
+    font-size: rem(21);
+}
+
+.details-part{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    > label {
+        font-size: rem(16);
+    }
+}

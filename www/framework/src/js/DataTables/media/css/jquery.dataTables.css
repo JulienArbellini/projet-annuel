@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap);
 /*
  * Table styles
  */
@@ -7,6 +8,9 @@ table.dataTable {
   clear: both;
   border-collapse: separate;
   border-spacing: 0;
+  font-size: 16px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
   /*
    * Header and footer styles
    */

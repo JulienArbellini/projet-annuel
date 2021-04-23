@@ -5,6 +5,7 @@ namespace App;
 use App\Core\Security;
 use App\Core\View;
 use App\Models\User;
+use App\Core\Database;
 
 
 class Base{
@@ -47,10 +48,25 @@ class Base{
 	public function usersAction(){
 		$view = new View("users", "back");
 		$userSelect = new User();
+
 		$donnees = $userSelect->userShow();
 		$view->assign("donnees", $donnees);
+
 		$donnees = $userSelect->requestRole();
 		$view->assign("donnees", $donnees);
+		
+		$userSelect->userDelete();
+
+		// $form = $userSelect->buildFormUpdateUser();
+		// $view->assign("form", $form);
+		$data = $userSelect->userShow();
+		// $data = $userSelect->requestRole();
+		$view->assign("data", $data);
+
+		$form = $userSelect->buildFormAddUser();
+		$view->assign("form", $form);
+		
+		
 	}
 
 }

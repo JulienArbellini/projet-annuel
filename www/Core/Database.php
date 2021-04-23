@@ -81,4 +81,11 @@ class Database
 		$donnees = $query->fetchall();
 		return $donnees;
 	}
+
+	public function userDelete(){
+		if(!empty($_GET['idUser'])){
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE idUser = ".$_GET['idUser']);
+			$query->execute();
+		}
+    }
 }

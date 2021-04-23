@@ -304,6 +304,20 @@ body {
   align-items: center;
 }
 
+.title-modal h1 {
+  font-size: 1.3125rem;
+}
+
+.details-part {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.details-part > label {
+  font-size: 1rem;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -1944,7 +1958,7 @@ input:checked + .slider:before {
   color: #FFF;
   cursor: pointer;
   outline: none;
-  width: 65px;
+  width: 75px;
   height: 25px;
   border-style: none;
   border-radius: 5px;
@@ -1959,5 +1973,10 @@ input:checked + .slider:before {
   text-decoration: none;
   color: red;
   font-weight: bold;
+}
+
+.update {
+  text-decoration: none;
+  color: #000;
 }
 
