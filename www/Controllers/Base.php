@@ -6,6 +6,7 @@ use App\Core\Security;
 use App\Core\View;
 use App\Core\Database;
 use App\Models\Article;
+use App\Models\Page;
 
 
 class Base{
@@ -76,5 +77,30 @@ class Base{
 
 		$data = $article->getContent();
 		$view->assign("data", $data);
+	}
+
+	public function pagesAction(){
+		$view = new View("pages", "back");
+		$page = new Page();
+
+		$donnees = $page->getPage();
+		$view->assign("donnees", $donnees);
+
+		$page->deletePage();
+
+		if(!empty($_POST)){
+			//var_dump($_POST);
+			$page->setTitle($_POST["add-page"]);
+			$page->savePage();
+		}
+	}
+
+	public function pageTestAction(){
+		$page2 = new Page();
+		if(!empty($_POST)){
+			//var_dump($_POST);
+			$page2->setTitle($_POST["add-page"]);
+			$page2->savePage();
+		}
 	}
 }

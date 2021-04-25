@@ -173,4 +173,90 @@ class Database
 
 	}
 
+	public function getPage(){
+		$dataPages = array_diff_key (
+					
+			get_object_vars($this), 
+
+			get_class_vars(get_class())
+
+		);
+
+		 $columns_pages = array_keys($dataPages);
+
+		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
+		$query = $this->pdo->prepare("SELECT p.".implode(",",$columns_pages).", u.firstname, p.idPage
+									  FROM ".$this->table." AS p
+									  INNER JOIN tr_page_has_User AS l ON l.Page_idPage = p.idPage
+									  INNER JOIN tr_user AS u ON l.User_idUser = u.idUser");
+		//echo $query;
+		$query->execute();
+		//var_dump($query);
+		$donnees = $query->fetchall();
+		return $donnees;
+	}
+
+	public function deletePage(){
+
+		if(!empty($_GET['id'])){
+			$Del_Id = $_GET['id'];
+			$query1 = $this->pdo->prepare("DELETE FROM tr_page_has_User WHERE Page_idPage=".$Del_Id);
+			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE idPage=".$Del_Id);
+			// var_dump($query1);
+			// var_dump($query2);
+			//var_dump($_GET['id']);
+			$query1->execute();
+			$query2->execute();
+		}
+		
+	}
+
+	public function savePage(){
+
+
+
+		$data = array_diff_key (
+					
+					get_object_vars($this), 
+
+					get_class_vars(get_class())
+
+				);
+	
+
+
+		if(is_null($this->getId())){
+		
+			echo $this->getId();
+
+			//INSERT 
+
+			$columns = array_keys($data); 
+			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
+											".implode(",", $columns)."
+											) VALUES (
+											:".implode(",:", $columns)."
+											)");
+			
+			
+
+		}else{
+			
+			//UPDATE 
+			$columns = array_keys($data);
+			foreach ($columns as $column) {
+
+				$columnsToUpdate[] = $column."=:".$column;
+				//var_dump($columnsTopdate);
+        	}
+			//var_dump($columnsToUpdate);
+
+        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE idArticle=".$this->getId());
+		}
+		//var_dump($query);
+		$query->execute($data);
+
+	}
+
+
 }

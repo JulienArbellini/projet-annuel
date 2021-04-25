@@ -17,5 +17,16 @@
 	&:hover{
 		background-color: lighten($purple, 6%);
 	}
+	 &-add-page{
+		@extend .button;
+		width: 110px;
+		height: 35px;
+	}
+	&-formulaire-page{
+		@extend .button;
+		width: 75px;
+		height: 20px;
+		font-size: 12px;
+	 }
 }
 

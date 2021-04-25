@@ -44,3 +44,7 @@
 /display-articles:
   controller: Base
   action: displayArticle
+
+/pages:
+  controller: Base
+  action: pages
