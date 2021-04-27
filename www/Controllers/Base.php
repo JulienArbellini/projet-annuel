@@ -4,8 +4,10 @@ namespace App;
 
 use App\Core\Security;
 use App\Core\View;
+use App\Core\Form;
 use App\Models\User;
 use App\Core\Database;
+// use App\Core\Mailer;
 
 
 class Base{
@@ -49,24 +51,56 @@ class Base{
 		$view = new View("users", "back");
 		$userSelect = new User();
 
-		$donnees = $userSelect->userShow();
-		$view->assign("donnees", $donnees);
+		// $donnees = $userSelect->userShow();
+		// $view->assign("donnees", $donnees);
 
 		$donnees = $userSelect->requestRole();
 		$view->assign("donnees", $donnees);
 		
 		$userSelect->userDelete();
 
-		// $form = $userSelect->buildFormUpdateUser();
-		// $view->assign("form", $form);
-		$data = $userSelect->userShow();
-		// $data = $userSelect->requestRole();
+		$data = $userSelect->roleShow();
 		$view->assign("data", $data);
 
 		$form = $userSelect->buildFormAddUser();
 		$view->assign("form", $form);
+
+		if(!empty($_POST)){
+			$errors = Form::validator($_POST, $form);
+
+			if(empty($errors)){
+				$userSelect->setFirstname($_POST["firstname"]);
+				$userSelect->setLastname($_POST["lastname"]);
+				$userSelect->setEmail($_POST["email"]);
+				$userSelect->setPseudo($_POST["pseudo"]);
+				$userSelect->setPassword($_POST["password"]);
+				$userSelect->setRole($_POST["role"]);
+				$userSelect->save();
+				// $userSelect->userMail();
+				$test = $userSelect->userMail();
+				// var_dump($test);
+				// $userSelect->assignUser("test", $test);
+				$userSelect->mailer();
+			}else{
+				$view->assign("formErrors", $errors);
+			}
+		}
+
+		$updateForm = $userSelect->buildFormUpdateUser();
+		$view->assign("updateForm", $updateForm);
 		
-		
+		if(!empty($_POST)){
+			$errors = Form::validator($_POST, $form);
+
+			if(!empty($_POST)){
+				$userSelect->setFirstname($_POST["firstname"]);
+				$userSelect->setLastname($_POST["lastname"]);
+				$userSelect->setPseudo($_POST["pseudo"]);
+				$userSelect->setRole($_POST["role"]);
+				$userSelect->save();
+			}	
+		}
+
 	}
 
 }

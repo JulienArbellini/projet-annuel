@@ -308,14 +308,26 @@ body {
   font-size: 1.3125rem;
 }
 
+.full-part {
+  text-align: center;
+}
+
 .details-part {
   display: flex;
-  justify-content: center;
-  align-items: baseline;
+  margin: 10px;
 }
 
 .details-part > label {
+  text-align: left;
   font-size: 1rem;
+}
+
+.details-part > input {
+  margin-left: 10px;
+}
+
+.details-part > select {
+  margin-left: 10px;
 }
 
 * {

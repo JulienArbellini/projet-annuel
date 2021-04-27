@@ -1,5 +1,5 @@
 <h1>Utilisateurs</h1>
-<a href="#modal-add" class="js-modal"><img src="../framework/img/add-user.png" alt="add-user" width="15" height="15"/>Ajouter un utilisateur</a>
+<a href="#modal-add" class="js-modal"><img src="../framework/img/add-user.png" alt="add-user" width="15" height="15"/>Inviter un utilisateur</a>
 <div class="shadow-box-square col-m-11">
     <table id='tab' class="display">
         <thead>
@@ -49,28 +49,14 @@
             <div class="modal-wrapper js-modal-stop title-modal">
                 <div class="container1">
                 <h1 id="title-modal-edit">Modifier l'utilisateur</h1>
-                    <div class="details-part">
-                        <label for="pseudo">Pseudo</label>
-                        <input type="text" name="pseudo" value="<?= $value['pseudo']; ?>">
-                    </div>
-                    <div class="details-part">  
-                        <label for="nom">Nom</label>
-                        <input type="text" name="nom" value="<?= $value['lastname']; ?>">
-                    </div>
-                    <div class="details-part">
-                        <label for="prenom">Prenom</label>
-                        <input type="text" name="prenom" value="<?= $value['firstname']; ?>">
-                    </div>
-                    <div class="details-part">
-                        <label for="prenom">Rôle</label>
-                        <select>
-                            <option value="<?= $value['status']; ?>"><?= $value['status']; ?>
-                        </select>
-                    </div>
-                    <div class="container2">
-                        <button class="js-modal-close">Annuler</button>
-                        <button class="js-modal-stop" value="<?= $value['idUser']; ?>">Enregistrer</button>
-                    </div>
+                
+                <?php if(!empty($formErrors)):?>
+                    <?php foreach($formErrors as $error):?>
+                        <li><?= $error ;?>
+                    <?php endforeach;?>
+                <?php endif;?>
+
+                <?php App\Core\Form::showUpdateForm($updateForm, $donnees); ?>
                 </div>
             </div>
         </aside>      
@@ -82,12 +68,19 @@
 <aside id="modal-add" class="modal" aria-hidden="true" role="dialog" aria-labelledby="title-modal-add" style="display:none;">
     <div class="modal-wrapper js-modal-stop title-modal">
         <div class="container1">
-        <h1 id="title-modal-add">Ajouter un utilisateur</h1>
-            <?php App\Core\Form::showForm($form); ?>
-            <div class="container2">
+            <h1 id="title-modal-add">Inviter un utilisateur</h1>
+            
+            <?php if(!empty($formErrors)):?>
+                <?php foreach($formErrors as $error):?>
+                    <li><?= $error ;?>
+                <?php endforeach;?>
+            <?php endif;?>
+
+            <?php App\Core\Form::showForm($form, $data); ?>
+            <!-- <div class="container2">
                 <button class="js-modal-close">Annuler</button>
-                <button class="js-modal-stop">Enregistrer</button>
-            </div>
+                <button class="js-modal-stop" value="submit">Enregistrer</button>
+            </div> -->
         </div>
     </div>
 </aside>   

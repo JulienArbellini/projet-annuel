@@ -9,7 +9,7 @@
         <!-- <script type="text/javascript" src="dist/main.js"></script> -->
         <link rel="stylesheet" type="text/css" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
         <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
-        <script type="text/javascript" src="framework/src/js/Datatables/media/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="framework/src/js/Datatables/media/js/jquery.dataTables.js"></script>
 	</head>
 	<body>
 		

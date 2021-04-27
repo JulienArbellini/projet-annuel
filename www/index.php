@@ -3,7 +3,7 @@ namespace App;
 
 
 use App\Core\Routing; 
-use App\Core\ConstantManager; 
+use App\Core\ConstantManager;
 
 require "Autoloader.php";
 Autoloader::register();
@@ -49,4 +49,3 @@ if( file_exists("./Controllers/".$c.".php")){
 }else{
 	die("Le fichier ".$c." n'existe pas");
 }
-

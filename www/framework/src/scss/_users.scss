@@ -3,11 +3,23 @@
     font-size: rem(21);
 }
 
+.full-part{
+    text-align: center;
+}
+
 .details-part{
     display: flex;
-    justify-content: center;
-    align-items: baseline;
+    margin: 10px;
     > label {
+        text-align: left;
+        // display: flex;
+        // justify-content: center;
         font-size: rem(16);
+    }
+    > input {
+        margin-left: 10px;
+    }
+    > select {
+        margin-left: 10px;
     }
 }

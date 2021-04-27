@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+session_start();
+
 
 class Database
 {
@@ -58,18 +60,27 @@ class Database
 			//UPDATE 
 			foreach ($columns as $column) {
 
-				$columnsTopdate[] = $column."=:".$column;
+				$columnsToUpdate[] = $column."=:".$column;
         	}
 
-        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
+        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE idUser=".$this->getId());
 		}
 
+		
 		$query->execute($data);
+		// var_dump($query);
 
 	}
 
-	public function userShow(){
-		$query = $this->pdo->prepare("SELECT * FROM ".$this->table);
+	// public function userShow(){
+	// 	$query = $this->pdo->prepare("SELECT * FROM ".$this->table);
+	// 	$query->execute();
+	// 	$donnees = $query->fetchall();
+	// 	return $donnees;
+	// }
+
+	public function roleShow(){
+		$query = $this->pdo->prepare("SELECT * FROM tr_role");
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
@@ -88,4 +99,12 @@ class Database
 			$query->execute();
 		}
     }
+
+	public function userMail(){
+		$query = $this->pdo->prepare("SELECT email, pseudo, password FROM ".$this->table." WHERE idUser = (SELECT MAX(idUser) FROM ".$this->table.")");
+		$query->execute();
+		$_SESSION['tab'] = $query->fetchall();
+		return $_SESSION['tab'];
+		// var_dump($test);
+	}
 }
