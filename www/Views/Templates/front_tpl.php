@@ -30,8 +30,24 @@
 		</header>
 
 		<main>
+			<nav role="navigation">
+				<div id="menuToggle">
+					<input type="checkbox" />
+
+					<span></span>
+					<span></span>
+					<span></span>
+
+					<ul id="menu">
+						<a href="#"><li>Home</li></a>
+						<a href="#"><li>About</li></a>
+						<a href="#"><li>Info</li></a>
+						<a href="#"><li>Contact</li></a>
+					</ul>
+				</div>
+			</nav>
 			<!-- <div class="nav-left-front-tpl"> -->
-				<div id="wrap">
+				<!-- <div id="wrap">
 					<div class="header">
 						<nav class="nav">
 							<a href="#wrap" id="open">
@@ -50,10 +66,8 @@
 							<a href="#">Franklin Gothic</a>
 							<a href="#">à propos</a>
 						</nav>
-					</div>
-					<!-- <div class="main"> -->
-						
-						
+					</div> -->
+					<!-- <div class="main"> -->						
 					<!-- </div> -->
 					
 				</div>
