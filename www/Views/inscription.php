@@ -10,7 +10,7 @@
                 </div>
                 <div class="text">
                     <input type="text">
-                </div>
+                </div>S
 
             </div>
             <div id="password">
@@ -20,7 +20,7 @@
                 <div class="text">
                     <input type="password" minlength="8" required>
                 </div>
-                </div>
+            </div>
             <div id="conf-password">
                 <div id="c-mdp">
                     Confirmer le mot de passe : 
