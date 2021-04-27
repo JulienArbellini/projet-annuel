@@ -4,7 +4,7 @@ let button = document.getElementById('submit-button');
 let cancelButton = document.getElementById('cancel-button');
 let addButton = document.getElementById('button-add-page');
 
-function displayInput(){
+function displayForm(){
     input.removeAttribute('style');
     label.removeAttribute('style');
     button.removeAttribute('style');

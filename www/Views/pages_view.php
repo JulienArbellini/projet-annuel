@@ -7,7 +7,7 @@
 <div class="row col-m-12 col-m-up-4">
     
     <div class="col-m-3 col-m-padding-1 col-m-center col-m-pull-3">
-        <button class="button-add-page" id="button-add-page" onclick="displayInput()" style="">Ajouter</button>
+        <button class="button-add-page" id="button-add-page" onclick="displayForm()" style="">Ajouter</button>
             <form method="POST" action="">
                 <div class="button-form-page-position">
                     <label for="add-page" id="label" style="display: none;">Nouvelle page :</label>
@@ -37,8 +37,8 @@
                         $html = "
                         <tr>
                             <td>".($value["title"])."</br>
-                                <a href=\"#\" class=\"link-tab-page\">Modifier</a>
-                                <a href=\"#\" class=\"link-tab-page\"> | Afficher |</a>
+                                <a href=\"/apparence\" class=\"link-tab-page\">Modifier</a>
+                                <a href=\"/display-pages\" class=\"link-tab-page\"> | Afficher |</a>
                                 <a href=\"#modal".($value["idPage"])."\" class=\"js-modal link-tab-page\">Supprimer</a>
                             </td>
                             <td>".($value["firstname"])."</td>

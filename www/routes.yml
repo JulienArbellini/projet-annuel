@@ -48,3 +48,11 @@
 /pages:
   controller: Base
   action: pages
+
+/display-pages:
+  controller: Base
+  action: displayPage
+
+/apparence:
+  controller: Base
+  action: apparence

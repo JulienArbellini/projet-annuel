@@ -1,0 +1,12 @@
+.affichage-page{
+    background-color: white;
+    height: 75vh;
+    padding: 5px;
+    box-shadow: 2px 2px 2px gray,
+    -1px -1px 2px #F5F5F5;
+    overflow: auto;
+
+    >p{
+        font-size: 14px;
+    }
+} 

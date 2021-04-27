@@ -95,12 +95,11 @@ class Base{
 		}
 	}
 
-	public function pageTestAction(){
-		$page2 = new Page();
-		if(!empty($_POST)){
-			//var_dump($_POST);
-			$page2->setTitle($_POST["add-page"]);
-			$page2->savePage();
-		}
+	public function displayPageAction(){
+		$view = new View("displayPage", "back");
+	}
+
+	public function apparenceAction(){
+		$view = new View("apparence", "front");
 	}
 }
