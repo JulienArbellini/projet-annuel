@@ -28,5 +28,10 @@
 		height: 20px;
 		font-size: 12px;
 	 }
+	&-apparence{
+		@extend .button;
+		@extend .button-add-page;
+		text-align: center;
+	}
 }
 

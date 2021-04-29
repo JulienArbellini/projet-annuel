@@ -101,5 +101,12 @@ class Base{
 
 	public function apparenceAction(){
 		$view = new View("apparence", "front");
+		$page = new Page();
+
+		if(!empty($_POST)){ 
+			//echo "coucou";
+			$page->setContent($_POST["testpage"]);
+			$page->savePage();
+	   }
 	}
 }

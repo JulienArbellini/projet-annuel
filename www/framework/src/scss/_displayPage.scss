@@ -10,3 +10,21 @@
         font-size: 14px;
     }
 } 
+
+.trumbowyg-editor,
+.trumbowyg-textarea{
+    background-color: white;
+    // height: 75vh;
+    // min-height: 80vh;
+}
+
+.trumbowyg-box .trumbowyg-editor{
+    min-height: 75vh;
+    margin: 0 auto;
+    // width: 75vw;
+    // width: 50%;
+}
+
+.trumbowyg-button-pane{
+    width: 100%;
+}

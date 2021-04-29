@@ -5,6 +5,12 @@
 		<title>Template de Front</title>
 		<meta name="description" content="ceci est la page de front">
 		<link rel="stylesheet" href="framework/dist/main.css">
+		<script src="framework/src/js/jquery-3.5.1.min.js"></script>
+		<!-- <script src="framework/src/js/Trumbowyg/Ajax.js"></script> -->
+        <link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/ui/trumbowyg.min.css">
+        
+        <script src="framework/src/js/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+
 	</head>
 	<body>
 		<header>
@@ -30,7 +36,10 @@
 		</header>
 
 		<main>
-			<nav role="navigation">
+			<div id="nav-left" style="width: 40vh;">
+
+			</div>
+			<!-- <nav role="navigation">
 				<div id="menuToggle">
 					<input type="checkbox" />
 
@@ -45,7 +54,7 @@
 						<a href="#"><li>Contact</li></a>
 					</ul>
 				</div>
-			</nav>
+			</nav> -->
 			<!-- <div class="nav-left-front-tpl"> -->
 				<!-- <div id="wrap">
 					<div class="header">
@@ -70,7 +79,7 @@
 					<!-- <div class="main"> -->						
 					<!-- </div> -->
 					
-				</div>
+				<!-- </div> -->
 			<!-- </div> -->
 			<div id="content">
 				<?php include $this->view ?>
