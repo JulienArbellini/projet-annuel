@@ -3,11 +3,8 @@ namespace App\Models;
 
 
 use App\Core\Database;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
 
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php'; // intégrer dans index.php
 
 class User extends Database
 {
@@ -241,53 +238,54 @@ class User extends Database
 
 
 
-    public function mailer(){
+    // public function mailer(){
 
-        $mail = new PHPMailer(true);
-            try{
-                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-                $mail->isSMTP();
-                $mail->Host = 'ssl://smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'teachr.contact.pa@gmail.com';
-                $mail->Password = 'teachr_pa_2021';
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 465;
-                $mail->setFrom('teachr.contact.pa@gmail.com', 'Teachr Contact');
-                $mail->addAddress($_SESSION['tab'][0]['email'], $_SESSION['tab'][0]['pseudo']);
-                //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');
-                $mail->isHTML(true);
-                $mail->Subject = 'Invitation à rejoindre un projet';
-                $mail->Body    = '<html>
-                                    <head>
-                                        <meta charset= "UTF-8"/>
-                                    </head>
-                                    <body>
-                                        <h1>Bienvenue sur Teachr !</h1></br>
-                                        <p>L\'utilisateur John Doe vous invite à rejoindre son projet sur notre plateforme.</br>
-                                        Pour y accéder :</p></br>
-                                            <ol>
-                                                <li>Installez un serveur web (MAMP, WAMP, XAMP)</li></br>
-                                                <li>Télécharger la pièce jointe et importez la dans phpmyadmin, la base de données sera alors créée</li></br>
-                                                <li>Rendez-vous à l\'adresse suivante : http://localhost/login</li></br>
-                                            </ol>
-                                                <p>Vous pouvez vous connecter avec les identifiants suivants :</p>
-                                            <ol style="list-style: none;">
-                                                <li> - pseudo : '.$_SESSION['tab'][0]['pseudo'].'</li>
-                                                <li> - mot de passe : '.$_SESSION['tab'][0]['password'].'</li></br>
-                                            </ol>
-                                            <p>Toute l\'équipe vous souhaite la bienvenue sur teachr</br>
-                                                https://teachr.com</p>
-                                    </body>
-                                  </html>';
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-                $mail->send();
-                echo 'Message has been sent';
-            }
-            catch (Exception $e){
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            }
-    }
+    //     $mail = new PHPMailer(true);
+    //         try{
+    //             // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    //             $mail->isSMTP();
+    //             $mail->Host = 'ssl://smtp.gmail.com';
+    //             $mail->SMTPAuth = true;
+    //             $mail->Username = 'teachr.contact.pa@gmail.com';
+    //             $mail->Password = PHPMailer::PWD;
+    //             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    //             $mail->Port = 465;
+    //             $mail->setFrom('teachr.contact.pa@gmail.com', 'Teachr Contact');
+    //             $mail->addAddress($_SESSION['tab'][0]['email'], $_SESSION['tab'][0]['pseudo']);
+    //             $mail->addAttachment('./teachr.sql');         //Add attachments
+    //             // $mail->addAttachment('./var/tmp/utilisateur.png', 'new.png');
+    //             $mail->isHTML(true);
+    //             $mail->Subject = 'Invitation à rejoindre un projet';
+    //             $mail->Body    = '<html>
+    //                                 <head>
+    //                                     <meta charset= "UTF-8"/>
+    //                                 </head>
+    //                                 <body>
+    //                                     <h1>Bienvenue sur Teachr !</h1></br>
+    //                                     <p>L\'utilisateur John Doe vous invite à rejoindre son projet sur notre plateforme.</br>
+    //                                     Pour y accéder :</p></br>
+    //                                         <ol>
+    //                                             <li>Installez un serveur web (MAMP, WAMP, XAMP)</li></br>
+    //                                             <li>Télécharger la pièce jointe et importez la dans phpmyadmin, la base de données sera alors créée</li></br>
+    //                                             <li>Rendez-vous à l\'adresse suivante : http://localhost/login</li></br>
+    //                                         </ol>
+    //                                             <p>Vous pouvez vous connecter avec les identifiants suivants :</p>
+    //                                         <ol style="list-style: none;">
+    //                                             <li> - pseudo : '.$_SESSION['tab'][0]['pseudo'].'</li>
+    //                                             <li> - mot de passe : '.$_SESSION['tab'][0]['password'].'</li></br>
+    //                                         </ol>
+    //                                         <p>Toute l\'équipe vous souhaite la bienvenue sur teachr</br>
+    //                                             https://teachr.com</p>
+    //                                 </body>
+    //                               </html>';
+    //             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    //             $mail->send();
+    //             echo 'Message has been sent';
+    //         }
+    //         catch (Exception $e){
+    //             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    //         }
+    // }
 
 }
 

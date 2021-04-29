@@ -7,7 +7,7 @@ use App\Core\View;
 use App\Core\Form;
 use App\Models\User;
 use App\Core\Database;
-// use App\Core\Mailer;
+use App\Core\Mailer;
 
 
 class Base{
@@ -50,6 +50,7 @@ class Base{
 	public function usersAction(){
 		$view = new View("users", "back");
 		$userSelect = new User();
+		$mailer = new Mailer();
 
 		// $donnees = $userSelect->userShow();
 		// $view->assign("donnees", $donnees);
@@ -74,13 +75,14 @@ class Base{
 				$userSelect->setEmail($_POST["email"]);
 				$userSelect->setPseudo($_POST["pseudo"]);
 				$userSelect->setPassword($_POST["password"]);
+				//password_hash($_POST["password"], PASSWORD_BCRYPT)
 				$userSelect->setRole($_POST["role"]);
 				$userSelect->save();
 				// $userSelect->userMail();
 				$test = $userSelect->userMail();
 				// var_dump($test);
 				// $userSelect->assignUser("test", $test);
-				$userSelect->mailer();
+				$mailer->mailer();
 			}else{
 				$view->assign("formErrors", $errors);
 			}
