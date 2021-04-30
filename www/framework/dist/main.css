@@ -304,17 +304,24 @@ body {
   align-items: center;
 }
 
+.invitation-link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.modal-add > .modal-wrapper,
+.modal-delete > .modal-wrapper,
+.modal-edit > .modal-wrapper {
+  width: 550px;
+}
+
 .title-modal h1 {
   font-size: 1.3125rem;
 }
 
-.full-part {
-  text-align: center;
-}
-
 .details-part {
   display: flex;
-  margin: 10px;
+  margin: 15px;
 }
 
 .details-part > label {

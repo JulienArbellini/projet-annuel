@@ -1,19 +1,32 @@
+.invitation-link{
+    text-decoration: none;
+    color: $black;
+}
+
+.modal-add {
+    > .modal-wrapper{
+        width: 550px;
+    }
+}
+
+.modal-edit{
+    @extend .modal-add;
+}
+
+.modal-delete{
+    @extend .modal-add;
+}
+
 .title-modal 
     h1 {
     font-size: rem(21);
 }
 
-.full-part{
-    text-align: center;
-}
-
 .details-part{
     display: flex;
-    margin: 10px;
+    margin: 15px;
     > label {
         text-align: left;
-        // display: flex;
-        // justify-content: center;
         font-size: rem(16);
     }
     > input {
