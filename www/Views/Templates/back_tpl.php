@@ -47,22 +47,22 @@
                 <div id="liste">
                     <div class="menu container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/dashboard.png" alt="logo dashboard"></div>
-                            <div class="col-m-9"><p>Tableau de bord</p></div>
+                            <div class="col-m-9"><a href="/tableau-de-bord" class="link-left-nav">Tableau de bord</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu container-flexbox-nav apparence cols-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/paint.png" alt="logo apparence"></div>
-                            <div class="col-m-8"><p>Apparence</p></div>
+                            <div class="col-m-8"><a href="/apparence" class="link-left-nav">Apparence</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/articles.png" alt="logo articles"></div>
-                            <div class="col-m-8"><p>Articles</p></div>
+                            <div class="col-m-8"><a href="/articles" class="link-left-nav">Articles</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/pages.png" alt="logo pages"></div>
-                            <div class="col-m-8"><p>Pages</p></div>
+                            <div class="col-m-8"><a href="/pages" class="link-left-nav">Pages</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu container-flexbox-nav commentaires col-s-12 col-m-12 col-l-12">
@@ -77,7 +77,7 @@
                     </div>
                     <div class="menu container-flexbox-nav utlilisateurs col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" ></div>
-                            <div class="col-m-8"><p>Utilisateur</p></div>
+                            <div class="col-m-8"><a href="/utilisateurs" class="link-left-nav">Utilisateurs</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu container-flexbox-nav faq col-s-12 col-m-12 col-l-12">

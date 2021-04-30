@@ -15,7 +15,7 @@
             </div>
 
             <div class="col-m-12 col-m-up-5 col-m-center">
-                    <textarea class="ckeditor" id="contenu_article" name="contenu_article"><?php echo $data[0]["content"];?></textarea>
+                <textarea class="ckeditor" id="contenu_article" name="contenu_article"><?php echo $data[0]["content"];?></textarea>
             </div>  
 
             <div class="col-m-2 col-m-center col-m-padding-down-2">

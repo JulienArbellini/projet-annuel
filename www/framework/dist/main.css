@@ -2030,7 +2030,7 @@ img.image-grayscale {
 }
 
 .trumbowyg-box .trumbowyg-editor {
-  min-height: 75vh;
+  min-height: 65vh;
   margin: 0 auto;
 }
 
@@ -2371,6 +2371,15 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.link-left-nav {
+  text-decoration: none;
+  color: white;
+}
+
+.link-left-nav:hover {
+  color: #328DAA;
 }
 
 .switch {

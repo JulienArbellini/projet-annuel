@@ -1,4 +1,4 @@
-<div class="row col-m-12">
+<div class="row col-m-12 col-m-down-3">
     <!-- <div class="affichage-page">
                   
         <h1>Affichage contenu page</h1>
@@ -8,10 +8,13 @@
     </div> -->
     <div class="col-s-10 col-m-12 col-m-center">
         <form method="post">
+                <div class="col-m-12 col-m-padding-2 col-m-center">
+                    <input type="text" class="form__field" name="titre_page" placeholder="titre" value="<?php echo $data[0]["title"] ?>">
+                </div>
             <!-- <div class="col-s-10 col-m-12 col-m-center"> -->
-                <textarea id="test" name="affichage-page"></textarea>
+                <textarea id="test" name="affichage-page"><?php echo $data[0]["content"] ?></textarea>
             <!-- </div> -->
-            <div class="col-m-2 col-m-push-5">
+            <div class="col-m-2 col-m-push-5 col-m-down-2">
                 <input type="submit" value="Enregistrer" class="button-apparence">
             </div>
         </form>

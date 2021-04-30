@@ -97,6 +97,10 @@ class Base{
 
 	public function displayPageAction(){
 		$view = new View("displayPage", "back");
+		$page = new Page();
+
+		$data = $page->getContentPage();
+		$view->assign("data", $data);
 	}
 
 	public function apparenceAction(){
@@ -105,8 +109,13 @@ class Base{
 
 		if(!empty($_POST)){ 
 			//echo "coucou";
-			$page->setContent($_POST["testpage"]);
+			$page->setId($_GET['idPage']);
+			$page->setTitle($_POST["titre_page"]);
+			$page->setContent($_POST["affichage-page"]);
 			$page->savePage();
 	   }
+
+	   $data = $page->getContentPage();
+	   $view->assign("data", $data);
 	}
 }

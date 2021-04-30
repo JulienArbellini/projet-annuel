@@ -37,7 +37,10 @@
 
 		<main>
 			<div id="nav-left" style="width: 40vh;">
-
+				<!-- <ul>
+					<li style="color: white">Articles</li>
+				</ul> -->
+				<p style="color: white">Affichage de la liste des articles</p>
 			</div>
 			<!-- <nav role="navigation">
 				<div id="menuToggle">

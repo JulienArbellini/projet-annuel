@@ -193,6 +193,7 @@ class Database
 		$query->execute();
 		//var_dump($query);
 		$donnees = $query->fetchall();
+		// var_dump($donnees);
 		return $donnees;
 	}
 
@@ -251,11 +252,23 @@ class Database
         	}
 			//var_dump($columnsToUpdate);
 
-        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE idArticle=".$this->getId());
+        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE idPage=".$this->getId());
 		}
 		//var_dump($query);
 		$query->execute($data);
 
+	}
+
+	public function getContentPage(){
+		
+		if(!empty($_GET['idPage'])){
+			$content = $_GET['idPage'];
+			$query = $this->pdo->prepare("SELECT content, title FROM tr_page WHERE idPage =".$content);
+			$query->execute();
+			$data = $query->fetchall();
+			return $data;
+		}
+		
 	}
 
 

@@ -37,8 +37,8 @@
                         $html = "
                         <tr>
                             <td>".($value["title"])."</br>
-                                <a href=\"/apparence\" class=\"link-tab-page\">Modifier</a>
-                                <a href=\"/display-pages\" class=\"link-tab-page\"> | Afficher |</a>
+                                <a href=\"/apparence?idPage=".($value["idPage"])."&module=base&action=apparence\" class=\"link-tab-page\">Modifier</a>
+                                <a href=\"/display-pages?idPage=".($value["idPage"])."&module=base&action=displayPage\" class=\"link-tab-page\"> | Afficher |</a>
                                 <a href=\"#modal".($value["idPage"])."\" class=\"js-modal link-tab-page\">Supprimer</a>
                             </td>
                             <td>".($value["firstname"])."</td>
