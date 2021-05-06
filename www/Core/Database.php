@@ -17,10 +17,6 @@ class Database
 			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     		$this->pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 
-			//echo "connexion réussie";
-
-		
-
 		}catch(Exception $e){
 			die ("Erreur SQL ".$e->getMessage());
 		}
@@ -30,22 +26,17 @@ class Database
 		$this->table = DBPREFIX.end($classExploded);
 		$this->table=strtolower($this->table);
 		//echo "Nom de la table : " .$this->table. "</br>";
-
 	}
 
 	public function save(){
 
-		
 		$data = array_diff_key (
 					
 					get_object_vars($this), 
-
 					get_class_vars(get_class())
-
 				);
 		//var_dump($data);
 	
-
 		if(is_null($this->getId())){
 
 			//INSERT 
@@ -64,15 +55,12 @@ class Database
 			foreach ($columns as $column) {
 
 				$columnsToUpdate[] = $column."=:".$column;
-				//var_dump($columnsTopdate);
         	}
-			//var_dump($columnsToUpdate);
 
         $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		}
-		//var_dump($query);
 		$query->execute($data);
-
+		$_SESSION['id'] = $this->pdo->lastInsertId();
 	}
 
 	public function getArticle(){
@@ -126,8 +114,6 @@ class Database
 
 	public function saveArticle(){
 
-
-
 		$data = array_diff_key (
 					
 					get_object_vars($this), 
@@ -136,7 +122,6 @@ class Database
 
 				);
 	
-
 
 		if(is_null($this->getId())){
 		
@@ -168,7 +153,6 @@ class Database
 		}
 		//var_dump($query);
 		$query->execute($data);
-		$_SESSION['id'] = $this->pdo->lastInsertId();
 	}
 
 	public function confirmation(){
