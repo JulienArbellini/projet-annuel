@@ -22,14 +22,14 @@
                                 <td>".($value['email'])."</td>
                                 <td>".($value['status'])."</td>
                                 <td>".($value['createdAt'])."</td>
-                                <td><a href=\"#modal-edit".($value['idUser'])."\" class=\"js-modal update\">&#9998</a></th>
-                                <td><a href=\"#modal-delete".($value['idUser'])."\" class=\"js-modal supp\">&#x2717</a></td>
+                                <td><a href=\"#modal-edit".($value['id'])."\" value=\"".($value['id'])."\" class=\"js-modal update\">&#9998</a></th>
+                                <td><a href=\"#modal-delete".($value['id'])."\" class=\"js-modal supp\">&#x2717</a></td>
                             </tr> ";
 
                     echo $html;    
                 }
             ?>
-            <!-- onclick=\"window.location.href='/utilisateurs?idUser=".($value['idUser'])."'\" -->
+            <!-- onclick=\"window.location.href='/utilisateurs?id=".($value['id'])."'\" -->
             </tbody>
         </table>
     </div>
@@ -37,7 +37,7 @@
 
 <?php foreach($donnees as $key => $value)
     { ?>
-        <aside id="modal-delete<?= $value['idUser']?>" class="modal modal-delete" aria-hidden="true" role="dialog" aria-labelledby="title-modal-delete" style="display:none;">
+        <aside id="modal-delete<?= $value['id']?>" class="modal modal-delete" aria-hidden="true" role="dialog" aria-labelledby="title-modal-delete" style="display:none;">
             <div class="modal-wrapper js-modal-stop title-modal">
                 <div class="container1">
                     <h1 id="title-modal-delete">Êtes-vous sûr de vouloir supprimer cet utilisateur ?</h1>
@@ -46,25 +46,40 @@
                     <p><strong>Rôle : </strong><?= $value['status']; ?><p>
                     <div class="container2">
                         <button class="js-modal-close">Annuler</button>
-                        <button class="js-modal-stop" value="<?= $value['idUser']; ?>" onclick="window.location.href='/utilisateurs?idUser=<?= $value['idUser']; ?>&module=base&action=users'">Supprimer</button>
+                        <button class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?id=<?= $value['id']; ?>&module=base&action=users'">Supprimer</button>
                     </div>
                 </div>
             </div>
         </aside>  
 
 
-        <aside id="modal-edit<?= $value['idUser']?>" class="modal modal-edit" aria-hidden="true" role="dialog" aria-labelledby="title-modal-edit" style="display:none;">
+        <aside id="modal-edit<?= $value['id']?>" class="modal modal-edit" aria-hidden="true" role="dialog" aria-labelledby="title-modal-edit" style="display:none;">
             <div class="modal-wrapper js-modal-stop title-modal">
                 <div class="container1">
-                <h1 id="title-modal-edit">Modifier l'utilisateur</h1>
-                
-                <?php if(!empty($formErrors)):?>
-                    <?php foreach($formErrors as $error):?>
-                        <li><?= $error ;?>
-                    <?php endforeach;?>
-                <?php endif;?>
-
-                <?php App\Core\Form::showUpdateForm($updateForm, $donnees); ?>
+                    <h1 id="title-modal-edit">Modifier l'utilisateur</h1>
+                    <form class="form_update" method="POST" action="">
+                        <div class="details-part">  
+                            <label for="nom">Nom :</label>
+                            <input type="text" name="lastname" value="<?= $value['lastname']; ?>">
+                        </div>
+                        <div class="details-part">
+                            <label for="prenom">Prenom :</label>
+                            <input type="text" name="firstname" value="<?= $value['firstname']; ?>">
+                        </div>
+                        <div class="details-part">
+                            <label for="prenom">Rôle :</label>
+                            <select name="role">
+                                <option value="<?= $value['id'] ?>"><?php echo $value['status']; ?>
+                                    <?php foreach($data as $key => $val){ ?>
+                                        <option value="<?= $val['id']; ?>"><?= $val['status']; ?>
+                                    <?php } ?>
+                            </select>
+                        </div>
+                        <div class="container2">
+                            <button class="js-modal-close">Annuler</button>
+                            <button type="submit" class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?updateId=<?= $value['id']; ?>'">Enregistrer</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </aside>      
@@ -88,7 +103,6 @@
         </div>
     </div>
 </aside>   
-
 
 
 <script src="../framework/src/js/int-datatables.js"></script>

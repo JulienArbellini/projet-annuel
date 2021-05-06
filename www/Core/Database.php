@@ -63,7 +63,7 @@ class Database
 				$columnsToUpdate[] = $column."=:".$column;
         	}
 
-        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE idUser=".$this->getId());
+        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		}
 
 		
@@ -87,21 +87,21 @@ class Database
 	}
 
 	public function requestRole(){
-		$query = $this->pdo->prepare("SELECT * FROM tr_role as r INNER JOIN ".$this->table. " as u ON r.idRole = u.Role_idRole");
+		$query = $this->pdo->prepare("SELECT * FROM tr_role as r INNER JOIN ".$this->table. " as u ON r.id = u.role_idRole");
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
 	}
 
 	public function userDelete(){
-		if(!empty($_GET['idUser'])){
-			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE idUser = ".$_GET['idUser']);
+		if(!empty($_GET['id'])){
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id = ".$_GET['id']);
 			$query->execute();
 		}
     }
 
 	public function userMail(){
-		$query = $this->pdo->prepare("SELECT email, pseudo, password FROM ".$this->table." WHERE idUser = (SELECT MAX(idUser) FROM ".$this->table.")");
+		$query = $this->pdo->prepare("SELECT email, pseudo, password FROM ".$this->table." WHERE id = (SELECT MAX(id) FROM ".$this->table.")");
 		$query->execute();
 		$_SESSION['tab'] = $query->fetchall();
 		return $_SESSION['tab'];

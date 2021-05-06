@@ -8,13 +8,15 @@ use App\Core\Database;
 
 class User extends Database
 {
-    private $idUser;
+    private $id;
     protected $lastname;
     protected $firstname;
     protected $email;
     protected $password;
     protected $pseudo;
     protected $role_idRole;
+    protected $confirmkey;
+    protected $confirmation;
     //protected $country;
     // protected $status = 0;
     // protected $isDeleted = 0;
@@ -23,14 +25,14 @@ class User extends Database
         parent::__construct();
     }
 
-    public function setId($idUser){
+    public function setId($id){
         //Il va chercher en BDD toutes les informations de l'utilisateur
         //et il va alimenter l'objet avec toutes ces données
-        $this->idUser = $idUser;
+        $this->id = $id;
     }
 
     public function getId(){
-        return $this->idUser;
+        return $this->id;
     }
     public function setLastname($lastname){
         $this->lastname = $lastname;
@@ -135,44 +137,43 @@ class User extends Database
             ];
     }
 
-    public function buildFormUpdateUser(){
-        return [
+    // public function buildFormUpdateUser(){
+    //     return [
 
-                "config"=>[
-                    "method"=>"GET",
-                    "Action"=>"",
-                    "Submit"=>"Enregistrer",
-                    "class"=>"form_update"
-                ],
-                "input"=>[
-                    "firstname"=>[
-                                    "type"=>"text",
-                                    "label"=>"Prénom",
-                                    "class"=>"form_update",
-                                    "lengthMax"=>"120",
-                                    "lengthMin"=>"2",
-                                    "required"=>true,
-                                    "error"=>"Votre prénom doit faire entre 2 et 120 caractères",
-                                    ],
-                    "lastname"=>[
-                                    "type"=>"text",
-                                    "label"=>"Nom",
-                                    "lengthMax"=>"255",
-                                    "lengthMin"=>"2",
-                                    "required"=>true,
-                                    "error"=>"Votre nom doit faire entre 2 et 255 caractères",
-                                    ]
+    //             "config"=>[
+    //                 "method"=>"GET",
+    //                 "Action"=>"",
+    //                 "Submit"=>"Enregistrer",
+    //                 "class"=>"form_update"
+    //             ],
+    //             "input"=>[
+    //                 "firstname"=>[
+    //                                 "type"=>"text",
+    //                                 "label"=>"Prénom",
+    //                                 "lengthMax"=>"120",
+    //                                 "lengthMin"=>"2",
+    //                                 "required"=>true,
+    //                                 "error"=>"Votre prénom doit faire entre 2 et 120 caractères",
+    //                                 ],
+    //                 "lastname"=>[
+    //                                 "type"=>"text",
+    //                                 "label"=>"Nom",
+    //                                 "lengthMax"=>"255",
+    //                                 "lengthMin"=>"2",
+    //                                 "required"=>true,
+    //                                 "error"=>"Votre nom doit faire entre 2 et 255 caractères",
+    //                                 ]
                     
-                    ],
+    //                 ],
 
-                "select"=>[
-                    "role"=>[
-                            // "type"=>"select",
-                            "label"=>"Rôle"
-                            ]
-                ]
-            ];
-    }
+    //             "select"=>[
+    //                 "role"=>[
+    //                         // "type"=>"select",
+    //                         "label"=>"Rôle"
+    //                         ]
+    //             ]
+    //         ];
+    // }
 
     public function buildFormAddUser(){
         return [

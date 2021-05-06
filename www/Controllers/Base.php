@@ -88,21 +88,19 @@ class Base{
 			}
 		}
 
-		$updateForm = $userSelect->buildFormUpdateUser();
-		$view->assign("updateForm", $updateForm);
+		// $userSelect->buildFormUpdateUser();
+		// $view->assign("updateForm", $updateForm);
 		
+		// if(!empty($_POST)){
+		// 	$errors = Form::validator($_POST, $form);
+
 		if(!empty($_POST)){
-			$errors = Form::validator($_POST, $form);
-
-			if(!empty($_POST)){
-				$userSelect->setFirstname($_POST["firstname"]);
-				$userSelect->setLastname($_POST["lastname"]);
-				$userSelect->setPseudo($_POST["pseudo"]);
-				$userSelect->setRole($_POST["role"]);
-				$userSelect->save();
-			}	
+			$userSelect->setId($_GET['updateId']);
+			$userSelect->setLastname($_POST["lastname"]);
+			$userSelect->setFirstname($_POST["firstname"]);
+			$userSelect->setRole($_POST["role"]);
+			$userSelect->save();	
 		}
-
 	}
 
 }

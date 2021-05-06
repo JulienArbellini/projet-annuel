@@ -79,7 +79,7 @@ class Form
 					$html .= "<select name='".$name."'>
 								<option value=''>Sélectionner...</option>";
 								foreach($data as $key => $value){
-									$html .="<option value='".($value['idRole'])."'>".($value['status'])."</option>";
+									$html .="<option value='".($value['id'])."'>".($value['status'])."</option>";
 								}
 							
 					$html .= "</select>";
@@ -138,7 +138,7 @@ class Form
 			$html .= "<select name='".$name."'>
 						<option value=''>Sélectionner...</option>";
 						foreach($donnees as $key => $value){
-							$html .="<option value='".($value['idRole'])."'>".($value['status'])."</option>";
+							$html .="<option value='".($value['id'])."'>".($value['status'])."</option>";
 						}
 					
 			$html .= "</select>";
