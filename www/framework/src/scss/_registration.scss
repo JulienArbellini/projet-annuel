@@ -40,6 +40,17 @@
     margin-top: 10px;
 }
 
+.error{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #eab3b7;
+    width: 30%;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
 
 /* -----------------
     RESPONSIVE
@@ -49,5 +60,19 @@
 @media only screen and (min-width: $large){
     .shadow-box-square {
         padding: 30px 50px;
+    }
+}
+
+// Medium Screen
+@media only screen and (max-width: $medium){
+    .error {
+        width: 60%;
+    }
+}
+
+// Small Screen
+@media only screen and (max-width: $mobile-width){
+    .error {
+        width: 90%;
     }
 }

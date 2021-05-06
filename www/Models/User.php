@@ -3,16 +3,21 @@ namespace App\Models;
 
 use App\Core\Database;
 
+date_default_timezone_set('Europe/Paris');
+
 class User extends Database
 {
-	private $idUser=null;
+	private $idUser = null;
 	protected $lastname;
 	protected $firstname;
 	protected $email;
 	protected $password;
+	protected $pseudo;
+	protected $createdAt;
+	protected $Role_idRole = 1;
+	protected $confirmKey;
 	//protected $country;
 	//protected $status = 0;
-	//protected $role = 0;
 	//protected $isDeleted = 0;
 
 	public function __construct(){
@@ -41,15 +46,24 @@ class User extends Database
 	public function setPwd($password){
 		$this->password = $password;
 	}
+	public function setPseudo($pseudo){
+		$this->pseudo = $pseudo;
+	}
+	public function setCreatedAt($createdAt){
+		$this->createdAt = $createdAt;
+	}
+	public function setRole($role){
+		$this->role = $role;
+	}
+	public function setConfirmKey($confirmKey){
+		$this->confirmKey = $confirmKey;
+	}
 	// public function setCountry($country){
 	// 	$this->country = $country;
 	// }
 	// public function setStatus($status){
 	// 	$this->status = $status;
 	// }
-	public function setRole($role){
-		$this->role = $role;
-	}
 	// public function setIsDeleted($isDeleted){
 	// 	$this->isDeleted = $isDeleted;
 	// }
@@ -62,7 +76,7 @@ class User extends Database
 			"config"=>
 			[
 				"method"=>"POST",
-				"Action"=>"",
+				"Action"=>"/login",
 				"Submit"=>"S'inscrire",
 				"class"=>"shadow-box-square col-m-8 col-l-4"
 			],
@@ -70,7 +84,7 @@ class User extends Database
 			"input"=>[
 				"firstname"=>[
 					"type"=>"text",
-					"name"=>"first",
+					"name"=>"firstname",
 					"label"=>"Prénom :",
 					"class"=>"input",
 					"autocomplete"=>"given-name",
@@ -95,10 +109,9 @@ class User extends Database
 					"label"=>"Adresse e-mail :",
 					"class"=>"input",
 					"autocomplete"=>"email",
-					"lengthMax"=>"320",
-					"lengthMin"=>"8",
 					"required"=>true,
-					"error"=>"Votre email doit faire entre 8 et 320 caractères",
+					"error"=>"Votre e-mail n'est pas valide",
+					"error2"=>"Cet e-mail est déjà utilisé"
 				],
 				"pwd"=>[
 					"type"=>"password",
@@ -112,16 +125,14 @@ class User extends Database
 					"type"=>"password",
 					"label"=>"Confirmer le mot de passe :",
 					"class"=>"input",
-					"confirm"=>"pwd",
 					"required"=>true,
-					"error"=>"Votre mot de passe de confirmation est incorrect"
+					"error"=>"Les deux mots de passe ne correspondent pas"
 				],
 				"checkbox"=>[
 					"type"=>"checkbox",
 					"label"=>"J'ai lu et j'accepte la <a href ='#'>politique de confidentialité</a>",
 					"class"=>"",
-					"required"=>true,
-					"error"=>"Les mots de passe ne correspondent pas"
+					"required"=>true
 				]		
 			]
 		];

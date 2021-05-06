@@ -1521,6 +1521,17 @@ body {
   margin-top: 10px;
 }
 
+.error {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #eab3b7;
+  width: 30%;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
 /* -----------------
     RESPONSIVE
 -------------------*/
@@ -1528,6 +1539,18 @@ body {
 @media only screen and (min-width: 1024px) {
   .shadow-box-square {
     padding: 30px 50px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .error {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .error {
+    width: 90%;
   }
 }
 

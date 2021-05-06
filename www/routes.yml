@@ -11,9 +11,13 @@
   controller: Security
   action: register
 
+/confirmation:
+  controller: Security
+  action: confirmation
+
 /login:
   controller: Security
-  action: register
+  action: login
 
 /se-connecter:
   controller: Security

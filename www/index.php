@@ -5,6 +5,7 @@ namespace App;
 use App\Core\Routing; 
 use App\Core\ConstantManager; 
 
+require 'vendor/autoload.php';
 require "Autoloader.php";
 Autoloader::register();
 

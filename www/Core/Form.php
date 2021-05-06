@@ -1,31 +1,50 @@
 <?php
 
 namespace App\Core;
-
 class Form
 {
 
 	public static function validator($data, $config){
 		$errors = [];
-
+		global $mailexists;
+		/*
+		echo "<pre>";
+		print_r($data); 
+		print_r($config);
+		echo "</pre>";
+		*/
 		// Vérifier si on a le bon nombre d'inputs
-		if( count($data) == count($config["input"])){
-			//echo "<pre>";
-			//print_r($config["input"]);
+		if(count($data) == count($config["input"])){
 			foreach ($config["input"] as $name => $configInput) {
 				
-				if(!empty($configInput["lengthMin"]) 
+				if((!empty($configInput["lengthMin"])
 					&& is_numeric($configInput["lengthMin"]) 
-					&& strlen($data[$name])<$configInput["lengthMin"] 
-					&& $config["input"]["pwd"] != $config["input"]["pwdConfirm"]){
+					&& strlen($data[$name])<$configInput["lengthMin"])
+					|| (!empty($configInput["lengthMax"])
+					&& is_numeric($configInput["lengthMax"])
+					&& strlen($data[$name])>$configInput["lengthMax"])) {
 					
 					$errors[] = $configInput["error"];
 
 				}
-			}
+				
+			}	
+		}
 
-		}else{
+		else{
 			$errors[] = "Tentative de Hack (Faille XSS)";
+		}
+
+		if(!(filter_var($data["email"], FILTER_VALIDATE_EMAIL))) {
+			$errors[] .= $config["input"]["email"]["error"];
+		}
+
+		if($mailexists === 1){
+			$errors[].= $config["input"]["email"]["error2"];
+		}
+
+		if($data["pwdConfirm"] != $data["pwd"]) {
+			$errors[] .= $config["input"]["pwdConfirm"]["error"];
 		}
 
 		return $errors; //tableau des erreurs
@@ -33,11 +52,8 @@ class Form
 
 
 	public static function showForm($form){
-		//$html ="<div class='row col-m-12 col-m-up-2'>";
 
 		$html = "<form class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
-		//echo "<pre>";
-		//print_r ($form["input"]["checkbox_register"]["name"]);
 		
 		foreach ($form["input"] as $name => $dataInput) {
 			if ($name === "checkbox")
@@ -62,19 +78,15 @@ class Form
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
 						> </div>";
-			
-
 			}	
 
 		}
 
-		$html .= "<div class = form-group> <input type='submit' class ='button' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'> </div> </form>";
+		$html .= "<div class = form-group> <button type='submit' class ='button' id='btn_register'";
+		$html .= ">S'inscrire</button> </div> </form>";
 
 		echo $html;
 	}
-
-
-
 
 	public static function cleanWord($word){
 		return str_replace("'", "&apos;", $word);

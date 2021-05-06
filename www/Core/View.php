@@ -6,9 +6,7 @@ use App\Core\Form;
 
 class View
 {
-	// front_tpl.php
-	private $template; // front ou back
-	// default_view.php
+	private $template; 
 	private $view; // default, dashboard, profile, ....
 	private $data = [];
 
@@ -22,7 +20,7 @@ class View
 		if(file_exists("Views/Templates/".$template."_tpl.php") && $view != "register"){
 			$this->template = "Views/Templates/".$template."_tpl.php";
 		}
-		elseif($view==="register"){
+		elseif($view==="register" || $view==="confirmation"){
 			$this->template = null;
 		}
 		else{

@@ -1,10 +1,4 @@
-
-
-<?php if(!empty($formErrors)):?>
-	<?php foreach($formErrors as $error):?>
-		<li><?= $error ;?>
-	<?php endforeach;?>
-<?php endif;?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -17,5 +11,13 @@
 		<div class=container>
 			<div class="logo col-l-3">
 				<img class="" src="../../framework/img/Logo teach'r.svg">
-			</div>             
+			</div> 
+			<?php if(!empty($formErrors)):?>
+				<?php foreach($formErrors as $error):?>
+					<div class='error'>
+						<li><?= $error ;?>
+				<?php endforeach;?>
+				</div>
+			<?php endif;?>  
+				
 <?php App\Core\Form::showForm($form);?>
