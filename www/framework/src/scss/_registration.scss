@@ -1,0 +1,78 @@
+.logo {
+   padding: 15px 0;
+   display: flex;
+   align-items: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.shadow-box-square {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+}
+
+.checkbox-label {
+    font-family: Roboto, sans-serif;
+    padding-left: 5px;
+    font-weight: 100;
+    font-style: italic ;
+}
+
+.form-group-btn{
+    display: flex;
+    align-items: center;
+}
+.button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.error{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #eab3b7;
+    width: 30%;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+/* -----------------
+    RESPONSIVE
+-------------------*/
+
+// Large Screen
+@media only screen and (min-width: $large){
+    .shadow-box-square {
+        padding: 30px 50px;
+    }
+}
+
+// Medium Screen
+@media only screen and (max-width: $medium){
+    .error {
+        width: 60%;
+    }
+}
+
+// Small Screen
+@media only screen and (max-width: $mobile-width){
+    .error {
+        width: 90%;
+    }
+}

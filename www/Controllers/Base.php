@@ -69,6 +69,10 @@ class Base{
 			$article->saveArticle();
 	   }
 	}
+	public function registerAction(){
+		$view = new View("register", "back");
+	}
+
 
 	public function displayArticleAction(){
 		$view = new View("displayArticle", "back");

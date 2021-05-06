@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+
 /* -----------------
     MIXINS
 -------------------*/
@@ -89,6 +90,12 @@
 
 }
 
+.container {
+    width: 100%;
+    padding-left: calc(50% - #{$container-width} / 2);
+    padding-right: calc(50% - #{$container-width} / 2);
+}
+
 /* -----------------
     GRID
 -------------------*/
@@ -141,6 +148,8 @@
     .m-show{
         display: none;
     }
+
+    $container-width:1000px;
     
 }
 

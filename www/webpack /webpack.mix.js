@@ -13,12 +13,12 @@ let mix = require('laravel-mix');
 
 mix.setPublicPath('../framework/dist/');
 
-// mix.babel([
+ mix.babel([
 //  '../src/js/vendor/lazysizes/lazysizes.min.js',
-//  '../src/js/vendor/jquery/jquery-3.4.1.min.js',
+  '../framework/src/js/jquery-3.5.1.min.js',
 //  '../src/js/vendor/flickity/flickity.pkgd.min.js',
-//  '../src/js/main.js'
-// ], '../dist/main.js');
+  '../framework/src/js/main.js'
+ ], '../framework/dist/main.js');
 
 // mix.minify('../web/dist/main.js');
 

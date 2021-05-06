@@ -3,13 +3,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Template de Front</title>
-		<meta name="description" content="ceci est la page de front">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
 		<link rel="stylesheet" href="framework/dist/main.css">
 	</head>
 	<body>
-		<header>
+		
+		<!--<header>
 			<h1>Template Frontoffice</h1>
-		</header>
+		</header>-->
 
 
 		<!-- intégrer le vue -->

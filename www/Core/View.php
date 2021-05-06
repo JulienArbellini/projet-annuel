@@ -6,23 +6,24 @@ use App\Core\Form;
 
 class View
 {
-	// front_tpl.php
-	private $template; // front ou back
-	// default_view.php
+	private $template; 
 	private $view; // default, dashboard, profile, ....
 	private $data = [];
 
-	public function __construct($view="default", $template="front"){
-		$this->setTemplate($template);
+	public function __construct($view="default", $template="back"){
+		$this->setTemplate($view, $template);
 		$this->setView($view);
 		
 	}
 
-
-	public function setTemplate($template){
-		if(file_exists("Views/Templates/".$template."_tpl.php")){
+	public function setTemplate($view, $template){
+		if(file_exists("Views/Templates/".$template."_tpl.php") && $view != "register"){
 			$this->template = "Views/Templates/".$template."_tpl.php";
-		}else{
+		}
+		elseif($view==="register" || $view==="confirmation"){
+			$this->template = null;
+		}
+		else{
 			die("Le template n'existe pas");
 		}
 	}
@@ -43,11 +44,14 @@ class View
 
 	public function __destruct(){
 		// $this->data = ["pseudo"=>"Prof"];  ----> $pseudo = "Prof";
-		extract($this->data);
-		include $this->template;
+			extract($this->data);
+			if (is_null($this->template)){
+				include $this->view;
+			}
+			else{
+				include $this->template;
+			}
 	}
-
-
 }
 
 

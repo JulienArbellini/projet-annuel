@@ -1,7 +1,8 @@
-// *{
-// 	box-sizing: border-box;
-// }
-
+body{
+	margin: 0;
+	font-family: $roboto;
+	background-color: $theme-grey;
+}
 
 
 h1,h2{
@@ -45,6 +46,8 @@ body{
 	background-color: $theme-grey;
 	// background-color: blue;
 
+label{
+	font-size: rem(12);
 }
 
 #content{

@@ -2,17 +2,18 @@
 
 namespace App\Core;
 
+$mailexists = 0;
 
 class Database
 {
-
+	
 	private $pdo;
 	private $table;
 
 	public function __construct(){
 		try{
-			$this->pdo = new \PDO(DBDRIVER.":dbname=".DBNAME.";host=".DBHOST.";port=".DBPORT, DBUSER, DBPWD);
-
+			$connexion = $this->pdo = new \PDO(DBDRIVER.":dbname=".DBNAME.";charset=utf8;host=".DBHOST.";port=".DBPORT, DBUSER, DBPWD);
+			
 			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     		$this->pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 
@@ -28,13 +29,13 @@ class Database
 		$classExploded = explode("\\", get_called_class());
 		$this->table = DBPREFIX.end($classExploded);
 		$this->table=strtolower($this->table);
-		 //echo "Nom de la table : " .$this->table. "</br>";
+		//echo "Nom de la table : " .$this->table. "</br>";
+
 	}
 
 	public function save(){
 
-
-
+		
 		$data = array_diff_key (
 					
 					get_object_vars($this), 
@@ -42,12 +43,10 @@ class Database
 					get_class_vars(get_class())
 
 				);
+		//var_dump($data);
 	
 
-
 		if(is_null($this->getId())){
-		
-			echo $this->getId();
 
 			//INSERT 
 
@@ -57,9 +56,7 @@ class Database
 											) VALUES (
 											:".implode(",:", $columns)."
 											)");
-
-			
-
+										
 		}else{
 			
 			//UPDATE 
@@ -171,7 +168,41 @@ class Database
 		}
 		//var_dump($query);
 		$query->execute($data);
-
+		$_SESSION['id'] = $this->pdo->lastInsertId();
 	}
 
+	public function confirmation(){
+
+		if(isset($_GET['id']) AND isset($_GET['key']) AND !empty($_GET['id']) AND !empty($_GET['key'])){
+			$id= intval($_GET['id']);
+			$key= intval($_GET['key']);
+			
+			$requser = $this->pdo->prepare("SELECT * FROM tr_user WHERE id = ? AND confirmkey = ?");
+			$requser->execute(array($id, $key));
+			if($requser->rowCount() > 0){
+				$userInfo = $requser->fetch();
+				if($userInfo['confirmation'] != 1){
+					$updateConfirmation = $this->pdo->prepare("UPDATE tr_user SET confirmation = ? WHERE id = ?");
+					$updateConfirmation->execute(array(1, $id));
+					echo "Votre compte a bien été confirmé";
+				}else{
+					echo "Votre compte a déjà été confirmé";
+				}
+			}else{
+				echo "Votre identifiant ou votre clé est incorrect";
+			}
+		}else{
+			echo "Aucun utilisateur trouvé";
+		}
+	}
+
+	public function verifMailUniq(){
+		global $mailexists;
+		$email = $_POST["email"];
+		$reqmail = $this->pdo->prepare('SELECT id FROM tr_user WHERE email = ?');
+        $reqmail->execute(array($email));
+         if($reqmail->rowCount() > 0) {
+			 $mailexists = 1;
+		 }
+	}
 }
