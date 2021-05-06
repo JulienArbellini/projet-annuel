@@ -15,10 +15,9 @@
   controller: Security
   action: login
 
-/se-connecter:
-  controller: Base
-  action: login
-
+/mot-de-passe-oublie:
+  controller : Security
+  action : recuperation
 
 /logout:
   controller: Security

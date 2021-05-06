@@ -6,6 +6,7 @@ use App\Core\Routing;
 use App\Core\ConstantManager; 
 
 require "Autoloader.php";
+require "vendor/autoload.php";
 Autoloader::register();
 
 new ConstantManager();

@@ -24,9 +24,7 @@ class Base{
 	}
 
 
-	public function loginAction(){
-		$view = new View("login", "front");
-	}
+
 
 	//Must be connected
 	public function dashboardAction(){

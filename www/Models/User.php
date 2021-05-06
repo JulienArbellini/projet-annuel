@@ -110,6 +110,61 @@ class User extends Database
 			];
 	}
 
+	public function buildFormLogin(){
+		return [
+
+				"config"=>[
+					"method"=>"POST",
+					"Action"=>"",
+					"Submit"=>"Se connecter",
+					"class"=>"form_login"
+				],
+				"input"=>[
+					
+					"email"=>[
+									"type"=>"email",
+									"lengthMax"=>"320",
+									"lengthMin"=>"8",
+									"required"=>true,
+									"error"=>"Votre email doit faire entre 8 et 320 caractères",
+									"placeholder"=>"Veuillez renseigner votre email"
+									],
+					"pwd"=>[
+									"type"=>"password",
+									"lengthMin"=>"8",
+									"required"=>true,
+									"error"=>"Votre mot de passe doit faire plus de 8 caractères",
+									"placeholder"=>"Votre mot de passe"
+									],
+				]
+
+			];
+	}
+
+	public function buildFormRecuperation(){
+		return [
+
+				"config"=>[
+					"method"=>"POST",
+					"Action"=>"",
+					"Submit"=>"Valider",
+					"class"=>"form_login"
+				],
+				"input"=>[
+					
+					"email"=>[
+									"type"=>"email",
+									"lengthMax"=>"320",
+									"lengthMin"=>"8",
+									"required"=>true,
+									"error"=>"Votre email doit faire entre 8 et 320 caractères",
+									"placeholder"=>"Veuillez renseigner votre email"
+									],
+				]
+
+			];
+	}
+
 }
 
 
