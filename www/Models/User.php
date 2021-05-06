@@ -5,11 +5,15 @@ use App\Core\Database;
 
 class User extends Database
 {
-	private $idUser=null;
+	private $id=null;
 	protected $lastname;
 	protected $firstname;
 	protected $email;
 	protected $password;
+	protected $pseudo;
+	protected $createdAt;
+	protected $Role_idRole = 1;
+	protected $confirmKey;
 	//protected $country;
 	//protected $status = 0;
 	//protected $role = 0;
@@ -19,14 +23,14 @@ class User extends Database
 		parent::__construct();
 	}
 
-	public function setId($idUser){
+	public function setId($id){
 		//Il va chercher en BDD toutes les informations de l'utilisateur
 		//et il va alimenter l'objet avec toutes ces données
-		$this->idUser = $idUser;
+		$this->id = $id;
 	}
 
 	public function getId(){
-		return $this->idUser;
+		return $this->id;
 	}
 
 	public function setLastname($lastname){

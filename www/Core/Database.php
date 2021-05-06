@@ -94,7 +94,7 @@ class Database
 		$query = $this->pdo->prepare("SELECT a.".implode(",",$columns_article).", u.firstname, a.idArticle
 									  FROM ".$this->table." AS a 
 									  INNER JOIN tr_user_has_Article AS l ON a.idArticle = l.Article_idArticle
-									  INNER JOIN tr_user AS u ON u.idUser = l.User_idUser");
+									  INNER JOIN tr_user AS u ON u.id = l.User_id");
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
