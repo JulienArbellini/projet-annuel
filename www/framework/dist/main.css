@@ -1547,6 +1547,9 @@ input:checked + .slider:before {
 .col-s-height-10 {
   height: 50vh;
 }
+  .col-m-push-11 {
+    left: 91.6666666667%;
+  }
 
 .col-s-padding-10 {
   padding-bottom: 20vh;
@@ -1584,6 +1587,9 @@ input:checked + .slider:before {
 .col-s-height-11 {
   height: 55vh;
 }
+  .col-m-push-12 {
+    left: 100%;
+  }
 
 .col-s-padding-11 {
   padding-bottom: 22vh;
@@ -1596,6 +1602,9 @@ input:checked + .slider:before {
 .col-s-12 {
   width: 100%;
 }
+  .col-m-up-12 {
+    margin-bottom: 60vh;
+  }
 
 .col-s-center {
   margin: 0 auto;
@@ -1613,6 +1622,9 @@ input:checked + .slider:before {
 .col-s-down-12 {
   margin-top: 60px;
 }
+  .col-m-padding-down-12 {
+    padding-top: 24vh;
+  }
 
 .col-s-up-12 {
   margin-bottom: 60vh;
@@ -1657,6 +1669,7 @@ input:checked + .slider:before {
   }
 
   .col-m-up-1 {
+  .col-l-up-1 {
     margin-bottom: 5vh;
   }
 
@@ -1730,7 +1743,7 @@ input:checked + .slider:before {
     margin-top: 15px;
   }
 
-  .col-m-up-3 {
+  .col-l-up-3 {
     margin-bottom: 15vh;
   }
 
@@ -1767,7 +1780,7 @@ input:checked + .slider:before {
     margin-top: 20px;
   }
 
-  .col-m-up-4 {
+  .col-l-up-4 {
     margin-bottom: 20vh;
   }
 
@@ -1804,7 +1817,7 @@ input:checked + .slider:before {
     margin-top: 25px;
   }
 
-  .col-m-up-5 {
+  .col-l-up-5 {
     margin-bottom: 25vh;
   }
 
@@ -1841,7 +1854,7 @@ input:checked + .slider:before {
     margin-top: 30px;
   }
 
-  .col-m-up-6 {
+  .col-l-up-6 {
     margin-bottom: 30vh;
   }
 
@@ -2096,6 +2109,10 @@ input:checked + .slider:before {
   .col-l-1 {
     width: 8.3333333333%;
   }
+.affichage-article {
+  height: 65vh;
+  overflow: auto;
+}
 
   .col-l-center {
     margin: 0 auto;
@@ -2216,6 +2233,17 @@ input:checked + .slider:before {
   .col-l-push-4 {
     left: 33.3333333333%;
   }
+.embed-1080p {
+  max-width: 1920px;
+  max-height: 1080px;
+  margin: 0 auto;
+}
+
+.logo {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+}
 
   .col-l-pull-4 {
     right: 33.3333333333%;
@@ -2257,6 +2285,7 @@ input:checked + .slider:before {
   .col-l-pull-5 {
     right: 41.6666666667%;
   }
+}
 
   .col-l-down-5 {
     margin-top: 25px;
@@ -2512,6 +2541,15 @@ input:checked + .slider:before {
   .col-l-push-12 {
     left: 100%;
   }
+.form__field {
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #328DAA;
+  padding: 7px 0;
+  background: transparent;
+}
 
   .col-l-pull-12 {
     right: 100%;
@@ -2548,6 +2586,12 @@ input:checked + .slider:before {
   .m-show {
     display: none;
   }
+}
+
+.supp {
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
 }
 
 .input {
