@@ -6,4 +6,11 @@
   color: $dark-blue;
   padding: 7px 0;
   background: transparent;
+
+  &_articles_input{
+    display: flex;
+    // justify-content: space-around;
+  }
+
 }
+

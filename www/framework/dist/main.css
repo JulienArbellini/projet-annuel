@@ -2391,6 +2391,10 @@ input:checked + .slider:before {
   background: transparent;
 }
 
+.form__field_articles_input {
+  display: flex;
+}
+
 .modal {
   position: fixed;
   display: flex;

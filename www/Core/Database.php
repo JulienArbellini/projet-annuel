@@ -120,7 +120,7 @@ class Database
 	public function getContent(){
 		if(!empty($_GET['idArticle'])){
 			$content = $_GET['idArticle'];
-			$query = $this->pdo->prepare("SELECT content, title FROM tr_article WHERE idArticle =".$content);
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE idArticle =".$content);
 			$query->execute();
 			$data = $query->fetchall();
 			return $data;

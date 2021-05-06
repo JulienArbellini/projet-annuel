@@ -34,6 +34,7 @@ if( file_exists("./Controllers/".$c.".php")){
 	if(class_exists($cWithNamespace)){
 		//$c = App\Security // User
 		$cObject = new $cWithNamespace();
+		// var_dump($cWithNamespace);
 
 		if(method_exists($cObject, $a)){
 			//$a = loginAction // defaultAction
@@ -50,3 +51,6 @@ if( file_exists("./Controllers/".$c.".php")){
 	die("Le fichier ".$c." n'existe pas");
 }
 
+//Vérifier que la route l'article/de la page existe, aller chercher dans la base de données le slug renseigné si le slug n'existe pas dans route va chercher dans la bdd
+//et faire en sort qu'il affiche la page avec ce slug
+//execution d'une requête SQL pour aller récupérer le slug

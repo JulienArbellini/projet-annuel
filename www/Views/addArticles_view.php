@@ -20,19 +20,3 @@
 
 
 <?php App\Core\AddArticleForm::showFormAddArticle($form); ?>
-
-
-
-<!-- <form method="post">
-		<textarea id="mytextarea" name="mytextarea">
-		Hello World ! 
-		</textarea>
-</form> -->
-
-
-<!-- <select name="pages" id="select-page">
-    <option value="">--Chosissez une page--</option>
-    <option value="page_1">Page 1</option>
-    <option value="page_2">Page 2</option>
-    <option value="page_3">Page 3</option>
-</select> -->
