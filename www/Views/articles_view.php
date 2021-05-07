@@ -29,11 +29,11 @@
                             
                             $html = "
                             <tr>
-                                <td><a href=\"/display-articles?idArticle=".($value["idArticle"])."\" class=\"link\">".($value["title"])."</a></td><td>".($value["firstname"])."</td>
+                                <td><a href=\"/display-articles?idArticle=".($value["id"])."\" class=\"link\">".($value["title"])."</a></td><td>".($value["firstname"])."</td>
                                 <td>".($value["createdAt"])."</td>
                                 <td id=\"content\" style=\"display: none;\">".($value["content"])."</td>
-                                <td><a href=\"/articles-edit?&idArticle=".($value['idArticle'])."&module=base&action=editArticle\" id=\"pen\" onclick='document.getElementById('content').style.color='red';' class=\"edit\"><img src=\"../../framework/img/pen-edit.svg\" alt=\"pen-edit\" width=\"15\" height=\"15\"></a></td>
-                                <td><a href=\"#modal".($value["idArticle"])."\" class=\"js-modal supp\">&#x2717;</a></td>
+                                <td><a href=\"/articles-edit?&idArticle=".($value['id'])."&module=base&action=editArticle\" id=\"pen\" onclick='document.getElementById('content').style.color='red';' class=\"edit\"><img src=\"../../framework/img/pen-edit.svg\" alt=\"pen-edit\" width=\"15\" height=\"15\"></a></td>
+                                <td><a href=\"#modal".($value["id"])."\" class=\"js-modal supp\">&#x2717;</a></td>
                             </tr>
                             ";
 
@@ -47,7 +47,7 @@
             
             <?php 
                 foreach ($donnees as $key => $value){
-                    $modal = "  <aside id=\"modal".($value["idArticle"])."\" class=\"modal\" aria-hidden=\"true\" role=\"dialog\" aria-labelledby=\"titlemodal\" style=\"display:none;\">
+                    $modal = "  <aside id=\"modal".($value["id"])."\" class=\"modal\" aria-hidden=\"true\" role=\"dialog\" aria-labelledby=\"titlemodal\" style=\"display:none;\">
                                     <div class=\"modal-wrapper js-modal-stop\">
                                         <div class=\"container1\">
                                             <h1 id=\"titlemodal\">Voulez-vous vraiment supprimer cet article ?</h1>
@@ -57,7 +57,7 @@
                                             <div class=\"container2\">
                                                 <button class=\"js-modal-close\">Annuler</button>
                                               
-                                                <button class=\"\" onclick=\"window.location.href='/articles?id=".($value['idArticle'])."&module=base&action=articles'\">Supprimer</button>
+                                                <button class=\"\" onclick=\"window.location.href='/articles?id=".($value['id'])."&module=base&action=articles'\">Supprimer</button>
                                               
                                             </div>
                                         </div>

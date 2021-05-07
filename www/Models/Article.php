@@ -3,11 +3,13 @@ namespace App\Models;
 
 use App\Core\Database;
 
+date_default_timezone_set('Europe/Paris');
+
 class Article extends Database
 {
     //VARIABLES
 
-    private $idArticle;
+    private $id;
     protected $title;
     protected $content;
     protected $createdAt;
@@ -18,12 +20,12 @@ class Article extends Database
 
     //SETTERS
 
-    public function setId($idArticle){
-		$this->idArticle = $idArticle;
+    public function setId($id){
+		$this->id = $id;
 	}
 
     public function getId(){
-		return $this->idArticle;
+		return $this->id;
 	}
 
     public function setTitle($title){
@@ -34,6 +36,9 @@ class Article extends Database
         $this->content = $content;
     }
 
+    public function setCreatedAt($createdAt){
+		$this->createdAt = $createdAt;
+	}
 
    
 
@@ -66,16 +71,6 @@ class Article extends Database
                                         "error"=>"Le contenu de votre article ne peut être vide "
                     ]
                     ]
-            //    "select"=>[
-            //         "page"=>[
-            //                             "class"=>"combo-box"
-            //         ]
-            //     ],
-            //    "option"=>[
-            //        "page"=>[
-            //                             "value"=>"page"
-            //        ]
-              // ]
         ];
     }
 }

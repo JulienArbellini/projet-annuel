@@ -13,7 +13,7 @@ class User extends Database
 	protected $email;
 	protected $password;
 	protected $pseudo;
-	protected $createdAt;
+	protected $createdAtUser;
 	protected $Role_idRole = 1;
 	protected $confirmKey;
 	//protected $country;
@@ -49,8 +49,8 @@ class User extends Database
 	public function setPseudo($pseudo){
 		$this->pseudo = $pseudo;
 	}
-	public function setCreatedAt($createdAt){
-		$this->createdAt = $createdAt;
+	public function setCreatedAtUser($createdAtUser){
+		$this->createdAtUser = $createdAtUser;
 	}
 	// public function setCountry($country){
 	// 	$this->country = $country;

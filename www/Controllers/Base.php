@@ -66,7 +66,8 @@ class Base{
 			$article->setId($_GET['idArticle']);
 			$article->setTitle($_POST["titre_article"]);
 			$article->setContent($_POST["contenu_article"]);
-			$article->saveArticle();
+			$article->setCreatedAt(date("Y-m-d H:i:s"));
+			$article->save();
 	   }
 	}
 	public function registerAction(){

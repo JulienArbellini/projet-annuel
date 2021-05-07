@@ -36,7 +36,7 @@ class Security{
 				$user->setLastname(htmlspecialchars($_POST["lastname"]));
 				$user->setEmail(htmlspecialchars($_POST["email"]));
 				$user->setPwd(password_hash(htmlspecialchars($_POST["pwd"]), PASSWORD_BCRYPT));
-				$user->setCreatedAt(date("Y-m-d H:i:s"));
+				$user->setCreatedAtUser(date("Y-m-d H:i:s"));
 				$confirmKey = mt_rand(1000000, 9000000);
 				$user->setConfirmKey($confirmKey);
 
@@ -83,7 +83,8 @@ class Security{
 				
 				$article->setTitle($_POST["titre"]);
 				$article->setContent($_POST["contenu"]);
-				$article->saveArticle();
+				$article->setCreatedAt(date("Y-m-d H:i:s"));
+				$article->save();
 
 			}else{
 				$view->assign("formErrors", $errors);

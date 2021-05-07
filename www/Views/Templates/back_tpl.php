@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
         <!-- <script type="text/javascript" src="framework/src/js/modal.js"></script> -->
 	</head>
-	<body>
+	<body style="display:flex; flex-direction:column;">
 		
 		<header>
 			<div class="row col-m-12">
