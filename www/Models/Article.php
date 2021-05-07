@@ -7,7 +7,7 @@ class Article extends Database
 {
     //VARIABLES
 
-    private $idArticle;
+    private $id;
     protected $title;
     protected $content;
     protected $slug;
@@ -19,12 +19,12 @@ class Article extends Database
 
     //SETTERS
 
-    public function setId($idArticle){
-		$this->idArticle = $idArticle;
+    public function setId($id){
+		$this->id = $id;
 	}
 
     public function getId(){
-		return $this->idArticle;
+		return $this->id;
 	}
 
     public function setTitle($title){

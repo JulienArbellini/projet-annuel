@@ -67,7 +67,7 @@ class Base{
 			$article->setTitle($_POST["titre_article"]);
 			$article->setSlug($_POST["slug_article"]);
 			$article->setContent($_POST["contenu_article"]);
-			$article->saveArticle();
+			$article->save();
 	   }
 	}
 

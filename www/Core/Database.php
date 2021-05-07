@@ -91,10 +91,10 @@ class Database
 		 $columns_article = array_keys($dataArticle);
 
 		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
-		$query = $this->pdo->prepare("SELECT a.".implode(",",$columns_article).", u.firstname, a.idArticle
+		$query = $this->pdo->prepare("SELECT a.".implode(",",$columns_article).", u.firstname, a.id
 									  FROM ".$this->table." AS a 
-									  INNER JOIN tr_user_has_Article AS l ON a.idArticle = l.Article_idArticle
-									  INNER JOIN tr_user AS u ON u.id = l.User_id");
+									  INNER JOIN tr_user_has_Article AS l ON a.id = l.Article_idArticle
+									  INNER JOIN tr_user AS u ON u.id = l.User_idUser");
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
@@ -108,7 +108,7 @@ class Database
 		if(!empty($_GET['id'])){
 			$Del_Id = $_GET['id'];
 			$query1 = $this->pdo->prepare("DELETE FROM tr_user_has_Article WHERE Article_idArticle=".$Del_Id);
-			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE idArticle=".$Del_Id);
+			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id=".$Del_Id);
 			// var_dump($query1);
 			// var_dump($query2);
 			//var_dump($_GET['id']);
@@ -120,7 +120,7 @@ class Database
 	public function getContent(){
 		if(!empty($_GET['idArticle'])){
 			$content = $_GET['idArticle'];
-			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE idArticle =".$content);
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE id =".$content);
 			$query->execute();
 			$data = $query->fetchall();
 			return $data;
@@ -167,7 +167,7 @@ class Database
         	}
 			//var_dump($columnsToUpdate);
 
-        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE idArticle=".$this->getId());
+        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		}
 		//var_dump($query);
 		$query->execute($data);
