@@ -78,4 +78,12 @@ class Base{
 		$data = $article->getContent();
 		$view->assign("data", $data);
 	}
+
+	public function routesPagesArticlesAction(){
+		// $view = new View("test", "back");
+		$article = new Article();
+
+		$dataSlug = $article->routingPagesArticles();
+		// $view->assign("dataSlug", $dataSlug);
+	}
 }

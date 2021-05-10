@@ -1,6 +1,8 @@
 <?php
 
+
 namespace App\Core;
+
 
 
 class Database
@@ -101,8 +103,7 @@ class Database
 	}
 
 	public function deleteArticle(){
-		//Requête delete avec un where qui récupère l'id de l'article avec $_GET["idArticle"]
-		//$idArticle = $_GET['idArticle'];
+
 
 
 		if(!empty($_GET['id'])){
@@ -119,59 +120,30 @@ class Database
 
 	public function getContent(){
 		if(!empty($_GET['idArticle'])){
-			$content = $_GET['idArticle'];
-			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE id =".$content);
+			$id = $_GET['idArticle'];
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE id =".$id);
 			$query->execute();
 			$data = $query->fetchall();
 			return $data;
 		}
 	}
 
-	public function saveArticle(){
-
-
-
-		$data = array_diff_key (
-					
-					get_object_vars($this), 
-
-					get_class_vars(get_class())
-
-				);
-	
-
-
-		if(is_null($this->getId())){
-		
-			echo $this->getId();
-
-			//INSERT 
-
-			$columns = array_keys($data); 
-			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
-											".implode(",", $columns)."
-											) VALUES (
-											:".implode(",:", $columns)."
-											)");
-			
-			
-
-		}else{
-			
-			//UPDATE 
-			$columns = array_keys($data);
-			foreach ($columns as $column) {
-
-				$columnsToUpdate[] = $column."=:".$column;
-				//var_dump($columnsTopdate);
-        	}
-			//var_dump($columnsToUpdate);
-
-        $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
-		}
-		//var_dump($query);
-		$query->execute($data);
-
+	public function routingPagesArticles(){
+		// echo $_SESSION["uri"];
+		$slug = $_SESSION["uri"];
+		$queryArticles = $this->pdo->prepare("SELECT content FROM tr_article WHERE slug =\"$slug\"");
+		// echo $queryArticles;
+		$queryArticles->execute();
+		$dataSlug = $queryArticles->fetchall();
+		// var_dump($dataSlug);
+		$html = "<html>
+					<body\">
+						".$dataSlug[0]["content"]."
+					</body>
+				</html>";
+		echo $html;
+		// echo $dataSlug[0]["content"];
+		// return $dataSlug;
 	}
 
 }

@@ -63,7 +63,7 @@ class Security{
 				$article->setTitle($_POST["titre"]);
 				$article->setSlug($_POST["slug"]);
 				$article->setContent($_POST["contenu"]);
-				$article->saveArticle();
+				$article->save();
 
 			}else{
 				$view->assign("formErrors", $errors);
