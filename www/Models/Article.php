@@ -69,7 +69,7 @@ class Article extends Database
                     "slug"=>[
                                         "type"=>"text",
                                         "class"=>"form_input form__field",
-                                        "placeholder"=>"Slug",
+                                        "placeholder"=>"/Slug",
                                         "required"=>true,
                                         "lengthMin"=>"2",
                                         "error"=>"Le slug doit avoir au moins deux caractères"
