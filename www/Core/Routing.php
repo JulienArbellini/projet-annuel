@@ -7,7 +7,7 @@ class Routing{
 
 	public $routesPath = "routes.yml";
 	public $controller="Base";
-	public $action="default";
+	public $action="routesPagesArticlesAction";
 	public $routes = [];
 	public $slugs = [];
 
@@ -62,7 +62,7 @@ class Routing{
 			return $this->slugs[$controller][$action];
 
 
-		die("Aucun route ne correspond à ".$controller." -> ".$action );
+		die("Aucune route ne correspond à ".$controller." -> ".$action );
 	}
 
 

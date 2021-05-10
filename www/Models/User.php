@@ -7,7 +7,7 @@ date_default_timezone_set('Europe/Paris');
 
 class User extends Database
 {
-	private $idUser = null;
+	private $id=null;
 	protected $lastname;
 	protected $firstname;
 	protected $email;
@@ -24,14 +24,14 @@ class User extends Database
 		parent::__construct();
 	}
 
-	public function setId($idUser){
+	public function setId($id){
 		//Il va chercher en BDD toutes les informations de l'utilisateur
 		//et il va alimenter l'objet avec toutes ces données
-		$this->idUser = $idUser;
+		$this->id = $id;
 	}
 
 	public function getId(){
-		return $this->idUser;
+		return $this->id;
 	}
 
 	public function setLastname($lastname){

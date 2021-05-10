@@ -12,6 +12,7 @@ class Article extends Database
     private $id;
     protected $title;
     protected $content;
+    protected $slug;
     protected $createdAt;
 
     public function __construct(){
@@ -39,6 +40,10 @@ class Article extends Database
     public function setCreatedAt($createdAt){
 		$this->createdAt = $createdAt;
 	}
+    public function setSlug($slug){
+        $this->slug = $slug;
+    }
+
 
    
 
@@ -53,13 +58,21 @@ class Article extends Database
                 ], 
                 "input"=>[
                     "titre"=>[
-                                        "type"=>"input",
+                                        "type"=>"text",
                                         "class"=>"form_input form__field",
                                         "placeholder"=>"Titre",
                                         "required"=>true, 
                                         "lengthMin"=>"2",
                                         "error"=>"Le titre doit avoir au moins deux caractères"
 
+                    ],
+                    "slug"=>[
+                                        "type"=>"text",
+                                        "class"=>"form_input form__field",
+                                        "placeholder"=>"Slug",
+                                        "required"=>true,
+                                        "lengthMin"=>"2",
+                                        "error"=>"Le slug doit avoir au moins deux caractères"
                     ]
                 ],
                 "textarea"=>[

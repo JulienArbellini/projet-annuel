@@ -46,9 +46,11 @@ class AddArticleForm{
 
         $html = "<div class=\"row col-m-10 col-m-up-3 container-article\">";
         $html .= "<form class='".($form["config"]["class"]??"")."' method='".( $form["config"]["method"] ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
+        $html .= "<div class=\"col-m-7 col-m-padding-1 col-m-center form__field_articles_input\">";
+
         foreach ($form["input"] as $name => $dataInput) {
 
-            $html .= "<div class=\"col-m-12 col-m-padding-1 col-m-center\">";
+            $html .= "<div class=\"col-m-12\">";
             $html .= "<input
                         id='".$name."'
                         class='".($dataInput["class"]??"")."'
@@ -58,8 +60,9 @@ class AddArticleForm{
                         ".((!empty($dataInput["required"]))?"required='required'":"")."
                         >";
             $html .= "</div>";
-
+            
         }
+        $html .= "</div>";
 
         foreach ($form["textarea"] as $name => $dataInput) {
             $html .= "<div class=\"col-m-12 col-m-up-5 col-m-center\">";

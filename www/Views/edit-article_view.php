@@ -10,8 +10,13 @@
     </div>
     <div class="row col-m-10 col-m-up-3">
         <form method="post" class="update_form">
-            <div class="col-m-12 col-m-padding-1 col-m-center">
-                <input type="text" class="form__field" name="titre_article" value="<?php echo $data[0]["title"]?>">
+            <div class="col-m-7 col-m-padding-1 col-m-center form__field_articles_input">
+                <div class="col-m-12 col-m-center form__field_articles_input">
+                    <input type="text" class="form__field" name="titre_article" value="<?php echo $data[0]["title"]?>">
+                </div>   
+                <div class="col-m-12 col-m-center form__field_articles_input">   
+                    <input type="text" class="form__field" name="slug_article" value="<?php echo $data[0]["slug"]?>">
+                </div>
             </div>
 
             <div class="col-m-12 col-m-up-5 col-m-center">

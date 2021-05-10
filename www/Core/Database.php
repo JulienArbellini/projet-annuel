@@ -1,8 +1,10 @@
 <?php
 
+
 namespace App\Core;
 
 $mailexists = 0;
+
 
 class Database
 {
@@ -86,8 +88,7 @@ class Database
 	}
 
 	public function deleteArticle(){
-		//Requête delete avec un where qui récupère l'id de l'article avec $_GET["idArticle"]
-		//$idArticle = $_GET['idArticle'];
+
 
 
 		if(!empty($_GET['id'])){
@@ -104,8 +105,8 @@ class Database
 
 	public function getContent(){
 		if(!empty($_GET['idArticle'])){
-			$content = $_GET['idArticle'];
-			$query = $this->pdo->prepare("SELECT content, title FROM tr_article WHERE id =".$content);
+			$id = $_GET['idArticle'];
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE id =".$id);
 			$query->execute();
 			$data = $query->fetchall();
 			return $data;
@@ -135,6 +136,24 @@ class Database
 		}else{
 			echo "Aucun utilisateur trouvé";
 		}
+	}
+
+	public function routingPagesArticles(){
+		// echo $_SESSION["uri"];
+		$slug = $_SESSION["uri"];
+		$queryArticles = $this->pdo->prepare("SELECT content FROM tr_article WHERE slug =\"$slug\"");
+		// echo $queryArticles;
+		$queryArticles->execute();
+		$dataSlug = $queryArticles->fetchall();
+		// var_dump($dataSlug);
+		$html = "<html>
+					<body\">
+						".$dataSlug[0]["content"]."
+					</body>
+				</html>";
+		echo $html;
+		// echo $dataSlug[0]["content"];
+		// return $dataSlug;
 	}
 
 	public function verifMailUniq(){

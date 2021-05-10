@@ -29,7 +29,7 @@
                             
                             $html = "
                             <tr>
-                                <td><a href=\"/display-articles?idArticle=".($value["id"])."\" class=\"link\">".($value["title"])."</a></td><td>".($value["firstname"])."</td>
+                                <td><a href=\"".($value["slug"])."\" class=\"link\">".($value["title"])."</a></td><td>".($value["firstname"])."</td>
                                 <td>".($value["createdAt"])."</td>
                                 <td id=\"content\" style=\"display: none;\">".($value["content"])."</td>
                                 <td><a href=\"/articles-edit?&idArticle=".($value['id'])."&module=base&action=editArticle\" id=\"pen\" onclick='document.getElementById('content').style.color='red';' class=\"edit\"><img src=\"../../framework/img/pen-edit.svg\" alt=\"pen-edit\" width=\"15\" height=\"15\"></a></td>
@@ -38,10 +38,11 @@
                             ";
 
                             echo $html;
+                            
 
                         }
                     ?>
-
+                    <!-- /display-articles?idArticle=".($value["id"])." -->
                 </tbody>
             </table>
             
