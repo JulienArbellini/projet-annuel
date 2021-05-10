@@ -21,7 +21,7 @@
                                 <td>".($value['firstname'])."</td>
                                 <td>".($value['email'])."</td>
                                 <td>".($value['status'])."</td>
-                                <td>".($value['createdAt'])."</td>
+                                <td>".($value['createdAtUser'])."</td>
                                 <td><a href=\"#modal-edit".($value['id'])."\" value=\"".($value['id'])."\" class=\"js-modal update\">&#9998</a></th>
                                 <td><a href=\"#modal-delete".($value['id'])."\" class=\"js-modal supp\">&#x2717</a></td>
                             </tr> ";
@@ -46,7 +46,7 @@
                     <p><strong>Rôle : </strong><?= $value['status']; ?><p>
                     <div class="container2">
                         <button class="js-modal-close">Annuler</button>
-                        <button class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?id=<?= $value['id']; ?>&module=base&action=users'">Supprimer</button>
+                        <button class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?deleteId=<?= $value['id']; ?>&module=base&action=users'">Supprimer</button>
                     </div>
                 </div>
             </div>
@@ -75,11 +75,11 @@
                                     <?php } ?>
                             </select>
                         </div>
-                        <div class="container2">
-                            <button class="js-modal-close">Annuler</button>
-                            <button type="submit" class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?updateId=<?= $value['id']; ?>'">Enregistrer</button>
-                        </div>
                     </form>
+                    <div class="container2">
+                        <button class="js-modal-close">Annuler</button>
+                        <button type="submit" class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?updateId=<?= $value['id']; ?>action=users'">Enregistrer</button>
+                    </div>
                 </div>
             </div>
         </aside>      

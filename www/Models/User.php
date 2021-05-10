@@ -8,13 +8,13 @@ use App\Core\Database;
 
 class User extends Database
 {
-    private $id;
+    private $id=null;
     protected $lastname;
     protected $firstname;
     protected $email;
     protected $password;
     protected $pseudo;
-    protected $role_idRole;
+    protected $Role_idRole = 1;
     protected $confirmkey;
     protected $confirmation;
     //protected $country;
@@ -55,9 +55,12 @@ class User extends Database
     public function setStatus($status){
         $this->status = $status;
     }*/
-    public function setRole($role_idRole){
-        $this->role_idRole = $role_idRole;
+    public function setRole($Role_idRole){
+        $this->Role_idRole = $Role_idRole;
     }
+    public function setConfirmKey($confirmKey){
+		$this->confirmKey = $confirmKey;
+	}
     /*public function setIsDeleted($isDeleted){
         $this->isDeleted = $isDeleted;
     }*/

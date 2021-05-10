@@ -68,6 +68,7 @@ class Database
 
 		
 		$query->execute($data);
+		var_dump($query);
 		// var_dump($query);
 
 	}
@@ -94,8 +95,8 @@ class Database
 	}
 
 	public function userDelete(){
-		if(!empty($_GET['id'])){
-			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id = ".$_GET['id']);
+		if(!empty($_GET['deleteId'])){
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id = ".$_GET['deleteId']);
 			$query->execute();
 		}
     }
@@ -106,5 +107,14 @@ class Database
 		$_SESSION['tab'] = $query->fetchall();
 		return $_SESSION['tab'];
 		// var_dump($test);
+	}
+
+	public function updateUser(){
+		if(!empty($_GET['updateId'])){
+		// UPDATE table SET nom_colonne_1 = 'nouvelle valeur' WHERE condition
+			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = 'Rajendran', firstname = 'Waruny', Role_idRole = 1 WHERE id = " .$_GET['updateId']);
+			// var_dump($query);
+			$query->execute();
+		}
 	}
 }
