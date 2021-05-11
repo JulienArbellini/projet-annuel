@@ -6,7 +6,6 @@
 		<meta name="description" content="ceci est la page de front">
 		<link rel="stylesheet" href="framework/dist/main.css">
 		<script src="framework/src/js/jquery-3.5.1.min.js"></script>
-		<!-- <script src="framework/src/js/Trumbowyg/Ajax.js"></script> -->
         <link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/ui/trumbowyg.min.css">
         
         <script src="framework/src/js/Trumbowyg-master/dist/trumbowyg.min.js"></script>
@@ -32,7 +31,7 @@
 							<img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
 						</div>
 					</div>
-				</div>
+			</div>
 		</header>
 
 		<main>

@@ -61,8 +61,10 @@ class Security{
 			if(empty($errors)){
 				
 				$article->setTitle($_POST["titre"]);
+				$article->setSlug($_POST["slug"]);
 				$article->setContent($_POST["contenu"]);
-				$article->saveArticle();
+				$article->setCreatedAt(date("Y-m-d H:i:s"));
+				$article->save();
 
 			}else{
 				$view->assign("formErrors", $errors);

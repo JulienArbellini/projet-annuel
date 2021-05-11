@@ -9,11 +9,12 @@
     <div class="col-m-3 col-m-padding-1 col-m-center col-m-pull-3">
         <button class="button-add-page" id="button-add-page" onclick="displayForm()" style="">Ajouter</button>
             <form method="POST" action="">
-                <div class="button-form-page-position">
-                    <label for="add-page" id="label" style="display: none;">Nouvelle page :</label>
-                    <input type="text" id="add-page"  name="add-page" placeholder="titre de votre page" style="display: none;">
+                <div class="button-form-page-position col-m-center">
+                    <label for="add-page-title" id="label" style="display: none;">Nouvelle page :</label>
+                    <input type="text" id="add-page-title"  name="add-page-title" placeholder="Titre" style="display: none;">
+                    <input type="text" id="add-page-slug"  name="add-page-slug" placeholder="/slug" style="display: none;">
 
-                <!-- <div class="button-form-page-position"> -->
+                    <!-- <div class="button-form-page-position"> -->
                         <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
                         <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="window.location.href='/pages'">Enregistrer</button>
                 </div>
@@ -37,9 +38,9 @@
                         $html = "
                         <tr>
                             <td>".($value["title"])."</br>
-                                <a href=\"/apparence?idPage=".($value["idPage"])."&module=base&action=apparence\" class=\"link-tab-page\">Modifier</a>
-                                <a href=\"/display-pages?idPage=".($value["idPage"])."&module=base&action=displayPage\" class=\"link-tab-page\"> | Afficher |</a>
-                                <a href=\"#modal".($value["idPage"])."\" class=\"js-modal link-tab-page\">Supprimer</a>
+                                <a href=\"/apparence?idPage=".($value["id"])."&module=base&action=apparence\" class=\"link-tab-page\">Modifier</a>
+                                <a href=\"".($value["slug"])."\" class=\"link-tab-page\"> | Afficher |</a>
+                                <a href=\"#modal".($value["id"])."\" class=\"js-modal link-tab-page\">Supprimer</a>
                             </td>
                             <td>".($value["firstname"])."</td>
                             <td>".($value["createdAt"])."</td>
@@ -53,7 +54,7 @@
 
         <?php 
                 foreach ($donnees as $key => $value){
-                    $modal = "  <aside id=\"modal".($value["idPage"])."\" class=\"modal\" aria-hidden=\"true\" role=\"dialog\" aria-labelledby=\"titlemodal\" style=\"display:none;\">
+                    $modal = "  <aside id=\"modal".($value["id"])."\" class=\"modal\" aria-hidden=\"true\" role=\"dialog\" aria-labelledby=\"titlemodal\" style=\"display:none;\">
                                     <div class=\"modal-wrapper js-modal-stop\">
                                         <div class=\"container1\">
                                             <h1 id=\"titlemodal\">Voulez-vous vraiment supprimer cette page ?</h1>
@@ -63,7 +64,7 @@
                                             <div class=\"container2\">
                                                 <button class=\"js-modal-close\">Annuler</button>
                                               
-                                                <button class=\"\" onclick=\"window.location.href='/pages?id=".($value['idPage'])."'\">Supprimer</button>
+                                                <button class=\"\" onclick=\"window.location.href='/pages?id=".($value['id'])."'\">Supprimer</button>
                                               
                                             </div>
                                         </div>

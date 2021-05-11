@@ -2005,7 +2005,7 @@ img.image-grayscale {
 .button-form-page-position {
   display: flex;
   justify-content: space-evenly;
-  width: 500px;
+  width: 750px;
 }
 
 .button-form-page-position > label {
@@ -2468,6 +2468,10 @@ input:checked + .slider:before {
   color: #328DAA;
   padding: 7px 0;
   background: transparent;
+}
+
+.form__field_articles_input {
+  display: flex;
 }
 
 .modal {

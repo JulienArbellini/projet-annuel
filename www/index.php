@@ -13,9 +13,9 @@ new ConstantManager();
 
 $uriExploded = explode("?", $_SERVER["REQUEST_URI"]);
 //  /ajout-d-un-utilisateur
-$uri = $uriExploded[0];
+$_SESSION["uri"] = $uriExploded[0];
 
-$route = new Routing($uri);
+$route = new Routing($_SESSION["uri"]);
 $c = $route->getController();
 $a = $route->getAction();
 
@@ -39,7 +39,7 @@ if( file_exists("./Controllers/".$c.".php")){
 			//$a = loginAction // defaultAction
 			$cObject->$a();
 		}else{
-			die("L'action ".$a." n'existe pas");
+			$cObject->$a();
 		}
 
 	}else{

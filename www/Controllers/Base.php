@@ -66,8 +66,10 @@ class Base{
 			//echo "coucou";
 			$article->setId($_GET['idArticle']);
 			$article->setTitle($_POST["titre_article"]);
+			$article->setSlug($_POST["slug_article"]);
 			$article->setContent($_POST["contenu_article"]);
-			$article->saveArticle();
+			$article->setCreatedAt(date("Y-m-d H:i:s"));
+			$article->save();
 	   }
 	}
 
@@ -90,8 +92,10 @@ class Base{
 
 		if(!empty($_POST)){
 			//var_dump($_POST);
-			$page->setTitle($_POST["add-page"]);
-			$page->savePage();
+			$page->setTitle($_POST["add-page-title"]);
+			$page->setSlug($_POST["add-page-slug"]);
+			$page->setCreatedAt(date("Y-m-d H:i:s"));
+			$page->save();
 		}
 	}
 
@@ -111,11 +115,20 @@ class Base{
 			//echo "coucou";
 			$page->setId($_GET['idPage']);
 			$page->setTitle($_POST["titre_page"]);
+			$page->setSlug("/accueil");
 			$page->setContent($_POST["affichage-page"]);
-			$page->savePage();
+			$page->save();
 	   }
 
 	   $data = $page->getContentPage();
 	   $view->assign("data", $data);
 	}
+
+	public function routesPagesArticlesAction(){
+		$article = new Article();
+		$article->routingPagesArticles();
+	}
+
+
+
 }

@@ -7,9 +7,10 @@ class Article extends Database
 {
     //VARIABLES
 
-    private $idArticle;
+    private $id;
     protected $title;
     protected $content;
+    protected $slug = null;
     protected $createdAt;
 
     public function __construct(){
@@ -18,12 +19,12 @@ class Article extends Database
 
     //SETTERS
 
-    public function setId($idArticle){
-		$this->idArticle = $idArticle;
+    public function setId($id){
+		$this->id = $id;
 	}
 
     public function getId(){
-		return $this->idArticle;
+		return $this->id;
 	}
 
     public function setTitle($title){
@@ -32,6 +33,14 @@ class Article extends Database
 
     public function setContent($content){
         $this->content = $content;
+    }
+
+    public function setCreatedAt($createdAt){
+        $this->createdAt = $createdAt;
+    }
+
+    public function setSlug($slug){
+        $this->slug = $slug;
     }
 
 
@@ -55,6 +64,14 @@ class Article extends Database
                                         "lengthMin"=>"2",
                                         "error"=>"Le titre doit avoir au moins deux caractères"
 
+                    ],
+                    "slug"=>[
+                                        "type"=>"text",
+                                        "class"=>"form_input form__field",
+                                        "placeholder"=>"/Slug",
+                                        "required"=>true,
+                                        "lenghtMin"=>"2",
+                                        "error"=>"Le slug doit avoir au moins deux caractères"
                     ]
                 ],
                 "textarea"=>[
@@ -65,17 +82,8 @@ class Article extends Database
                                         "placeholder"=>"Tapez votre texte ici",
                                         "error"=>"Le contenu de votre article ne peut être vide "
                     ]
-                    ]
-            //    "select"=>[
-            //         "page"=>[
-            //                             "class"=>"combo-box"
-            //         ]
-            //     ],
-            //    "option"=>[
-            //        "page"=>[
-            //                             "value"=>"page"
-            //        ]
-              // ]
+                ]
+
         ];
     }
 }

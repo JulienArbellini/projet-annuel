@@ -7,7 +7,7 @@ class Routing{
 
 	public $routesPath = "routes.yml";
 	public $controller="Base";
-	public $action="default";
+	public $action="routesPagesArticlesAction";
 	public $routes = [];
 	public $slugs = [];
 

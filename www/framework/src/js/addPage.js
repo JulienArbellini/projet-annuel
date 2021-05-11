@@ -1,11 +1,13 @@
-let input = document.getElementById('add-page');
+let inputTitle = document.getElementById('add-page-title');
+let inputSlug = document.getElementById('add-page-slug');
 let label = document.getElementById('label');
 let button = document.getElementById('submit-button');
 let cancelButton = document.getElementById('cancel-button');
 let addButton = document.getElementById('button-add-page');
 
 function displayForm(){
-    input.removeAttribute('style');
+    inputTitle.removeAttribute('style');
+    inputSlug.removeAttribute('style');
     label.removeAttribute('style');
     button.removeAttribute('style');
     cancelButton.removeAttribute('style');
@@ -14,7 +16,8 @@ function displayForm(){
 }
 
 function cancel(){
-    input.setAttribute('style', 'display: none;');
+    inputTitle.setAttribute('style', 'display: none;');
+    inputSlug.setAttribute('style', 'display: none;');
     label.setAttribute('style', 'display: none;');
     button.setAttribute('style', 'display: none;');
     cancelButton.setAttribute('style', 'display: none;');
