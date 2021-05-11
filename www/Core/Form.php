@@ -103,58 +103,58 @@ class Form
 	}
 
 
-	public static function showUpdateForm($updateForm, $donnees){
+	// public static function showUpdateForm($updateForm, $donnees){
 
-		$html = "<form class='".($updateForm["config"]["class"]??"")."' method='".( self::cleanWord($updateForm["config"]["method"]) ?? "GET" )."' action='".( $updateForm["config"]["action"] ?? "" )."'>";
+	// 	$html = "<form class='".($updateForm["config"]["class"]??"")."' method='".( self::cleanWord($updateForm["config"]["method"]) ?? "GET" )."' action='".( $updateForm["config"]["action"] ?? "" )."'>";
 
-		foreach ($updateForm["input"] as $name => $dataInput) {
+	// 	foreach ($updateForm["input"] as $name => $dataInput) {
 
-			$html .="<div class='details-part'>";
+	// 		$html .="<div class='details-part'>";
 
-				$html .="<label for='".$name."'>".($dataInput["label"]??"")." :</label>";
+	// 			$html .="<label for='".$name."'>".($dataInput["label"]??"")." :</label>";
 
-				$html .= "<input 
-							id='".$name."'
-							class='".($dataInput["class"]??"")."' 
-							name='".$name."'
-							value='".($dataInput["value"]??"")."'
-							type='".($dataInput["type"] ?? "text")."'
-							placeholder='".($dataInput["placeholder"] ?? "")."'
-							".((!empty($dataInput["required"]))?"required='required'":"")."
-							>";
+	// 			$html .= "<input 
+	// 						id='".$name."'
+	// 						class='".($dataInput["class"]??"")."' 
+	// 						name='".$name."'
+	// 						value='".($dataInput["value"]??"")."'
+	// 						type='".($dataInput["type"] ?? "text")."'
+	// 						placeholder='".($dataInput["placeholder"] ?? "")."'
+	// 						".((!empty($dataInput["required"]))?"required='required'":"")."
+	// 						>";
 
-			$html .="</div>";
+	// 		$html .="</div>";
 
-		}
+	// 	}
 
-		foreach ($updateForm["select"] as $name => $dataSelect) {
+	// 	foreach ($updateForm["select"] as $name => $dataSelect) {
 
 			
 
-			$html .="<div class='details-part'>";
+	// 		$html .="<div class='details-part'>";
 
-			$html .="<label for='".$name."'>".($dataSelect["label"]??"")." :</label>";
+	// 		$html .="<label for='".$name."'>".($dataSelect["label"]??"")." :</label>";
 
-			$html .= "<select name='".$name."'>
-						<option value=''>Sélectionner...</option>";
-						foreach($donnees as $key => $value){
-							$html .="<option value='".($value['id'])."'>".($value['status'])."</option>";
-						}
+	// 		$html .= "<select name='".$name."'>
+	// 					<option value=''>Sélectionner...</option>";
+	// 					foreach($donnees as $key => $value){
+	// 						$html .="<option value='".($value['id'])."'>".($value['status'])."</option>";
+	// 					}
 					
-			$html .= "</select>";
+	// 		$html .= "</select>";
 					
-			$html .="</div>";
+	// 		$html .="</div>";
 	
-		}
+	// 	}
 
-		$html .= "<div class='container2'>";
-		$html .= "<button class='js-modal-close'>Annuler</button>";
-		$html .= "<button class='js-modal-stop' value='".( self::cleanWord($updateForm["config"]["Submit"]) ?? "Valider" )."'>Enregistrer</button>";
-		$html .= "</div>";
-		$html .= "</form>";
+	// 	$html .= "<div class='container2'>";
+	// 	$html .= "<button class='js-modal-close'>Annuler</button>";
+	// 	$html .= "<button class='js-modal-stop' value='".( self::cleanWord($updateForm["config"]["Submit"]) ?? "Valider" )."'>Enregistrer</button>";
+	// 	$html .= "</div>";
+	// 	$html .= "</form>";
 
-		echo $html;
-	}
+	// 	echo $html;
+	// }
 
 
 

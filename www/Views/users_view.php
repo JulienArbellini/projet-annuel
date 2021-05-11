@@ -57,29 +57,29 @@
             <div class="modal-wrapper js-modal-stop title-modal">
                 <div class="container1">
                     <h1 id="title-modal-edit">Modifier l'utilisateur</h1>
-                    <form class="form_update" method="POST" action="">
+                    <form class="form_update_user" method="POST" action="/utilisateurs?updateId=<?= $value['id']; ?>">
                         <div class="details-part">  
                             <label for="nom">Nom :</label>
-                            <input type="text" name="lastname" value="<?= $value['lastname']; ?>">
+                            <input type="text" id="nom" name="lastname" value="<?= $value['lastname']; ?>">
                         </div>
                         <div class="details-part">
                             <label for="prenom">Prenom :</label>
-                            <input type="text" name="firstname" value="<?= $value['firstname']; ?>">
+                            <input type="text" id="prenom" name="firstname" value="<?= $value['firstname']; ?>">
                         </div>
                         <div class="details-part">
-                            <label for="prenom">Rôle :</label>
-                            <select name="role">
-                                <option value="<?= $value['id'] ?>"><?php echo $value['status']; ?>
+                            <label for="rôle">Rôle :</label>
+                            <select id="rôle" name="role">
+                                <option value="<?= $value['Role_idRole'] ?>"><?php echo $value['status']; ?>
                                     <?php foreach($data as $key => $val){ ?>
                                         <option value="<?= $val['id']; ?>"><?= $val['status']; ?>
                                     <?php } ?>
                             </select>
                         </div>
+                        <div class="container2">
+                            <button class="js-modal-close">Annuler</button>
+                            <button type="submit" class="js-modal-stop" value="<?= $value['id']; ?>">Enregistrer</button>
+                        </div>
                     </form>
-                    <div class="container2">
-                        <button class="js-modal-close">Annuler</button>
-                        <button type="submit" class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?updateId=<?= $value['id']; ?>action=users'">Enregistrer</button>
-                    </div>
                 </div>
             </div>
         </aside>      

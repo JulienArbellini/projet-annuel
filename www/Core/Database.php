@@ -68,7 +68,6 @@ class Database
 
 		
 		$query->execute($data);
-		var_dump($query);
 		// var_dump($query);
 
 	}
@@ -111,10 +110,12 @@ class Database
 
 	public function updateUser(){
 		if(!empty($_GET['updateId'])){
+			// echo $_GET['updateId'];
 		// UPDATE table SET nom_colonne_1 = 'nouvelle valeur' WHERE condition
-			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = 'Rajendran', firstname = 'Waruny', Role_idRole = 1 WHERE id = " .$_GET['updateId']);
+			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = '" .$_POST["lastname"]. "', firstname = '" .$_POST["firstname"]. "', Role_idRole = '" .$_POST["role"]. "' WHERE id = " .$_GET['updateId']);
 			// var_dump($query);
 			$query->execute();
+			// echo $_POST["lastname"];
 		}
 	}
 }

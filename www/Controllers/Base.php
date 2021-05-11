@@ -93,13 +93,17 @@ class Base{
 		
 		// if(!empty($_POST)){
 		// 	$errors = Form::validator($_POST, $form);
-
-		if(!empty($_POST)){
-			$userSelect->setId($_GET['updateId']);
+			
+		if(!empty($_POST) && !empty($this->id)){
+			$userSelect->setId($_GET["updateId"]);
 			$userSelect->setLastname($_POST["lastname"]);
 			$userSelect->setFirstname($_POST["firstname"]);
 			$userSelect->setRole($_POST["role"]);
-			$userSelect->save();
+			// echo $_GET["updateId"];
+			// echo $_POST["lastname"];
+			// echo $_POST["firstname"];
+			// echo $_POST["role"];
+			$userSelect->updateUser();
 		}
 	}
 
