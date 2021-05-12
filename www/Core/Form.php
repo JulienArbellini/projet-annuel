@@ -35,6 +35,46 @@ class Form
 
 
 
+	public static function showForm($form){
+
+		$html = "<form class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
+		
+		foreach ($form["input"] as $name => $dataInput) {
+			if ($name === "checkbox")
+			{
+				$html .= "<div class='form-group'> <input 
+						id='".$name."'
+			 			class='".($dataInput["class"]??"")."' 
+						name='".$name."'
+						type='".($dataInput["type"] ?? "text")."'
+						placeholder='".($dataInput["placeholder"] ?? "")."'
+						".((!empty($dataInput["required"]))?"required='required'":"")."
+						>";
+				$html .="<label class='checkbox-label' for='".$name."'>".($dataInput["label"]??"")." </label> </div>";
+			} else {
+				$html .="<div class='form-group'> <label  class='control-label' for='".$name."'>".($dataInput["label"]??"")." </label>";
+				$html .= "<input
+						autocomplete='".($dataInput["autocomplete"]??"")."'
+						id='".$name."'
+			 			class='".($dataInput["class"]??"")."' 
+						name='".$name."'
+						type='".($dataInput["type"] ?? "text")."'
+						placeholder='".($dataInput["placeholder"] ?? "")."'
+						".((!empty($dataInput["required"]))?"required='required'":"")."
+						> </div>";
+			}	
+
+		}
+
+		$html .= "<div class = form-group> <button type='submit' class ='button' id='btn_register'";
+		$html .= ">S'inscrire</button> </div> </form>";
+
+		echo $html;
+	}
+
+
+
+
 
 
 	public static function showFormUser($form, $data){
