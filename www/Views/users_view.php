@@ -1,4 +1,4 @@
-<div class="row col-m-12 col-m-up-3">
+<div class="row col-m-12 col-m-up-3 col-m-padding-12">
     <div class="col-m-3 col-m-center">
         <h1>Utilisateurs</h1>
     </div>
