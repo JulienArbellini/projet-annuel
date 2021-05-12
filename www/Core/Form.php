@@ -37,7 +37,7 @@ class Form
 
 
 
-	public static function showForm($form, $data){
+	public static function showFormUser($form, $data){
 
 		$html = "<form class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
 

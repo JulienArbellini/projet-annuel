@@ -98,7 +98,7 @@
                 <?php endforeach;?>
             <?php endif;?>
 
-            <?php App\Core\Form::showForm($form, $data); ?>
+            <?php App\Core\Form::showFormUser($form, $data); ?>
         </div>
     </div>
 </aside>   
