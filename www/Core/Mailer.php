@@ -39,11 +39,11 @@ class Mailer{
         } catch (Exception $e){
                 echo "Le message n'a pas pu être envoyé. Mailer Error: {$mail->ErrorInfo}";
         }
+    }
 
 // require 'vendor/autoload.php';
 // echo !extension_loaded('openssl')?"Not available":"Available";
 
-class Mailer{
 
     public function sendMailUser(){
 

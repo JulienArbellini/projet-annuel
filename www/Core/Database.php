@@ -4,7 +4,7 @@
 namespace App\Core;
 
 $mailexists = 0;
-session_start();
+// session_start();
 
 
 class Database
@@ -63,7 +63,9 @@ class Database
         $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		}
 		$query->execute($data);
+		// echo $query;
 		$_SESSION['id'] = $this->pdo->lastInsertId();
+		
 	}
 
 	public function getArticle(){

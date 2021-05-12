@@ -16,7 +16,7 @@ class User extends Database
     protected $pseudo;
     protected $createdAtUser;
     protected $Role_idRole = 1;
-    protected $confirmkey;
+    protected $confirmKey;
 
     public function __construct(){
         parent::__construct();
@@ -31,29 +31,9 @@ class User extends Database
     public function getId(){
         return $this->id;
     }
-    public function setLastname($lastname){
-        $this->lastname = $lastname;
-    }
-    public function setFirstname($firstname){
-        $this->firstname = $firstname;
-    }
-    public function setEmail($email){
-        $this->email = $email;
-    }
-    public function setPassword($password){
-        $this->password = $password;
-    }
-    public function setPseudo($pseudo){
-        $this->pseudo = $pseudo;
-    }
     public function setRole($Role_idRole){
         $this->Role_idRole = $Role_idRole;
     }
-    public function setConfirmKey($confirmKey){
-		$this->confirmKey = $confirmKey;
-	}
-
-
 	public function setLastname($lastname){
 		$this->lastname = $lastname;
 	}
@@ -72,9 +52,9 @@ class User extends Database
 	public function setCreatedAtUser($createdAtUser){
 		$this->createdAtUser = $createdAtUser;
 	}
-	public function setRole($role){
-		$this->role = $role;
-	}
+	// public function setRole($role){
+	// 	$this->role = $role;
+	// }
 	public function setConfirmKey($confirmKey){
 		$this->confirmKey = $confirmKey;
 	}

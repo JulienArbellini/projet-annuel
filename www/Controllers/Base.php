@@ -98,14 +98,14 @@ class Base{
 		if(empty($_GET["updateId"])){
 
 			if(!empty($_POST)){
-				$errors = Form::validator($_POST, $form);
+				$errors = Form::validatorAddUserForm($_POST, $form);
 
 				if(empty($errors)){
 					$userSelect->setFirstname($_POST["firstname"]);
 					$userSelect->setLastname($_POST["lastname"]);
 					$userSelect->setEmail($_POST["email"]);
 					$userSelect->setPseudo($_POST["pseudo"]);
-					$userSelect->setPassword($_POST["password"]);
+					$userSelect->setPwd($_POST["password"]);
 					//password_hash($_POST["password"], PASSWORD_BCRYPT)
 					$userSelect->setRole($_POST["role"]);
 					$userSelect->save();

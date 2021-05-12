@@ -4,7 +4,7 @@ namespace App\Core;
 class Form
 {
 
-	public static function validator($data, $config){
+	public static function validatorAddUserForm($data, $config){
 		$nbrInput = count($config["input"]);
 		$nbrSelect = count($config["select"]);
 		$nbrTotal = $nbrInput + $nbrSelect;
@@ -39,6 +39,43 @@ class Form
 			$errors[] = "Tentative de Hack (Faille XSS)";
 		}
 
+		return $errors; //tableau des erreurs
+	}
+
+
+	public static function validator($data, $config){
+		$errors = [];
+
+		global $mailexists;
+		/*
+		echo "<pre>";
+		print_r($data); 
+		print_r($config);
+		echo "</pre>";
+		*/
+		// Vérifier si on a le bon nombre d'inputs
+
+		if(count($data) == count($config["input"])){
+			foreach ($config["input"] as $name => $configInput) {
+ 
+				if((!empty($configInput["lengthMin"])
+					&& is_numeric($configInput["lengthMin"]) 
+					&& strlen($data[$name])<$configInput["lengthMin"] )
+					|| (!empty($configInput["lengthMax"])
+					&& is_numeric($configInput["lengthMax"])
+					&& strlen($data[$name])>$configInput["lengthMax"])) {
+
+						$errors[] = $configInput["error"];
+
+					}
+
+			}	
+		}
+
+		else{
+			$errors[] = "Tentative de Hack (Faille XSS)";
+		}
+
 		if(!(filter_var($data["email"], FILTER_VALIDATE_EMAIL))) {
 			$errors[] .= $config["input"]["email"]["error"];
 		}
@@ -53,6 +90,9 @@ class Form
 
 		return $errors; //tableau des erreurs
 	}
+
+
+
 
 
 	public static function showForm($form){
