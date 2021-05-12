@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/ui/trumbowyg.min.css">
         
         <script src="framework/src/js/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+		<!-- <script src="framework/src/js/apparence.js"></script> -->
 
 	</head>
 	<body>
@@ -40,6 +41,9 @@
 					<li style="color: white">Articles</li>
 				</ul> -->
 				<p style="color: white">Affichage de la liste des articles</p>
+
+				<button id="add-link" onclick="addLink()">Ajouter un lien</button>
+				<button id="add-button" onclick="addButton()">Ajouter un bouton</button>
 			</div>
 			<!-- <nav role="navigation">
 				<div id="menuToggle">

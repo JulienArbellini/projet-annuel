@@ -10,17 +10,20 @@
         <form method="post">
                 <div class="col-m-12 col-m-padding-2 col-m-center">
                     <input type="text" class="form__field" name="titre_page" placeholder="titre" value="<?php echo $data[0]["title"] ?>">
+                    <a href="/accueil" class="link">Visualiser la page</a>
                 </div>
                 <!-- <div class="col-s-10 col-m-12 col-m-center"> -->
-                <textarea id="test" name="affichage-page"><?php echo $data[0]["content"] ?></textarea>
+                <textarea id="test" name="affichage-page"><div id="div"><?php echo $data[0]["content"] ?></div></textarea>
                 <!-- </div> -->
             <div class="col-m-2 col-m-push-5 col-m-down-2">
                 <input type="submit" value="Enregistrer" class="button-apparence">
             </div>
         </form>
+        <!-- <button onclick="insertHeader()">Enregistrer</button> -->
     </div>
     <script>
             $('#test').trumbowyg();  
     </script>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="framework/src/js/apparence.js"></script>
