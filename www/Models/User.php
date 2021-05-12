@@ -4,8 +4,6 @@ namespace App\Models;
 
 use App\Core\Database;
 
-// require 'vendor/autoload.php'; // intégrer dans index.php
-
 class User extends Database
 {
     private $id=null;
@@ -17,9 +15,6 @@ class User extends Database
     protected $Role_idRole = 1;
     protected $confirmkey;
     protected $confirmation;
-    //protected $country;
-    // protected $status = 0;
-    // protected $isDeleted = 0;
 
     public function __construct(){
         parent::__construct();
@@ -49,21 +44,12 @@ class User extends Database
     public function setPseudo($pseudo){
         $this->pseudo = $pseudo;
     }
-    /*public function setCountry($country){
-        $this->country = $country;
-    }
-    public function setStatus($status){
-        $this->status = $status;
-    }*/
     public function setRole($Role_idRole){
         $this->Role_idRole = $Role_idRole;
     }
     public function setConfirmKey($confirmKey){
 		$this->confirmKey = $confirmKey;
 	}
-    /*public function setIsDeleted($isDeleted){
-        $this->isDeleted = $isDeleted;
-    }*/
 
 
     public function buildFormRegister(){
@@ -140,44 +126,6 @@ class User extends Database
             ];
     }
 
-    // public function buildFormUpdateUser(){
-    //     return [
-
-    //             "config"=>[
-    //                 "method"=>"GET",
-    //                 "Action"=>"",
-    //                 "Submit"=>"Enregistrer",
-    //                 "class"=>"form_update"
-    //             ],
-    //             "input"=>[
-    //                 "firstname"=>[
-    //                                 "type"=>"text",
-    //                                 "label"=>"Prénom",
-    //                                 "lengthMax"=>"120",
-    //                                 "lengthMin"=>"2",
-    //                                 "required"=>true,
-    //                                 "error"=>"Votre prénom doit faire entre 2 et 120 caractères",
-    //                                 ],
-    //                 "lastname"=>[
-    //                                 "type"=>"text",
-    //                                 "label"=>"Nom",
-    //                                 "lengthMax"=>"255",
-    //                                 "lengthMin"=>"2",
-    //                                 "required"=>true,
-    //                                 "error"=>"Votre nom doit faire entre 2 et 255 caractères",
-    //                                 ]
-                    
-    //                 ],
-
-    //             "select"=>[
-    //                 "role"=>[
-    //                         // "type"=>"select",
-    //                         "label"=>"Rôle"
-    //                         ]
-    //             ]
-    //         ];
-    // }
-
     public function buildFormAddUser(){
         return [
 
@@ -239,57 +187,6 @@ class User extends Database
             ]
         ];
     }
-
-
-
-    // public function mailer(){
-
-    //     $mail = new PHPMailer(true);
-    //         try{
-    //             // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-    //             $mail->isSMTP();
-    //             $mail->Host = 'ssl://smtp.gmail.com';
-    //             $mail->SMTPAuth = true;
-    //             $mail->Username = 'teachr.contact.pa@gmail.com';
-    //             $mail->Password = PHPMailer::PWD;
-    //             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    //             $mail->Port = 465;
-    //             $mail->setFrom('teachr.contact.pa@gmail.com', 'Teachr Contact');
-    //             $mail->addAddress($_SESSION['tab'][0]['email'], $_SESSION['tab'][0]['pseudo']);
-    //             $mail->addAttachment('./teachr.sql');         //Add attachments
-    //             // $mail->addAttachment('./var/tmp/utilisateur.png', 'new.png');
-    //             $mail->isHTML(true);
-    //             $mail->Subject = 'Invitation à rejoindre un projet';
-    //             $mail->Body    = '<html>
-    //                                 <head>
-    //                                     <meta charset= "UTF-8"/>
-    //                                 </head>
-    //                                 <body>
-    //                                     <h1>Bienvenue sur Teachr !</h1></br>
-    //                                     <p>L\'utilisateur John Doe vous invite à rejoindre son projet sur notre plateforme.</br>
-    //                                     Pour y accéder :</p></br>
-    //                                         <ol>
-    //                                             <li>Installez un serveur web (MAMP, WAMP, XAMP)</li></br>
-    //                                             <li>Télécharger la pièce jointe et importez la dans phpmyadmin, la base de données sera alors créée</li></br>
-    //                                             <li>Rendez-vous à l\'adresse suivante : http://localhost/login</li></br>
-    //                                         </ol>
-    //                                             <p>Vous pouvez vous connecter avec les identifiants suivants :</p>
-    //                                         <ol style="list-style: none;">
-    //                                             <li> - pseudo : '.$_SESSION['tab'][0]['pseudo'].'</li>
-    //                                             <li> - mot de passe : '.$_SESSION['tab'][0]['password'].'</li></br>
-    //                                         </ol>
-    //                                         <p>Toute l\'équipe vous souhaite la bienvenue sur teachr</br>
-    //                                             https://teachr.com</p>
-    //                                 </body>
-    //                               </html>';
-    //             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-    //             $mail->send();
-    //             echo 'Message has been sent';
-    //         }
-    //         catch (Exception $e){
-    //             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    //         }
-    // }
 
 }
 

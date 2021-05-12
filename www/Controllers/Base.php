@@ -52,9 +52,6 @@ class Base{
 		$userSelect = new User();
 		$mailer = new Mailer();
 
-		// $donnees = $userSelect->userShow();
-		// $view->assign("donnees", $donnees);
-
 		$donnees = $userSelect->requestRole();
 		$view->assign("donnees", $donnees);
 		
@@ -65,45 +62,38 @@ class Base{
 
 		$form = $userSelect->buildFormAddUser();
 		$view->assign("form", $form);
+		
 
-		if(!empty($_POST)){
-			$errors = Form::validator($_POST, $form);
+		if(empty($_GET["updateId"])){
 
-			if(empty($errors)){
-				$userSelect->setFirstname($_POST["firstname"]);
-				$userSelect->setLastname($_POST["lastname"]);
-				$userSelect->setEmail($_POST["email"]);
-				$userSelect->setPseudo($_POST["pseudo"]);
-				$userSelect->setPassword($_POST["password"]);
-				//password_hash($_POST["password"], PASSWORD_BCRYPT)
-				$userSelect->setRole($_POST["role"]);
-				$userSelect->save();
-				// $userSelect->userMail();
-				$test = $userSelect->userMail();
-				// var_dump($test);
-				// $userSelect->assignUser("test", $test);
-				$mailer->mailer();
-			}else{
-				$view->assign("formErrors", $errors);
+			if(!empty($_POST)){
+				$errors = Form::validator($_POST, $form);
+
+				if(empty($errors)){
+					$userSelect->setFirstname($_POST["firstname"]);
+					$userSelect->setLastname($_POST["lastname"]);
+					$userSelect->setEmail($_POST["email"]);
+					$userSelect->setPseudo($_POST["pseudo"]);
+					$userSelect->setPassword($_POST["password"]);
+					//password_hash($_POST["password"], PASSWORD_BCRYPT)
+					$userSelect->setRole($_POST["role"]);
+					$userSelect->save();
+					$test = $userSelect->userMail();
+					$mailer->mailer();
+				}else{
+					$view->assign("formErrors", $errors);
+				}
 			}
 		}
-
-		// $userSelect->buildFormUpdateUser();
-		// $view->assign("updateForm", $updateForm);
 		
-		// if(!empty($_POST)){
-		// 	$errors = Form::validator($_POST, $form);
-			
-		if(!empty($_POST) && !empty($this->id)){
-			$userSelect->setId($_GET["updateId"]);
-			$userSelect->setLastname($_POST["lastname"]);
-			$userSelect->setFirstname($_POST["firstname"]);
-			$userSelect->setRole($_POST["role"]);
-			// echo $_GET["updateId"];
-			// echo $_POST["lastname"];
-			// echo $_POST["firstname"];
-			// echo $_POST["role"];
-			$userSelect->updateUser();
+		else{
+			if(!empty($_POST)){
+				$userSelect->setId($_GET["updateId"]);
+				$userSelect->setLastname($_POST["lastname"]);
+				$userSelect->setFirstname($_POST["firstname"]);
+				$userSelect->setRole($_POST["role"]);
+				$userSelect->updateUser();
+			}
 		}
 	}
 

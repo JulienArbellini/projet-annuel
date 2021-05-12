@@ -29,7 +29,6 @@
                     echo $html;    
                 }
             ?>
-            <!-- onclick=\"window.location.href='/utilisateurs?id=".($value['id'])."'\" -->
             </tbody>
         </table>
     </div>

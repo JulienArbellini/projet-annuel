@@ -68,16 +68,8 @@ class Database
 
 		
 		$query->execute($data);
-		// var_dump($query);
 
 	}
-
-	// public function userShow(){
-	// 	$query = $this->pdo->prepare("SELECT * FROM ".$this->table);
-	// 	$query->execute();
-	// 	$donnees = $query->fetchall();
-	// 	return $donnees;
-	// }
 
 	public function roleShow(){
 		$query = $this->pdo->prepare("SELECT * FROM tr_role");
@@ -105,17 +97,12 @@ class Database
 		$query->execute();
 		$_SESSION['tab'] = $query->fetchall();
 		return $_SESSION['tab'];
-		// var_dump($test);
 	}
 
 	public function updateUser(){
 		if(!empty($_GET['updateId'])){
-			// echo $_GET['updateId'];
-		// UPDATE table SET nom_colonne_1 = 'nouvelle valeur' WHERE condition
 			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = '" .$_POST["lastname"]. "', firstname = '" .$_POST["firstname"]. "', Role_idRole = '" .$_POST["role"]. "' WHERE id = " .$_GET['updateId']);
-			// var_dump($query);
 			$query->execute();
-			// echo $_POST["lastname"];
 		}
 	}
 }
