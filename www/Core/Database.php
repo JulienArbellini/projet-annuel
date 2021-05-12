@@ -4,6 +4,7 @@
 namespace App\Core;
 
 $mailexists = 0;
+session_start();
 
 
 class Database
@@ -164,5 +165,39 @@ class Database
          if($reqmail->rowCount() > 0) {
 			 $mailexists = 1;
 		 }
+	}
+	public function roleShow(){
+		$query = $this->pdo->prepare("SELECT * FROM tr_role");
+		$query->execute();
+		$donnees = $query->fetchall();
+		return $donnees;
+	}
+
+	public function requestRole(){
+		$query = $this->pdo->prepare("SELECT * FROM tr_role as r INNER JOIN ".$this->table. " as u ON r.id = u.role_idRole");
+		$query->execute();
+		$donnees = $query->fetchall();
+		return $donnees;
+	}
+
+	public function userDelete(){
+		if(!empty($_GET['deleteId'])){
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id = ".$_GET['deleteId']);
+			$query->execute();
+		}
+    }
+
+	public function userMail(){
+		$query = $this->pdo->prepare("SELECT email, pseudo, password FROM ".$this->table." WHERE id = (SELECT MAX(id) FROM ".$this->table.")");
+		$query->execute();
+		$_SESSION['tab'] = $query->fetchall();
+		return $_SESSION['tab'];
+	}
+
+	public function updateUser(){
+		if(!empty($_GET['updateId'])){
+			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = '" .$_POST["lastname"]. "', firstname = '" .$_POST["firstname"]. "', Role_idRole = '" .$_POST["role"]. "' WHERE id = " .$_GET['updateId']);
+			$query->execute();
+		}
 	}
 }

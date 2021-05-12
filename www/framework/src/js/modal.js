@@ -1,9 +1,8 @@
-let modal = null;
+let modal = null
 
-const openModal = function (e){
+const openModal = function (e) {
     e.preventDefault()
     const target = document.querySelector(e.target.getAttribute('href'))
-    //document.write(target)
     target.style.display = null
     target.removeAttribute('aria-hidden')
     target.setAttribute('aria-modal', 'true')
@@ -22,8 +21,7 @@ const closeModal = function (e) {
     modal.removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
-    modal  = null
-
+    modal = null
 }
 
 const stopPropagation = function (e) {

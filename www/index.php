@@ -3,8 +3,7 @@ namespace App;
 
 
 use App\Core\Routing; 
-use App\Core\ConstantManager; 
-// use App\Core\Database;
+use App\Core\ConstantManager;
 
 require 'vendor/autoload.php';
 require "Autoloader.php";
@@ -57,8 +56,3 @@ if( file_exists("./Controllers/".$c.".php")){
 }else{
 	die("Le fichier ".$c." n'existe pas");
 }
-
-//Vérifier que la route l'article/de la page existe, aller chercher dans la base de données le slug renseigné si le slug n'existe pas dans route va chercher dans la bdd
-//et faire en sort qu'il affiche la page avec ce slug
-//execution d'une requête SQL pour aller récupérer le slug
-//Une fois le slug trouvé dans la bdd
