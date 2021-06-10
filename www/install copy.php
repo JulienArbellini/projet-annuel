@@ -13,15 +13,14 @@
 			</div> 
             <p class="title-install">Base de données</p>
         </div>
-        <form class="shadow-box-square col-m-8 col-l-4 col-m-center" action="traitement.php" method="POST">
-            <input type="hidden" name="etape" value="1" />
+        <form class="shadow-box-square col-m-8 col-l-4 col-m-center" method="POST" action="">
             <div class="form-group">
                 <label class="control-label" for="bdd-name">Nom de la base de données</label>
                 <input class="input" id="bdd-name" name="bdd-name" type="text">
             </div>
             <div class="form-group">
                 <label class="control-label" for="bdd-user-name">Nom d'utilisateur</label>
-                <input class="input" id="bdd-user-name" name="bdd-user-name" type="text">
+                <input class="input" id="bdd-user-name" name="dd-user-name" type="text">
             </div>
             <div class="form-group">
                 <label class="control-label" for="bdd-user-pwd">Mot de passe</label>
@@ -31,18 +30,18 @@
                 <label class="control-label" for="bdd-host">Hôte</label>
                 <input class="input" id="bdd-host" name="bdd-host" type="text">
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label class="control-label" for="bdd-prefix">Préfixe</label>
                 <input class="input" id="bdd-prefix" name="bdd-prefix" type="text">
-            </div> -->
-            <div class="form-group sgbd">
-                <p>Attention ! Le SGBD utilisé doit être MySQL.</p>
             </div>
-            <input type="submit" name="submit" value="Envoyer" />
-            <!-- <button type="submit" class="button" id="btn_register">Installation</button> -->
+            <div class="form-group sgbd-select">
+                <label for="sgbd">SGBD</label>
+                <select id="sgbd" name="sgbd">
+                    <option value="">MySQL</option>
+                    <option value="">PostgreSQL</option>
+                    <option value="">Oracle</option>
+                </select>
+            </div>
+            <button type="submit" class="button" id="btn_register">Se connecter</button>
         </form>
     </body>
-
-
-
-            <!-- <button type="submit" class="button" id="btn_register">Se connecter</button> -->

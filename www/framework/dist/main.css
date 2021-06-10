@@ -664,6 +664,18 @@ img.image-grayscale {
   margin-left: 10px;
 }
 
+.title-install {
+  color: #444;
+  font-size: 0.75rem;
+  margin: 15px 0;
+}
+
+.sgbd p {
+  color: #ce0a0a;
+  font-size: 0.8125rem;
+  font-weight: bold;
+}
+
 .button {
   border-style: none;
   width: 150px;
@@ -2590,21 +2602,6 @@ input:checked + .slider:before {
   .m-show {
     display: none;
   }
-}
-
-.title-install {
-  color: #444;
-  font-size: 0.75rem;
-  margin: 15px 0;
-}
-
-.sgbd-select {
-  display: flex;
-  flex-direction: column;
-}
-
-.sgbd-select label {
-  margin-bottom: 8px;
 }
 
 .input {
