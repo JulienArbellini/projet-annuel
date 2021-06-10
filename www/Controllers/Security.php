@@ -8,8 +8,10 @@ use App\Core\View;
 use App\Core\Form;
 use App\Core\ConstantManager;
 use App\Models\User;
+use App\Core\Mailer;
 
 class Security{
+
 
 
 	public function defaultAction(){
@@ -34,8 +36,6 @@ class Security{
 				$user->setLastname($_POST["lastname"]);
 				$user->setEmail($_POST["email"]);
 				$user->setPwd($_POST["pwd"]);
-				// $user->setCountry("fr");
-				$user->save();
 
 			}else{
 				$view->assign("formErrors", $errors);
@@ -43,8 +43,6 @@ class Security{
 
 		}
 		
-		
-
 	}
 
 	public function loginAction(){
@@ -53,75 +51,82 @@ class Security{
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
 		session_start();
-		$db_username = 'root';
-		$db_password = 'password';
-		$db_name     = 'teachr';
-		$db_host     = 'database';
-		$db = mysqli_connect($db_host, $db_username, $db_password,$db_name) or die('could not connect to database');
-
 		if(isset($_POST['email']) && isset($_POST['pwd']))
 		{
-			$email = mysqli_real_escape_string($db,htmlspecialchars($_POST['email'])); 
-			$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['pwd']));
+			$email = htmlspecialchars($_POST['email']); 
+			$password = htmlspecialchars($_POST['pwd']);
 			
 			if($email !== "" && $password !== "")
 			{
-				
-				$requete = "SELECT count(*) FROM tr_user where 
-					email = '".$email."' and password = '".$password."' ";
-				$exec_requete = mysqli_query($db,$requete);
-				$reponse      = mysqli_fetch_array($exec_requete);
-				$count = $reponse['count(*)'];
-				if($count!=0) // nom d'utilisateur et mot de passe correctes
+				if($user->checkPwd($password, $email)) // nom d'utilisateur et mot de passe correctes
 				{
-				$_SESSION['email'] = $email;
-				header('Location: \tableau-de-bord');
+					$_SESSION['prenom'] = $user->getPseudo($email);
+					$user->connectedOn($email);
+					$_SESSION['loggedIn']=true;
+					header('Location: \tableau-de-bord');
 				}
 				else
 				{
-					echo "utilisateur ou mot de passe incorrect"; // utilisateur ou mot de passe incorrect
+					header('Location: \login?erreur=1'); // utilisateur ou mot de passe incorrect
 				}
 			}
 			else
 			{
 				
-				echo "utilisateur ou mot de passe vide"; // utilisateur ou mot de passe vide
+				header('Location: \login?erreur=2'); // utilisateur ou mot de passe vide
 			}
-		}
-	
-			
-		mysqli_close($db); // fermer la connexion
-		
-		
-		
+		}					
 	}
 
 	public function recuperationAction(){
 		$user = new User();
 		$view = new View("recuperationmdp");
+		$mailer = new Mailer();
 		$form = $user->buildFormRecuperation();
 		$view->assign("form", $form);
-		session_start();
-
-		$bdd = new Database or die('could not connect to database');
-		// echo $_POST['recup_submit'];
-		if(isset($_POST['recup_submit'],$_POST['recup_mail'])) {
-			if(!empty($_POST['recup_mail'])) {
-				$mail = htmlspecialchars($_POST['recup_mail']);
-				echo 'not empty';
-				if(filter_var($mail,FILTER_VALIDATE_EMAIL)) {
-					echo "OK";
-				} else {
-					echo "Adresse mail invalide";
-					// $error = "Adresse mail invalide";
+		if(!empty($_POST)){
+			$user->verifMail();
+			$errors = Form::validator($_POST, $form);
+			if(empty($errors)){
+				$password = uniqid();
+				$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+				$message = "Bonjour, voici votre code de récupération: $password";
+				$to   = $_POST["recup_mail"];
+				$from = 'teachr.contact.pa@gmail.com';
+				$name = 'Teachr';
+				$subj = 'Mot de passe oublié';
+				if($mailer->mailer($to,$from, $name ,$subj, $message)){
+					$user->createConfirmationKey($password, $to);
+					header('Location: \changement-mdp');
 				}
-			} else {
-				// $error = "Veuillez entrer votre adresse mail";
-				echo 'vide';
 			}
 		}
+	}
 
-
+	public function changementmdpAction(){
+		
+		$user = new User();
+		$view = new View("changementmdp");
+		$form = $user->buildFormChangementMdp();
+		$view->assign("form", $form);
+		if(!empty($_POST['confirmation_key'])){
+			echo 'test';
+			if($user->checkConfirmationKey($_POST['confirmation_key']) && $user->checkConfirmationKeyTmtp($_POST['confirmation_key'])){
+				echo 'ok';
+				$id = $user->getUserId($_POST['confirmation_key']);
+				if(isset($_POST['pwdConfirm']) && isset($_POST['pwd'])){
+					$errors = Form::validator($_POST['pwd'], $form);
+					if(!empty($errors) && $_POST['pwdConfirm']===$_POST['pwd']){
+						$user->updatePwd($id, $_POST['pwd']);
+						echo 'Votre mot de passe a bien été enregistré';
+						$user->deleteConfirmationKey($_POST['confirmation_key'],$id);
+						header('Location: \login');
+					}
+				}
+			}else{
+				echo 'not ok';
+			}
+		}
 	}
 	
 	public function logoutAction(){

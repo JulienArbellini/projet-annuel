@@ -25,9 +25,20 @@ class User extends Database
 		$this->idUser = $idUser;
 	}
 
+
 	public function getId(){
 		return $this->idUser;
 	}
+
+	public function getActualId(){
+		echo $_SESSION['email'];
+	}
+
+	public function redirect_to_login(){
+		header('/login');
+	}
+	
+
 
 	public function setLastname($lastname){
 		$this->lastname = $lastname;
@@ -54,7 +65,12 @@ class User extends Database
 	// 	$this->isDeleted = $isDeleted;
 	// }
 
+	public function setConfirmKey($confirmKey){
+		$this->confirmKey = $confirmKey;
+	}
 
+	
+	
 	public function buildFormRegister(){
 		return [
 
@@ -117,25 +133,27 @@ class User extends Database
 					"method"=>"POST",
 					"Action"=>"",
 					"Submit"=>"Se connecter",
-					"class"=>"form_login"
+					"class"=>"shadow-box-square col-m-8 col-l-4"
 				],
 				"input"=>[
 					
 					"email"=>[
 									"type"=>"email",
-									"lengthMax"=>"320",
-									"lengthMin"=>"8",
+									"label"=>"Adresse e-mail :",
+									"class"=>"input",
+									"autocomplete"=>"email",
 									"required"=>true,
-									"error"=>"Votre email doit faire entre 8 et 320 caractères",
-									"placeholder"=>"Veuillez renseigner votre email"
+									"error"=>"Votre e-mail n'est pas valide",
 									],
 					"pwd"=>[
 									"type"=>"password",
+									"label"=>"Mot de passe :",
+									"class"=>"input",
 									"lengthMin"=>"8",
 									"required"=>true,
-									"error"=>"Votre mot de passe doit faire plus de 8 caractères",
-									"placeholder"=>"Votre mot de passe"
-									],
+									"error"=>"Votre mot de passe doit faire plus de 8 caractères"
+										],
+
 				]
 
 			];
@@ -146,24 +164,69 @@ class User extends Database
 
 				"config"=>[
 					"method"=>"POST",
-					"Action"=>"",
+					"Action"=>"/tableau-de-bord",
 					"Submit"=>"Valider",
-					"class"=>"form_login"
+					"class"=>"shadow-box-square col-m-8 col-l-4"
 				],
 				"input"=>[
 					
-					"email"=>[
-									"type"=>"email",
-									"lengthMax"=>"320",
-									"lengthMin"=>"8",
-									"required"=>true,
-									"error"=>"Votre email doit faire entre 8 et 320 caractères",
-									"placeholder"=>"Veuillez renseigner votre email"
-									],
+					"recup_mail"=>[
+								"type"=>"email",
+								"lengthMax"=>"320",
+								"lengthMin"=>"8",
+								"required"=>true,
+								"class"=>"input",
+								"error"=>"Votre email doit faire entre 8 et 320 caractères",
+								"placeholder"=>"Veuillez renseigner votre email",
+								"error2"=>"Ce mail n'existe pas dans notre base de données",
+
+					],
+			
 				]
 
 			];
 	}
+
+	public function buildFormChangementMdp(){
+		return [
+
+			"config"=>[
+				"method"=>"POST",
+				"Action"=>"",
+				"Submit"=>"Valider",
+				"class"=>"shadow-box-square col-m-8 col-l-4"
+			],
+			"input"=>[
+				
+				"confirmation_key"=>[
+					"type"=>"password",
+					"label"=>"Code envoyé par mail",
+					"class"=>"input",
+					"lengthMin"=>"8",
+					"required"=>true,
+				],
+
+				"pwd"=>[
+					"type"=>"password",
+					"label"=>"Nouveau mot de passe :",
+					"class"=>"input",
+					"lengthMin"=>"8",
+					"required"=>true,
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères"
+				],
+				"pwdConfirm"=>[
+					"type"=>"password",
+					"label"=>"Confirmer le mot de passe :",
+					"class"=>"input",
+					"required"=>true,
+					"error"=>"Les deux mots de passe ne correspondent pas"
+				],
+		
+			]
+
+		];
+	}
+	
 
 }
 

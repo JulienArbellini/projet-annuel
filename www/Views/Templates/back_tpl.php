@@ -1,7 +1,14 @@
+<?php
+    session_start();
+    if (!($_SESSION['loggedIn'])){
+        header('Location:/login');
+    } 
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="iso-8859-1">
 		<meta name="vieuxport" content="width=device-width, initial-scale=1.0">
 		<title>Template de Back</title>
 		<meta name="description" content="ceci est la page de template">
@@ -25,7 +32,7 @@
                         Créer
                     </div>
                     <div id="profile_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
-                        John Doe
+                    <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
                         <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
                     </div>
                 </div>
@@ -79,6 +86,11 @@
                             <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div>
                             <div class="col-m-8"><p>Paramètres</p></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                    </div>
+                    <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
+                            <!-- <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div> -->
+                            <div class="col-m-8"><p>Déconnexion</p></div>
+                            <!-- <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div> -->
                     </div>
                 </div>
             </div>

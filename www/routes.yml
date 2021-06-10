@@ -19,6 +19,10 @@
   controller : Security
   action : recuperation
 
+/changement-mdp:
+  controller: Security
+  action: changementmdp
+  
 /logout:
   controller: Security
   action: logout
