@@ -22,7 +22,9 @@
             $login  = "'. $login .'";
             $mdp    = "'. $mdp .'";
             $port   = "8888";
-            $bdd = new PDO(DBDRIVER.":dbname=".$base.";charset=utf8;host=".$hote.";port=".$port, $login, $mdp);
+            $driver = "mysql";
+            
+            $conn = new PDO($driver.":dbname=".$base.";charset=utf8;host=".$hote.";port=".$port, $login, $mdp);
             ?>';
 
         $ouvrir = fopen($fichier, 'w');
@@ -44,9 +46,10 @@
           
         $reqs = explode(';', $requetes); // on sépare les requêtes
         foreach($reqs as $req){	// et on les exécute
-            if(!new PDO($req)) { // si la requête fonctionne bien et qu'elle n'est pas vide
-                exit('ERREUR : '. $req); // message d'erreur
-            }
+            echo "Ca marche";
+            // if(!$conn->query($req)) { // si la requête fonctionne bien et qu'elle n'est pas vide
+            //     exit('ERREUR : '. $req); // message d'erreur
+            // }
         }
 
         // $texte = '<?php
@@ -65,6 +68,17 @@
         // fwrite($ouvrir, $texte);
     }
     ?>
+     <!-- //  
+            // try
+            // {
+        $conn->setAttribute(PDOATTR_ERRMODE, PDOERRMODE_EXCEPTION);
+            // }
+            // catch(PDOException $e)
+            // {
+            //     echo $e->getMessage();
+            // }
+
+            // var_dump($conn); -->
 
     <!--  $this->pdo = new \PDO(DBDRIVER.":dbname=".$base.";charset=utf8;host=".$hote.";port=".DBPORT, $login, $mdp); -->
 </body>
