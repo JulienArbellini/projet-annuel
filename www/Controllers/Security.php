@@ -138,10 +138,10 @@ class Security{
 		$mailer = new Mailer();
 		$form = $user->buildFormRecuperation();
 		$view->assign("form", $form);
-		if(!empty($_POST)){
-			$user->verifMail();
+		if(!empty($_POST)){			
+			$verifMail = $user->verifMail();
 			$errors = Form::validator($_POST, $form);
-			if(empty($errors)){
+			if(empty($errors) && $verifMail == 1){ 
 				$password = uniqid();
 				$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 				$message = "Bonjour, voici votre code de récupération: $password";
@@ -160,6 +160,7 @@ class Security{
 			}
 			else
 			{
+				
 				header('Location: \mot-de-passe-oublie?erreur=2'); // Ce mail n'existe pas dans la base de données
 			}
 		}

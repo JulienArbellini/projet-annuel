@@ -160,15 +160,15 @@ class Database
 	}
 
 	public function verifMail(){
-		global $mailexists;
+		// global $mailexists;
 		if(isset($_POST['email'])){
 			$email = $_POST['email'];
 			$reqmail = $this->pdo->prepare('SELECT id FROM tr_user WHERE email = ?');
 			$reqmail->execute(array($email));			
 			if($reqmail->rowCount() > 0) {
-				$mailexists = 1;
+				return 1;
 			}else{
-				$mailexists = 0;
+				return 0;
 			}
 		}
 	}
