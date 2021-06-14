@@ -19,11 +19,14 @@
   controller: Security
   action: login
 
-/se-connecter:
+/mot-de-passe-oublie:
+  controller : Security
+  action : recuperation
+
+/changement-mdp:
   controller: Security
-  action: login
-
-
+  action: changementmdp
+  
 /logout:
   controller: Security
   action: logout

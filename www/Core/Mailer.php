@@ -34,7 +34,9 @@ class Mailer{
             $mail->Subject = $subject;
             $mail->Body = $body;
             $mail->AddAddress($to);
-            $mail->send();
+            return $mail->send();
+            
+            
             //echo "<script>alert(\"L\'invitation a bien été envoyée\")</script>";
         } catch (Exception $e){
                 echo "Le message n'a pas pu être envoyé. Mailer Error: {$mail->ErrorInfo}";

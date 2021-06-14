@@ -60,6 +60,8 @@ class User extends Database
 	}
 
 
+	
+	
 	public function buildFormRegister(){
 		return 
 		[
@@ -191,6 +193,108 @@ class User extends Database
             ]
         ];
     }
+
+	public function buildFormLogin(){
+		return [
+
+				"config"=>[
+					"method"=>"POST",
+					"Action"=>"",
+					"Submit"=>"Se connecter",
+					"class"=>"shadow-box-square col-m-8 col-l-4"
+				],
+				"input"=>[
+					
+					"email"=>[
+									"type"=>"email",
+									"label"=>"Adresse e-mail :",
+									"class"=>"input",
+									"autocomplete"=>"email",
+									"required"=>true,
+									"error"=>"Votre e-mail n'est pas valide",
+									],
+					"pwd"=>[
+									"type"=>"password",
+									"label"=>"Mot de passe :",
+									"class"=>"input",
+									"lengthMin"=>"8",
+									"required"=>true,
+									"error"=>"Votre mot de passe doit faire plus de 8 caractères"
+										],
+
+				]
+
+			];
+	}
+
+	public function buildFormRecuperation(){
+		return [
+
+				"config"=>[
+					"method"=>"POST",
+					"Action"=>"/tableau-de-bord",
+					"Submit"=>"Valider",
+					"class"=>"shadow-box-square col-m-8 col-l-4"
+				],
+				"input"=>[
+					
+					"email"=>[
+								"type"=>"email",
+								"lengthMax"=>"320",
+								"lengthMin"=>"8",
+								"required"=>true,
+								"class"=>"input",
+								"error"=>"Votre email doit faire entre 8 et 320 caractères",
+								"placeholder"=>"Veuillez renseigner votre email",
+								"error2"=>"Ce mail n'existe pas dans notre base de données"
+
+					]
+			
+				]
+
+			];
+	}
+
+	public function buildFormChangementMdp(){
+		return [
+
+			"config"=>[
+				"method"=>"POST",
+				"Action"=>"",
+				"Submit"=>"Valider",
+				"class"=>"shadow-box-square col-m-8 col-l-4"
+			],
+			"input"=>[
+				
+				"confirmation_key"=>[
+					"type"=>"password",
+					"label"=>"Code envoyé par mail",
+					"class"=>"input",
+					"lengthMin"=>"8",
+					"required"=>true,
+				],
+
+				"pwd"=>[
+					"type"=>"password",
+					"label"=>"Nouveau mot de passe :",
+					"class"=>"input",
+					"lengthMin"=>"8",
+					"required"=>true,
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères"
+				],
+				"pwdConfirm"=>[
+					"type"=>"password",
+					"label"=>"Confirmer le mot de passe :",
+					"class"=>"input",
+					"required"=>true,
+					"error"=>"Les deux mots de passe ne correspondent pas"
+				],
+		
+			]
+
+		];
+	}
+	
 
 }
 

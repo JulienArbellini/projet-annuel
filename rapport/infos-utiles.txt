@@ -1,0 +1,11 @@
+Erreurs/solutions:
+
+WARNING: Host is already in use by another container
+ERROR: for apache-3IW  Cannot start service web: driver failed programming external connectivity on endpoint apache-3IW (1b3d128f02f599e98ab3ef44529a0f909dee6fd89dac167f02da2da695f8a71e): ErrorStarting phpmyadmin-mvc ... done
+ERROR: for web  Cannot start service web: driver failed programming external connectivity on endpoint apache-3IW (1b3d128f02f599e98ab3ef44529a0f909dee6fd89dac167f02da2da695f8a71e): Error starting userland proxy: listen tcp 0.0.0.0:80: bind: address already in use
+ERROR: Encountered errors while bringing up the project.
+
+Solution: 
+
+sudo /etc/init.d/apache2 stop
+

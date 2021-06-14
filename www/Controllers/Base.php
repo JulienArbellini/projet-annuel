@@ -29,6 +29,8 @@ class Base{
 	}
 
 
+
+
 	//Must be connected
 	public function dashboardAction(){
 		

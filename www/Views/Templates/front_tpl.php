@@ -9,13 +9,8 @@
 	</head>
 	<body>
 		
-		<!--<header>
-			<h1>Template Frontoffice</h1>
-		</header>-->
-
-
 		<!-- intégrer le vue -->
-		<?php include $this->view ?>
 
+			<?php include $this->view ?>
 	</body>
 </html>
