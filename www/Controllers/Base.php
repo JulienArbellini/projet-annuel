@@ -38,6 +38,8 @@ class Base{
 
 		//Affiche moi la vue dashboard;
 		$view = new View("dashboard", "back");
+
+		// $view->definirPageAccueil();
 		
 	
 	}
@@ -45,6 +47,9 @@ class Base{
 	public function articlesAction(){
 		$view = new View("articles", "back");
 		$article = new Article();
+		
+		$article->definirPageAccueil();
+
 		$donnees = $article->getArticle();
 		$view->assign("donnees", $donnees);
 
@@ -97,6 +102,7 @@ class Base{
 			$page->setCreatedAt(date("Y-m-d H:i:s"));
 			$page->save();
 		}
+
 	}
 
 	public function displayPageAction(){
@@ -115,20 +121,36 @@ class Base{
 			//echo "coucou";
 			$page->setId($_GET['idPage']);
 			$page->setTitle($_POST["titre_page"]);
-			$page->setSlug("/accueil");
+			$page->setSlug($_POST["slugPage"]);
 			$page->setContent($_POST["affichage-page"]);
+			// $page->setPageAccueil($_POST["pageAccueil"]);
+
+			if(!empty($_POST['pageAccueil'])){
+				$page->setPageAccueil("1");
+			}
+			else{
+				$page->setPageAccueil("0");
+			}
 			$page->save();
+
+			$page->updatePageAccueil();
+
+			//$page->checkboxState();
 	   }
+
+	   $page->checkboxState();
+
+	   $page->definirPageAccueil();
 
 	   $data = $page->getContentPage();
 	   $view->assign("data", $data);
+
+
 	}
 
 	public function routesPagesArticlesAction(){
 		$article = new Article();
 		$article->routingPagesArticles();
 	}
-
-
 
 }

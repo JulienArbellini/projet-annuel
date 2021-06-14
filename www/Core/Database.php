@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Core;
+use App\Core\Form;
 
-
+// session_start();
 class Database
 {
 
@@ -168,8 +169,8 @@ class Database
 	public function getContentPage(){
 		
 		if(!empty($_GET['idPage'])){
-			$content = $_GET['idPage'];
-			$query = $this->pdo->prepare("SELECT content, title FROM tr_page WHERE id =".$content);
+			$idPage = $_GET['idPage'];
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_page WHERE id =".$idPage);
 			$query->execute();
 			$data = $query->fetchall();
 			return $data;
@@ -177,18 +178,53 @@ class Database
 		
 	}
 
+	public function definirPageAccueil(){
+			// echo "coucou";
+			$query = $this->pdo->prepare("SELECT slug FROM tr_page WHERE page_accueil=1");
+			$query->execute();
+			$_SESSION['slug_accueil'] = $query->fetchall();
+			return $_SESSION['slug_accueil'];
+	}
+
+	public function updatePageAccueil(){
+		if(!empty($_GET['idPage'])){
+			$idPage = $_GET['idPage'];
+			$query = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$idPage);
+			$query->execute();
+			$data = $query->fetchall();
+			return $data;
+		}
+	}
+
+	public function checkboxState(){
+		if(!empty($_GET['idPage'])){
+			$idPage = $_GET['idPage'];
+			$query = $this->pdo->prepare("SELECT page_accueil FROM tr_page WHERE id =".$idPage);
+			$query->execute();
+			$_SESSION['checkbox_state'] = $query->fetchall();
+			return $_SESSION['checkbox_state'];
+		}
+	}
+
 	public function routingPagesArticles(){
 		$slug = $_SESSION["uri"];
 
-		$queryArticles = $this->pdo->prepare("SELECT content FROM tr_article WHERE slug =\"$slug\"");
+		$queryArticles = $this->pdo->prepare("SELECT content, title FROM tr_article WHERE slug =\"$slug\"");
 		$queryArticles->execute();
 
 		$dataSlugArticle = $queryArticles->fetchall();
 
 		if (!empty($dataSlugArticle)){
 			$html = "<html>
+						<head>
+							<meta charset=\"utf-8\">
+							<link rel=\"stylesheet\" href=\"framework/dist/site-articles.css\">
+							<title>".$dataSlugArticle[0]["title"]."</title>
+						</head>
 						<body>
-							".$dataSlugArticle[0]["content"]."
+							<div id=\"article\"</div>
+								".$dataSlugArticle[0]["content"]."
+							</div>
 						</body>
 					</html>";
 
@@ -201,21 +237,30 @@ class Database
 
 			if(!empty($dataSlugPage)){
 				$html = "<html>
+							<head>
+								<meta charset=\"utf-8\">
+								<link rel=\"stylesheet\" href=\"framework/dist/site-pages.css\">
+								<title>".$dataSlugPage[0]["title"]."</title>
+							</head>
 							<body>
 								".$dataSlugPage[0]["content"]." titre de la page :".$dataSlugPage[0]["title"]."
 							</body>
-						</html>";
+						</html>"; 
 
 				echo $html;
+				
 			}
 			else{
 				die("erreur 404 : Route not found");
+				// fopen('test.php', 'r');
 			}
 
 		}
 
 		
 	}
+
+	
 
 
 }

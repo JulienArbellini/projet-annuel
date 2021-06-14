@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+session_start();
 
 use App\Core\Routing; 
 use App\Core\ConstantManager; 

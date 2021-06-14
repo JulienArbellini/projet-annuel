@@ -1,26 +1,36 @@
-// let boutonLien = document.getElementById('add-link');
-let header = document.getElementById('header');
-let test2 = document.getElementById('textarea');
-let test3 = document.getElementById('div');
-// let textarea = document.getElementById('textarea');
-let test = document.getElementsByClassName('trumbowyg-textarea');
+let page = document.getElementById('div');
+
+// let test = document.getElementsByClassName('trumbowyg-textarea');
 
 
 function addLink(){
-    test3.innerHTML = "<a href=\"#\">Un Lien</a>";
+    let html = `<a href="#" class="link">Un Lien</a>`;
+
+    page.insertAdjacentHTML('beforeend', html);
 }
 
 function addButton(){
-    // header.innerHTML = "<button>Un bouton</button>";
-    test3.insertAdjacentHTML('beforeend', "<button>Un bouton</button>");
+    let html = `<button>Un bouton</button>`;
+
+    page.insertAdjacentHTML('beforeend', html);
 }
 
-function insertHeader(){
-    // let a = "<textarea>";
-    // header.innerHTML = "<textarea>";
-    // header.insertAdjacentHTML('beforeend', "</textarea>");
-    // header.appendChild(a);
-    // header.insertBefore("<textarea>");
-    // document.createElement("textarea");
-    // textarea.removeAttribute('style');
+function addNavigation(){
+    let html = `<ul>
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item plus long</a></li>
+                </ul>`;
+
+
+    page.insertAdjacentHTML('beforeend', html);
 }
+
+function addImage(){
+    let html = `<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">`;
+
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+//Ajouter un menu de navigation
+//Insertion d'un mini formulaire ?

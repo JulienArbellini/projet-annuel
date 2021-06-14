@@ -1,3 +1,7 @@
+<?php
+    // session_start();
+?>
+
 <div class="row col-m-12 col-m-down-3">
     <!-- <div class="affichage-page">
                   
@@ -10,8 +14,18 @@
         <form method="post">
                 <div class="col-m-12 col-m-padding-2 col-m-center">
                     <input type="text" class="form__field" name="titre_page" placeholder="titre" value="<?php echo $data[0]["title"] ?>">
-                    <a href="/accueil" class="link">Visualiser la page</a>
+                    <input type="text" class="form__field" name="slugPage" placeholder="/slug" value="<?php echo $data[0]["slug"] ?>">
+                    <input type="checkbox" id="pageAccueil" name="pageAccueil[]" value="Accueil" <?php if ($_SESSION['checkbox_state'][0][0] == 1) echo "checked"?> >
+                    <label for="pageAccueil">Page d'accueil</label>
+                    <a href="<?php echo $data[0]["slug"]?>" class="link">Visualiser la page</a>
                 </div>
+                
+                
+
+
+                
+               
+                
                 <!-- <div class="col-s-10 col-m-12 col-m-center"> -->
                 <textarea id="test" name="affichage-page"><div id="div"><?php echo $data[0]["content"] ?></div></textarea>
                 <!-- </div> -->
@@ -19,10 +33,22 @@
                 <input type="submit" value="Enregistrer" class="button-apparence">
             </div>
         </form>
+
+        <!-- <form>
+            <input type="checkbox" id="pageAccueil" name="pageAccueil">
+            <label for="pageAccueil">Page d'accueil</label>
+
+            <button type="submit" class="button">Définir en tant que page d'accueil</button>
+        </form> -->
+        
         <!-- <button onclick="insertHeader()">Enregistrer</button> -->
     </div>
     <script>
-            $('#test').trumbowyg();  
+            $('#test').trumbowyg({
+                btns: [
+                   ['viewHTML', 'formatting', 'strong', 'em', 'del', 'superscript', 'subscript', 'link', 'insertImage', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'unorderedList', 'orderedList', 'horizontaleRule', 'removeformat', 'foreColor', 'backColor', 'emoji', 'fontfamily', 'fontsize', 'historyUndo', 'historyRedo', 'indent', 'outdent', 'insertAudio', 'lineheight', 'table', 'upload', 'fullscreen']
+                ]
+            });  
     </script>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>

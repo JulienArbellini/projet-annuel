@@ -1,15 +1,15 @@
 <?php
-    session_start();
+//     session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="UTF-8">
-		<meta name="vieuxport" content="width=device-width, initial-scale=1.0">
-		<title>Template de Back</title>
-		<meta name="description" content="ceci est la page de template">
-		<link rel="stylesheet" href="framework/dist/main.css">
+	<meta charset="UTF-8">
+	<meta name="vieuxport" content="width=device-width, initial-scale=1.0">
+	<title>Template de Back</title>
+	<meta name="description" content="ceci est la page de template">
+	<link rel="stylesheet" href="framework/dist/main.css">
         <!-- <script type="text/javascript" src="dist/main.js"></script> -->
         <script type="text/javascript" src="framework/src/js/ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
@@ -24,11 +24,10 @@
 			<div class="row col-m-12">
                 <div id="nav-top-left">
                     <div class="logo col-s-3 col-m-2 col-l-2">
-                        <img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60">
+                        <a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60"></a>
                     </div>
                     <div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
-                        <img src="../../framework/img/home.png" alt="Home button" width="19" height="18"></img>
-                        Mon site
+                        <a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
                     </div>
                     <div class="link-nav-bar col-m-2 col-l-pull-4">
                         <img src="../../framework/img/add.png" alt="plus button" width="19" height="18"></img>
@@ -96,5 +95,6 @@
 				<?php include $this->view ?>
 			</div>
 		</main>
+                
 	</body>
 </html>
