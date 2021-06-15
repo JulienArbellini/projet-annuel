@@ -19,15 +19,10 @@
                     <label for="pageAccueil">Page d'accueil</label>
                     <a href="<?php echo $data[0]["slug"]?>" class="link">Visualiser la page</a>
                 </div>
-                
-                
-
-
-                
-               
+    
                 
                 <!-- <div class="col-s-10 col-m-12 col-m-center"> -->
-                <textarea id="test" name="affichage-page"><div id="div"><?php echo $data[0]["content"] ?></div></textarea>
+                <textarea id="trumbowyg" name="affichage-page"><div id="div"><?php echo $data[0]["content"] ?></div></textarea>
                 <!-- </div> -->
             <div class="col-m-2 col-m-push-5 col-m-down-2">
                 <input type="submit" value="Enregistrer" class="button-apparence">
@@ -44,7 +39,7 @@
         <!-- <button onclick="insertHeader()">Enregistrer</button> -->
     </div>
     <script>
-            $('#test').trumbowyg({
+            $('#trumbowyg').trumbowyg({
                 btns: [
                    ['viewHTML', 'formatting', 'strong', 'em', 'del', 'superscript', 'subscript', 'link', 'insertImage', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'unorderedList', 'orderedList', 'horizontaleRule', 'removeformat', 'foreColor', 'backColor', 'emoji', 'fontfamily', 'fontsize', 'historyUndo', 'historyRedo', 'indent', 'outdent', 'insertAudio', 'lineheight', 'table', 'upload', 'fullscreen']
                 ]
@@ -53,3 +48,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="framework/src/js/apparence.js"></script>
+<script src="framework/src/js/drag-and-drop.js"></script>
+
+
+<!-- Plusieurs design de menu / lien / possibilité de changer le background -->

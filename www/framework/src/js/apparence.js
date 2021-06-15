@@ -4,19 +4,19 @@ let page = document.getElementById('div');
 
 
 function addLink(){
-    let html = `<a href="#" class="link">Un Lien</a>`;
+    let html = `<a href="#" class="link" id="draggable-elmt">Un Lien</a>`;
 
     page.insertAdjacentHTML('beforeend', html);
 }
 
 function addButton(){
-    let html = `<button>Un bouton</button>`;
+    let html = `<button id="draggable-elmt">Un bouton</button>`;
 
     page.insertAdjacentHTML('beforeend', html);
 }
 
 function addNavigation(){
-    let html = `<ul>
+    let html = `<ul id="draggable-elmt">
                     <li><a href="#">Item 1</a></li>
                     <li><a href="#">Item 2</a></li>
                     <li><a href="#">Item plus long</a></li>

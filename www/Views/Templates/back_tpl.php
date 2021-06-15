@@ -30,8 +30,7 @@
                         <a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
                     </div>
                     <div class="link-nav-bar col-m-2 col-l-pull-4">
-                        <img src="../../framework/img/add.png" alt="plus button" width="19" height="18"></img>
-                        Créer
+                        <a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
                     </div>
                     <div id="profile_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
                         John Doe
