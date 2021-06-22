@@ -235,6 +235,7 @@ body {
 }
 
 #main-content .two .box-button .button,
+#main-content .two .box-button .button-left-nav-front-tpl,
 #main-content .two .box-button .button-apparence,
 #main-content .two .box-button .button-formulaire-page,
 #main-content .two .box-button .button-add-page {
@@ -306,7 +307,8 @@ body {
   height: 10%;
 }
 
-#main-content .four .box-link .link {
+#main-content .four .box-link .link,
+#main-content .four .box-link .link-apparence {
   cursor: pointer;
 }
 
@@ -2024,6 +2026,10 @@ img.image-grayscale {
   font-size: 14px;
 }
 
+#titlemodal {
+  font-size: 25px;
+}
+
 .trumbowyg-editor,
 .trumbowyg-textarea {
   background-color: white;
@@ -2038,7 +2044,22 @@ img.image-grayscale {
   width: 100%;
 }
 
+.checkbox-apparence {
+  width: 30px;
+  height: 30px;
+}
+
+.header-apparence {
+  display: flex;
+  justify-content: space-around;
+}
+
+.label-apparence {
+  margin-top: auto;
+}
+
 .button,
+.button-left-nav-front-tpl,
 .button-apparence,
 .button-formulaire-page,
 .button-add-page {
@@ -2060,6 +2081,7 @@ img.image-grayscale {
 }
 
 .button:hover,
+.button-left-nav-front-tpl:hover,
 .button-apparence:hover,
 .button-formulaire-page:hover,
 .button-add-page:hover {
@@ -2082,7 +2104,22 @@ img.image-grayscale {
   text-align: center;
 }
 
-.link {
+.button-left-nav-front-tpl {
+  width: 100px;
+  height: 25px;
+  font-size: 13px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.button-left-nav-front-tpl:hover {
+  background-color: #D0D9DC;
+}
+
+.link,
+.link-apparence {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -2092,7 +2129,8 @@ img.image-grayscale {
   color: #AA4DC8;
 }
 
-.link:hover {
+.link:hover,
+.link-apparence:hover {
   color: #22263C;
 }
 
@@ -2102,6 +2140,11 @@ img.image-grayscale {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
   color: #AA4DC8;
+}
+
+.link-apparence {
+  font-size: 17px;
+  margin-top: auto;
 }
 
 .shadow-box-square {
@@ -2635,6 +2678,23 @@ input:checked + .slider:before {
 
 #menuToggle input:checked ~ ul {
   transform: none;
+}
+
+.separateur-tpl {
+  width: 90%;
+}
+
+.titre-menu-tpl {
+  color: white;
+  margin-left: 7px;
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.buttons-tpl {
+  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
 }
 
 .content-accordion {

@@ -140,6 +140,12 @@ class Base{
 			// $page->checkboxState();
 	   }
 
+	   if(!empty($_GET['idPage'])){
+			$page->checkboxState();
+	   }
+
+	//    $page->checkboxState();
+
 	   if(!empty($_POST) && empty($_GET['idPage'])){
 
 			$page->setTitle($_POST["titre_page"]);
@@ -160,7 +166,7 @@ class Base{
 			// $page->checkboxState();
 	   }
 
-	   $page->checkboxState();
+	//    $page->checkboxState();
 
 	   $page->definirPageAccueil();
 

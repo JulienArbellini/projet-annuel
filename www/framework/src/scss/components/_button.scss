@@ -33,5 +33,19 @@
 		@extend .button-add-page;
 		text-align: center;
 	}
+	&-left-nav-front-tpl{
+		@extend .button;
+		width: 100px;
+		height: 25px;
+		font-size: 13px;
+		background-color: white;
+		color: black;
+		border-radius: 5px;
+		margin-bottom: 5px;
+	}
+}
+
+.button-left-nav-front-tpl:hover{
+	background-color: #D0D9DC;
 }
 

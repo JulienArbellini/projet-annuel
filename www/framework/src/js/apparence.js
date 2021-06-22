@@ -4,33 +4,289 @@ let page = document.getElementById('div');
 
 
 function addLink(){
-    let html = `<a href="#" class="link" id="draggable-elmt">Un Lien</a>`;
+    let html = `<a href="#" class="link">Un Lien</a>`;
 
     page.insertAdjacentHTML('beforeend', html);
 }
 
 function addButton(){
-    let html = `<button id="draggable-elmt">Un bouton</button>`;
+    let html = `<button>Un bouton</button>`;
 
     page.insertAdjacentHTML('beforeend', html);
 }
 
-function addNavigation(){
-    let html = `<ul id="draggable-elmt">
-                    <li><a href="#">Item 1</a></li>
-                    <li><a href="#">Item 2</a></li>
-                    <li><a href="#">Item plus long</a></li>
+function addBlackNavigation(){
+    let html = `<ul class="navbar-horizontale">
+                    <li class="li-horizontale-nav"><a href="#">Item 1</a></li>
+                    <li class="li-horizontale-nav"><a href="#">Item 2</a></li>
+                    <li class="li-horizontale-nav"><a href="#">Item plus long</a></li>
                 </ul>`;
 
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addDarkBlueNavigation(){
+    let html = `<ul class="navbar2">
+                   <li class="li-menu2"><a href="#">Home</a></li>
+                   <li class="li-menu2"><a href="#">News</a></li>
+                   <li class="li-menu2"><a href="#">Contact</a></li>
+                </div>`;
+    
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addSkyBlueNavigation(){
+    let html = `<nav class="navbar3">
+                    <ul>
+                        <li><a href="#">Item1</a></li>
+                        <li><a href="#">Item2</a></li>
+                        <li><a href="#">Item3</a></li>
+                        <li><a href="#">Item4</a></li>
+                    </ul>
+                </nav>`;
 
     page.insertAdjacentHTML('beforeend', html);
 }
 
-function addImage(){
-    let html = `<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">`;
+function addDropDownMenuBlack(){
+    let html = `<nav class="nav-dropdown-black">
+                    <ul class="ul-menu-dropdown-black">
+                        <li class="li-menu-dropdown-black deroulant-black"><a class="a-menu-dropdown-black" href="#">Item 1</a>
+                            <ul class="sous-dropdown-black">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown-black"><a class="a-menu-dropdown-black" href="#">Item 2</a>
+                            <ul class="sous-dropdown-black">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown-black"><a class="a-menu-dropdown-black" href="#">Item 3</a>
+                            <ul class="sous-dropdown-black">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown-black"><a class="a-menu-dropdown-black" href="#">Item 4</a>
+                            <ul class="sous-dropdown-black">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>`;
 
     page.insertAdjacentHTML('beforeend', html);
 }
 
+function addDropDownMenuSkyBlue(){
+    let html = `<nav class="nav-dropdown-skyblue">
+                    <ul class="ul-menu-dropdown-skyblue">
+                        <li class="li-menu-dropdown-skyblue deroulant-skyblue"><a class="a-menu-dropdown-skyblue" href="#">Item 1</a>
+                            <ul class="sous-dropdown-skyblue">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown-skyblue"><a class="a-menu-dropdown-skyblue" href="#">Item 2</a>
+                            <ul class="sous-dropdown-skyblue">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown-skyblue"><a class="a-menu-dropdown-skyblue" href="#">Item 3</a>
+                            <ul class="sous-dropdown-skyblue">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown-skyblue"><a class="a-menu-dropdown-skyblue" href="#">Item 4</a>
+                            <ul class="sous-dropdown-skyblue">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>`;
+
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addDropDownMenuDarkBlue(){
+    let html = `<nav class="nav-dropdown">
+                    <ul class="ul-menu-dropdown">
+                        <li class="li-menu-dropdown deroulant"><a class="a-menu-dropdown" href="#">Item 1</a>
+                            <ul class="sous-dropdown">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown"><a class="a-menu-dropdown" href="#">Item 2</a>
+                            <ul class="sous-dropdown">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown"><a class="a-menu-dropdown" href="#">Item 3</a>
+                            <ul class="sous-dropdown">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown"><a class="a-menu-dropdown" href="#">Item 4</a>
+                            <ul class="sous-dropdown">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>`;
+    
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addText(){
+    let html = `<p class="text-apparence">Zone de texte</p>`;
+
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addTitle(){
+    let html = `<h1>Un titre</h1>`;
+
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+// function addFooter(){
+//     let html = `<div class="footer-apparence">
+//                     <div class="contain">
+//                         <div class="colonne-footer">
+//                             <h1>Company</h1>
+//                             <ul>
+//                                 <li>About</li>
+//                                 <li>Mission</li>
+//                                 <li>Services</li>
+//                                 <li>Social</li>
+//                                 <li>Get in touch</li>
+//                             </ul>
+//                         </div>
+//                         <div class="colonne-footer">
+//                             <h1>Products</h1>
+//                             <ul>
+//                                 <li>About</li>
+//                                 <li>Mission</li>
+//                                 <li>Services</li>
+//                                 <li>Social</li>
+//                                 <li>Get in touch</li>
+//                             </ul>
+//                         </div>
+//                         <div class="colonne-footer">
+//                             <h1>Accounts</h1>
+//                             <ul>
+//                                 <li>About</li>
+//                                 <li>Mission</li>
+//                                 <li>Services</li>
+//                                 <li>Social</li>
+//                                 <li>Get in touch</li>
+//                             </ul>
+//                         </div>
+//                         <div class="colonne-footer">
+//                             <h1>Resources</h1>
+//                             <ul>
+//                                 <li>About</li>
+//                                 <li>Mission</li>
+//                                 <li>Services</li>
+//                                 <li>Social</li>
+//                                 <li>Get in touch</li>
+//                             </ul>
+//                         </div>
+//                         <div class="colonne-footer">
+//                             <h1>Support</h1>
+//                             <ul>
+//                                 <li>Contact us</li>
+//                                 <li>Web chat</li>
+//                                 <li>Open ticket</li>
+//                             </ul>
+//                         </div>
+//                         <div class="colonne-footer social">
+//                             <h1>Social</h1>
+//                             <ul>
+//                                 <li><img src="https://svgshare.com/i/5fq.svg" style="width: 32px;"></li>
+//                                 <li><img src="https://svgshare.com/i/5fq.svg" style="width: 32px;"></li>
+//                                 <li><img src="https://svgshare.com/i/5fq.svg" style="width: 32px;></li>
+//                             </ul>
+//                         </div>
+//                         <div class="clearfix"></div>
+//                     </div>
+//                 </div>`;
+
+//     page.insertAdjacentHTML('beforeend', html);
+// }
+
+function addRedButton(){
+    let html = `<div class="div-red-button">
+                    <a href="#" class="red-button-apparence">Button</a>
+                </div>`;
+
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addDarkBlueButton(){
+    let html = `<div class="div-darkBlue-button">
+                    <a href="#" class="darkBlue-button-apparence">Button</a>
+                </div>`;
+
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addBlackButton(){
+    let html = `<div class="div-black-button">
+                    <a href="#" class="black-button-apparence">Button</a>
+                </div>`;
+    
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addPinkButton(){
+    let html = `<div class="div-pink-button">
+                    <a href="#" class="pink-button-apparence">Button</a>
+                </div>`;
+    
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addGreenButton(){
+    let html = `<div class="div-green-button">
+                    <a href="#" class="green-button-apparence">Button</a>
+                </div>`;
+    
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addGreyButton(){
+    let html = `<div class="div-grey-button">
+                    <a href="#" class="grey-button-apparence">Button</a>
+                </div>`;
+    
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+
+//version dropdown pour chaque menu
+//lien customisés comme un bouton
 //Ajouter un menu de navigation
 //Insertion d'un mini formulaire ?

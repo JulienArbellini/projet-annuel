@@ -14,5 +14,10 @@
         text-decoration-line: underline;
         color: $link-color;
     }
+    &-apparence{
+        @extend .link;
+        font-size: 17px;
+        margin-top: auto;
+    }
 
 }

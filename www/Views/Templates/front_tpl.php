@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/colors/ui/trumbowyg.colors.min.css">
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/emoji/ui/trumbowyg.emoji.min.css">
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/table/ui/trumbowyg.table.min.css">
+		<link rel="stylesheet" href="framework/dist/site-pages.css">
         
         <script src="framework/src/js/Trumbowyg-master/dist/trumbowyg.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/colors/trumbowyg.colors.min.js"></script>
@@ -56,61 +57,56 @@
 		<main>
 			<div id="nav-left" style="width: 40vh;">
 
-				<!-- <div class="wrapper"> -->
-					
-					<!-- <div class="col-m-12 col-m-down-6 col-m-padding-down-5">
-						<div class="col-m-9"><p class="p-accordionMenu">Mise en page</p></div>
-						<div class="col-m-2"><img id="fleche-accordion" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></div>
-						<div class="separator col-m-10 col-m-down-2"></div>
-						<div class="content-accordion">Lorem Ipsum</div>
-					</div>
+				<p class="titre-menu-tpl">Texte</p>
+				<div class="buttons-tpl">
+					<button class="button-left-nav-front-tpl" onclick="addText()">Zone de texte</button>
+					<button class="button-left-nav-front-tpl" onclick="addTitle()">Titre</button>
+				</div>
 
+				<hr class="separateur-tpl">
+
+				<p class="titre-menu-tpl">Liens</p>
+				<div class="buttons-tpl">
+					<button class="button-left-nav-front-tpl" onclick="addLink()">Lien</button>
+				</div>
+
+				<hr class="separateur-tpl">
+
+				<p class="titre-menu-tpl">Boutons</p>
+				<div class="buttons-tpl">
+					<button class="button-left-nav-front-tpl" onclick="addRedButton()">Rouge</button>
+					<button class="button-left-nav-front-tpl" onclick="addDarkBlueButton()">Bleu foncé</button>
+					<button class="button-left-nav-front-tpl" onclick="addBlackButton()">Noir</button>
+					<button class="button-left-nav-front-tpl" onclick="addPinkButton()">Rose</button>
+					<button class="button-left-nav-front-tpl" onclick="addGreenButton()">Vert</button>
+					<button class="button-left-nav-front-tpl" onclick="addGreyButton()">Gris</button>					
+				</div>
+
+				<hr class="separateur-tpl">
+
+				<p class="titre-menu-tpl">Menus</p>
+				<div class="buttons-tpl">
+					<button class="button-left-nav-front-tpl" onclick="addBlackNavigation()">Noir</button>
+					<button class="button-left-nav-front-tpl" onclick="addDarkBlueNavigation()">Bleu foncé</button>
+					<button class="button-left-nav-front-tpl" onclick="addSkyBlueNavigation()">Bleu ciel</button>
+				</div>
+
+				<hr class="separateur-tpl">
+
+				<p class="titre-menu-tpl">Menus déroulants</p>
+				<div class="buttons-tpl">
+					<button class="button-left-nav-front-tpl" onclick="addDropDownMenuBlack()">Noir</button>
+					<button class="button-left-nav-front-tpl" onclick="addDropDownMenuDarkBlue()">Bleu foncé</button>
+					<button class="button-left-nav-front-tpl" onclick="addDropDownMenuSkyBlue()">Bleu ciel</button>
+				</div>
+
+				<!-- <hr class="separateur-tpl">
+
+				<p class="titre-menu-tpl">Pied de page</p>
+				<div class="buttons-tpl">
+					<button class="button-left-nav-front-tpl" onclick="addFooter()">Bleu foncé</button>
+				</div> -->
 				
-					<div class="col-m-12 col-m-down-6">
-						<div class="col-m-9"><p class="p-accordionMenu">Mise en page</p></div>
-						<div class="col-m-2"><img id="fleche-accordion" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></div>
-						<div class="separator col-m-10 col-m-down-2"></div>
-					</div>
-
-
-					<div class="col-m-12 col-m-down-6">
-						<div class="col-m-9"><p class="p-accordionMenu">Mise en page</p></div>
-						<div class="col-m-2"><img id="fleche-accordion" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></div>
-						<div class="separator col-m-10 col-m-down-2"></div>
-					</div>
-
-					<div class="col-m-12 col-m-down-6">
-						<div class="col-m-9"><p class="p-accordionMenu">Mise en page</p></div>
-						<div class="col-m-2"><img id="fleche-accordion" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></div>
-						<div class="separator col-m-10 col-m-down-2"></div>
-					</div>
-
-				
-					<div class="col-m-12 col-m-down-6">
-						<div class="col-m-9"><p class="p-accordionMenu">Mise en page</p></div>
-						<div class="col-m-2"><img id="fleche-accordion" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></div>
-						<div class="separator col-m-10 col-m-down-2"></div>
-					</div>
-
-
-					<div class="col-m-12 col-m-down-6">
-						<div class="col-m-9"><p class="p-accordionMenu">Mise en page</p></div>
-						<div class="col-m-2"><img id="fleche-accordion" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></div>
-						<div class="separator col-m-10 col-m-down-2"></div>
-					</div> -->
-
-					
-
-					<!-- <hr/> -->
-				<!-- </div> -->
-
-
-
-				<button id="add-link" onclick="addLink()">Ajouter un lien</button>
-				<button id="add-button" onclick="addButton()">Ajouter un bouton</button>
-				<button id="add-navigation" onclick="addNavigation()">Ajouter un menu</button>
-				<button id="add-image" onclick="addImage()">Ajouter une image</button>
-				<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
 			</div>
 			
 			<div id="content">

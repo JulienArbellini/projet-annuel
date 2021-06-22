@@ -12,12 +12,12 @@
     </div> -->
     <div class="col-s-10 col-m-12 col-m-center">
         <form method="post">
-                <div class="col-m-12 col-m-padding-2 col-m-center">
+                <div class="col-m-12 col-m-padding-2 col-m-center header-apparence">
                     <input type="text" class="form__field" name="titre_page" placeholder="titre" value="<?php echo $data[0]["title"] ?>">
                     <input type="text" class="form__field" name="slugPage" placeholder="/slug" value="<?php echo $data[0]["slug"] ?>">
-                    <input type="checkbox" id="pageAccueil" name="pageAccueil[]" value="Accueil" <?php if ($_SESSION['checkbox_state'][0][0] == 1) echo "checked"?> >
-                    <label for="pageAccueil">Page d'accueil</label>
-                    <a href="<?php echo $data[0]["slug"]?>" class="link">Visualiser la page</a>
+                    <label for="pageAccueil" class="label-apparence">Page d'accueil
+                    <input type="checkbox" id="pageAccueil" class="checkbox-apparence" name="pageAccueil[]" value="Accueil" <?php if ($_SESSION['checkbox_state'][0][0] == 1) echo "checked"?> ></label>
+                    <a href="<?php echo $data[0]["slug"]?>" class="link-apparence">Visualiser la page</a>
                 </div>
     
                 
@@ -48,7 +48,6 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="framework/src/js/apparence.js"></script>
-<script src="framework/src/js/drag-and-drop.js"></script>
 
 
 <!-- Plusieurs design de menu / lien / possibilité de changer le background -->
