@@ -204,6 +204,9 @@ class Database
 			$_SESSION['checkbox_state'] = $query->fetchall();
 			return $_SESSION['checkbox_state'];
 		}
+		else{
+			$_SESSION['checkbox_state'] = 0;
+		}
 	}
 
 	public function routingPagesArticles(){

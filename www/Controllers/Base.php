@@ -41,8 +41,7 @@ class Base{
 
 		$page = new Page();
 
-		$page->definirPageAccueil();
-		
+		$page->definirPageAccueil();		
 	
 	}
 
@@ -140,9 +139,9 @@ class Base{
 			// $page->checkboxState();
 	   }
 
-	   if(!empty($_GET['idPage'])){
-			$page->checkboxState();
-	   }
+	//    if(!empty($_GET['idPage'])){
+	// 		$page->checkboxState();
+	//    }
 
 	//    $page->checkboxState();
 
@@ -166,7 +165,7 @@ class Base{
 			// $page->checkboxState();
 	   }
 
-	//    $page->checkboxState();
+	   $page->checkboxState();
 
 	   $page->definirPageAccueil();
 
