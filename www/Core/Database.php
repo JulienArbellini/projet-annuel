@@ -179,7 +179,6 @@ class Database
 	}
 
 	public function definirPageAccueil(){
-			// echo "coucou";
 			$query = $this->pdo->prepare("SELECT slug FROM tr_page WHERE page_accueil=1");
 			$query->execute();
 			$_SESSION['slug_accueil'] = $query->fetchall();
@@ -192,6 +191,17 @@ class Database
 			$query = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$idPage);
 			$query->execute();
 			$data = $query->fetchall();
+			return $data;
+		}
+		else{
+
+			$query1 = $this->pdo->prepare("SELECT MAX(id) FROM ".$this->table);
+			$query1->execute();
+			$MaxId = $query1->fetchall();
+
+			$query2 = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$MaxId[0][0]);
+			$query2->execute();
+			$data = $query2->fetchall();
 			return $data;
 		}
 	}
