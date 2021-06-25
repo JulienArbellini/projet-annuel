@@ -958,6 +958,8 @@ header {
 }
 
 .link-nav-bar {
+  color: #000000;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;

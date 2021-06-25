@@ -27,7 +27,9 @@ class Security{
 		$mailer = new Mailer();
 		$form = $user->buildFormRegister();
 		$view->assign("form", $form);
-		
+		session_start();
+		var_dump($_SESSION);
+
 		if(!empty($_POST)){
 			$user->verifMailUniq();
 			$errors = Form::validator($_POST, $form);
@@ -108,8 +110,8 @@ class Security{
 		$view = new View("login","front");
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
-		
 		session_start();
+
 		if(isset($_POST['email']) && isset($_POST['pwd']))
 		{
 			$email = htmlspecialchars($_POST['email']); 

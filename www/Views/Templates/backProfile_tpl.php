@@ -29,35 +29,32 @@
                         Créer
                     </div>
                     <a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
-                        John Doe
-                        <img src="../../framework/img/user.png" alt="user button"></img>
+                        <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
+                        <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
                     </a>
                 </div>
             </div>
 		</header>
 		
 		<main>
-            <nav id="nav-left">
-                <ul id="list-profile">
+        <div id="nav-left">
+                <div id="liste">
                     <div class="menu-profile container-flexbox-nav col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" ></div>
-                            <li class="col-m-8" style="list-style: none;"><a href="/profil">Mon profil</a></li>
+                            <div class="col-m-8"><p>Mon profil</p></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu-profile container-flexbox-nav col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div>
-                            <li class="col-m-8" style="list-style: none;"><a href="/profil/reglages">Réglages</a></li>
+                            <div class="col-m-8"><p>Réglages</p></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu-profile container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/notifications.png" alt="logo notifications"></div>
-                            <li class="col-m-9" style="list-style: none;"><a href ="profil/notifications">Notifications</a></li>
+                            <div class="col-m-2"><img src="../../framework/img/notification.png" alt="logo dashboard"></div>
+                            <div class="col-m-9"><p>Notifications</p></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                </ul>
-            </nav>
-			<div id="content-profile">
-				<?php include $this->view ?>
+                </div>
             </div>
 		</main>
 	</body>

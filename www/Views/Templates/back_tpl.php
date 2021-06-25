@@ -7,11 +7,10 @@
         { 
            if($_GET['deconnexion']==true)
            {  
-              session_unset();
+              unset($_SESSION['loggedIn']);
               header('Location: \login');
            }
         }
-//var_dump($_SESSION);
 ?>
    
 <!DOCTYPE html>
@@ -47,7 +46,7 @@
                         Créer
                     </div>
                     <a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
-                        Bonjour <?php $_SESSION['prenom']?>
+                        <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
                         <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
                     </a>
                 </div>

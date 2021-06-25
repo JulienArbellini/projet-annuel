@@ -249,20 +249,16 @@ class Database
 	}
 
 	public function verifConfirmed() {
-		return true;
-		//$id = $_SESSION['id'];
-		//$_SESSION['id'] = $this->pdo->lastInsertId();
-		//var_dump($this);
-		//echo $_SESSION['id'] ;
-		// $query = $this->pdo->prepare("SELECT confirmation FROM tr_user WHERE id = $id");
-		// $query->execute();
-		// $data = $query->fetch();
-		// if ($data['confirmation'] == 1) {
-		// 	return true;
-		// }
-		// else {
-		// 	return false;
-		// }
+		$id = $_SESSION['id']; 
+		$query = $this->pdo->prepare("SELECT confirmation FROM tr_user WHERE id = $id");
+		$query->execute();
+		$data = $query->fetch();
+		if ($data['confirmation'] == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public function routingPagesArticles(){
