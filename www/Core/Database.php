@@ -4,8 +4,6 @@
 namespace App\Core;
 
 $mailexists = 0;
-// session_start();
-
 
 class Database
 {
@@ -73,6 +71,7 @@ class Database
 		$query->execute($data);
 		// echo $query;
 		$_SESSION['id'] = $this->pdo->lastInsertId();
+	
 		
 	}
 
@@ -138,7 +137,6 @@ class Database
 		$end = date_create($end);
 		$interval = date_diff($start,$end);
 		if($interval->format('%h') <= 3){
-			echo 'YEAAAAAAh';
 			return true;
 		}else{
 			echo '<html><br></html>Votre code de confirmation est périmé, veuillez le renouveller en rentrant votre mail ici';
@@ -160,7 +158,6 @@ class Database
 	}
 
 	public function verifMail(){
-		// global $mailexists;
 		if(isset($_POST['email'])){
 			$email = $_POST['email'];
 			$reqmail = $this->pdo->prepare('SELECT id FROM tr_user WHERE email = ?');
@@ -245,8 +242,27 @@ class Database
 				echo "Votre identifiant ou votre clé est incorrect";
 			}
 		}else{
+			return false;
 			echo "Aucun utilisateur trouvé";
+			
 		}
+	}
+
+	public function verifConfirmed() {
+		return true;
+		//$id = $_SESSION['id'];
+		//$_SESSION['id'] = $this->pdo->lastInsertId();
+		//var_dump($this);
+		//echo $_SESSION['id'] ;
+		// $query = $this->pdo->prepare("SELECT confirmation FROM tr_user WHERE id = $id");
+		// $query->execute();
+		// $data = $query->fetch();
+		// if ($data['confirmation'] == 1) {
+		// 	return true;
+		// }
+		// else {
+		// 	return false;
+		// }
 	}
 
 	public function routingPagesArticles(){
@@ -309,5 +325,12 @@ class Database
 			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = '" .$_POST["lastname"]. "', firstname = '" .$_POST["firstname"]. "', Role_idRole = '" .$_POST["role"]. "' WHERE id = " .$_GET['updateId']);
 			$query->execute();
 		}
+	}
+
+	public function recupDataProfile() {
+		$query = $this->pdo->prepare("SELECT firstname, lastname, pseudo, email FROM tr_user WHERE id = 1");
+		$query->execute();
+		$data = $query->fetchall();
+		return $data;
 	}
 }

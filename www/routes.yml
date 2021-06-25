@@ -51,6 +51,11 @@
 /display-articles:
   controller: Base
   action: displayArticle
+
 /utilisateurs:
   controller: Base
   action: users
+
+/profil:
+  controller: Base
+  action: profile

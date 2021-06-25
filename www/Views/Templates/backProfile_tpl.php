@@ -1,12 +1,18 @@
+<?php
+    session_start();
+    if (!($_SESSION['loggedIn'])){
+        header('Location:/login');
+    }
+?>                          
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewxport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 		<title>Profil</title>
 		<link rel="stylesheet" href="framework/dist/main.css">
 	</head>
-	<body style="display: flex; flex-direction: column;">
+	<body style="display:flex; flex-direction:column;">
 		
 		<header>
 			<div class="row col-m-12">
@@ -22,7 +28,7 @@
                         <img src="../../framework/img/add.png" alt="plus button"></img>
                         Créer
                     </div>
-                    <a href="/profil" id="profil_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
+                    <a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
                         John Doe
                         <img src="../../framework/img/user.png" alt="user button"></img>
                     </a>
@@ -31,31 +37,28 @@
 		</header>
 		
 		<main>
-            <div id="nav-left">
-                <div id="liste">
-                    <div class="menu-profil container-flexbox-nav col-s-12 col-m-12 col-l-12">
+            <nav id="nav-left">
+                <ul id="list-profile">
+                    <div class="menu-profile container-flexbox-nav col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" ></div>
-                            <div class="col-m-8"><p>Mon profil</p></div>
+                            <li class="col-m-8" style="list-style: none;"><a href="/profil">Mon profil</a></li>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                    <div class="menu-profil container-flexbox-nav col-s-12 col-m-12 col-l-12">
+                    <div class="menu-profile container-flexbox-nav col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div>
-                            <div class="col-m-8"><p>Réglages</p></div>
+                            <li class="col-m-8" style="list-style: none;"><a href="/profil/reglages">Réglages</a></li>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                    <div class="menu-profil container-flexbox-nav col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/notification.png" alt="logo commentaires" ></div>
-                            <div class="col-m-8"><p>Notifications</p></div>
+                    <div class="menu-profile container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12">
+                            <div class="col-m-2"><img src="../../framework/img/notifications.png" alt="logo notifications"></div>
+                            <li class="col-m-9" style="list-style: none;"><a href ="profil/notifications">Notifications</a></li>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                    <div class="menu-profil logout container-flexbox-nav col-s-12 col-m-12 col-l-12">
-                        <a href="/logout" class="logout-link">Déconnexion</a>
-                    </div> 
-                </div>
-            </div>
-			<div id="content">
+                </ul>
+            </nav>
+			<div id="content-profile">
 				<?php include $this->view ?>
-			</div>
+            </div>
 		</main>
 	</body>
 </html>

@@ -11,16 +11,17 @@
               header('Location: \login');
            }
         }
+//var_dump($_SESSION);
 ?>
    
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="iso-8859-1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Template de Back</title>
-		<meta name="description" content="ceci est la page de template">
-		<link rel="stylesheet" href="framework/dist/main.css">
+                <meta charset="iso-8859-1">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Template de Back</title>
+                <meta name="description" content="ceci est la page de template">
+                <link rel="stylesheet" href="framework/dist/main.css">
         <!-- <script type="text/javascript" src="dist/main.js"></script> -->
         <script type="text/javascript" src="framework/src/js/ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
@@ -45,10 +46,10 @@
                         <img src="../../framework/img/add.png" alt="plus button" width="19" height="18"></img>
                         Créer
                     </div>
-                    <div id="profile_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
-                    <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
+                    <a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
+                        Bonjour <?php $_SESSION['prenom']?>
                         <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
-                    </div>
+                    </a>
                 </div>
             </div>
 		</header>

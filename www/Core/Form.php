@@ -95,6 +95,7 @@ class Form
 						name='".$name."'
 						type='".($dataInput["type"] ?? "text")."'
 						placeholder='".($dataInput["placeholder"] ?? "")."'
+						autocomplete='".($dataInput["autocomplete"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
 						>";
 				$html .="<label class='checkbox-label' for='".$name."'>".($dataInput["label"]??"")." </label> </div>";
@@ -113,10 +114,7 @@ class Form
 
 		}
 
-
-		// $html .= "<input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
-
-		$html .= "<div class = form-group> <button type='submit' class ='button' id='btn_register'";
+		$html .= "<div> <button type='submit' class ='button' id='btn_register'";
 		$html .= ">S'inscrire</button> </div> </form>";
 
 		echo $html;
@@ -126,7 +124,7 @@ class Form
 
 	public static function showFormLogin($form){
 
-		$html = "<form class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
+		$html = "<form  id='".($form["config"]["id"]??"")."' class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
 		
 		foreach ($form["input"] as $name => $dataInput) {
 			if ($name === "checkbox")
@@ -138,7 +136,11 @@ class Form
 						type='".($dataInput["type"] ?? "text")."'
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
-						>";
+						value='".($dataInput["value"] ?? "")."'
+						autocomplete='".($dataInput["autocomplete"] ?? "")."'
+						>
+						";
+						
 				$html .="<label class='checkbox-label' for='".$name."'>".($dataInput["label"]??"")." </label> </div>";
 			} else {
 				$html .="<div class='form-group'> <label  class='control-label' for='".$name."'>".($dataInput["label"]??"")." </label>";
@@ -150,7 +152,10 @@ class Form
 						type='".($dataInput["type"] ?? "text")."'
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
-						> </div>";
+						value='".($dataInput["value"] ?? "")."'
+						> 
+						
+						</div>";
 			}
 				
 

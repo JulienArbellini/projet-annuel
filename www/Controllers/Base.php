@@ -42,6 +42,8 @@ class Base{
 
 		//Affiche moi la vue dashboard;
 		$view = new View("dashboard", "back");
+		var_dump($_SESSION);
+
 		
 	
 	}
@@ -144,5 +146,12 @@ class Base{
 
 		$dataSlug = $article->routingPagesArticles();
 		// $view->assign("dataSlug", $dataSlug);
+	}
+
+	public function profileAction(){
+		$view = new View("profile", "backProfile");
+		$user = new User();
+		$data = $user->recupDataProfile();
+		$view->assign("data",$data);
 	}
 }

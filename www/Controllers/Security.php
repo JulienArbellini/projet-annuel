@@ -33,8 +33,10 @@ class Security{
 			$errors = Form::validator($_POST, $form);
 			
 			if(empty($errors)){
+				
 				$user->setFirstname(htmlspecialchars($_POST["firstname"]));
 				$user->setLastname(htmlspecialchars($_POST["lastname"]));
+				$user->setPseudo(htmlspecialchars($_POST["pseudo"]));
 				$user->setEmail(htmlspecialchars($_POST["email"]));
 				$user->setPwd(password_hash(htmlspecialchars($_POST["pwd"]), PASSWORD_BCRYPT));
 				$user->setCreatedAtUser(date("Y-m-d H:i:s"));
@@ -42,7 +44,9 @@ class Security{
 				$user->setConfirmKey($confirmKey);
 
 				$user->save();
-
+				var_dump($_SESSION);
+				$user->setId($_SESSION['id']);
+				echo $user->getId();
 				$to   = $_POST["email"];
 				$from = 'teachr.contact.pa@gmail.com';
 				$name = 'Teachr';
@@ -104,30 +108,37 @@ class Security{
 		$view = new View("login","front");
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
+		
 		session_start();
 		if(isset($_POST['email']) && isset($_POST['pwd']))
 		{
 			$email = htmlspecialchars($_POST['email']); 
 			$password = htmlspecialchars($_POST['pwd']);
-			
 			if($email !== "" && $password !== "")
 			{
-				if($user->checkPwd($password, $email)) // nom d'utilisateur et mot de passe correctes
+				if($user->checkPwd($password, $email)) // nom d'utilisateur et mot de passe corrects
 				{
-					$_SESSION['prenom'] = $user->getPseudo($email);
-					$user->connectedOn($email);
-					$_SESSION['loggedIn']=true;
-					header('Location: \tableau-de-bord');
+					if ($user->verifConfirmed())
+					{
+						$_SESSION['prenom'] = $user->getPseudo($email);
+						$user->connectedOn($email);
+						$_SESSION['loggedIn']=true;
+						header('Location: \tableau-de-bord');
+						echo "tableau de bord";
+					}
+					else {
+						echo "<center><p style='color:red'>Veuillez valider votre compte à l'aide du code de confirmation reçu dans votre boîte de réception</p></center>";
+					}
 				}
 				else
 				{
-					header('Location: \login?erreur=1'); // utilisateur ou mot de passe incorrect
-				}
+					header('Location: \login?id='.$_SESSION['id'].'&erreur=1'); // utilisateur ou mot de passe incorrect
+				}			
 			}
 			else
 			{
 				
-				header('Location: \login?erreur=2'); // utilisateur ou mot de passe vide
+				header('Location: \login?id='.$_SESSION['id'].'&erreur=2'); // utilisateur ou mot de passe vide
 			}
 		}					
 	}
@@ -183,7 +194,7 @@ class Security{
 						$user->updatePwd($id, $_POST['pwd']);
 						echo 'Votre mot de passe a bien été enregistré';
 						$user->deleteConfirmationKey($_POST['confirmation_key'],$id);
-						header('Location: \login');
+						header('Location: \login?id='.$_SESSION['id']);
 					}
 				}
 			}else{
