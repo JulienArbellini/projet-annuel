@@ -2687,7 +2687,7 @@ input:checked + .slider:before {
 .titre-menu-tpl {
   color: white;
   margin-left: 7px;
-  margin-top: 30px;
+  margin-top: 15px;
   font-size: 20px;
 }
 
@@ -2695,6 +2695,24 @@ input:checked + .slider:before {
   margin-bottom: 30px;
   margin-top: 20px;
   margin-left: 10px;
+}
+
+#imgInp {
+  color: white;
+  margin-left: 10px;
+  height: 30px;
+  margin-top: 15px;
+}
+
+.text-dragAndDrop {
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.container-upload-img {
+  display: flex;
+  align-items: center;
 }
 
 .content-accordion {

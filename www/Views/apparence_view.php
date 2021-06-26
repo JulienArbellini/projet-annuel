@@ -41,13 +41,30 @@
     <script>
             $('#trumbowyg').trumbowyg({
                 btns: [
-                   ['viewHTML', 'formatting', 'strong', 'em', 'del', 'superscript', 'subscript', 'link', 'insertImage', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'unorderedList', 'orderedList', 'horizontaleRule', 'removeformat', 'foreColor', 'backColor', 'emoji', 'fontfamily', 'fontsize', 'historyUndo', 'historyRedo', 'indent', 'outdent', 'insertAudio', 'lineheight', 'table', 'upload', 'fullscreen']
-                ]
+                   ['viewHTML', 'formatting', 'strong', 'em', 'del', 'superscript', 'subscript', 'link', 'insertImage', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'unorderedList', 'orderedList', 'horizontaleRule', 'removeformat', 'foreColor', 'backColor', 'emoji', 'fontfamily', 'fontsize', 'historyUndo', 'historyRedo', 'indent', 'outdent', 'insertAudio', 'lineheight', 'table', 'fullscreen']
+                ],
+                plugins: {
+                    resizimg: {
+                        minSize: 64,
+                        step: 16,
+                    }
+                }
             });  
     </script>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.0.min.js"><\/script>')</script>
+<!-- <script src="framework/src/js/node_modules/jquery-resizable-dom/dist/jquery-resizable.min.js"></script> -->
+<!-- <script src="framework/src/js/Trumbowyg-master/dist/plugins/resizimg/trumbowyg.resizimg.min.js"></script> -->
+<!-- <script src="framework/src/js/Trumbowyg-master/dist/plugins/upload/trumbowyg.upload.min.js"></script> -->
 <script src="framework/src/js/apparence.js"></script>
+<!-- <script src="framework/src/js/node_modules/jquery-resizable-dom/dist/jquery-resizable.min.js"></script> -->
 
 
 <!-- Plusieurs design de menu / lien / possibilité de changer le background -->
+
+<!-- framework/src/js/Trumbowyg-master/dist/plugins/upload/trumbowyg.upload.min.js -->
+
+<!-- POUR L'UPLOAD, TUTO : https://www.youtube.com/watch?v=SfZ0oAiRhCU   //////// https://www.youtube.com/watch?v=JxgulzYe5W0 -->
+

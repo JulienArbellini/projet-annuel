@@ -186,7 +186,7 @@ class Database
 	}
 
 	public function updatePageAccueil(){
-		if(!empty($_GET['idPage'])){
+		if(!empty($_GET['idPage']) && !empty($_POST['pageAccueil'])){
 			$idPage = $_GET['idPage'];
 			$query = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$idPage);
 			$query->execute();
@@ -199,10 +199,13 @@ class Database
 			$query1->execute();
 			$MaxId = $query1->fetchall();
 
-			$query2 = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$MaxId[0][0]);
-			$query2->execute();
-			$data = $query2->fetchall();
-			return $data;
+			if(!empty($_POST['pageAccueil'])){
+				$query2 = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$MaxId[0][0]);
+				$query2->execute();
+				$data = $query2->fetchall();
+				return $data;
+			}
+			
 		}
 	}
 
