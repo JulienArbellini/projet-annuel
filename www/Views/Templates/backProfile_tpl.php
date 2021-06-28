@@ -1,5 +1,4 @@
 <?php
-    session_start();
     if (!($_SESSION['loggedIn'])){
         header('Location:/login');
     }
@@ -44,11 +43,6 @@
                             <div class="col-m-8"><p>Mon profil</p></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                    <div class="menu-profile container-flexbox-nav col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div>
-                            <div class="col-m-8"><p>Réglages</p></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
-                    </div>
                     <div class="menu-profile container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/notification.png" alt="logo dashboard"></div>
                             <div class="col-m-9"><p>Notifications</p></div>
@@ -56,6 +50,9 @@
                     </div>
                 </div>
             </div>
+                <div id="content">
+                    <?php include $this->view ?>
+                </div>
 		</main>
 	</body>
 </html>

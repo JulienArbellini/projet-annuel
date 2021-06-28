@@ -3,6 +3,8 @@
 
 namespace App\Core;
 
+use App\Models\User;
+
 $mailexists = 0;
 
 class Database
@@ -45,7 +47,6 @@ class Database
 					get_class_vars(get_class())
 				);
 		//var_dump($data);
-	
 		if(is_null($this->getId())){
 
 			//INSERT 
@@ -56,7 +57,8 @@ class Database
 											) VALUES (
 											:".implode(",:", $columns)."
 											)");
-										
+
+			$_SESSION['id'] = $this->pdo->lastInsertId();					
 		}else{
 			
 			//UPDATE 
@@ -69,10 +71,8 @@ class Database
         $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		}
 		$query->execute($data);
-		// echo $query;
+		// echo $query;	
 		$_SESSION['id'] = $this->pdo->lastInsertId();
-	
-		
 	}
 
 	public function getArticle(){
@@ -95,7 +95,7 @@ class Database
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
-		$_SESSION['id'] = $this->pdo->lastInsertId();
+		
 
 	}
 
@@ -249,7 +249,9 @@ class Database
 	}
 
 	public function verifConfirmed() {
-		$id = $_SESSION['id']; 
+		$user = $this->getUserByMail($_POST['email']);
+		//var_dump($user);
+		$id = $user->getId();
 		$query = $this->pdo->prepare("SELECT confirmation FROM tr_user WHERE id = $id");
 		$query->execute();
 		$data = $query->fetch();
@@ -324,9 +326,34 @@ class Database
 	}
 
 	public function recupDataProfile() {
-		$query = $this->pdo->prepare("SELECT firstname, lastname, pseudo, email FROM tr_user WHERE id = 1");
+		session_start();
+		$id = $_SESSION['id'];
+		$query = $this->pdo->prepare("SELECT firstname, lastname, pseudo, email FROM tr_user WHERE id = $id");
 		$query->execute();
 		$data = $query->fetchall();
 		return $data;
 	}
+
+	public function getUserByMail($email):User{
+		$query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE email = ?");
+		$query->execute(array($email));
+		$result = $query->fetchAll(\PDO::FETCH_ASSOC);
+		$data = $result[0];
+		$user = new User();
+		foreach ($data as $key => $value) {
+			$id = $user->setId($data['id']);
+			$user->setLastname($data['lastname']);
+			$user->setFirstname($data['firstname']);
+			$user->setEmail($data['email']);
+			$user->setPwd($data['password']);
+			$user->setPseudo($data['pseudo']);
+			$user->setCreatedAtUser($data['createdAtUser']);
+			$user->setRole($data['Role_idRole']);
+			$user->setConfirmation($data['confirmation']);
+			$user->setConfirmKey($data['confirmkey']);
+		}
+		return $user;
+	}
+
+	
 }

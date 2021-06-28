@@ -28,12 +28,11 @@ class Security{
 		$form = $user->buildFormRegister();
 		$view->assign("form", $form);
 		session_start();
-		var_dump($_SESSION);
-
+		
 		if(!empty($_POST)){
 			$user->verifMailUniq();
 			$errors = Form::validator($_POST, $form);
-			
+			var_dump($_POST);
 			if(empty($errors)){
 				
 				$user->setFirstname(htmlspecialchars($_POST["firstname"]));
@@ -46,9 +45,9 @@ class Security{
 				$user->setConfirmKey($confirmKey);
 
 				$user->save();
-				var_dump($_SESSION);
+				
 				$user->setId($_SESSION['id']);
-				echo $user->getId();
+
 				$to   = $_POST["email"];
 				$from = 'teachr.contact.pa@gmail.com';
 				$name = 'Teachr';
@@ -110,7 +109,10 @@ class Security{
 		$view = new View("login","front");
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
+		
+		//var_dump($_SESSION);
 		session_start();
+		
 
 		if(isset($_POST['email']) && isset($_POST['pwd']))
 		{
@@ -120,13 +122,13 @@ class Security{
 			{
 				if($user->checkPwd($password, $email)) // nom d'utilisateur et mot de passe corrects
 				{
+					$user = $user->getUserByMail($email);
 					if ($user->verifConfirmed())
 					{
 						$_SESSION['prenom'] = $user->getPseudo($email);
 						$user->connectedOn($email);
 						$_SESSION['loggedIn']=true;
 						header('Location: \tableau-de-bord');
-						echo "tableau de bord";
 					}
 					else {
 						echo "<center><p style='color:red'>Veuillez valider votre compte à l'aide du code de confirmation reçu dans votre boîte de réception</p></center>";
@@ -134,13 +136,13 @@ class Security{
 				}
 				else
 				{
-					header('Location: \login?id='.$_SESSION['id'].'&erreur=1'); // utilisateur ou mot de passe incorrect
+					header('Location: \login?erreur=1'); // utilisateur ou mot de passe incorrect
 				}			
 			}
 			else
 			{
 				
-				header('Location: \login?id='.$_SESSION['id'].'&erreur=2'); // utilisateur ou mot de passe vide
+				header('Location: \login?id=erreur=2'); // utilisateur ou mot de passe vide
 			}
 		}					
 	}

@@ -682,16 +682,6 @@ img.image-grayscale {
   cursor: pointer;
 }
 
-.deconnexion {
-  color: #ce0a0a;
-  text-decoration: underline;
-  margin-top: 95%;
-}
-
-.deconnexion:hover {
-  color: #f53030;
-}
-
 #content-profile {
   width: 85%;
 }

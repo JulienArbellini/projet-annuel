@@ -7,7 +7,7 @@ use App\Core\Database;
 date_default_timezone_set('Europe/Paris');
 
 class User extends Database
-{
+{	
     private $id = null;
     protected $lastname;
     protected $firstname;
@@ -41,6 +41,11 @@ class User extends Database
 	public function setFirstname($firstname){
 		$this->firstname = $firstname;
 	}
+
+	public function getFirstname() {
+		return $this->firstname;
+	} 
+	
 	public function setEmail($email){
 		$this->email = $email;
 	}
@@ -67,7 +72,6 @@ class User extends Database
 	public function getConfirmation(){
         return $this->confirmation;
     }
-	
 	
 	public function buildFormRegister(){
 		return 
