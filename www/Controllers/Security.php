@@ -32,7 +32,6 @@ class Security{
 		if(!empty($_POST)){
 			$user->verifMailUniq();
 			$errors = Form::validator($_POST, $form);
-			var_dump($_POST);
 			if(empty($errors)){
 				
 				$user->setFirstname(htmlspecialchars($_POST["firstname"]));
@@ -125,9 +124,11 @@ class Security{
 					$user = $user->getUserByMail($email);
 					if ($user->verifConfirmed())
 					{
-						$_SESSION['prenom'] = $user->getPseudo($email);
+						$_SESSION['id'] = $user->getId();
+						$_SESSION['pseudo'] = $user->getPseudo($email);
 						$user->connectedOn($email);
 						$_SESSION['loggedIn']=true;
+						$_SESSION['avatar'] = $user->getAvatar();
 						header('Location: \tableau-de-bord');
 					}
 					else {

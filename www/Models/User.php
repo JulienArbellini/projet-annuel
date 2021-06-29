@@ -14,6 +14,7 @@ class User extends Database
     protected $email;
     protected $password;
     protected $pseudo;
+	protected $avatar;
     protected $createdAtUser;
     protected $Role_idRole = 1;
     public $confirmKey;
@@ -72,6 +73,14 @@ class User extends Database
 	public function getConfirmation(){
         return $this->confirmation;
     }
+	
+	public function getAvatar() {
+		return $this->avatar;
+	}
+
+	public function setAvatar($avatar) {
+		$this->avatar = $avatar;
+	}
 	
 	public function buildFormRegister(){
 		return 

@@ -717,6 +717,15 @@ img.image-grayscale {
   width: 33%;
 }
 
+.container-img {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 .name {
   display: flex;
   flex-direction: column;
@@ -837,6 +846,20 @@ img.image-grayscale {
   font-size: 0, 75em;
   line-height: 19px;
   color: #AAA;
+}
+
+.link-back-profile {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.link-back-profile:hover {
+  color: #328DAA;
+}
+
+.avatar {
+  margin-top: 20px;
+  width: 100%;
 }
 
 .button {

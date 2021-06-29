@@ -55,6 +55,16 @@
     width: 33%;
 }
 
+.container-img{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .name{
     display: flex;
     flex-direction: column;
@@ -137,4 +147,17 @@
         line-height: 19px;
         color: $grey;
     }
-}   
+} 
+
+.link-back-profile {
+    color: $white;
+    text-decoration: none;
+    &:hover{
+        color: $dark-blue;
+    }
+}
+
+.avatar{
+    margin-top: 20px;
+    width: 100%;
+}
