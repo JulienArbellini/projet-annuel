@@ -17,14 +17,20 @@
         $base = trim($_POST['bdd-name']);
 
         $texte = '<?php
-            $base   = "'. $base .'";
-            $hote   = "'. $hote .'";
-            $login  = "'. $login .'";
-            $mdp    = "'. $mdp .'";
-            $port   = "8888";
+            $base = "'. $base .'";
+            $hote = "'. $hote .'";
+            $login = "'. $login .'";
+            $mdp = "'. $mdp .'";
+            $port = "8888";
             $driver = "mysql";
-            
-            $conn = new PDO($driver.":dbname=".$base.";charset=utf8;host=".$hote.";port=".$port, $login, $mdp);
+        
+            $bdd = mysqli_connect($hote, $login, $mdp);
+            // try {
+            //     $bdd = new PDO($driver.":dbname=".$base.";charset=utf8;host=".$hote.";port=".$port, $login, $mdp);
+            // } catch (PDOException $e) {
+            //     print "Erreur !: " . $e->getMessage() . "<br/>";
+            //     die();
+            // }
             ?>';
 
         $ouvrir = fopen($fichier, 'w');
@@ -43,14 +49,32 @@
             // var_dump($requetes);
             }
         }
+
+        // var_dump($requetes);
           
         $reqs = explode(';', $requetes); // on sépare les requêtes
         foreach($reqs as $req){	// et on les exécute
-            echo "Ca marche";
-            // if(!$conn->query($req)) { // si la requête fonctionne bien et qu'elle n'est pas vide
+            trim($req);
+            // $req->prepare();
+            // $req->execute();
+            // var_dump($req);
+            // if(!mysql_query($req) AND trim($req) != '') { // si la requête fonctionne bien et qu'elle n'est pas vide
             //     exit('ERREUR : '. $req); // message d'erreur
             // }
         }
+        
+        // $resultat = shell_exec('mysql $base < base.sql');
+        
+
+
+        
+        
+        // var_dump($reqs[1]);
+        // var_dump($req);
+        // $req->prepare();
+        // $req->execute();
+
+
 
         // $texte = '<?php
         //     $hote   = "'. $hote .'";
@@ -81,5 +105,17 @@
             // var_dump($conn); -->
 
     <!--  $this->pdo = new \PDO(DBDRIVER.":dbname=".$base.";charset=utf8;host=".$hote.";port=".DBPORT, $login, $mdp); -->
+
+    <!-- $this->pdo = new \PDO($driver.":dbname=".$base.";charset=utf8;host=".$hote.";port=".$port, $login, $mdp); -->
+
+    <!-- try{
+                $connexion = new PDO($driver.":dbname=".$base.";charset=utf8;host=".$hote.";port=".$port, $login, $mdp);
+                
+                // $connexion->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+                // $connexion->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+    
+            }catch(Exception $e){
+                die ("Erreur SQL ".$e->getMessage());
+            } -->
 </body>
 </html>
