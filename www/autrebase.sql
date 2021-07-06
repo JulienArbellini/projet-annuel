@@ -1,5 +1,5 @@
 -- 
--- Structure de la bdd `teachr`
+-- Structure de la table `tuto`
 -- 
 
 CREATE TABLE `tr_article` (
@@ -24,6 +24,14 @@ ALTER TABLE `tr_category`
   ADD PRIMARY KEY (`id`);
 
 
+CREATE TABLE `tr_category_has_Article` (
+  `Category_idCategory` int(11) NOT NULL,
+  `Article_idArticle` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `tr_category_has_Article`
+  ADD CONSTRAINT `fk_Category_has_Article_Article1` FOREIGN KEY (`Article_idArticle`) REFERENCES `tr_article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Category_has_Article_Category1` FOREIGN KEY (`Category_idCategory`) REFERENCES `tr_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 
 CREATE TABLE `tr_comment` (
@@ -101,6 +109,7 @@ ALTER TABLE `tr_setting`
   ADD PRIMARY KEY (`id`);
 
 
+
 CREATE TABLE `tr_setting_has_User` (
   `Setting_idSetting` int(11) NOT NULL,
   `User_idUser` int(11) NOT NULL
@@ -135,14 +144,3 @@ ALTER TABLE `tr_user`
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_User_Role1_idx` (`Role_idRole`);
   ADD CONSTRAINT `fk_User_Role1` FOREIGN KEY (`Role_idRole`) REFERENCES `tr_role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-
-CREATE TABLE `tr_category_has_Article` (
-  `Category_idCategory` int(11) NOT NULL,
-  `Article_idArticle` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-ALTER TABLE `tr_category_has_Article`
-  ADD CONSTRAINT `fk_Category_has_Article_Article1` FOREIGN KEY (`Article_idArticle`) REFERENCES `tr_article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Category_has_Article_Category1` FOREIGN KEY (`Category_idCategory`) REFERENCES `tr_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
