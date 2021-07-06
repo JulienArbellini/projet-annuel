@@ -199,6 +199,13 @@ class Database
 		return $result['pseudo'];
 	}
 
+	public function getPrenom($email){
+		$prenom = $this->pdo->prepare("SELECT firstname FROM tr_user WHERE email = "."'".$email."'");
+		$prenom->execute();
+		$result = $prenom->fetch(\PDO::FETCH_ASSOC);
+		return $result['prenom'];
+	}
+
 	public function deleteArticle(){
 
 
