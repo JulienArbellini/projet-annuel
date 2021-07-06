@@ -97,10 +97,10 @@ class Security{
 
 	public function loginAction(){
 		$user = new User();
-		$view = new View("login","front");
+		$view = new View("login", "login");
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
-		session_start();
+		// session_start();
 		if(isset($_POST['email']) && isset($_POST['pwd']))
 		{
 			$email = htmlspecialchars($_POST['email']); 

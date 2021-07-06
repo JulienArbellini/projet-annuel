@@ -42,7 +42,7 @@
 		<!-- <script src="framework/src/js/apparence.js"></script> -->
 
 	</head>
-	<body>
+	<body style="display: flex;">
 		<header>
 			<div class="row col-m-12">
 					<div id="nav-top-left">

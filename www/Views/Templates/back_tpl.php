@@ -1,5 +1,5 @@
 <?php
-        session_start();
+        // session_start();
         if (!($_SESSION['loggedIn'])){
                 header('Location:/login');
         } 
@@ -16,39 +16,39 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="iso-8859-1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Template de Back</title>
-		<meta name="description" content="ceci est la page de template">
-		<link rel="stylesheet" href="framework/dist/main.css">
-        <!-- <script type="text/javascript" src="dist/main.js"></script> -->
-        <script type="text/javascript" src="framework/src/js/ckeditor/ckeditor.js"></script>
-        <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
-        <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.dataTables.js"></script>
-        <!-- <script type="text/javascript" src="framework/src/js/jquery-3.5.1.min.js"></script> -->
-        <link rel="stylesheet" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
-        <!-- <script type="text/javascript" src="framework/src/js/modal.js"></script> -->
+                <meta charset="iso-8859-1">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Template de Back</title>
+                <meta name="description" content="ceci est la page de template">
+                <link rel="stylesheet" href="framework/dist/main.css">
+                <!-- <script type="text/javascript" src="dist/main.js"></script> -->
+                <script type="text/javascript" src="framework/src/js/ckeditor/ckeditor.js"></script>
+                <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
+                <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.dataTables.js"></script>
+                <!-- <script type="text/javascript" src="framework/src/js/jquery-3.5.1.min.js"></script> -->
+                <link rel="stylesheet" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
+                <!-- <script type="text/javascript" src="framework/src/js/modal.js"></script> -->
 	</head>
 	<body style="display:flex; flex-direction:column;">
 		
 		<header>
 			<div class="row col-m-12">
-                <div id="nav-top-left">
-                    <div class="logo col-s-3 col-m-2 col-l-2">
-                        <a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60"></a>
-                    </div>
-                    <div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
-                        <a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
-                    </div>
-                    <div class="link-nav-bar col-m-2 col-l-pull-4">
-                        <a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
-                    </div>
-                    <div id="profile_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
-                    <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
-                        <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
-                    </div>
-                </div>
-            </div>
+                                <div id="nav-top-left">
+                                        <div class="logo col-s-3 col-m-2 col-l-2">
+                                                <a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60"></a>
+                                        </div>
+                                        <div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
+                                                <a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
+                                        </div>
+                                        <div class="link-nav-bar col-m-2 col-l-pull-4">
+                                                <a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
+                                        </div>
+                                        <div id="profile_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
+                                        <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
+                                                <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
+                                        </div>
+                                </div>
+                        </div>
 		</header>
 		
 		<main>
