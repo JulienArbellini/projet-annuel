@@ -14,29 +14,37 @@
                 width: $i / $columns * 100%;
             }
         }
+
         .col#{$suffix}-center{
             margin: 0 auto;
             float: none;
         }
+
         .col#{$suffix}-push-#{$i}{
             left: $i / $columns * 100%;
         }
+
         .col#{$suffix}-pull-#{$i}{
             right: $i / $columns * 100%;
         }
+
         .col#{$suffix}-down-#{$i}{
             margin-top: $i * 5px;
         }
+
         .col#{$suffix}-up-#{$i}{
             margin-bottom: $i * 5vh;
         }
+
         .col#{$suffix}-long{
             // height: 95vh;
         }
+
         .col#{$suffix}-large{
             // width: 100vh;
             // height: 5vh;
         }
+
         .col#{$suffix}-height-#{$i}{
             height: $i * 5vh;
         }

@@ -12,7 +12,7 @@ class Article extends Database
     private $id;
     protected $title;
     protected $content;
-    protected $slug;
+    protected $slug = null;
     protected $createdAt;
 
     public function __construct(){
@@ -83,7 +83,9 @@ class Article extends Database
                                         "placeholder"=>"Tapez votre texte ici",
                                         "error"=>"Le contenu de votre article ne peut être vide "
                     ]
-                    ]
+                    
+                ]
+
         ];
     }
 }

@@ -41,3 +41,12 @@ main{
     justify-content: space-around;
     align-items: center;
 }
+
+.link-left-nav{
+    text-decoration: none;
+    color: white;
+
+    &:hover{
+        color: $dark-blue;
+    }
+}

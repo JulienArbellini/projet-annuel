@@ -8,5 +8,16 @@
     &:hover{
         color: $link-color-hover;
     }
+    &-tab-page{
+        font-size: 13px;
+        line-height: 19px;
+        text-decoration-line: underline;
+        color: $link-color;
+    }
+    &-apparence{
+        @extend .link;
+        font-size: 17px;
+        margin-top: auto;
+    }
 
 }

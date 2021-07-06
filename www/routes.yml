@@ -51,6 +51,19 @@
 /display-articles:
   controller: Base
   action: displayArticle
+  
 /utilisateurs:
   controller: Base
   action: users
+
+/pages:
+  controller: Base
+  action: pages
+
+/display-pages:
+  controller: Base
+  action: displayPage
+
+/apparence:
+  controller: Base
+  action: apparence

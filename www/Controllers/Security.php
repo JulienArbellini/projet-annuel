@@ -87,10 +87,6 @@ class Security{
 				$article->setContent($_POST["contenu"]);
 				$article->setCreatedAt(date("Y-m-d H:i:s"));
 				$article->save();
-				$user->setFirstname($_POST["firstname"]);
-				$user->setLastname($_POST["lastname"]);
-				$user->setEmail($_POST["email"]);
-				$user->setPwd($_POST["pwd"]);
 
 			}else{
 				$view->assign("formErrors", $errors);

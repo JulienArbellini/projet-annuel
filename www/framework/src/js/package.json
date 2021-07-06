@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "jquery-resizable-dom": "^0.35.0"
+  }
+}

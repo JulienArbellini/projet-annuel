@@ -10,6 +10,9 @@
 @import "registration";
 @import "users";
 @import "log";
+@import "pages.scss";
+@import "displayPage";
+@import "apparence.scss";
 
 
 @import "components/button";
@@ -27,6 +30,9 @@
 @import "components/inputAddArticle";
 @import "components/modal";
 @import "components/grille";
+@import "components/left_nav_front_tpl";
+@import "components/accordionMenu";
+@import "components/top_nav_bar_front_tpl";
 
 @import "components/input";
 @import "components/form-group";

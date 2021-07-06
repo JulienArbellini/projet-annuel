@@ -2,6 +2,7 @@
 
 
 namespace App\Core;
+use App\Core\Form;
 
 $mailexists = 0;
 // session_start();
@@ -249,24 +250,6 @@ class Database
 		}
 	}
 
-	public function routingPagesArticles(){
-		// echo $_SESSION["uri"];
-		$slug = $_SESSION["uri"];
-		$queryArticles = $this->pdo->prepare("SELECT content FROM tr_article WHERE slug =\"$slug\"");
-		// echo $queryArticles;
-		$queryArticles->execute();
-		$dataSlug = $queryArticles->fetchall();
-		// var_dump($dataSlug);
-		$html = "<html>
-					<body\">
-						".$dataSlug[0]["content"]."
-					</body>
-				</html>";
-		echo $html;
-		// echo $dataSlug[0]["content"];
-		// return $dataSlug;
-	}
-
 	public function verifMailUniq(){
 		global $mailexists;
 		$email = $_POST["email"];
@@ -310,4 +293,156 @@ class Database
 			$query->execute();
 		}
 	}
+	public function getPage(){
+		$dataPages = array_diff_key (
+					
+			get_object_vars($this), 
+
+			get_class_vars(get_class())
+
+		);
+
+		$columns_pages = array_keys($dataPages);
+
+		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
+		$query = $this->pdo->prepare("SELECT p.".implode(",",$columns_pages).", u.firstname, p.id
+									  FROM ".$this->table." AS p
+									  INNER JOIN tr_page_has_User AS l ON l.Page_idPage = p.id
+									  INNER JOIN tr_user AS u ON l.User_idUser = u.id");
+		//echo $query;
+		$query->execute();
+		//var_dump($query);
+		$donnees = $query->fetchall();
+		// var_dump($donnees);
+		return $donnees;
+	}
+
+	public function deletePage(){
+
+		if(!empty($_GET['id'])){
+			$Del_Id = $_GET['id'];
+			$query1 = $this->pdo->prepare("DELETE FROM tr_page_has_User WHERE Page_idPage=".$Del_Id);
+			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id=".$Del_Id);
+			// var_dump($query1);
+			// var_dump($query2);
+			//var_dump($_GET['id']);
+			$query1->execute();
+			$query2->execute();
+		}
+		
+	}
+
+	public function getContentPage(){
+		
+		if(!empty($_GET['idPage'])){
+			$idPage = $_GET['idPage'];
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_page WHERE id =".$idPage);
+			$query->execute();
+			$data = $query->fetchall();
+			return $data;
+		}
+		
+	}
+
+	public function definirPageAccueil(){
+			$query = $this->pdo->prepare("SELECT slug FROM tr_page WHERE page_accueil=1");
+			$query->execute();
+			$_SESSION['slug_accueil'] = $query->fetchall();
+			return $_SESSION['slug_accueil'];
+	}
+
+	public function updatePageAccueil(){
+		if(!empty($_GET['idPage']) && !empty($_POST['pageAccueil'])){
+			$idPage = $_GET['idPage'];
+			$query = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$idPage);
+			$query->execute();
+			$data = $query->fetchall();
+			return $data;
+		}
+		else{
+
+			$query1 = $this->pdo->prepare("SELECT MAX(id) FROM ".$this->table);
+			$query1->execute();
+			$MaxId = $query1->fetchall();
+
+			if(!empty($_POST['pageAccueil'])){
+				$query2 = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$MaxId[0][0]);
+				$query2->execute();
+				$data = $query2->fetchall();
+				return $data;
+			}
+			
+		}
+	}
+
+	public function checkboxState(){
+		if(!empty($_GET['idPage'])){
+			$idPage = $_GET['idPage'];
+			$query = $this->pdo->prepare("SELECT page_accueil FROM tr_page WHERE id =".$idPage);
+			$query->execute();
+			$_SESSION['checkbox_state'] = $query->fetchall();
+			return $_SESSION['checkbox_state'];
+		}
+		else{
+			$_SESSION['checkbox_state'] = 0;
+		}
+	}
+
+	public function routingPagesArticles(){
+		$slug = $_SESSION["uri"];
+
+		$queryArticles = $this->pdo->prepare("SELECT content, title FROM tr_article WHERE slug =\"$slug\"");
+		$queryArticles->execute();
+
+		$dataSlugArticle = $queryArticles->fetchall();
+
+		if (!empty($dataSlugArticle)){
+			$html = "<html>
+						<head>
+							<meta charset=\"utf-8\">
+							<link rel=\"stylesheet\" href=\"framework/dist/site-articles.css\">
+							<title>".$dataSlugArticle[0]["title"]."</title>
+						</head>
+						<body>
+							<div id=\"article\"</div>
+								".$dataSlugArticle[0]["content"]."
+							</div>
+						</body>
+					</html>";
+
+			echo $html;
+		}
+		else{
+			$queryPages = $this->pdo->prepare("SELECT content, title FROM tr_page WHERE slug =\"$slug\"");
+			$queryPages->execute();
+			$dataSlugPage = $queryPages->fetchall();
+
+			if(!empty($dataSlugPage)){
+				$html = "<html>
+							<head>
+								<meta charset=\"utf-8\">
+								<link rel=\"stylesheet\" href=\"framework/dist/site-pages.css\">
+								<title>".$dataSlugPage[0]["title"]."</title>
+							</head>
+							<body>
+								".$dataSlugPage[0]["content"]."
+							</body>
+						</html>"; 
+
+				echo $html;
+				
+			}
+			else{
+				die("erreur 404 : Route not found");
+				// fopen('test.php', 'r');
+			}
+
+		}
+
+		
+	}
+
+	
+
+
 }

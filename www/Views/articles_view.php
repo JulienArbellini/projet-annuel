@@ -2,7 +2,7 @@
         <div class="col-m-3 col-m-center">
             <h1 class="h1-article">Articles</h1>
         </div>
-    </div>
+</div>
 
 <div class="row col-m-12 col-m-up-4">
     <!-- <div class="add-article-search col-s-10 col-m-8 col-m-center"> -->
@@ -68,6 +68,7 @@
                     echo $modal;
                 }
             ?>
+    </div>
            
             <script type="text/javascript" src="framework/src/js/int-datatables.js"></script>
             <script type="text/javascript" src="framework/src/js/modal.js"></script>

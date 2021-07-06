@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+session_start();
 
 use App\Core\Routing; 
 use App\Core\ConstantManager;
@@ -16,7 +17,6 @@ new ConstantManager();
 $uriExploded = explode("?", $_SERVER["REQUEST_URI"]);
 //  /ajout-d-un-utilisateur
 $_SESSION["uri"] = $uriExploded[0];
-// echo $uri;
 
 $route = new Routing($_SESSION["uri"]);
 $c = $route->getController();
@@ -45,9 +45,7 @@ if( file_exists("./Controllers/".$c.".php")){
 			$cObject->$a();
 			// var_dump($a);
 		}else{
-
 			$cObject->$a();
-			
 		}
 
 	}else{

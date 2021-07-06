@@ -9,6 +9,7 @@ use App\Models\Article;
 use App\Core\Form;
 use App\Models\User;
 use App\Core\Mailer;
+use App\Models\Page;
 
 
 class Base{
@@ -42,18 +43,21 @@ class Base{
 
 		//Affiche moi la vue dashboard;
 		$view = new View("dashboard", "back");
-		
+
+		$page = new Page();
+
+		$page->definirPageAccueil();		
 	
 	}
 
 	public function articlesAction(){
 		$view = new View("articles", "back");
 		$article = new Article();
+		
+		$article->deleteArticle();
+
 		$donnees = $article->getArticle();
 		$view->assign("donnees", $donnees);
-
-		$article2 = new Article();
-		$article2->deleteArticle();
 
 	}
 
@@ -138,11 +142,97 @@ class Base{
 		$view->assign("data", $data);
 	}
 
-	public function routesPagesArticlesAction(){
-		// $view = new View("test", "back");
-		$article = new Article();
+	public function pagesAction(){
+		$view = new View("pages", "back");
+		$page = new Page();
 
-		$dataSlug = $article->routingPagesArticles();
-		// $view->assign("dataSlug", $dataSlug);
+		$page->deletePage();
+
+		if(!empty($_POST)){
+			//var_dump($_POST);
+			$page->setTitle($_POST["add-page-title"]);
+			$page->setSlug($_POST["add-page-slug"]);
+			$page->setCreatedAt(date("Y-m-d H:i:s"));
+			$page->save();
+		}
+
+		$donnees = $page->getPage();
+		$view->assign("donnees", $donnees);
+
 	}
+
+	public function displayPageAction(){
+		$view = new View("displayPage", "back");
+		$page = new Page();
+
+		$data = $page->getContentPage();
+		$view->assign("data", $data);
+	}
+
+	public function apparenceAction(){
+		$view = new View("apparence", "front");
+		$page = new Page();
+
+		if(!empty($_POST) && !empty($_GET['idPage'])){ 
+			//echo "coucou";
+			$page->setId($_GET['idPage']);
+			$page->setTitle($_POST["titre_page"]);
+			$page->setSlug($_POST["slugPage"]);
+			$page->setContent($_POST["affichage-page"]);
+			// $page->setPageAccueil($_POST["pageAccueil"]);
+
+			if(!empty($_POST['pageAccueil'])){
+				$page->setPageAccueil("1");
+			}
+			else{
+				$page->setPageAccueil("0");
+			}
+			$page->save();
+
+			$page->updatePageAccueil();
+
+			// $page->checkboxState();
+	   }
+
+	//    if(!empty($_GET['idPage'])){
+	// 		$page->checkboxState();
+	//    }
+
+	//    $page->checkboxState();
+
+	   if(!empty($_POST) && empty($_GET['idPage'])){
+
+			$page->setTitle($_POST["titre_page"]);
+			$page->setSlug($_POST["slugPage"]);
+			$page->setContent($_POST["affichage-page"]);
+			// $page->setPageAccueil($_POST["pageAccueil"]);
+
+			if(!empty($_POST['pageAccueil'])){
+				$page->setPageAccueil("1");
+			}
+			else{
+				$page->setPageAccueil("0");
+			}
+			$page->save();
+
+			$page->updatePageAccueil();
+
+			// $page->checkboxState();
+	   }
+
+	   $page->checkboxState();
+
+	   $page->definirPageAccueil();
+
+	   $data = $page->getContentPage();
+	   $view->assign("data", $data);
+
+
+	}
+
+	public function routesPagesArticlesAction(){
+		$article = new Article();
+		$article->routingPagesArticles();
+	}
+
 }
