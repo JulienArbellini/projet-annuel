@@ -2045,8 +2045,8 @@ img.image-grayscale {
 }
 
 .checkbox-apparence {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
 }
 
 .header-apparence {
@@ -2583,6 +2583,13 @@ input:checked + .slider:before {
   text-decoration: none;
   color: red;
   font-weight: bold;
+}
+
+#nav-left-front {
+  background-color: #22263C;
+  height: 100%;
+  width: 15%;
+  overflow: scroll;
 }
 
 #menuToggle {

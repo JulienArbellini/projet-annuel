@@ -28,6 +28,7 @@ class Database
 		//echo get_called_class(); //  App\Models\User ici on peut récupérer le nom de la table
 		$classExploded = explode("\\", get_called_class());
 		$this->table = DBPREFIX.end($classExploded);
+		$this->table=strtolower($this->table);
 		 //echo "Nom de la table : " .$this->table. "</br>";
 	}
 
@@ -259,7 +260,7 @@ class Database
 								<title>".$dataSlugPage[0]["title"]."</title>
 							</head>
 							<body>
-								".$dataSlugPage[0]["content"]." titre de la page :".$dataSlugPage[0]["title"]."
+								".$dataSlugPage[0]["content"]."
 							</body>
 						</html>"; 
 

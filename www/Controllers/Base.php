@@ -49,13 +49,10 @@ class Base{
 		$view = new View("articles", "back");
 		$article = new Article();
 		
-		$article->definirPageAccueil();
+		$article->deleteArticle();
 
 		$donnees = $article->getArticle();
 		$view->assign("donnees", $donnees);
-
-		$article2 = new Article();
-		$article2->deleteArticle();
 
 	}
 
@@ -91,9 +88,6 @@ class Base{
 		$view = new View("pages", "back");
 		$page = new Page();
 
-		$donnees = $page->getPage();
-		$view->assign("donnees", $donnees);
-
 		$page->deletePage();
 
 		if(!empty($_POST)){
@@ -103,6 +97,9 @@ class Base{
 			$page->setCreatedAt(date("Y-m-d H:i:s"));
 			$page->save();
 		}
+
+		$donnees = $page->getPage();
+		$view->assign("donnees", $donnees);
 
 	}
 

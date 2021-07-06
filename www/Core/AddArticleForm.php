@@ -6,9 +6,9 @@ class AddArticleForm{
 
     public static function validatorAddArticle($data, $config){
 		$errors = [];
-         $nb_input = count($config["input"]);
-         $nb_textarea = count($config["textarea"]);
-         $total_keys = $nb_input + $nb_textarea;
+        $nb_input = count($config["input"]);
+        $nb_textarea = count($config["textarea"]);
+        $total_keys = $nb_input + $nb_textarea;
 
 		if( count($data) == $total_keys){
 

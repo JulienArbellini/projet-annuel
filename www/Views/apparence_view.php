@@ -22,7 +22,7 @@
     
                 
                 <!-- <div class="col-s-10 col-m-12 col-m-center"> -->
-                <textarea id="trumbowyg" name="affichage-page"><div id="div"><?php echo $data[0]["content"] ?></div></textarea>
+                <textarea id="trumbowyg" name="affichage-page"><div id="wysiwyg"><?php echo $data[0]["content"] ?></div></textarea>
                 <!-- </div> -->
             <div class="col-m-2 col-m-push-5 col-m-down-2">
                 <input type="submit" value="Enregistrer" class="button-apparence">

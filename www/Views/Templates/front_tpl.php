@@ -65,7 +65,7 @@
 		</header>
 
 		<main>
-			<div id="nav-left" style="width: 40vh;">
+			<div id="nav-left-front" style="width: 40vh;">
 
 				<p class="titre-menu-tpl">Texte</p>
 				<div class="buttons-tpl">
@@ -117,8 +117,8 @@
 					<button class="button-left-nav-front-tpl" onclick="addFooter()">Bleu foncé</button>
 				</div> -->
 
-				<p class="titre-menu-tpl">Images</p>
-				<div class="buuttons-tpl">
+				<!-- <p class="titre-menu-tpl">Images</p>
+				<div class="buttons-tpl">
 					<form runat="server">
 						<div class="container-upload-img">
 							<input accept="image/*" type='file' id="imgInp" />
@@ -126,16 +126,22 @@
 						</div>
 						<p class="text-dragAndDrop">Glissez et déposez votre image !</p>
 					</form>
+				</div> -->
+
+				<p class="titre-menu-tpl">Templates</p>
+				<div class="buttons-tpl">
+					<button class="button-left-nav-front-tpl" onclick="addTemplateUn()">Template 1</button>
+					<button class="button-left-nav-front-tpl" onclick="addTemplateDeux()">Template 2</button>
 				</div>
 
-				<script>
+				<!-- <script>
 					imgInp.onchange = evt => {
 						const [file] = imgInp.files
 						if (file) {
 							imgTrumbowyg.src = URL.createObjectURL(file)
 						}
 					}
-				</script>
+				</script> -->
 				
 			</div>
 			

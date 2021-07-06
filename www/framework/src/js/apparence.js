@@ -1,9 +1,12 @@
-let page = document.getElementById('div');
+let page = document.getElementById('wysiwyg');
+
+// let page = document.getElementById('trumbowyg');
 
 // let test = document.getElementsByClassName('trumbowyg-textarea');
 
 
 function addLink(){
+    console.log("click");
     let html = `<a href="#" class="link">Un Lien</a>`;
 
     page.insertAdjacentHTML('beforeend', html);
@@ -285,8 +288,110 @@ function addGreyButton(){
     page.insertAdjacentHTML('beforeend', html);
 }
 
+function addTemplateUn(){
+    let html = `<div>
+                    <div class="flex-menu">
+                        <div class="menu-left-template-carousel">
+                            <ul class="menu-template-carousel">
+                                <li><a href="#">- Item 1</a></li>
+                                <li><a href="#">- Item 2</a></li>
+                                <li><a href="#">- Item 3</a></li><br />
 
-//version dropdown pour chaque menu
-//lien customisés comme un bouton
-//Ajouter un menu de navigation
-//Insertion d'un mini formulaire ?
+                                <li><a href="#">- Item 4</a></li>
+                                <li><a href="#>- Item 5</a></li>
+                                <li><a href="#">- Item 6</a></li><br />
+
+                                <li><a href="#">- Item 7</a></li>
+                                <li><a href="#">- Item 8</a></li>
+                                <li><a href="#">- Item 9</a></li><br />
+
+                                <li><a href="#">- Item 10</a></li>
+                                <li><a href="#">- Item 11</a></li>
+                                <li><a href="#">- Item 12</a></li><br />
+                            </ul>
+                        </div>
+        
+    
+                        <div class="h1-template-carousel">
+                            <h1 class="titre-template-carousel">Titre de la page</h1>
+                            
+                            <div class="zone-texte-tpl1">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat nulla eu ex sodales, at lobortis eros semper.
+                                Curabitur quis felis sit amet lectus tempus egestas. Proin sodales enim at metus accumsan, non vestibulum augue pharetra. 
+                                Donec maximus lorem lectus, eget congue sem efficitur eu. Pellentesque habitant morbi tristique senectus et netus et 
+                                malesuada fames ac turpis egestas. Mauris a mi nunc. Aliquam erat volutpat. Curabitur ac sodales justo. 
+                                Suspendisse et elit rutrum, efficitur mauris eu, tristique odio. In finibus sit amet arcu vitae accumsan. 
+                                Praesent tincidunt dignissim nulla, in porta velit sagittis at. Vestibulum hendrerit nulla ac nibh sodales vehicula. 
+                                Sed ac congue lectus, sit amet convallis eros.
+                                Phasellus vulputate nisl a posuere pulvinar. In ac velit augue. Aenean velit sem, facilisis eu volutpat et, semper 
+                                at elit. Sed ut feugiat eros. Nam sed ultrices nulla. Proin accumsan interdum mi id ornare. 
+                                In gravida ex vitae odio ornare congue.
+                                </p>
+                            </div>
+
+                            <div class="div-darkBlue-button button-tpl1">
+                                <a href="#" class="darkBlue-button-apparence">En savoir plus</a>
+                            </div>
+                            
+                        </div>
+
+                       
+
+                    </div>
+                </div>`;
+
+
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+function addTemplateDeux(){
+    let html = `<nav class="nav-dropdown">
+                    <ul class="ul-menu-dropdown">
+                        <li class="li-menu-dropdown deroulant"><a class="a-menu-dropdown" href="#">Accueil</a></li>
+                        <li class="li-menu-dropdown"><a class="a-menu-dropdown" href="#">A propos</a>
+                            <ul class="sous-dropdown">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown"><a class="a-menu-dropdown" href="#">Nos offres</a>
+                            <ul class="sous-dropdown">
+                                <li><a href="#">Item 1</a></li>
+                                <li><a href="#">Item 2</a></li>
+                                <li><a href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="li-menu-dropdown"><a class="a-menu-dropdown" href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <h1 class="h1-tpl2">Titre de votre page</h1>
+                <div>
+                    <div class="zone-texte-tpl2">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat nulla eu ex sodales, at lobortis eros semper.
+                        Curabitur quis felis sit amet lectus tempus egestas. Proin sodales enim at metus accumsan, non vestibulum augue pharetra. 
+                        Donec maximus lorem lectus, eget congue sem efficitur eu. Pellentesque habitant morbi tristique senectus et netus et 
+                        malesuada fames ac turpis egestas. Mauris a mi nunc. Aliquam erat volutpat. Curabitur ac sodales justo. 
+                        Suspendisse et elit rutrum, efficitur mauris eu, tristique odio. In finibus sit amet arcu vitae accumsan. 
+                        Praesent tincidunt dignissim nulla, in porta velit sagittis at. Vestibulum hendrerit nulla ac nibh sodales vehicula. 
+                        Sed ac congue lectus, sit amet convallis eros.
+                        Phasellus vulputate nisl a posuere pulvinar. In ac velit augue. Aenean velit sem, facilisis eu volutpat et, semper 
+                        at elit. Sed ut feugiat eros. Nam sed ultrices nulla. Proin accumsan interdum mi id ornare. 
+                        In gravida ex vitae odio ornare congue.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="div-darkBlue-button button-tpl2">
+                    <a href="#" class="darkBlue-button-apparence">En savoir plus</a>
+                </div>
+
+                
+                
+                `;
+
+    page.insertAdjacentHTML('beforeend', html);
+}
+
+

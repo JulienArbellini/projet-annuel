@@ -59,6 +59,13 @@
 //     display: inline-block;
 // }
 
+#nav-left-front{
+    background-color: $theme-dark-grey;
+    height: 100%;
+    width: 15%;
+    overflow: scroll;
+}
+
 #menuToggle{
     display: block;
     position: relative;

@@ -16,7 +16,7 @@
 
                     <!-- <div class="button-form-page-position"> -->
                         <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
-                        <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="window.location.href='/pages'">Enregistrer</button>
+                        <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="document.location.reload()">Enregistrer</button>
                 </div>
             </form>
     </div>
@@ -74,7 +74,8 @@
                     echo $modal;
                 }
             ?>
-
+ <!-- <button class=\"\" onclick=\"window.location.href='/pages?id=".($value['id'])."'\">Supprimer</button> -->
+ <!-- <button class=\"\" onclick=\"refresh(".$value['id'].")\">Supprimer</button> -->
     </div>
 </div>
 

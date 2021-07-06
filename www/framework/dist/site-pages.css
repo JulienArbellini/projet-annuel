@@ -3,7 +3,12 @@
 
 body{
     font-family: "Roboto", sans-serif;
+    margin: 0;
 }
+
+/* #trumbowyg{
+    margin: 0;
+} */
 
 /* ---- MENU 1 ---- */
 
@@ -545,4 +550,127 @@ body{
     padding: 14px 16px;
     text-decoration: none;
 }
+
+/* ---- TEMPLATE 1 ---- */
+
+.menu-left-template-carousel{
+    background-color: #22263C;
+    /* height: 100%; */
+    width: 15%;
+    overflow: scroll;
+}
+
+.menu-template-carousel li{
+    color: white;
+    list-style: none;
+    font-size: 16px;
+    padding: 22px;
+}
+
+.flex-menu{
+    display: flex;
+    height: 100%;
+}
+
+.titre-template-carousel{
+    text-align: center;
+}
+
+.h1-template-carousel{
+    width: 80vw;
+    /* height: 10vh; */
+    flex-direction: column;
+}
+
+.menu-template-carousel a{
+    color: white;
+    text-decoration: none;
+}
+
+.menu-template-carousel a:hover{
+    text-decoration: underline;
+}
+
+/* .carousel{
+    background-color: red;
+    width: 100%;
+} */
+
+.button-tpl1{
+    float: right;
+    margin-right: 100px;
+    margin-top: 160px;
+}
+
+.zone-texte-tpl1{
+    margin: 0 auto;
+    box-shadow: 2px 2px 5px #474747;
+    border-radius: 10px;
+    width: 50vw;
+    height: 40vh;
+    margin-top: 150px;
+    overflow: scroll;
+    padding: 30px;
+    line-height: 2em;
+}
+
+/* ---- TEMPLATE 2----- */
+
+.h1-tpl2{
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* .text-zone-tpl2{
+    overflow: scroll;
+    width: 30vw;
+    height: 50vh;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 1px 1px 1px white;
+    border-radius: 5px;
+}
+
+.flex-zone-text{
+    display: flex;
+    justify-content: space-around;
+} */
+
+/* .description-img-tpl2{
+
+} */
+
+/* .div-img-tpl2 p{
+    width: 25vw;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.div-img-tpl2 img{
+    width: 400px;
+    height: 400px;
+} */
+
+.zone-texte-tpl2{
+    margin: 0 auto;
+    box-shadow: 2px 2px 5px #474747;
+    border-radius: 10px;
+    width: 50vw;
+    height: 40vh;
+    margin-top: 100px;
+    overflow: scroll;
+    padding: 30px;
+    line-height: 2em;
+}
+
+.button-tpl2{
+    float: right;
+    margin-right: 100px;
+    margin-top: 100px;
+}
+
+/* .zone-texte-tpl2 p{
+    margin-top: auto;
+    margin-bottom: auto;
+} */
 
