@@ -18,7 +18,7 @@
 
         $driver = "mysql";
         $port = "3306";
-    
+
         // tentative de connexion à la bdd si erreur afficher message d'erreur dans le formulaire
         try {
             $bdd = new PDO($driver.":dbname=".$base.";charset=utf8;host=".$hote.";port=".$port, $login, $mdp);
@@ -32,15 +32,24 @@
 
         
         // si pas d'erreur alors créer un fichier (.env ou config.php) dans lequel -> création des constantes avec leur valeur
+        $texte = 
+        "DBHOST=$hote
+        DBNAME=$base
+        DBUSER=$login
+        DBPWD=$mdp
+        DBPORT=$port
+        DBDRIVER=$driver";
+
+        $writeFileEnv = ('./.env.installeur');
+        $ouvrir = fopen($writeFileEnv, 'w');
+        fwrite($ouvrir, $texte);
         // fichier config.php doit être inclus dans le cms, 
         // executer le fichier sql d'insertion des tables
-
         
-        
-        $sql = file_get_contents('./base.sql');
-        $sqlContrainte = file_get_contents('./insert.sql');
+        $sql = file_get_contents('./teachr.sql');
         $bdd->exec($sql);
-        $bdd->exec($sqlContrainte);
+        header("Location: /s-inscrire");
+        unlink('install-copy.php');
 
     }
     ?>

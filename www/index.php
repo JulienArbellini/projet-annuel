@@ -26,10 +26,7 @@ $cWithNamespace = $route->getControllerWithNamespace();
 
 if(file_exists("./install.php")){
 	fopen("install.php", "r+b");
-}else{
-	//echo "test";
-	unlink("install.php");
-}   
+}
    
 
 

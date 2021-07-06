@@ -38,8 +38,8 @@
             <div class="form-group sgbd">
                 <p>Attention ! Le SGBD utilisé doit être MySQL.</p>
             </div>
-            <input type="submit" name="submit" value="Envoyer" />
-            <!-- <button type="submit" class="button" id="btn_register">Installation</button> -->
+            <!-- <input type="submit" name="submit" value="Envoyer" /> -->
+            <button type="submit" class="button" id="btn_register" value="Envoyer">Installation</button>
         </form>
     </body>
 
