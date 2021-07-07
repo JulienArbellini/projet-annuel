@@ -736,7 +736,20 @@ img.image-grayscale {
 .button-left-nav-front-tpl,
 .button-apparence,
 .button-formulaire-page,
-.button-add-page {
+.button-add-page 
+.title-install {
+  color: #444;
+  font-size: 0.75rem;
+  margin: 15px 0;
+}
+
+.sgbd p {
+  color: #ce0a0a;
+  font-size: 0.8125rem;
+  font-weight: bold;
+}
+
+.button {
   border-style: none;
   width: 150px;
   height: 45px;
