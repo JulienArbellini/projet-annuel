@@ -38,18 +38,27 @@
         DBUSER=$login
         DBPWD=$mdp
         DBPORT=$port
-        DBDRIVER=$driver";
+        DBDRIVER=$driver
+        DBPREFIX=tr_";
 
-        $writeFileEnv = ('./.env.installeur');
-        $ouvrir = fopen($writeFileEnv, 'w');
+        $env = "APP_NAMESPACE=\App\
+                ENV=prod";
+
+        $writeFileEnvProd = ('./.env.prod');
+        $writeFileEnv = ('./.env');
+
+        $ouvrir = fopen($writeFileEnvProd, 'w');
+        $ouvrirEnv = fopen($writeFileEnv, 'w');
+
         fwrite($ouvrir, $texte);
+        fwrite($ouvrirEnv, $env);
         // fichier config.php doit être inclus dans le cms, 
         // executer le fichier sql d'insertion des tables
         
         $sql = file_get_contents('./teachr.sql');
         $bdd->exec($sql);
         header("Location: /s-inscrire");
-        unlink('install-copy.php');
+        unlink('install.php');
 
     }
     ?>

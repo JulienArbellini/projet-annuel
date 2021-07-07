@@ -31,18 +31,9 @@
                 <label class="control-label" for="bdd-host">Hôte</label>
                 <input class="input" id="bdd-host" name="bdd-host" type="text">
             </div>
-            <!-- <div class="form-group">
-                <label class="control-label" for="bdd-prefix">Préfixe</label>
-                <input class="input" id="bdd-prefix" name="bdd-prefix" type="text">
-            </div> -->
             <div class="form-group sgbd">
                 <p>Attention ! Le SGBD utilisé doit être MySQL.</p>
             </div>
-            <!-- <input type="submit" name="submit" value="Envoyer" /> -->
             <button type="submit" class="button" id="btn_register" value="Envoyer">Installation</button>
         </form>
     </body>
-
-
-
-            <!-- <button type="submit" class="button" id="btn_register">Se connecter</button> -->

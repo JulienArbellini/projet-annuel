@@ -24,9 +24,9 @@ $dataSlug = $route->getAction();
 
 $cWithNamespace = $route->getControllerWithNamespace();
 
-if(file_exists("./install.php")){
-	fopen("install.php", "r+b");
-}
+// if(file_exists("./install.php")){
+// 	fopen("install.php", "r+b");
+// }
    
 
 
