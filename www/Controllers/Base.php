@@ -85,17 +85,9 @@ class Base{
 		$userSelect = new User();
 		$mailer = new Mailer();
 
-		$donnees = $userSelect->requestRole();
-		$view->assign("donnees", $donnees);
-		
 		$userSelect->userDelete();
 
-		$data = $userSelect->roleShow();
-		$view->assign("data", $data);
-
 		$form = $userSelect->buildFormAddUser();
-		$view->assign("form", $form);
-		
 
 		if(empty($_GET["updateId"])){
 
@@ -128,6 +120,15 @@ class Base{
 				$userSelect->updateUser();
 			}
 		}
+
+		$view->assign("form", $form);
+
+		$donnees = $userSelect->requestRole();
+		$view->assign("donnees", $donnees);
+		
+		$data = $userSelect->roleShow();
+		$view->assign("data", $data);
+
 	}
 
 	public function displayArticleAction(){

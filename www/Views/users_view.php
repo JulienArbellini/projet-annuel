@@ -58,16 +58,20 @@
                     <h1 id="title-modal-edit">Modifier l'utilisateur</h1>
                     <form class="form_update_user" method="POST" action="/utilisateurs?updateId=<?= $value['id']; ?>">
                         <div class="details-part">  
-                            <label for="nom">Nom :</label>
-                            <input type="text" id="nom" name="lastname" value="<?= $value['lastname']; ?>">
+                            <label for="nom<?= $value['id']?>">Nom :</label>
+                            <input type="text" id="nom<?= $value['id']?>" name="lastname" value="<?= $value['lastname']; ?>">
                         </div>
                         <div class="details-part">
-                            <label for="prenom">Prenom :</label>
-                            <input type="text" id="prenom" name="firstname" value="<?= $value['firstname']; ?>">
+                            <label for="prenom<?= $value['id']?>">Prenom :</label>
+                            <input type="text" id="prenom<?= $value['id']?>" name="firstname" value="<?= $value['firstname']; ?>">
                         </div>
                         <div class="details-part">
-                            <label for="rôle">Rôle :</label>
-                            <select id="rôle" name="role">
+                            <label for="pseudo<?= $value['id']?>">Pseudo :</label>
+                            <input type="text" id="pseudo<?= $value['id']?>" name="pseudo" value="<?= $value['pseudo']; ?>">
+                        </div>
+                        <div class="details-part">
+                            <label for="rôle<?= $value['id']?>">Rôle :</label>
+                            <select id="rôle<?= $value['id']?>" name="role">
                                 <option value="<?= $value['Role_idRole'] ?>"><?php echo $value['status']; ?>
                                     <?php foreach($data as $key => $val){ ?>
                                         <option value="<?= $val['id']; ?>"><?= $val['status']; ?>
