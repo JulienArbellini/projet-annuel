@@ -75,7 +75,9 @@ class Security{
 		$article = new Article();
 		$view = new View("addArticles", "back");
 		$form = $article->buildFormAddArticle();
+		$article->getIdUserConnected();
 		$view->assign("form", $form);
+
 
 		 if(!empty($_POST)){
 		 	$errors = AddArticleForm::validatorAddArticle($_POST, $form);
@@ -86,6 +88,8 @@ class Security{
 				$article->setSlug($_POST["slug"]);
 				$article->setContent($_POST["contenu"]);
 				$article->setCreatedAt(date("Y-m-d H:i:s"));
+				// $article->setAuteur($_POST["auteur"]);
+				$article->setIdUser($_POST["auteur"]);
 				$article->save();
 
 			}else{
@@ -110,9 +114,10 @@ class Security{
 			{
 				if($user->checkPwd($password, $email)) // nom d'utilisateur et mot de passe correctes
 				{
-					$_SESSION['prenom'] = $user->getPseudo($email);
+					$_SESSION['prenom'] = $user->getFirstname($email);
 					$user->connectedOn($email);
 					$_SESSION['loggedIn']=true;
+					$user->connectedUserId();
 					header('Location: \tableau-de-bord');
 				}
 				else
@@ -127,6 +132,21 @@ class Security{
 			}
 		}					
 	}
+
+	public function logoutAction(){
+        $user = new User();
+
+        if(isset($_GET['deconnexion']))
+        { 
+            
+           if($_GET['deconnexion']==true)
+           {    
+                session_unset();
+                header('Location: \login');
+                $user->connectedOff();
+           }
+        }
+    }
 
 	public function recuperationAction(){
 		$user = new User();
@@ -186,10 +206,6 @@ class Security{
 				echo 'not ok';
 			}
 		}
-	}
-	
-	public function logoutAction(){
-		echo "controller security action logout";
 	}
 
 	public function listofusersAction(){

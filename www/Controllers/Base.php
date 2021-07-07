@@ -66,7 +66,7 @@ class Base{
 		$article = new Article();
 		// $donnees = $article->getArticle();
 		// $view->assign("donnees", $donnees);
-
+		$article->getIdUserConnected();
 		$data = $article->getContent();
 		$view->assign("data", $data);
 
@@ -145,6 +145,8 @@ class Base{
 	public function pagesAction(){
 		$view = new View("pages", "back");
 		$page = new Page();
+		$page->connectedUserId();
+		// var_dump($_SESSION['id']);
 
 		$page->deletePage();
 
@@ -153,6 +155,7 @@ class Base{
 			$page->setTitle($_POST["add-page-title"]);
 			$page->setSlug($_POST["add-page-slug"]);
 			$page->setCreatedAt(date("Y-m-d H:i:s"));
+			$page->setIdUser($_POST["id_user_page"]);
 			$page->save();
 		}
 
@@ -172,6 +175,7 @@ class Base{
 	public function apparenceAction(){
 		$view = new View("apparence", "front");
 		$page = new Page();
+		$page->connectedUserId();
 
 		if(!empty($_POST) && !empty($_GET['idPage'])){ 
 			//echo "coucou";
@@ -179,6 +183,8 @@ class Base{
 			$page->setTitle($_POST["titre_page"]);
 			$page->setSlug($_POST["slugPage"]);
 			$page->setContent($_POST["affichage-page"]);
+			$page->setIdUser($_POST["id_user_page"]);
+
 			// $page->setPageAccueil($_POST["pageAccueil"]);
 
 			if(!empty($_POST['pageAccueil'])){
@@ -205,6 +211,7 @@ class Base{
 			$page->setTitle($_POST["titre_page"]);
 			$page->setSlug($_POST["slugPage"]);
 			$page->setContent($_POST["affichage-page"]);
+			$page->setIdUser($_POST["id_user_page"]);
 			// $page->setPageAccueil($_POST["pageAccueil"]);
 
 			if(!empty($_POST['pageAccueil'])){

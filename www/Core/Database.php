@@ -47,7 +47,7 @@ class Database
 					get_object_vars($this), 
 					get_class_vars(get_class())
 				);
-		//var_dump($data);
+		// var_dump($data);
 	
 		if(is_null($this->getId())){
 
@@ -79,25 +79,12 @@ class Database
 
 	public function getArticle(){
 
-		$dataArticle = array_diff_key (
-					
-			get_object_vars($this), 
-
-			get_class_vars(get_class())
-
-		);
-
-		 $columns_article = array_keys($dataArticle);
-
-		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
-		$query = $this->pdo->prepare("SELECT a.".implode(",",$columns_article).", u.firstname, a.id
-									  FROM ".$this->table." AS a 
-									  INNER JOIN tr_user_has_Article AS l ON a.id = l.Article_idArticle
-									  INNER JOIN tr_user AS u ON u.id = l.User_idUser");
+		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u
+									  INNER JOIN tr_article AS a ON a.id_user = u.id");
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
-		$_SESSION['id'] = $this->pdo->lastInsertId();
+		// $_SESSION['id'] = $this->pdo->lastInsertId();
 
 	}
 
@@ -122,11 +109,16 @@ class Database
 		$this->pdo->query("UPDATE tr_user SET connected= 1 WHERE email="."'".$email."'");
 	}
 
-	public function connectedOff($email){
-		$this->pdo->query("UPDATE tr_user SET connected= 0 WHERE email="."'".$email."'");
-	}
+	public function connectedOff(){
+        $this->pdo->query("UPDATE tr_user SET connected= 0 WHERE id=".$_GET['id']);
+    }
 
-		
+	public function connectedUserId(){
+        $query=$this->pdo->prepare("SELECT id FROM tr_user WHERE connected=1");
+        $query->execute();
+        $_SESSION['id']= $query->fetchall();
+        // var_dump($_SESSION['id']);
+    }
 
 
 	public function checkConfirmationKeyTmtp($confirmationKey){ 
@@ -199,12 +191,12 @@ class Database
 		return $result['pseudo'];
 	}
 
-	public function getPrenom($email){
-		$prenom = $this->pdo->prepare("SELECT firstname FROM tr_user WHERE email = "."'".$email."'");
-		$prenom->execute();
-		$result = $prenom->fetch(\PDO::FETCH_ASSOC);
-		return $result['prenom'];
-	}
+	public function getFirstname($email){
+        $prenom = $this->pdo->prepare("SELECT firstname FROM tr_user WHERE email = "."'".$email."'");
+        $prenom->execute();
+        $result = $prenom->fetch(\PDO::FETCH_ASSOC);
+        return $result['firstname'];
+    }
 
 	public function deleteArticle(){
 
@@ -212,13 +204,8 @@ class Database
 
 		if(!empty($_GET['id'])){
 			$Del_Id = $_GET['id'];
-			$query1 = $this->pdo->prepare("DELETE FROM tr_user_has_Article WHERE Article_idArticle=".$Del_Id);
-			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id=".$Del_Id);
-			// var_dump($query1);
-			// var_dump($query2);
-			//var_dump($_GET['id']);
-			$query1->execute();
-			$query2->execute();
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id=".$Del_Id);
+			$query->execute();
 		}
 	}
 
@@ -301,26 +288,10 @@ class Database
 		}
 	}
 	public function getPage(){
-		$dataPages = array_diff_key (
-					
-			get_object_vars($this), 
-
-			get_class_vars(get_class())
-
-		);
-
-		$columns_pages = array_keys($dataPages);
-
-		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
-		$query = $this->pdo->prepare("SELECT p.".implode(",",$columns_pages).", u.firstname, p.id
-									  FROM ".$this->table." AS p
-									  INNER JOIN tr_page_has_User AS l ON l.Page_idPage = p.id
-									  INNER JOIN tr_user AS u ON l.User_idUser = u.id");
-		//echo $query;
+		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u
+									  INNER JOIN tr_page AS p ON p.id_user = u.id");
 		$query->execute();
-		//var_dump($query);
 		$donnees = $query->fetchall();
-		// var_dump($donnees);
 		return $donnees;
 	}
 
@@ -328,13 +299,11 @@ class Database
 
 		if(!empty($_GET['id'])){
 			$Del_Id = $_GET['id'];
-			$query1 = $this->pdo->prepare("DELETE FROM tr_page_has_User WHERE Page_idPage=".$Del_Id);
-			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id=".$Del_Id);
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id=".$Del_Id);
 			// var_dump($query1);
 			// var_dump($query2);
 			//var_dump($_GET['id']);
-			$query1->execute();
-			$query2->execute();
+			$query->execute();
 		}
 		
 	}
@@ -393,6 +362,13 @@ class Database
 		else{
 			$_SESSION['checkbox_state'] = 0;
 		}
+	}
+
+	public function getIdUserConnected(){
+		$query = $this->pdo->prepare("SELECT id FROM tr_user WHERE connected = 1");
+		$query->execute();
+		$_SESSION['connectedUser'] = $query->fetchall();
+		// var_dump($_SESSION['connectedUser']);
 	}
 
 	public function routingPagesArticles(){

@@ -20,14 +20,15 @@
             </div>
 
             <div class="col-m-12 col-m-up-5 col-m-center">
-                    <textarea class="ckeditor" id="contenu_article" name="contenu_article"><?php echo $data[0]["content"];?></textarea>
+                    <textarea id="trumbowyg" id="contenu_article" name="contenu_article"><?php echo $data[0]["content"];?></textarea>
             </div>  
 
+            <input type="hidden" value="<?php echo $_SESSION["connectedUser"]?>">
+
             <div class="col-m-2 col-m-center col-m-padding-down-2">
-                <!-- <button class="button">Enregistrer</button> -->
                 <input type="submit" class="button" value="Enregistrer" onclick="alert('Vos modifications ont bien été enregistrées !')">
             </div>
         </form>
     </div>
 
-<script type="text/javascript" src="framework/src/js/ckeditor/styles.js"></script>
+<script type="text/javascript" src="framework/src/js/trumbowyg-call.js"></script>

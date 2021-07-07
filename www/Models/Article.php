@@ -14,6 +14,7 @@ class Article extends Database
     protected $content;
     protected $slug = null;
     protected $createdAt;
+    protected $id_user;
 
     public function __construct(){
         parent::__construct();
@@ -44,6 +45,9 @@ class Article extends Database
         $this->slug = $slug;
     }
 
+    public function setIdUser($id_user){
+        $this->id_user = $id_user;
+    }
 
    
 
@@ -66,6 +70,12 @@ class Article extends Database
                                         "error"=>"Le titre doit avoir au moins deux caractères"
 
                     ],
+
+                    "auteur"=>[
+                                        "type"=>"hidden",
+                                        "value"=> $_SESSION['connectedUser'][0]["id"]   
+                    ],
+
                     "slug"=>[
                                         "type"=>"text",
                                         "class"=>"form_input form__field",
@@ -81,6 +91,7 @@ class Article extends Database
                                         "required"=>true,
                                         "lenghtMin"=>"1",
                                         "placeholder"=>"Tapez votre texte ici",
+                                        "id" => "trumbowyg",
                                         "error"=>"Le contenu de votre article ne peut être vide "
                     ]
                     
