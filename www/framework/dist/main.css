@@ -732,11 +732,6 @@ img.image-grayscale {
   margin-top: auto;
 }
 
-.button,
-.button-left-nav-front-tpl,
-.button-apparence,
-.button-formulaire-page,
-.button-add-page 
 .title-install {
   color: #444;
   font-size: 0.75rem;
@@ -749,7 +744,11 @@ img.image-grayscale {
   font-weight: bold;
 }
 
-.button {
+.button,
+.button-left-nav-front-tpl,
+.button-apparence,
+.button-formulaire-page,
+.button-add-page {
   border-style: none;
   width: 150px;
   height: 45px;
