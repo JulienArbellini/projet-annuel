@@ -33,33 +33,19 @@ header{
 	&:hover{
 		color: $dark-blue;
 	}
-	&:before{
-		content: "";
-	  position: absolute;
-	  z-index: -1;
-	  left: 51%;
-	  right: 51%;
-    top: 42px;
-	  background: $dark-blue;
-	  height: 4px;
-	  -webkit-transition-property: left, right;
-	  transition-property: left, right;
-	  -webkit-transition-duration: 0.3s;
-	  transition-duration: 0.3s;
-	  -webkit-transition-timing-function: ease-out;
-	  transition-timing-function: ease-out;
+	a:hover{
+		color: $dark-blue;
 	}
-	&:hover:before, &focus:before, &active:before{
-		left: 0;
-	  right: 0;
-	}
-	img{
-		width: 19px;
-		height: 18px;
-		margin-right: 9px;
-		&:hover{
-			transition: all 2s;
-		  transform: rotate(1080deg);
+	
+	a{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img{
+			width: 19px;
+			height: 18px;
+			margin-right: 9px;
+			margin-bottom: 3px;
 		}
 	}
 
@@ -75,17 +61,9 @@ header{
   bottom: 0;
   background: $logo-blue;
   height: 4px;
-  -webkit-transition-property: left, right;
-  transition-property: left, right;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+
 }
-.logo:hover:before, .logo:focus:before, .logo:active:before {
-  left: 0;
-  right: 0;
-}
+
 
 #profile_id{
   img{

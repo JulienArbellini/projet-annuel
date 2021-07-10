@@ -46,6 +46,9 @@ class Base{
 
 		$page = new Page();
 
+		$donnees = $page->getNumberofPage();
+		$view->assign("donnees", $donnees);
+
 		$page->definirPageAccueil();		
 	
 	}

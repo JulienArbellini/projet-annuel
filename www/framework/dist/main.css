@@ -74,7 +74,7 @@ body {
   }
 
   body h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   body h2 {
@@ -88,7 +88,7 @@ body {
   }
 
   body h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   body h2 {
@@ -106,7 +106,7 @@ body {
   }
 
   body h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   body h2 {
@@ -120,15 +120,15 @@ body {
 
 @media screen and (min-width: 1600px) {
   body {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   body h1 {
-    font-size: 30px;
+    font-size: 20px;
   }
 
   body h2 {
-    font-size: 25px;
+    font-size: 18px;
   }
 
   body .progress {
@@ -916,36 +916,21 @@ header {
   color: #328DAA;
 }
 
-.link-nav-bar:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 51%;
-  right: 51%;
-  top: 42px;
-  background: #328DAA;
-  height: 4px;
-  transition-property: left, right;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
+.link-nav-bar a:hover {
+  color: #328DAA;
 }
 
-.link-nav-bar:hover:before,
-.link-nav-barfocus:before,
-.link-nav-baractive:before {
-  left: 0;
-  right: 0;
+.link-nav-bar a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.link-nav-bar img {
+.link-nav-bar a img {
   width: 19px;
   height: 18px;
   margin-right: 9px;
-}
-
-.link-nav-bar img:hover {
-  transition: all 2s;
-  transform: rotate(1080deg);
+  margin-bottom: 3px;
 }
 
 .logo:before {
@@ -957,16 +942,6 @@ header {
   bottom: 0;
   background: #2098D1;
   height: 4px;
-  transition-property: left, right;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
-}
-
-.logo:hover:before,
-.logo:focus:before,
-.logo:active:before {
-  left: 0;
-  right: 0;
 }
 
 #profile_id img {

@@ -2,9 +2,6 @@
 
 <div id="top-content">
 	<h1>Tableau de bord</h1>
-	<div class="search-box">
-		<input type="text" placeholder="Rechercher ..." >
-	</div>
 </div>
 
 <div id="main-content">
@@ -13,7 +10,7 @@
 			<h1>Votre projet</h1>
 			<p>Nom: MonSite</p>
 			<p>URL: www.monsite.fr</p>
-			<p>Pages: 4</p>
+			<p>Pages: <?php echo $donnees->nb;?></p>
 			<p>Visibilité: Public</p>
 			<div id="avancement">
 				Avancement du projet

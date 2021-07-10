@@ -293,6 +293,14 @@ class Database
 			$query->execute();
 		}
 	}
+
+	public function getNumberofPage(){
+		$query = $this->pdo->prepare("SELECT COUNT(*) AS nb FROM tr_page");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_OBJ);
+		return $donnees;
+	}
+
 	public function getPage(){
 		$dataPages = array_diff_key (
 					
