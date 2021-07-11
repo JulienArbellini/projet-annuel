@@ -84,12 +84,12 @@ class Security{
 
 			if(empty($errors)){
 				
-				$article->setTitle($_POST["titre"]);
-				$article->setSlug($_POST["slug"]);
-				$article->setContent($_POST["contenu"]);
+				$article->setTitle(htmlspecialchars($_POST["titre"]));
+				$article->setSlug(htmlspecialchars($_POST["slug"]));
+				$article->setContent(htmlspecialchars($_POST["contenu"]));
 				$article->setCreatedAt(date("Y-m-d H:i:s"));
 				// $article->setAuteur($_POST["auteur"]);
-				$article->setIdUser($_POST["auteur"]);
+				$article->setIdUser(htmlspecialchars($_POST["auteur"]));
 				$article->save();
 
 			}else{
