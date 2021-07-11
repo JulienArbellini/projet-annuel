@@ -53,6 +53,7 @@ class Base{
 	public function articlesAction(){
 		$view = new View("articles", "back");
 		$article = new Article();
+		$article->connectedUserId();
 		
 		$article->deleteArticle();
 

@@ -25,7 +25,8 @@
                 <link rel="stylesheet" href="framework/dist/main.css">
 		<script src="framework/src/js/jquery-3.5.1.min.js"></script>
 		<script src="framework/src/js/node_modules/jquery-resizable-dom/dist/jquery-resizable.min.js"></script>
-                <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
+
+                <!-- <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script> -->
                 <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.dataTables.js"></script>
                 <link rel="stylesheet" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
 		
@@ -48,6 +49,7 @@
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/table/trumbowyg.table.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/upload/trumbowyg.upload.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/resizimg/trumbowyg.resizimg.min.js"></script>
+
 
                 
 	</head>
@@ -123,6 +125,7 @@
                     </div>
                     <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
                             <div class="col-m-8"><a href="/logout?deconnexion=true&id=<?php echo $_SESSION['id'][0]['id'];?>" style="color:red" ><span>Déconnexion</span></a></div>
+                            <?php //echo $_SESSION['id'][0]['id'] ?>
                     </div>
                 </div>
             </div>

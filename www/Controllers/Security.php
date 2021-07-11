@@ -74,8 +74,8 @@ class Security{
 
 		$article = new Article();
 		$view = new View("addArticles", "back");
-		$form = $article->buildFormAddArticle();
 		$article->getIdUserConnected();
+		$form = $article->buildFormAddArticle();
 		$view->assign("form", $form);
 
 

@@ -373,6 +373,10 @@ body {
   text-decoration: none;
 }
 
+.titre-article {
+  font-size: 25px;
+}
+
 .affichage-article {
   height: 65vh;
   overflow: auto;
