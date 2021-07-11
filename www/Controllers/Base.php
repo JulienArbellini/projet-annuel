@@ -46,8 +46,9 @@ class Base{
 
 		$page = new Page();
 
-		$donnees = $page->getNumberofPage();
-		$view->assign("donnees", $donnees);
+		$numberOfPage = $page->getNumberofPage();
+		$numberOfArticle = $page->getNumberofArticle();
+		$view->assign("donnees", [$numberOfPage, $numberOfArticle]);
 
 		$page->definirPageAccueil();		
 	

@@ -301,6 +301,13 @@ class Database
 		return $donnees;
 	}
 
+	public function getNumberofArticle(){
+		$query = $this->pdo->prepare("SELECT COUNT(*) AS nb FROM tr_article");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_OBJ);
+		return $donnees;
+	}
+
 	public function getPage(){
 		$dataPages = array_diff_key (
 					

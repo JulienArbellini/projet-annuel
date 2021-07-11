@@ -1,4 +1,6 @@
 /* Progress Bar */
+$percent:70%;
+
 
 .progress {
     background: #DAEFFE;
@@ -22,8 +24,8 @@
     width: 0;
   }
 
-  @keyframes load {
-    0% { width: 0; }
-    100% { width: $percent; }
-  }
+  // @keyframes load {
+  //   0% { width: 0; }
+  //   100% { width: $percent; }
+  // }
   

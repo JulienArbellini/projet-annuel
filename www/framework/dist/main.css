@@ -972,26 +972,6 @@ header {
   width: 0;
 }
 
-@-webkit-keyframes load {
-  0% {
-    width: 0;
-  }
-
-  100% {
-    width: 50%;
-  }
-}
-
-@keyframes load {
-  0% {
-    width: 0;
-  }
-
-  100% {
-    width: 50%;
-  }
-}
-
 /* Search box */
 
 .search-box {
