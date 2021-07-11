@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="bdd-user-pwd">Mot de passe</label>
-                <input class="input" id="bdd-user-pwd" name="bdd-user-pwd" type="text">
+                <input class="input" id="bdd-user-pwd" name="bdd-user-pwd" type="password">
             </div>
             <div class="form-group">
                 <label class="control-label" for="bdd-host">Hôte</label>
