@@ -17,6 +17,7 @@ class User extends Database
     protected $createdAtUser;
     protected $Role_idRole = 1;
     protected $confirmKey;
+	protected $confirmation;
 
     public function __construct(){
         parent::__construct();
@@ -57,6 +58,10 @@ class User extends Database
 	// }
 	public function setConfirmKey($confirmKey){
 		$this->confirmKey = $confirmKey;
+	}
+
+	public function setConfirmation($confirmation) {
+		$this->confirmation = $confirmation;
 	}
 
 

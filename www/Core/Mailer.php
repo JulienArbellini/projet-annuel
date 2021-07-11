@@ -76,11 +76,11 @@ class Mailer{
                                             <ol>
                                                 <li>Installez un serveur web (MAMP, WAMP, XAMP)</li></br>
                                                 <li>Télécharger la pièce jointe et importez la dans phpmyadmin, la base de données sera alors créée</li></br>
-                                                <li>Rendez-vous à l\'adresse suivante : http://localhost/changement-mdp</li></br>
+                                                <li>Rendez-vous à l\'adresse suivante : http://localhost/mot-de-passe-oublie</li></br>
                                             </ol>
                                                 <p>Vous pouvez vous connecter avec les identifiants suivants :</p>
                                             <ol style="list-style: none;">
-                                                <li> - pseudo : '.$_SESSION['tab'][0]['pseudo'].'</li>
+                                                <li> - pseudo : '.$_SESSION['tab'][0]['email'].'</li>
                                                 <li> - mot de passe : '.$_SESSION['tab'][0]['password'].'</li></br>
                                             </ol>
                                             <p style="color:red;font-weight:bold;">Ce mot de passe est temporaire. Vous devrez le changer à la première connexion.

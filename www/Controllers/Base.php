@@ -102,6 +102,7 @@ class Base{
 					$userSelect->setPwd($_POST["password"]);
 					//password_hash($_POST["password"], PASSWORD_BCRYPT)
 					$userSelect->setRole($_POST["role"]);
+					$userSelect->setConfirmation(1);
 					$userSelect->save();
 					$test = $userSelect->userMail();
 					$mailer->sendMailUser();
