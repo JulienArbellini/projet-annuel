@@ -55,7 +55,7 @@
         // fichier config.php doit être inclus dans le cms, 
         // executer le fichier sql d'insertion des tables
         
-        $sql = file_get_contents('./teachr.sql');
+        $sql = file_get_contents('./teachr_2.sql');
         $bdd->exec($sql);
         header("Location: /s-inscrire");
         unlink('install.php');
