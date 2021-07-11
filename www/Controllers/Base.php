@@ -103,6 +103,7 @@ class Base{
 					//password_hash($_POST["password"], PASSWORD_BCRYPT)
 					$userSelect->setRole($_POST["role"]);
 					$userSelect->setConfirmation(1);
+					$userSelect->setCreatedAtUser(date("Y-m-d H:i:s"));
 					$userSelect->save();
 					$test = $userSelect->userMail();
 					$mailer->sendMailUser();
@@ -117,7 +118,9 @@ class Base{
 				$userSelect->setId($_GET["updateId"]);
 				$userSelect->setLastname($_POST["lastname"]);
 				$userSelect->setFirstname($_POST["firstname"]);
+				$userSelect->setPseudo($_POST["pseudo"]);
 				$userSelect->setRole($_POST["role"]);
+				$userSelect->setCreatedAtUser(date("Y-m-d H:i:s"));
 				$userSelect->updateUser();
 			}
 		}
