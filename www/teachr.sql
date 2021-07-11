@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : database
--- Généré le : mar. 06 juil. 2021 à 15:37
+-- Généré le : jeu. 08 juil. 2021 à 15:43
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.11
 
@@ -32,6 +32,7 @@ CREATE TABLE `tr_article` (
   `title` varchar(255) DEFAULT NULL,
   `content` longtext,
   `slug` varchar(100) NOT NULL,
+  `id_user` int(15) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,17 +40,9 @@ CREATE TABLE `tr_article` (
 -- Déchargement des données de la table `tr_article`
 --
 
-INSERT INTO `tr_article` (`id`, `title`, `content`, `slug`, `createdAt`) VALUES
-(1, 'SQL', '<h2 style=\"font-style:italic\"><big>Le SQL&nbsp;</big></h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><big><strong>I- Qu&#39;est-ce que le SQL ?&nbsp;</strong></big></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Le&nbsp;<span class=\"marker\"><strong>SQL</strong></span>&nbsp;(Structured Query Language) est un langage permettant de communiquer avec une base de donn&eacute;es. Ce langage informatique est notamment tr&egrave;s utilis&eacute; par les d&eacute;veloppeurs web pour communiquer avec les donn&eacute;es d&rsquo;un site web. SQL.sh recense des cours de SQL et des explications sur les principales commandes pour lire, ins&eacute;rer, modifier et supprimer des donn&eacute;es dans une base.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong><big>II- SGBD</big></strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Chaque SGBD poss&egrave;de ses propres sp&eacute;cificit&eacute;s et caract&eacute;ristiques. Pour pr&eacute;senter ces diff&eacute;rences, les logiciels de gestion de bases de donn&eacute;es sont cit&eacute;s, tels que : MySQL, PostgreSQL, SQLite, Microsoft SQL Server&nbsp;ou encore&nbsp;Oracle.</p>\r\n\r\n<p>Des SGBD de type NoSQL sont &eacute;galement pr&eacute;sent&eacute;s, tel que Cassandra, Redis ou MongoDB.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong><big>III- A quoi sert le SQL ?&nbsp;</big></strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Comme dans la vie, pour que des personnes puissent se comprendre, elles doivent parler le m&ecirc;me langage et bien en informatique, c&rsquo;est pareil.</p>\r\n\r\n<p>Pour que les diff&eacute;rents logiciels et le moteur de base de donn&eacute;es puissent se comprendre, ils utilisent un langage appel&eacute; SQL.</p>\r\n\r\n<p>Ce langage est complet. Il va &ecirc;tre utilis&eacute; pour :</p>\r\n\r\n<ul>\r\n	<li>Lire les donn&eacute;es,</li>\r\n	<li>Ecrire les donn&eacute;es,</li>\r\n	<li>Modifier les donn&eacute;es,</li>\r\n	<li>Supprimer les donn&eacute;es</li>\r\n	<li>Il permettra aussi de modifier la structure de la base de donn&eacute;es :</li>\r\n	<li>Ajouter des tables,</li>\r\n	<li>Modifier les tables,</li>\r\n	<li>les supprimer</li>\r\n	<li>Ajouter, ou supprimer des utilisateurs,</li>\r\n	<li>G&eacute;rer les droits des utilisateurs,</li>\r\n	<li>G&eacute;rer les bases de donn&eacute;es&nbsp; : en cr&eacute;er de nouvelles, les modifier, etc &hellip;</li>\r\n</ul>\r\n\r\n<p>Comme vous pouvez le voir, les possibilit&eacute;s sont nombreuses.</p>\r\n\r\n<p>Ce langage est structur&eacute; (comme son nom l&rsquo;indique), c&rsquo;est &agrave; dire que la syntaxe est toujours la m&ecirc;me et respecte des normes tr&egrave;s pr&eacute;cises.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><big><strong>IV- Optimisation&nbsp;</strong></big></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Savoir effectuer des requ&ecirc;tes n&rsquo;est pas trop difficile, mais il convient de v&eacute;ritablement comprendre comment fonctionne le stockage des donn&eacute;es et la fa&ccedil;on dont elles sont lues pour optimiser les performances. Les optimisations sont bas&eacute;es dans 2 cat&eacute;gories: les bons choix &agrave; faire lorsqu&rsquo;il faut d&eacute;finir la structure de la base de donn&eacute;es et les m&eacute;thodes les plus adapt&eacute;es pour lire les donn&eacute;es.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:500px\">\r\n	<tbody>\r\n		<tr>\r\n			<td>test</td>\r\n			<td>test</td>\r\n		</tr>\r\n		<tr>\r\n			<td>test</td>\r\n			<td>test</td>\r\n		</tr>\r\n		<tr>\r\n			<td>tesr</td>\r\n			<td>test</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n', '/sql', '2021-05-12 15:46:33');
-
---
--- Déclencheurs `tr_article`
---
--- DELIMITER $$
-CREATE TRIGGER `after_insert_article` AFTER INSERT ON `tr_article` FOR EACH ROW INSERT INTO tr_user_has_Article (User_idUser, Article_idArticle)
-VALUES (1,NEW.id);
--- $$
--- DELIMITER ;
+INSERT INTO `tr_article` (`id`, `title`, `content`, `slug`, `id_user`, `createdAt`) VALUES
+(1, 'JavaScript', '<p><s>lorem ipsum&nbsp;</s></p>\r\n\r\n<blockquote>\r\n<p>Ceci est une citation</p>\r\n</blockquote>\r\n\r\n<p><code>test police computer code</code></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<pre>\r\n<code>test pr&eacute;format&eacute;</code></pre>\r\n\r\n<h1><code>Titre 1</code></h1>\r\n\r\n<h2><code>Titre 2</code></h2>\r\n\r\n<h3><code>Titre 3</code></h3>\r\n\r\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:500px\">\r\n	<tbody>\r\n		<tr>\r\n			<td>test</td>\r\n			<td>test</td>\r\n		</tr>\r\n		<tr>\r\n			<td>test</td>\r\n			<td>test</td>\r\n		</tr>\r\n		<tr>\r\n			<td>test</td>\r\n			<td>test</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ol>\r\n	<li>item 1</li>\r\n	<li>item 2</li>\r\n	<li>item 3</li>\r\n</ol>\r\n\r\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\">special container test</div>\r\n\r\n<p>&nbsp;</p>\r\n', '/js', NULL, '2021-04-21 14:04:12'),
+(2, 'Example', '<h2 style=\"text-align: center; font-style: italic;\"><big>Le SQL&nbsp;</big></h2><p>&nbsp;</p><p><big><strong style=\"background-color: rgb(255, 255, 0);\">I- Qu\est-ce que le SQL ?&nbsp;</strong></big></p><p>&nbsp;</p><p>Le&nbsp;<span class=\"marker\"><strong>SQL</strong></span>&nbsp;(Structured Query Language) est un langage permettant de communiquer avec une base de données. Ce langage informatique est notamment très utilisé par les développeurs web pour communiquer avec les données d’un site web. SQL.sh recense des cours de SQL et des explications sur les principales commandes pour lire, insérer, modifier et supprimer des données dans une base.</p><p>&nbsp;</p><p><strong><big style=\"background-color: rgb(255, 255, 0);\">II- SGBD</big></strong></p><p>&nbsp;</p><p>Chaque SGBD possède ses propres spécificités et caractéristiques. Pour présenter ces différences, les logiciels de gestion de bases de données sont cités, tels que : MySQL, PostgreSQL, SQLite, Microsoft SQL Server&nbsp;ou encore&nbsp;Oracle.</p><p>Des SGBD de type NoSQL sont également présentés, tel que Cassandra, Redis ou MongoDB.</p><p><span style=\"background-color: rgb(255, 255, 255);\">&nbsp;</span></p><p><strong><big style=\"background-color: rgb(255, 255, 0);\">III- A quoi sert le SQL ?&nbsp;</big></strong></p><p>&nbsp;</p><p>&nbsp;</p><p>Comme dans la vie, pour que des personnes puissent se comprendre, elles doivent parler le même langage et bien en informatique, c’est pareil.</p><p>Pour que les différents logiciels et le moteur de base de données puissent se comprendre, ils utilisent un langage appelé SQL.</p><p>Ce langage est complet. Il va être utilisé pour :</p><ul><li>Lire les données,</li><li>Ecrire les données,</li><li>Modifier les données,</li><li>Supprimer les données</li><li>Il permettra aussi de modifier la structure de la base de données :</li><li>Ajouter des tables,</li><li>Modifier les tables,</li><li>les supprimer</li><li>Ajouter, ou supprimer des utilisateurs,</li><li>Gérer les droits des utilisateurs,</li><li>Gérer les bases de données&nbsp; : en créer de nouvelles, les modifier, etc …</li></ul><p>Comme vous pouvez le voir, les possibilités sont nombreuses.</p><p>Ce langage est structuré (comme son nom l’indique), c’est à dire que la syntaxe est toujours la même et respecte des normes très précises.&nbsp;</p><p>&nbsp;</p><p><big><strong><span style=\"background-color: rgb(255, 255, 0);\">IV- Optimisation</span>&nbsp;</strong></big></p><p>&nbsp;</p><p>Savoir effectuer des requêtes n’est pas trop difficile, mais il convient de véritablement comprendre comment fonctionne le stockage des données et la façon dont elles sont lues pour optimiser les performances. Les optimisations sont basées dans 2 catégories: les bons choix à faire lorsqu’il faut définir la structure de la base de données et les méthodes les plus adaptées pour lire les données.</p><p>&nbsp;</p><p><strong><span style=\"background-color: rgb(255, 255, 0);\">V- Exemple de code SQL</span>&nbsp;</strong></p><p><strong><br></strong></p><p><img src=\"https://lh3.googleusercontent.com/-S5HFFerJ0L8/Vq7-wsdZGhI/AAAAAAAAEBg/SK5zIdqWkiQ/insert-row5.png?imgmax=800\" alt=\"\" style=\"width: 100%; max-width: 359px; height: auto; max-height: 289px;\"><strong><br></strong></p><p><strong><br></strong></p><p>&nbsp;</p><div id=\"wysiwyg\"></div>', '/example-article', 34, '2021-07-08 15:45:13');
 
 -- --------------------------------------------------------
 
@@ -114,6 +107,7 @@ CREATE TABLE `tr_page` (
   `content` longtext,
   `slug` varchar(50) NOT NULL,
   `page_accueil` tinyint(1) DEFAULT NULL,
+  `id_user` int(15) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -121,36 +115,8 @@ CREATE TABLE `tr_page` (
 -- Déchargement des données de la table `tr_page`
 --
 
-INSERT INTO `tr_page` (`id`, `title`, `content`, `slug`, `page_accueil`, `createdAt`) VALUES
-(1, 'Accueil', '<div id=\"wysiwyg\"><div id=\"wysiwyg\"><div id=\"wysiwyg\"><p id=\"div\"></p><div id=\"div\"><div id=\"div\"><div id=\"div\"><ul class=\"navbar-horizontale\">\r\n                    <li class=\"li-horizontale-nav\"><a href=\"#\">Accueil</a></li>\r\n<li class=\"li-horizontale-nav\"><a href=\"#\">Item 2</a></li>\r\n<li class=\"li-horizontale-nav\"><a href=\"#\">Item plus long</a></li>\r\n</ul><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><h1 style=\"text-align: center;\"><span style=\"color: rgb(128, 100, 162);\">Bienvenue sur la page d\accueil</span> ðŸ–¤</h1></div><a href=\"#\" class=\"link\" style=\"color: rgb(250, 192, 143);\">Un Lien</a></div><div id=\"div\"><br></div></div><p>coucou</p><p></p><br>BONJOUR</div></div></div>', '/Accueil', 1, '2021-07-06 15:11:50');
-
---
--- Déclencheurs `tr_page`
---
--- DELIMITER $$
-CREATE TRIGGER `after_insert_page` AFTER INSERT ON `tr_page` FOR EACH ROW INSERT INTO tr_page_has_User
-(User_idUser, Page_idPage)
-VALUES (1,NEW.id);
--- $$
--- DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `tr_page_has_User`
---
-
-CREATE TABLE `tr_page_has_User` (
-  `Page_idPage` int(11) NOT NULL,
-  `User_idUser` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `tr_page_has_User`
---
-
-INSERT INTO `tr_page_has_User` (`Page_idPage`, `User_idUser`) VALUES
-(1, 1);
+INSERT INTO `tr_page` (`id`, `title`, `content`, `slug`, `page_accueil`, `id_user`, `createdAt`) VALUES
+(134, 'Example', '<nav class=\"nav-dropdown\">\r\n<ul class=\"ul-menu-dropdown\">\r\n                        <li class=\"li-menu-dropdown deroulant\"><a class=\"a-menu-dropdown\" href=\"#\">Accueil</a></li>\r\n                        <li class=\"li-menu-dropdown\"><a class=\"a-menu-dropdown\" href=\"#\">A propos</a>\r\n                            <ul class=\"sous-dropdown\">\r\n                                <li><a href=\"#\">Item 1</a></li>\r\n                                <li><a href=\"#\">Item 2</a></li>\r\n                                <li><a href=\"#\">Item 3</a></li>\r\n                            </ul>\r\n                        </li>\r\n                        <li class=\"li-menu-dropdown\"><a class=\"a-menu-dropdown\" href=\"#\">Nos offres</a>\r\n                            <ul class=\"sous-dropdown\">\r\n                                <li><a href=\"#\">Item 1</a></li>\r\n                                <li><a href=\"#\">Item 2</a></li>\r\n                                <li><a href=\"#\">Item 3</a></li>\r\n                            </ul>\r\n                        </li>\r\n                        <li class=\"li-menu-dropdown\"><a class=\"a-menu-dropdown\" href=\"#\">Contact</a></li>\r\n                    </ul>\r\n                </nav>\r\n                \r\n                <h1 class=\"h1-tpl2\">Bienvenue sur Teachr !&nbsp;</h1>\r\n                <p>\r\n                    <div class=\"zone-texte-tpl2\">\r\n                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat nulla eu ex sodales, at lobortis eros semper.\r\n                        Curabitur quis felis sit amet lectus tempus egestas. Proin sodales enim at metus accumsan, non vestibulum augue pharetra. \r\n                        Donec maximus lorem lectus, eget congue sem efficitur eu. Pellentesque habitant morbi tristique senectus et netus et \r\n                        malesuada fames ac turpis egestas. Mauris a mi nunc. Aliquam erat volutpat. Curabitur ac sodales justo. \r\n                        Suspendisse et elit rutrum, efficitur mauris eu, tristique odio. In finibus sit amet arcu vitae accumsan. \r\n                        Praesent tincidunt dignissim nulla, in porta velit sagittis at. Vestibulum hendrerit nulla ac nibh sodales vehicula. \r\n                        Sed ac congue lectus, sit amet convallis eros.\r\n                        Phasellus vulputate nisl a posuere pulvinar. In ac velit augue. Aenean velit sem, facilisis eu volutpat et, semper \r\n                        at elit. Sed ut feugiat eros. Nam sed ultrices nulla. Proin accumsan interdum mi id ornare. \r\n                        In gravida ex vitae odio ornare congue.\r\n                        </p>\r\n                    </div>\r\n                </p>\r\n\r\n                <p class=\"div-darkBlue-button button-tpl2\">\r\n                    <a href=\"#\" class=\"darkBlue-button-apparence\">En savoir plus</a>\r\n                </p>\r\n\r\n                \r\n                \r\n                ', '/example', 1, 34, '2021-07-07 21:54:59');
 
 -- --------------------------------------------------------
 
@@ -168,9 +134,9 @@ CREATE TABLE `tr_role` (
 --
 
 INSERT INTO `tr_role` (`id`, `status`) VALUES
-(1, 'Administrateur'),
-(2, 'Contributeur'),
-(3, 'Spectateur');
+(1, 'Administrator'),
+(2, 'Contributor'),
+(3, 'Spectator');
 
 -- --------------------------------------------------------
 
@@ -223,25 +189,6 @@ CREATE TABLE `tr_user` (
 -- Déchargement des données de la table `tr_user`
 --
 
-INSERT INTO `tr_user` (`id`, `lastname`, `firstname`, `email`, `password`, `pseudo`, `createdAtUser`, `Role_idRole`, `confirmkey`, `confirmation`, `code_confirmation_mdp`, `confirmationKeyTmtp`, `connected`) VALUES
-(1, 'Doe', 'John', 'johndoe@gmail.com', 'gt67aphgj', 'johndoe', NULL, 1, '', 0, NULL, '2021-07-06 15:08:49', 1);
--- --------------------------------------------------------
-
---
--- Structure de la table `tr_user_has_Article`
---
-
-CREATE TABLE `tr_user_has_Article` (
-  `User_idUser` int(11) NOT NULL,
-  `Article_idArticle` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `tr_user_has_Article`
---
-
-INSERT INTO `tr_user_has_Article` (`User_idUser`, `Article_idArticle`) VALUES
-(1, 1);
 
 --
 -- Index pour les tables déchargées
@@ -252,7 +199,8 @@ INSERT INTO `tr_user_has_Article` (`User_idUser`, `Article_idArticle`) VALUES
 --
 ALTER TABLE `tr_article`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `slug` (`slug`);
+  ADD UNIQUE KEY `slug` (`slug`),
+  ADD KEY `fk_id_user` (`id_user`);
 
 --
 -- Index pour la table `tr_category`
@@ -288,15 +236,8 @@ ALTER TABLE `tr_media`
 --
 ALTER TABLE `tr_page`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `slug` (`slug`);
-
---
--- Index pour la table `tr_page_has_User`
---
-ALTER TABLE `tr_page_has_User`
-  ADD PRIMARY KEY (`Page_idPage`,`User_idUser`),
-  ADD KEY `fk_Page_has_User_User1_idx` (`User_idUser`),
-  ADD KEY `fk_Page_has_User_Page1_idx` (`Page_idPage`);
+  ADD UNIQUE KEY `slug` (`slug`),
+  ADD KEY `fk_Page_iduser` (`id_user`);
 
 --
 -- Index pour la table `tr_role`
@@ -327,14 +268,6 @@ ALTER TABLE `tr_user`
   ADD KEY `fk_User_Role1_idx` (`Role_idRole`);
 
 --
--- Index pour la table `tr_user_has_Article`
---
-ALTER TABLE `tr_user_has_Article`
-  ADD PRIMARY KEY (`User_idUser`,`Article_idArticle`),
-  ADD KEY `fk_User_has_Article_Article1_idx` (`Article_idArticle`),
-  ADD KEY `fk_User_has_Article_User_idx` (`User_idUser`);
-
---
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -342,7 +275,7 @@ ALTER TABLE `tr_user_has_Article`
 -- AUTO_INCREMENT pour la table `tr_article`
 --
 ALTER TABLE `tr_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `tr_category`
@@ -366,7 +299,7 @@ ALTER TABLE `tr_media`
 -- AUTO_INCREMENT pour la table `tr_page`
 --
 ALTER TABLE `tr_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT pour la table `tr_role`
@@ -391,6 +324,12 @@ ALTER TABLE `tr_user`
 --
 
 --
+-- Contraintes pour la table `tr_article`
+--
+ALTER TABLE `tr_article`
+  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `tr_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Contraintes pour la table `tr_category_has_Article`
 --
 ALTER TABLE `tr_category_has_Article`
@@ -411,11 +350,10 @@ ALTER TABLE `tr_media`
   ADD CONSTRAINT `fk_Media_User1` FOREIGN KEY (`User_idUser`) REFERENCES `tr_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `tr_page_has_User`
+-- Contraintes pour la table `tr_page`
 --
-ALTER TABLE `tr_page_has_User`
-  ADD CONSTRAINT `fk_Page_has_User_Page1` FOREIGN KEY (`Page_idPage`) REFERENCES `tr_page` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Page_has_User_User1` FOREIGN KEY (`User_idUser`) REFERENCES `tr_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `tr_page`
+  ADD CONSTRAINT `fk_Page_iduser` FOREIGN KEY (`id_user`) REFERENCES `tr_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `tr_setting_has_User`
@@ -429,13 +367,6 @@ ALTER TABLE `tr_setting_has_User`
 --
 ALTER TABLE `tr_user`
   ADD CONSTRAINT `fk_User_Role1` FOREIGN KEY (`Role_idRole`) REFERENCES `tr_role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Contraintes pour la table `tr_user_has_Article`
---
-ALTER TABLE `tr_user_has_Article`
-  ADD CONSTRAINT `fk_User_has_Article_Article1` FOREIGN KEY (`Article_idArticle`) REFERENCES `tr_article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_User_has_Article_User` FOREIGN KEY (`User_idUser`) REFERENCES `tr_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
