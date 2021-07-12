@@ -17,7 +17,7 @@
         $base = trim($_POST['bdd-name']);
 
         $driver = "mysql";
-        $port = "3306";
+        $port = "35612";
 
         // tentative de connexion à la bdd si erreur afficher message d'erreur dans le formulaire
         try {
