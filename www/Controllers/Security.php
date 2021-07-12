@@ -130,7 +130,7 @@ class Security{
 
 	public function recuperationAction(){
 		$user = new User();
-		$view = new View("recuperationmdp", "front");
+		$view = new View("recuperationmdp", "login");
 		$mailer = new Mailer();
 		$form = $user->buildFormRecuperation();
 		$view->assign("form", $form);
@@ -165,7 +165,7 @@ class Security{
 	public function changementmdpAction(){
 		
 		$user = new User();
-		$view = new View("changementmdp", "front");
+		$view = new View("changementmdp", "login");
 		$form = $user->buildFormChangementMdp();
 		$view->assign("form", $form);
 		if(!empty($_POST['confirmation_key'])){
