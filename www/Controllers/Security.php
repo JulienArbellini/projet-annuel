@@ -147,17 +147,17 @@ class Security{
 				$subj = 'Mot de passe oublié';
 				if($mailer->mailer($to,$from, $name ,$subj, $message)){
 					$user->createConfirmationKey($password, $to);
-					header('Location: \changement-mdp');
+					// header('Location: \changement-mdp');
 				}
 				else
 				{
-					header('Location: \mot-de-passe-oublie?erreur=1'); // erreur lors de l'envoi du mail
+					// header('Location: \mot-de-passe-oublie?erreur=1'); // erreur lors de l'envoi du mail
 				}
 			}
 			else
 			{
 				
-				header('Location: \mot-de-passe-oublie?erreur=2'); // Ce mail n'existe pas dans la base de données
+				// header('Location: \mot-de-passe-oublie?erreur=2'); // Ce mail n'existe pas dans la base de données
 			}
 		}
 	}
