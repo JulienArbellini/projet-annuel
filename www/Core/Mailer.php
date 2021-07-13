@@ -13,11 +13,11 @@ class Mailer{
         $mail = new PHPMailer();
     
         try{
-            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $mail->IsSMTP();
             $mail->SMTPAuth = true; 
     
-            $mail->SMTPSecure = 'ssl'; 
+            // $mail->SMTPSecure = 'ssl'; 
             $mail->Host = 'smtp.gmail.com';
             $mail->Port = 465;
             $mail->Username = 'teachr.contact.pa@gmail.com';
