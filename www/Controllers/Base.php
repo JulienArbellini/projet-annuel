@@ -243,4 +243,8 @@ class Base{
 		$article->routingPagesArticles();
 	}
 
+	public function FAQAction(){
+		$view = new View("FAQ", "back");
+	}
+
 }

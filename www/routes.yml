@@ -67,3 +67,7 @@
 /apparence:
   controller: Base
   action: apparence
+
+/FAQ:
+  controller: Base
+  action: FAQ
