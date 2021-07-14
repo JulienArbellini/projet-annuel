@@ -71,3 +71,7 @@
 /FAQ:
   controller: Base
   action: FAQ
+
+/parametres:
+  controller: Base
+  action: parametres

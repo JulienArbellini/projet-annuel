@@ -748,6 +748,11 @@ img.image-grayscale {
   font-size: 16px;
 }
 
+.titre-parametre-projet {
+  font-size: 18px;
+  text-decoration: underline;
+}
+
 .button,
 .button-left-nav-front-tpl,
 .button-apparence,
