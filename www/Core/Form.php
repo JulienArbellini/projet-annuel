@@ -139,21 +139,29 @@ class Form
 		
 	}
 
-	public static function showFormProfile($form) {
+	public static function showFormProfile($form, $data) {
 		$html = "<form id='".($form["config"]["id"]??"")."' class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
 
 		foreach ($form["input"] as $name => $dataInput) {
-			$html .="<div class='form-group'> <label  class='control-label' for='".$name."'>".($dataInput["label"]??"")." </label>";
-			$html .= "<input
+			foreach($data as $key => $value) {
+				$html .="<div class='form-group'> <label  class='control-label' for='".$name."'>".($dataInput["label"]??"")." </label>";
+				$html .= "<input
 					autocomplete='".($dataInput["autocomplete"]??"")."'
 					id='".$name."'
 					class='".($dataInput["class"]??"")."' 
 					name='".$name."'
 					type='".($dataInput["type"] ?? "text")."'
+					value='".($data[0][$name] ?? "")."'
+					disabled=disabled'
 					placeholder='".($dataInput["placeholder"] ?? "")."'
 					".((!empty($dataInput["required"]))?"required='required'":"")."
 					> </div>";
+			}
 		}
+
+		$html .= "<input type='submit' class='button-profile' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
+		
+		echo $html;
 	}
 
 	public static function showFormLogin($form){

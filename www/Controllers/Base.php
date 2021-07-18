@@ -42,8 +42,7 @@ class Base{
 
 		//Affiche moi la vue dashboard;
 		$view = new View("dashboard", "back");
-
-		
+		session_start();	
 	
 	}
 
@@ -68,7 +67,6 @@ class Base{
 		$view->assign("data", $data);
 
 		if(!empty($_POST)){ 
-			//echo "coucou";
 			$article->setId($_GET['idArticle']);
 			$article->setTitle($_POST["titre_article"]);
 			$article->setSlug($_POST["slug_article"]);
@@ -148,11 +146,17 @@ class Base{
 	}
 
 	public function profileAction(){
-		$view = new View("profile", "backProfile");
 		$user = new User();
+		$view = new View("profile", "backProfile");
+		$form = $user->buildFormProfile();
+		$form = $view->assign("form", $form);
+		
+		session_start();
+		
 		$data = $user->recupDataProfile();
 		$view->assign("data",$data);
-		$user = $user->getUser($_SESSION['id']);
+		$user = $user->getUserByMail($data[0]['email']);
+		
 		//var_dump($user);
 		
 	// 	$errors = Form::validatorProfile($_POST, $form);

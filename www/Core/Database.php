@@ -326,10 +326,9 @@ class Database
 	}
 
 	public function recupDataProfile() {
-		session_start();
 		$id = $_SESSION['id'];
-		$query = $this->pdo->prepare("SELECT firstname, lastname, pseudo, email FROM tr_user WHERE id = ?");
-		$query->execute([$id]);
+		$query = $this->pdo->prepare("SELECT firstname, lastname, pseudo, email FROM tr_user WHERE id = $id");
+		$query->execute();
 		$data = $query->fetchall();
 		return $data;
 	}
@@ -339,7 +338,6 @@ class Database
 		$query->execute(array($email));
 		$result = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$data = $result[0];
-		//var_dump($result);
 		$user = new User();
 		foreach ($data as $key => $value) {
 			$id = $user->setId($data['id']);
@@ -356,27 +354,5 @@ class Database
 		return $user;
 	}
 
-	public function getUser($id):User{
-		$id = $_SESSION['id'];
-		$query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id = ?");
-		$query->execute(array($id));
-		$result = $query->fetchAll(\PDO::FETCH_ASSOC);
-		$data = $result[0];
-		
-		$user = new User();
-		foreach ($data as $key => $value) {
-			$echoid = $user->setId($data['id']);
-			$user->setLastname($data['lastname']);
-			$user->setFirstname($data['firstname']);
-			$user->setEmail($data['email']);
-			$user->setPwd($data['password']);
-			$user->setPseudo($data['pseudo']);
-			$user->setCreatedAtUser($data['createdAtUser']);
-			$user->setRole($data['Role_idRole']);
-			$user->setConfirmation($data['confirmation']);
-			$user->setConfirmKey($data['confirmkey']);
-		}
-		return $user;
-	}
 	
 }

@@ -29,8 +29,10 @@
 						<li><?= $error ;?>
 				<?php endforeach;?>
 				</div>
-			<?php endif;?>
+    <?php endif;?>
 				
-    <?php App\Core\Form::showFormProfile($form);?>  
+    <?php App\Core\Form::showFormProfile($form, $data);?> 
     
 </section>
+
+<script src="../framework/src/js/main.js"></script>

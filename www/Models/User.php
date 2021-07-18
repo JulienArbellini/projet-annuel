@@ -363,7 +363,6 @@ class User extends Database
 					"lengthMax"=>"120",
 					"lengthMin"=>"2",
 					"required"=>true,
-					"value"=>$value['firstname']?? '',
 					"error"=>"Votre prénom doit faire entre 2 et 120 caractères"
 				],
 				"lastname"=>[
@@ -375,18 +374,17 @@ class User extends Database
 					"lengthMax"=>"255",
 					"lengthMin"=>"2",
 					"required"=>true,
-					"value"=>$value['lastname'] ?? '',
 					"error"=>"Votre nom doit faire entre 2 et 255 caractères"
 				],
 				"pseudo"=>[
 					"type"=>"text",
 					"name"=>"username",
 					"class"=>"input-profile",
+					"placeholder"=>"Modifiez votre pseudo",
 					"label"=>"Votre pseudo :",
 					"lengthMax"=>"120",
 					"lengthMin"=>"2",
 					"required"=>true,
-					"value"=>$value['pseudo'] ?? '',
 					"error"=>"Votre pseudo doit faire entre 2 et 120 caractères"
 				],
 				"email"=>[
@@ -394,8 +392,7 @@ class User extends Database
 					"label"=>"Votre e-mail :",
 					"class"=>"input-profile",
 					"placeholder"=>"Modifiez votre e-mail",
-					"disabled"=>"disabled",
-					"value"=>$value['email'] ?? ''
+					"disabled"=>"disabled"
 				],
 				"pwd"=>[
 					"type"=>"password",
@@ -406,15 +403,7 @@ class User extends Database
 					"placeholder"=>"Modifiez votre mot de passe",
 					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
 					"autocomplete"=>"new-password"
-				],
-				"pwdConfirm"=>[
-					"type"=>"password",
-					"label"=>"Confirmer le mot de passe :",
-					"class"=>"input",
-					"required"=>true,
-					"value"=>$_POST['email'] ?? '',
-					"error"=>"Les deux mots de passe ne correspondent pas"
-				]	
+				]
 			]
 		];
 	}

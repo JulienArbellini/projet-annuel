@@ -107,9 +107,7 @@ class Security{
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
 		
-		//var_dump($_SESSION);
 		session_start();
-		
 
 		if(isset($_POST['email']) && isset($_POST['pwd']))
 		{
