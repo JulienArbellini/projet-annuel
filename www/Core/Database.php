@@ -310,4 +310,16 @@ class Database
 			$query->execute();
 		}
 	}
+
+	// 1ere solution
+
+	public function userAdminConnect() {
+		$query = $this->pdo->prepare("SELECT email, pseudo, firstname, lastname FROM ".$this->table." WHERE connected = :connected AND Role_idRole = :role");
+		$query->bindValue(':connected', 1);
+		$query->bindValue(':role', 1);
+		$query->execute();
+		$_SESSION['gestionRole'] = $query->fetchall();
+		return $_SESSION['gestionRole'];
+	}
+
 }

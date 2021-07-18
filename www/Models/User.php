@@ -177,16 +177,10 @@ class User extends Database
                 "pseudo"=>[
                             "type"=>"text",
                             "label"=>"Pseudo",
-                            "placeholder"=>"Pseudo"
-                            ],
-                "password"=>[
-                            "type"=>"password",
-                            "label"=>"Mot de passe",
-                            "lengthMin"=>"8",
-                            "required"=>true,
-                            "error"=>"Votre mot de passe doit faire plus de 8 caractères",
-                            "placeholder"=>"Votre mot de passe"
-                            ]   
+                            "placeholder"=>"Pseudo",
+							"required"=>true,
+							"error"=>"Votre pseudo doit faire entre 2 et 255 caractères"
+                            ]  
             ],
 
             "select"=>[

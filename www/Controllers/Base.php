@@ -99,13 +99,12 @@ class Base{
 					$userSelect->setLastname($_POST["lastname"]);
 					$userSelect->setEmail($_POST["email"]);
 					$userSelect->setPseudo($_POST["pseudo"]);
-					$userSelect->setPwd($_POST["password"]);
-					//password_hash($_POST["password"], PASSWORD_BCRYPT)
 					$userSelect->setRole($_POST["role"]);
 					$userSelect->setConfirmation(1);
 					$userSelect->setCreatedAtUser(date("Y-m-d H:i:s"));
 					$userSelect->save();
 					$test = $userSelect->userMail();
+					$expediteurMail = $userSelect->userAdminConnect();
 					$mailer->sendMailUser();
 				}else{
 					$view->assign("formErrors", $errors);
@@ -129,7 +128,10 @@ class Base{
 
 		$donnees = $userSelect->requestRole();
 		$view->assign("donnees", $donnees);
-		
+
+		$gestionRole = $userSelect->userAdminConnect();
+		$view->assign("gestionRole", $gestionRole);
+
 		$data = $userSelect->roleShow();
 		$view->assign("data", $data);
 

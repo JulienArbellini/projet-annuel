@@ -61,8 +61,6 @@ class Mailer{
                 $mail->Port = 465;
                 $mail->setFrom('teachr.contact.pa@gmail.com', 'Teachr Contact');
                 $mail->addAddress($_SESSION['tab'][0]['email'], $_SESSION['tab'][0]['pseudo']);
-                $mail->addAttachment('./teachr.sql');         //Add attachments
-                // $mail->addAttachment('./var/tmp/utilisateur.png', 'new.png');
                 $mail->isHTML(true);
                 $mail->Subject = 'Invitation à rejoindre un projet';
                 $mail->Body    = '<html>
@@ -71,19 +69,13 @@ class Mailer{
                                     </head>
                                     <body>
                                         <h1>Bienvenue sur Teachr !</h1></br>
-                                        <p>L\'utilisateur John Doe vous invite à rejoindre son projet sur notre plateforme.</br>
-                                        Pour y accéder :</p></br>
-                                            <ol>
-                                                <li>Installez un serveur web (MAMP, WAMP, XAMP)</li></br>
-                                                <li>Télécharger la pièce jointe et importez la dans phpmyadmin, la base de données sera alors créée</li></br>
-                                                <li>Rendez-vous à l\'adresse suivante : http://localhost/mot-de-passe-oublie</li></br>
-                                            </ol>
-                                                <p>Vous pouvez vous connecter avec les identifiants suivants :</p>
+                                        <p>L\'utilisateur <strong>'.$_SESSION['gestionRole'][0]['firstname'].' '.$_SESSION['gestionRole'][0]['lastname'].'</strong> vous invite à rejoindre son projet sur notre plateforme.</br>
+                                        Pour y accéder, rendez-vous à l\'adresse suivante : <p style="text-decoration:underline; color:blue;"> https://localhost/mot-de-passe-oublie</p></br>
+                                        Renseignez l\'adresse mail inscrite ci-dessous pour pouvoir créer un mot de passe</p></br>
+                                        <p>Votre identifiant de connexion :</p>
                                             <ol style="list-style: none;">
-                                                <li> - pseudo : '.$_SESSION['tab'][0]['email'].'</li>
-                                                <li> - mot de passe : '.$_SESSION['tab'][0]['password'].'</li></br>
+                                                <li> - Identifiant : '.$_SESSION['tab'][0]['email'].'</li>
                                             </ol>
-                                            <p style="color:red;font-weight:bold;">Ce mot de passe est temporaire. Vous devrez le changer à la première connexion.
                                             <p>Toute l\'équipe vous souhaite la bienvenue sur teachr</br>
                                                 https://teachr.com</p>
                                     </body>
