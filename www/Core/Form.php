@@ -79,8 +79,26 @@ class Form
 		return $errors; //tableau des erreurs
 	}
 
+	public static function validatorProfile($data, $config){
+		$errors = [];
+		if( count($data) == count($config["input"])){
 
+			foreach ($config["input"] as $name => $configInput) {
+				
+				if( !empty($configInput["lengthMin"]) 
+					&& is_numeric($configInput["lengthMin"]) 
+					&& strlen($data[$name])<$configInput["lengthMin"] ){
+					
+					$errors[] = $configInput["error"];
 
+				}
+
+			}
+		}
+		else{
+			$errors[] = "Tentative de Hack (Faille XSS)";
+		}
+	}
 
 
 	public static function showForm($form){
@@ -121,6 +139,22 @@ class Form
 		
 	}
 
+	public static function showFormProfile($form) {
+		$html = "<form id='".($form["config"]["id"]??"")."' class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
+
+		foreach ($form["input"] as $name => $dataInput) {
+			$html .="<div class='form-group'> <label  class='control-label' for='".$name."'>".($dataInput["label"]??"")." </label>";
+			$html .= "<input
+					autocomplete='".($dataInput["autocomplete"]??"")."'
+					id='".$name."'
+					class='".($dataInput["class"]??"")."' 
+					name='".$name."'
+					type='".($dataInput["type"] ?? "text")."'
+					placeholder='".($dataInput["placeholder"] ?? "")."'
+					".((!empty($dataInput["required"]))?"required='required'":"")."
+					> </div>";
+		}
+	}
 
 	public static function showFormLogin($form){
 

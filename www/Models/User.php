@@ -14,6 +14,7 @@ class User extends Database
     protected $email;
     protected $password;
     protected $pseudo;
+	protected $description;
 	protected $avatar;
     protected $createdAtUser;
     protected $Role_idRole = 1;
@@ -56,6 +57,11 @@ class User extends Database
 	public function setPseudo($pseudo){
 		$this->pseudo = $pseudo;
 	}
+
+	public function setDescription($description){
+		$this->description = $description;
+	}
+
 	public function setCreatedAtUser($createdAtUser){
 		$this->createdAtUser = $createdAtUser;
 	}
@@ -335,6 +341,83 @@ class User extends Database
 		];
 	}
 	
+
+	public function buildFormProfile(){
+		return 
+		[
+
+			"config"=>
+			[
+				"method"=>"POST",
+				"Submit"=>"Enregistrer",
+				"class"=>"form_profile"
+			],
+
+			"input"=>[
+				"firstname"=>[
+					"type"=>"text",
+					"name"=>"firstname",
+					"label"=>"Votre prénom :",
+					"class"=>"input-profile",
+					"placeholder"=>'Modifiez votre prénom',
+					"lengthMax"=>"120",
+					"lengthMin"=>"2",
+					"required"=>true,
+					"value"=>$value['firstname']?? '',
+					"error"=>"Votre prénom doit faire entre 2 et 120 caractères"
+				],
+				"lastname"=>[
+					"type"=>"text",
+					"name"=>"lastname",
+					"class"=>"input-profile",
+					"placeholder"=>'Modifiez votre nom',
+					"label"=>"Votre nom :",
+					"lengthMax"=>"255",
+					"lengthMin"=>"2",
+					"required"=>true,
+					"value"=>$value['lastname'] ?? '',
+					"error"=>"Votre nom doit faire entre 2 et 255 caractères"
+				],
+				"pseudo"=>[
+					"type"=>"text",
+					"name"=>"username",
+					"class"=>"input-profile",
+					"label"=>"Votre pseudo :",
+					"lengthMax"=>"120",
+					"lengthMin"=>"2",
+					"required"=>true,
+					"value"=>$value['pseudo'] ?? '',
+					"error"=>"Votre pseudo doit faire entre 2 et 120 caractères"
+				],
+				"email"=>[
+					"type"=>"email",
+					"label"=>"Votre e-mail :",
+					"class"=>"input-profile",
+					"placeholder"=>"Modifiez votre e-mail",
+					"disabled"=>"disabled",
+					"value"=>$value['email'] ?? ''
+				],
+				"pwd"=>[
+					"type"=>"password",
+					"label"=>"Votre mot de passe :",
+					"class"=>"input-profile",
+					"lengthMin"=>"8",
+					"required"=>true,
+					"placeholder"=>"Modifiez votre mot de passe",
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
+					"autocomplete"=>"new-password"
+				],
+				"pwdConfirm"=>[
+					"type"=>"password",
+					"label"=>"Confirmer le mot de passe :",
+					"class"=>"input",
+					"required"=>true,
+					"value"=>$_POST['email'] ?? '',
+					"error"=>"Les deux mots de passe ne correspondent pas"
+				]	
+			]
+		];
+	}
 
 }
 

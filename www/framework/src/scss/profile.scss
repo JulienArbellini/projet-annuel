@@ -18,13 +18,8 @@
     
 }
 
-.deconnexion{
-    color: $red;
-    text-decoration: underline;
-    margin-top: 95%;
-    &:hover{
-        color:lighten($red, 15%);
-    }
+.form_profile {
+    display: flex;
 }
 
 #content-profile{
@@ -35,12 +30,6 @@
     padding: 10px 10px 10px 20px;
 }
 
-.presentation{
-    display:block;
-    float:left;
-    width:150px;
-    }
-
 .form-group-profile{
     padding: 10px 50px 10px 20px !important;
     margin-bottom: 30px;
@@ -49,27 +38,6 @@
   
 #col {
     column-count: 2;
-}
-
-.presentation{
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    margin-top: 20px;
-}
-
-.container-description{
-    width: 33%;
-}
-
-.name{
-    display: flex;
-    flex-direction: column;
-}
-
-.description{
-    display: flex;
-    flex-direction: column;
 }
 
 .center{

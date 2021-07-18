@@ -152,5 +152,26 @@ class Base{
 		$user = new User();
 		$data = $user->recupDataProfile();
 		$view->assign("data",$data);
+		$user = $user->getUser($_SESSION['id']);
+		//var_dump($user);
+		
+	// 	$errors = Form::validatorProfile($_POST, $form);
+		// if (!empty($_POST)) {
+	// 		if(empty($errors)){
+				
+	//			$user->setFirstname(htmlspecialchars($_POST["firstname"]));
+	// 			$user->setLastname(htmlspecialchars($_POST["lastname"]));
+	// 			$user->setPseudo(htmlspecialchars($_POST["username"]));
+	// 			$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+	// 			$user->setDescritpion(htmlspecialchars($_POST['descritpion']));
+
+	//			$user->save();
+				//echo 'Votre profil a bien été mis à jour';
+	// 		} else{
+	// 			$view->assign("formErrors", $errors);
+	// 		}
+		// } else {
+		// 	echo 'Veuillez remplir les données de formulaire';
+		// }
 	}
 }

@@ -44,8 +44,6 @@ class Security{
 				$user->setConfirmKey($confirmKey);
 
 				$user->save();
-				
-				$user->setId($_SESSION['id']);
 
 				$to   = $_POST["email"];
 				$from = 'teachr.contact.pa@gmail.com';
