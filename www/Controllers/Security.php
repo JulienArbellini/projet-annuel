@@ -125,6 +125,7 @@ class Security{
 						$user->connectedOn($email);
 						$_SESSION['loggedIn']=true;
 						$_SESSION['avatar'] = $user->getAvatar();
+						$_SESSION['email'] = $user->getEmail();
 						header('Location: \tableau-de-bord');
 					}
 					else {

@@ -36,3 +36,4 @@
 </section>
 
 <script src="../framework/src/js/main.js"></script>
+<script type="text/javascript" src="framework/src/js/modal.js"></script>

@@ -149,33 +149,32 @@ class Base{
 		$user = new User();
 		$view = new View("profile", "backProfile");
 		$form = $user->buildFormProfile();
-		$form = $view->assign("form", $form);
+		$view->assign("form", $form);
 		
 		session_start();
 		
 		$data = $user->recupDataProfile();
 		$view->assign("data",$data);
-		$user = $user->getUserByMail($data[0]['email']);
+		$user = $user->getUserByMail($_SESSION['email']);
+		$data = $user->recupDataProfile();
 		
-		//var_dump($user);
-		
-	// 	$errors = Form::validatorProfile($_POST, $form);
-		// if (!empty($_POST)) {
-	// 		if(empty($errors)){
-				
-	//			$user->setFirstname(htmlspecialchars($_POST["firstname"]));
-	// 			$user->setLastname(htmlspecialchars($_POST["lastname"]));
-	// 			$user->setPseudo(htmlspecialchars($_POST["username"]));
-	// 			$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
-	// 			$user->setDescritpion(htmlspecialchars($_POST['descritpion']));
+		$errors = Form::validatorProfile($_POST, $form);
+		if (!empty($_POST)) {
+			if(empty($errors)){
 
-	//			$user->save();
-				//echo 'Votre profil a bien été mis à jour';
-	// 		} else{
-	// 			$view->assign("formErrors", $errors);
-	// 		}
-		// } else {
-		// 	echo 'Veuillez remplir les données de formulaire';
-		// }
+				$user->setFirstname(htmlspecialchars($_POST["firstname"]));
+				$user->setLastname(htmlspecialchars($_POST["lastname"]));
+				$user->setPseudo(htmlspecialchars($_POST["pseudo"]));
+				$user->setPwd(password_hash(htmlspecialchars($_POST["pwd"]), PASSWORD_BCRYPT));
+
+				$user->save();
+				$_SESSION['pseudo'] = $_POST['pseudo'];
+				$data = $user->recupDataProfile();
+				$view->assign("data",$data);
+				echo "<script>alert('Votre profil a bien été mis à jour')</script>";
+			} else{
+				$view->assign("formErrors", $errors);
+			}
+		}	
 	}
 }

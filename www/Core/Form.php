@@ -81,7 +81,8 @@ class Form
 
 	public static function validatorProfile($data, $config){
 		$errors = [];
-		if( count($data) == count($config["input"])){
+		$count = count($data) + 1;
+		if( $count == count($config["input"])){
 
 			foreach ($config["input"] as $name => $configInput) {
 				
@@ -98,8 +99,9 @@ class Form
 		else{
 			$errors[] = "Tentative de Hack (Faille XSS)";
 		}
+			
+		return $errors; //tableau des erreurs
 	}
-
 
 	public static function showForm($form){
 		$html = "<form class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
@@ -159,7 +161,7 @@ class Form
 			}
 		}
 
-		$html .= "<input type='submit' class='button-profile' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
+		$html .= "<input type='submit' class='button-profile' id='btn-profile' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
 		
 		echo $html;
 	}

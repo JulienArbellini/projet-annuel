@@ -47,7 +47,9 @@ class User extends Database
 	public function getFirstname() {
 		return $this->firstname;
 	} 
-	
+	public function getEmail(){
+        return $this->email;
+    }
 	public function setEmail($email){
 		$this->email = $email;
 	}
@@ -356,7 +358,6 @@ class User extends Database
 			"input"=>[
 				"firstname"=>[
 					"type"=>"text",
-					"name"=>"firstname",
 					"label"=>"Votre prénom :",
 					"class"=>"input-profile",
 					"placeholder"=>'Modifiez votre prénom',
@@ -367,7 +368,6 @@ class User extends Database
 				],
 				"lastname"=>[
 					"type"=>"text",
-					"name"=>"lastname",
 					"class"=>"input-profile",
 					"placeholder"=>'Modifiez votre nom',
 					"label"=>"Votre nom :",
@@ -378,7 +378,6 @@ class User extends Database
 				],
 				"pseudo"=>[
 					"type"=>"text",
-					"name"=>"username",
 					"class"=>"input-profile",
 					"placeholder"=>"Modifiez votre pseudo",
 					"label"=>"Votre pseudo :",
@@ -389,10 +388,9 @@ class User extends Database
 				],
 				"email"=>[
 					"type"=>"email",
-					"label"=>"Votre e-mail :",
+					"label"=>"Votre e-mail (non modifiable):",
 					"class"=>"input-profile",
-					"placeholder"=>"Modifiez votre e-mail",
-					"disabled"=>"disabled"
+					"placeholder"=>"Modifiez votre e-mail"
 				],
 				"pwd"=>[
 					"type"=>"password",

@@ -1,7 +1,7 @@
 <?php
-    // if (!($_SESSION['loggedIn'])){
-    //     header('Location:/login');
-    // }
+    if (!($_SESSION['loggedIn'])){
+        header('Location:/login');
+    }
     //var_dump($_SESSION);
 ?>                          
 <!DOCTYPE html>
