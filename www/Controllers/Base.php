@@ -256,7 +256,7 @@ class Base{
 				$user->setPwd(password_hash(htmlspecialchars($_POST["pwd"]), PASSWORD_BCRYPT));
 
 				$user->save();
-				$_SESSION['pseudo'] = $_POST['pseudo'];
+				$_SESSION['prenom'] = $_POST['pseudo'];
 				$data = $user->recupDataProfile();
 				$view->assign("data",$data);
 				echo "<script>alert('Votre profil a bien été mis à jour')</script>";
