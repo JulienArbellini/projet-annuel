@@ -15,9 +15,9 @@
         $login = trim($_POST['bdd-user-name']);
         $mdp = trim($_POST['bdd-user-pwd']);
         $base = trim($_POST['bdd-name']);
+        $port = trim($_POST['bdd-port']);
 
         $driver = "mysql";
-        $port = "3306";
 
         // tentative de connexion à la bdd si erreur afficher message d'erreur dans le formulaire
         try {
@@ -32,34 +32,34 @@
 
         
         // si pas d'erreur alors créer un fichier (.env ou config.php) dans lequel -> création des constantes avec leur valeur
-        $texte = 
-        "DBHOST=$hote
-        DBNAME=$base
-        DBUSER=$login
-        DBPWD=$mdp
-        DBPORT=$port
-        DBDRIVER=$driver
-        DBPREFIX=tr_";
 
-        $env = "APP_NAMESPACE=\App\
-                ENV=prod";
+                $texte = 
+                "DBHOST=$hote
+                DBNAME=$base
+                DBUSER=$login
+                DBPWD=$mdp
+                DBPORT=$port
+                DBDRIVER=$driver
+                DBPREFIX=tr_";
 
-        $writeFileEnvProd = ('./.env.prod');
-        $writeFileEnv = ('./.env');
+                $env = "APP_NAMESPACE=\App\
+                        ENV=prod";
 
-        $ouvrir = fopen($writeFileEnvProd, 'w');
-        $ouvrirEnv = fopen($writeFileEnv, 'w');
+                $writeFileEnvProd = ('./.env.prod');
+                $writeFileEnv = ('./.env');
 
-        fwrite($ouvrir, $texte);
-        fwrite($ouvrirEnv, $env);
-        // fichier config.php doit être inclus dans le cms, 
-        // executer le fichier sql d'insertion des tables
-        
-        $sql = file_get_contents('./teachr_2.sql');
-        $bdd->exec($sql);
-        header("Location: /s-inscrire");
-        unlink('install.php');
+                $ouvrir = fopen($writeFileEnvProd, 'w');
+                $ouvrirEnv = fopen($writeFileEnv, 'w');
 
+                fwrite($ouvrir, $texte);
+                fwrite($ouvrirEnv, $env);
+                // fichier config.php doit être inclus dans le cms, 
+                // executer le fichier sql d'insertion des tables
+                
+                $sql = file_get_contents('./teachr.sql');
+                $bdd->exec($sql);
+                header("Location: /s-inscrire");
+                unlink('install.php');
     }
     ?>
 </body>
