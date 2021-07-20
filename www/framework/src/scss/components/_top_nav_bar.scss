@@ -25,8 +25,10 @@ header{
 }
 
 .link-nav-bar{
-  display: flex;
-  align-items: center;
+	color: $black;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
 	justify-content: center;
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);

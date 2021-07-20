@@ -7,16 +7,19 @@ use App\Core\Database;
 date_default_timezone_set('Europe/Paris');
 
 class User extends Database
-{
-    private $id=null;
+{	
+    private $id = null;
     protected $lastname;
     protected $firstname;
     protected $email;
     protected $password;
     protected $pseudo;
+	protected $description;
+	protected $avatar;
     protected $createdAtUser;
     protected $Role_idRole = 1;
-    protected $confirmKey;
+    public $confirmKey;
+	public $confirmation;
 
     public function __construct(){
         parent::__construct();
@@ -40,6 +43,13 @@ class User extends Database
 	public function setFirstname($firstname){
 		$this->firstname = $firstname;
 	}
+
+	public function getFirstname() {
+		return $this->firstname;
+	} 
+	public function getEmail(){
+        return $this->email;
+    }
 	public function setEmail($email){
 		$this->email = $email;
 	}
@@ -49,6 +59,11 @@ class User extends Database
 	public function setPseudo($pseudo){
 		$this->pseudo = $pseudo;
 	}
+
+	public function setDescription($description){
+		$this->description = $description;
+	}
+
 	public function setCreatedAtUser($createdAtUser){
 		$this->createdAtUser = $createdAtUser;
 	}
@@ -59,8 +74,21 @@ class User extends Database
 		$this->confirmKey = $confirmKey;
 	}
 
+	public function setConfirmation($confirmation){
+		$this->confirmation = $confirmation;
+	}
 
+	public function getConfirmation(){
+        return $this->confirmation;
+    }
 	
+	public function getAvatar() {
+		return $this->avatar;
+	}
+
+	public function setAvatar($avatar) {
+		$this->avatar = $avatar;
+	}
 	
 	public function buildFormRegister(){
 		return 
@@ -71,7 +99,7 @@ class User extends Database
 				"method"=>"POST",
 				"Action"=>"/login",
 				"Submit"=>"S'inscrire",
-				"class"=>"shadow-box-square col-m-8 col-l-4"
+				"class"=>"shadow-box-square col-l-4 col-m-6 col-s-12"
 			],
 
 			"input"=>[
@@ -84,6 +112,7 @@ class User extends Database
 					"lengthMax"=>"120",
 					"lengthMin"=>"2",
 					"required"=>true,
+					"value"=>$_POST['firstname'] ?? '',
 					"error"=>"Votre prénom doit faire entre 2 et 120 caractères"
 				],
 				"lastname"=>[
@@ -95,7 +124,19 @@ class User extends Database
 					"lengthMax"=>"255",
 					"lengthMin"=>"2",
 					"required"=>true,
+					"value"=>$_POST['lastname'] ?? '',
 					"error"=>"Votre nom doit faire entre 2 et 255 caractères"
+				],
+				"pseudo"=>[
+					"type"=>"text",
+					"name"=>"pseudo",
+					"class"=>"input",
+					"label"=>"Pseudo :",
+					"lengthMax"=>"120",
+					"lengthMin"=>"2",
+					"required"=>true,
+					"value"=>$_POST['lastname'] ?? '',
+					"error"=>"Votre pseudo doit faire entre 2 et 120 caractères"
 				],
 				"email"=>[
 					"type"=>"email",
@@ -104,7 +145,8 @@ class User extends Database
 					"autocomplete"=>"email",
 					"required"=>true,
 					"error"=>"Votre e-mail n'est pas valide",
-					"error2"=>"Cet e-mail est déjà utilisé"
+					"error2"=>"Cet e-mail est déjà utilisé",
+					"value"=>$_POST['email'] ?? ''
 				],
 				"pwd"=>[
 					"type"=>"password",
@@ -112,13 +154,16 @@ class User extends Database
 					"class"=>"input",
 					"lengthMin"=>"8",
 					"required"=>true,
-					"error"=>"Votre mot de passe doit faire plus de 8 caractères"
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
+					"value"=>$_POST['pwd'] ?? '',
+					"autocomplete"=>"new-password"
 				],
 				"pwdConfirm"=>[
 					"type"=>"password",
 					"label"=>"Confirmer le mot de passe :",
 					"class"=>"input",
 					"required"=>true,
+					"value"=>$_POST['email'] ?? '',
 					"error"=>"Les deux mots de passe ne correspondent pas"
 				],
 				"checkbox"=>[
@@ -212,6 +257,7 @@ class User extends Database
 									"autocomplete"=>"email",
 									"required"=>true,
 									"error"=>"Votre e-mail n'est pas valide",
+									"value"=>$_POST['email'] ?? ''
 									],
 					"pwd"=>[
 									"type"=>"password",
@@ -219,6 +265,8 @@ class User extends Database
 									"class"=>"input",
 									"lengthMin"=>"8",
 									"required"=>true,
+									"value"=>$_POST['pwd'] ?? '',
+									"autocomplete"=>"new-password",
 									"error"=>"Votre mot de passe doit faire plus de 8 caractères"
 										],
 
@@ -295,6 +343,68 @@ class User extends Database
 		];
 	}
 	
+
+	public function buildFormProfile(){
+		return 
+		[
+
+			"config"=>
+			[
+				"method"=>"POST",
+				"Submit"=>"Enregistrer",
+				"class"=>"form_profile"
+			],
+
+			"input"=>[
+				"firstname"=>[
+					"type"=>"text",
+					"label"=>"Votre prénom :",
+					"class"=>"input-profile",
+					"placeholder"=>'Modifiez votre prénom',
+					"lengthMax"=>"120",
+					"lengthMin"=>"2",
+					"required"=>true,
+					"error"=>"Votre prénom doit faire entre 2 et 120 caractères"
+				],
+				"lastname"=>[
+					"type"=>"text",
+					"class"=>"input-profile",
+					"placeholder"=>'Modifiez votre nom',
+					"label"=>"Votre nom :",
+					"lengthMax"=>"255",
+					"lengthMin"=>"2",
+					"required"=>true,
+					"error"=>"Votre nom doit faire entre 2 et 255 caractères"
+				],
+				"pseudo"=>[
+					"type"=>"text",
+					"class"=>"input-profile",
+					"placeholder"=>"Modifiez votre pseudo",
+					"label"=>"Votre pseudo :",
+					"lengthMax"=>"120",
+					"lengthMin"=>"2",
+					"required"=>true,
+					"error"=>"Votre pseudo doit faire entre 2 et 120 caractères"
+				],
+				"email"=>[
+					"type"=>"email",
+					"label"=>"Votre e-mail (non modifiable):",
+					"class"=>"input-profile",
+					"placeholder"=>"Modifiez votre e-mail"
+				],
+				"pwd"=>[
+					"type"=>"password",
+					"label"=>"Votre mot de passe :",
+					"class"=>"input-profile",
+					"lengthMin"=>"8",
+					"required"=>true,
+					"placeholder"=>"Modifiez votre mot de passe",
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
+					"autocomplete"=>"new-password"
+				]
+			]
+		];
+	}
 
 }
 

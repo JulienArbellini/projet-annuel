@@ -4,9 +4,9 @@
 namespace App\Core;
 use App\Core\Form;
 
-$mailexists = 0;
-// session_start();
+use App\Models\User;
 
+$mailexists = 0;
 
 class Database
 {
@@ -48,7 +48,6 @@ class Database
 					get_class_vars(get_class())
 				);
 		//var_dump($data);
-	
 		if(is_null($this->getId())){
 
 			//INSERT 
@@ -59,7 +58,8 @@ class Database
 											) VALUES (
 											:".implode(",:", $columns)."
 											)");
-										
+
+			$_SESSION['id'] = $this->pdo->lastInsertId();					
 		}else{
 			
 			//UPDATE 
@@ -72,9 +72,6 @@ class Database
         $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		}
 		$query->execute($data);
-		// echo $query;
-		$_SESSION['id'] = $this->pdo->lastInsertId();
-		
 	}
 
 	public function getArticle(){
@@ -97,7 +94,7 @@ class Database
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
-		$_SESSION['id'] = $this->pdo->lastInsertId();
+		
 
 	}
 
@@ -139,7 +136,6 @@ class Database
 		$end = date_create($end);
 		$interval = date_diff($start,$end);
 		if($interval->format('%h') <= 3){
-			echo 'YEAAAAAAh';
 			return true;
 		}else{
 			echo '<html><br></html>Votre code de confirmation est périmé, veuillez le renouveller en rentrant votre mail ici';
@@ -161,7 +157,6 @@ class Database
 	}
 
 	public function verifMail(){
-		// global $mailexists;
 		if(isset($_POST['email'])){
 			$email = $_POST['email'];
 			$reqmail = $this->pdo->prepare('SELECT id FROM tr_user WHERE email = ?');
@@ -246,7 +241,24 @@ class Database
 				echo "Votre identifiant ou votre clé est incorrect";
 			}
 		}else{
+			return false;
 			echo "Aucun utilisateur trouvé";
+			
+		}
+	}
+
+	public function verifConfirmed() {
+		$user = $this->getUserByMail($_POST['email']);
+		//var_dump($user);
+		$id = $user->getId();
+		$query = $this->pdo->prepare("SELECT confirmation FROM tr_user WHERE id = $id");
+		$query->execute();
+		$data = $query->fetch();
+		if ($data['confirmation'] == 1) {
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 
@@ -445,4 +457,35 @@ class Database
 	
 
 
+
+	public function recupDataProfile() {
+		$id = $_SESSION['id'];
+		$query = $this->pdo->prepare("SELECT firstname, lastname, pseudo, email FROM tr_user WHERE id = $id");
+		$query->execute();
+		$data = $query->fetchall();
+		return $data;
+	}
+
+	public function getUserByMail($email):User{
+		$query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE email = ?");
+		$query->execute(array($email));
+		$result = $query->fetchAll(\PDO::FETCH_ASSOC);
+		$data = $result[0];
+		$user = new User();
+		foreach ($data as $key => $value) {
+			$id = $user->setId($data['id']);
+			$user->setLastname($data['lastname']);
+			$user->setFirstname($data['firstname']);
+			$user->setEmail($data['email']);
+			$user->setPwd($data['password']);
+			$user->setPseudo($data['pseudo']);
+			$user->setCreatedAtUser($data['createdAtUser']);
+			$user->setRole($data['Role_idRole']);
+			$user->setConfirmation($data['confirmation']);
+			$user->setConfirmKey($data['confirmkey']);
+		}
+		return $user;
+	}
+
+	
 }

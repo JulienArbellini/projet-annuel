@@ -1,5 +1,5 @@
 <?php
-        // session_start();
+        //session_start();
         if (!($_SESSION['loggedIn'])){
                 header('Location:/login');
         } 
@@ -7,6 +7,7 @@
         { 
            if($_GET['deconnexion']==true)
            {  
+              //unset($_SESSION['loggedIn']);
               session_unset();
               header('Location: \login');
            }

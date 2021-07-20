@@ -4040,3 +4040,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return C.$ === S && (C.$ = Qt), e && C.jQuery === S && (C.jQuery = Yt), S;
   }, "undefined" == typeof e && (C.jQuery = C.$ = S), S;
 });
+document.getElementById('firstname').removeAttribute('disabled');
+document.getElementById('lastname').removeAttribute('disabled');
+document.getElementById('pseudo').removeAttribute('disabled');
+document.getElementById('pwd').removeAttribute('disabled');

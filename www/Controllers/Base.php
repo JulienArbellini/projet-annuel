@@ -47,6 +47,7 @@ class Base{
 		$page = new Page();
 
 		$page->definirPageAccueil();		
+		session_start();	
 	
 	}
 
@@ -71,7 +72,6 @@ class Base{
 		$view->assign("data", $data);
 
 		if(!empty($_POST)){ 
-			//echo "coucou";
 			$article->setId($_GET['idArticle']);
 			$article->setTitle($_POST["titre_article"]);
 			$article->setSlug($_POST["slug_article"]);
@@ -235,4 +235,36 @@ class Base{
 		$article->routingPagesArticles();
 	}
 
+	public function profileAction(){
+		$user = new User();
+		$view = new View("profile", "back");
+		$form = $user->buildFormProfile();
+		$view->assign("form", $form);
+		
+		session_start();
+		
+		$data = $user->recupDataProfile();
+		$view->assign("data",$data);
+		$user = $user->getUserByMail($_SESSION['email']);
+		$data = $user->recupDataProfile();
+		
+		$errors = Form::validatorProfile($_POST, $form);
+		if (!empty($_POST)) {
+			if(empty($errors)){
+
+				$user->setFirstname(htmlspecialchars($_POST["firstname"]));
+				$user->setLastname(htmlspecialchars($_POST["lastname"]));
+				$user->setPseudo(htmlspecialchars($_POST["pseudo"]));
+				$user->setPwd(password_hash(htmlspecialchars($_POST["pwd"]), PASSWORD_BCRYPT));
+
+				$user->save();
+				$_SESSION['pseudo'] = $_POST['pseudo'];
+				$data = $user->recupDataProfile();
+				$view->assign("data",$data);
+				echo "<script>alert('Votre profil a bien été mis à jour')</script>";
+			} else{
+				$view->assign("formErrors", $errors);
+			}
+		}	
+	}
 }
