@@ -54,6 +54,7 @@ class Base{
 	public function articlesAction(){
 		$view = new View("articles", "back");
 		$article = new Article();
+		$article->connectedUserId();
 		
 		$article->deleteArticle();
 
@@ -67,15 +68,15 @@ class Base{
 		$article = new Article();
 		// $donnees = $article->getArticle();
 		// $view->assign("donnees", $donnees);
-
+		$article->getIdUserConnected();
 		$data = $article->getContent();
 		$view->assign("data", $data);
 
 		if(!empty($_POST)){ 
 			$article->setId($_GET['idArticle']);
-			$article->setTitle($_POST["titre_article"]);
-			$article->setSlug($_POST["slug_article"]);
-			$article->setContent($_POST["contenu_article"]);
+			$article->setTitle(htmlspecialchars($_POST["titre_article"]));
+			$article->setSlug(htmlspecialchars($_POST["slug_article"]));
+			$article->setContent(htmlspecialchars($_POST["contenu_article"]));
 			$article->setCreatedAt(date("Y-m-d H:i:s"));
 			$article->save();
 	   }
@@ -107,13 +108,13 @@ class Base{
 				$errors = Form::validatorAddUserForm($_POST, $form);
 
 				if(empty($errors)){
-					$userSelect->setFirstname($_POST["firstname"]);
-					$userSelect->setLastname($_POST["lastname"]);
-					$userSelect->setEmail($_POST["email"]);
-					$userSelect->setPseudo($_POST["pseudo"]);
-					$userSelect->setPwd($_POST["password"]);
+					$userSelect->setFirstname(htmlspecialchars($_POST["firstname"]));
+					$userSelect->setLastname(htmlspecialchars($_POST["lastname"]));
+					$userSelect->setEmail(htmlspecialchars($_POST["email"]));
+					$userSelect->setPseudo(htmlspecialchars($_POST["pseudo"]));
+					$userSelect->setPwd(htmlspecialchars($_POST["password"]));
 					//password_hash($_POST["password"], PASSWORD_BCRYPT)
-					$userSelect->setRole($_POST["role"]);
+					$userSelect->setRole(htmlspecialchars($_POST["role"]));
 					$userSelect->save();
 					$test = $userSelect->userMail();
 					$mailer->sendMailUser();
@@ -125,10 +126,10 @@ class Base{
 		
 		else{
 			if(!empty($_POST)){
-				$userSelect->setId($_GET["updateId"]);
-				$userSelect->setLastname($_POST["lastname"]);
-				$userSelect->setFirstname($_POST["firstname"]);
-				$userSelect->setRole($_POST["role"]);
+				$userSelect->setId(htmlspecialchars($_GET["updateId"]));
+				$userSelect->setLastname(htmlspecialchars($_POST["lastname"]));
+				$userSelect->setFirstname(htmlspecialchars($_POST["firstname"]));
+				$userSelect->setRole(htmlspecialchars($_POST["role"]));
 				$userSelect->updateUser();
 			}
 		}
@@ -145,14 +146,17 @@ class Base{
 	public function pagesAction(){
 		$view = new View("pages", "back");
 		$page = new Page();
+		$page->connectedUserId();
+		// var_dump($_SESSION['id']);
 
 		$page->deletePage();
 
 		if(!empty($_POST)){
 			//var_dump($_POST);
-			$page->setTitle($_POST["add-page-title"]);
-			$page->setSlug($_POST["add-page-slug"]);
+			$page->setTitle(htmlspecialchars($_POST["add-page-title"]));
+			$page->setSlug(htmlspecialchars($_POST["add-page-slug"]));
 			$page->setCreatedAt(date("Y-m-d H:i:s"));
+			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
 			$page->save();
 		}
 
@@ -172,13 +176,16 @@ class Base{
 	public function apparenceAction(){
 		$view = new View("apparence", "front");
 		$page = new Page();
+		$page->connectedUserId();
 
 		if(!empty($_POST) && !empty($_GET['idPage'])){ 
 			//echo "coucou";
 			$page->setId($_GET['idPage']);
-			$page->setTitle($_POST["titre_page"]);
-			$page->setSlug($_POST["slugPage"]);
-			$page->setContent($_POST["affichage-page"]);
+			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
+			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
+			$page->setContent(htmlspecialchars($_POST["affichage-page"]));
+			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
+
 			// $page->setPageAccueil($_POST["pageAccueil"]);
 
 			if(!empty($_POST['pageAccueil'])){
@@ -202,9 +209,10 @@ class Base{
 
 	   if(!empty($_POST) && empty($_GET['idPage'])){
 
-			$page->setTitle($_POST["titre_page"]);
-			$page->setSlug($_POST["slugPage"]);
-			$page->setContent($_POST["affichage-page"]);
+			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
+			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
+			$page->setContent(htmlspecialchars($_POST["affichage-page"]));
+			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
 			// $page->setPageAccueil($_POST["pageAccueil"]);
 
 			if(!empty($_POST['pageAccueil'])){
@@ -256,7 +264,7 @@ class Base{
 				$user->setPwd(password_hash(htmlspecialchars($_POST["pwd"]), PASSWORD_BCRYPT));
 
 				$user->save();
-				$_SESSION['prenom'] = $_POST['pseudo'];
+				$_SESSION['pseudo'] = $_POST['pseudo'];
 				$data = $user->recupDataProfile();
 				$view->assign("data",$data);
 				echo "<script>alert('Votre profil a bien été mis à jour')</script>";
@@ -265,4 +273,8 @@ class Base{
 			}
 		}	
 	}
+	public function FAQAction(){
+		$view = new View("FAQ", "back");
+	}
+
 }

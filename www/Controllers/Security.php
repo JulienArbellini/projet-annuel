@@ -76,18 +76,22 @@ class Security{
 
 		$article = new Article();
 		$view = new View("addArticles", "back");
+		$article->getIdUserConnected();
 		$form = $article->buildFormAddArticle();
 		$view->assign("form", $form);
+
 
 		 if(!empty($_POST)){
 		 	$errors = AddArticleForm::validatorAddArticle($_POST, $form);
 
 			if(empty($errors)){
 				
-				$article->setTitle($_POST["titre"]);
-				$article->setSlug($_POST["slug"]);
-				$article->setContent($_POST["contenu"]);
+				$article->setTitle(htmlspecialchars($_POST["titre"]));
+				$article->setSlug(htmlspecialchars($_POST["slug"]));
+				$article->setContent(htmlspecialchars($_POST["contenu"]));
 				$article->setCreatedAt(date("Y-m-d H:i:s"));
+				// $article->setAuteur($_POST["auteur"]);
+				$article->setIdUser(htmlspecialchars($_POST["auteur"]));
 				$article->save();
 
 			}else{
@@ -115,16 +119,22 @@ class Security{
 					if ($user->verifConfirmed())
 					{
 						$_SESSION['id'] = $user->getId();
-						$_SESSION['prenom'] = $user->getPseudo($email);
+						$_SESSION['pseudo'] = $user->getPseudo($email);
 						$user->connectedOn($email);
 						$_SESSION['loggedIn']=true;
 						$_SESSION['avatar'] = $user->getAvatar();
 						$_SESSION['email'] = $user->getEmail();
+						$_SESSION['prenom'] = $user->getFirstname($email);
+						$user->connectedOn($email);
+						$_SESSION['loggedIn']=true;
+						$user->connectedUserId();
 						header('Location: \tableau-de-bord');
+						
 					}
 					else {
 						echo "<center><p style='color:red'>Veuillez valider votre compte à l'aide du code de confirmation reçu dans votre boîte de réception</p></center>";
 					}
+					
 				}
 				else
 				{
@@ -138,6 +148,21 @@ class Security{
 			}
 		}					
 	}
+
+	public function logoutAction(){
+        $user = new User();
+
+        if(isset($_GET['deconnexion']))
+        { 
+            
+           if($_GET['deconnexion']==true)
+           {    
+                session_unset();
+                header('Location: \login');
+                $user->connectedOff();
+           }
+        }
+    }
 
 	public function recuperationAction(){
 		$user = new User();
@@ -197,10 +222,6 @@ class Security{
 				echo 'not ok';
 			}
 		}
-	}
-	
-	public function logoutAction(){
-		echo "controller security action logout";
 	}
 
 	public function listofusersAction(){

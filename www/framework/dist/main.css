@@ -373,6 +373,10 @@ body {
   text-decoration: none;
 }
 
+.titre-article {
+  font-size: 25px;
+}
+
 .affichage-article {
   height: 65vh;
   overflow: auto;
@@ -725,6 +729,7 @@ img.image-grayscale {
   margin-top: auto;
 }
 
+<<<<<<< HEAD
 .title-install {
   color: #444;
   font-size: 0.75rem;
@@ -946,6 +951,23 @@ img.image-grayscale {
   padding: 5px 10px 5px 10px;
   margin-bottom: 10px;
   border-radius: 10px;
+=======
+.titre-faq {
+  text-decoration: underline;
+}
+
+.text-faq {
+  font-size: 16px;
+}
+
+.shadow-box-square ul li {
+  font-size: 16px;
+}
+
+.titre-parametre-projet {
+  font-size: 18px;
+  text-decoration: underline;
+>>>>>>> feature/auteur
 }
 
 .button,
@@ -2962,6 +2984,9 @@ input:checked + .slider:before {
   margin-bottom: 30px;
   margin-top: 20px;
   margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #imgInp {

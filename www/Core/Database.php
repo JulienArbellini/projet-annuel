@@ -48,6 +48,8 @@ class Database
 					get_class_vars(get_class())
 				);
 		//var_dump($data);
+		// var_dump($data);
+	
 		if(is_null($this->getId())){
 
 			//INSERT 
@@ -78,25 +80,13 @@ class Database
 
 	public function getArticle(){
 
-		$dataArticle = array_diff_key (
-					
-			get_object_vars($this), 
-
-			get_class_vars(get_class())
-
-		);
-
-		 $columns_article = array_keys($dataArticle);
-
-		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
-		$query = $this->pdo->prepare("SELECT a.".implode(",",$columns_article).", u.firstname, a.id
-									  FROM ".$this->table." AS a 
-									  INNER JOIN tr_user_has_Article AS l ON a.id = l.Article_idArticle
-									  INNER JOIN tr_user AS u ON u.id = l.User_idUser");
+		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u
+									  INNER JOIN tr_article AS a ON a.id_user = u.id");
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
 		
+		// $_SESSION['id'] = $this->pdo->lastInsertId();
 
 	}
 
@@ -121,11 +111,16 @@ class Database
 		$this->pdo->query("UPDATE tr_user SET connected= 1 WHERE email="."'".$email."'");
 	}
 
-	public function connectedOff($email){
-		$this->pdo->query("UPDATE tr_user SET connected= 0 WHERE email="."'".$email."'");
-	}
+	public function connectedOff(){
+        $this->pdo->query("UPDATE tr_user SET connected= 0 WHERE id=".$_GET['id']);
+    }
 
-		
+	public function connectedUserId(){
+        $query=$this->pdo->prepare("SELECT id FROM tr_user WHERE connected=1");
+        $query->execute();
+        $_SESSION['id']= $query->fetchall();
+        // var_dump($_SESSION['id']);
+    }
 
 
 	public function checkConfirmationKeyTmtp($confirmationKey){ 
@@ -196,26 +191,30 @@ class Database
 		return $result['pseudo'];
 	}
 
+	public function getFirstname($email){
+        $prenom = $this->pdo->prepare("SELECT firstname FROM tr_user WHERE email = "."'".$email."'");
+        $prenom->execute();
+        $result = $prenom->fetch(\PDO::FETCH_ASSOC);
+        return $result['firstname'];
+    }
+
 	public function deleteArticle(){
 
 
 
 		if(!empty($_GET['id'])){
 			$Del_Id = $_GET['id'];
-			$query1 = $this->pdo->prepare("DELETE FROM tr_user_has_Article WHERE Article_idArticle=".$Del_Id);
-			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id=".$Del_Id);
-			// var_dump($query1);
-			// var_dump($query2);
-			//var_dump($_GET['id']);
-			$query1->execute();
-			$query2->execute();
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id= :del_id");
+			$query->bindValue(':del_id', $Del_Id);
+			$query->execute();
 		}
 	}
 
 	public function getContent(){
 		if(!empty($_GET['idArticle'])){
 			$id = $_GET['idArticle'];
-			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE id =".$id);
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE id = :id");
+			$query->bindValue(':id', $id);
 			$query->execute();
 			$data = $query->fetchall();
 			return $data;
@@ -289,7 +288,8 @@ class Database
 
 	public function userDelete(){
 		if(!empty($_GET['deleteId'])){
-			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id = ".$_GET['deleteId']);
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id = :delete_id");
+			$query->bindValue(':delete_id', $_GET['deleteId']);
 			$query->execute();
 		}
     }
@@ -303,31 +303,19 @@ class Database
 
 	public function updateUser(){
 		if(!empty($_GET['updateId'])){
-			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = '" .$_POST["lastname"]. "', firstname = '" .$_POST["firstname"]. "', Role_idRole = '" .$_POST["role"]. "' WHERE id = " .$_GET['updateId']);
+			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = :lastname, firstname = :firstname, Role_idRole = :Role_idRole WHERE id = :id");
+			$query->bindValue(':lastname', $_POST["lastname"]);
+			$query->bindValue(':firstname', $_POST["firstname"]);
+			$query->bindValue(':Role_idRole', $_POST["role"]);
+			$query->bindValue(':id', $_GET['updateId']);
 			$query->execute();
 		}
 	}
 	public function getPage(){
-		$dataPages = array_diff_key (
-					
-			get_object_vars($this), 
-
-			get_class_vars(get_class())
-
-		);
-
-		$columns_pages = array_keys($dataPages);
-
-		//$query = $this->pdo->prepare("SELECT DISTINCT * FROM ".$this->table);
-		$query = $this->pdo->prepare("SELECT p.".implode(",",$columns_pages).", u.firstname, p.id
-									  FROM ".$this->table." AS p
-									  INNER JOIN tr_page_has_User AS l ON l.Page_idPage = p.id
-									  INNER JOIN tr_user AS u ON l.User_idUser = u.id");
-		//echo $query;
+		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u
+									  INNER JOIN tr_page AS p ON p.id_user = u.id");
 		$query->execute();
-		//var_dump($query);
 		$donnees = $query->fetchall();
-		// var_dump($donnees);
 		return $donnees;
 	}
 
@@ -335,13 +323,9 @@ class Database
 
 		if(!empty($_GET['id'])){
 			$Del_Id = $_GET['id'];
-			$query1 = $this->pdo->prepare("DELETE FROM tr_page_has_User WHERE Page_idPage=".$Del_Id);
-			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id=".$Del_Id);
-			// var_dump($query1);
-			// var_dump($query2);
-			//var_dump($_GET['id']);
-			$query1->execute();
-			$query2->execute();
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id= :del_id");
+			$query->bindValue(':del_id', $Del_Id);
+			$query->execute();
 		}
 		
 	}
@@ -350,7 +334,8 @@ class Database
 		
 		if(!empty($_GET['idPage'])){
 			$idPage = $_GET['idPage'];
-			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_page WHERE id =".$idPage);
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_page WHERE id = :id_page");
+			$query->bindValue(':id_page', $idPage);
 			$query->execute();
 			$data = $query->fetchall();
 			return $data;
@@ -359,7 +344,8 @@ class Database
 	}
 
 	public function definirPageAccueil(){
-			$query = $this->pdo->prepare("SELECT slug FROM tr_page WHERE page_accueil=1");
+			$query = $this->pdo->prepare("SELECT slug FROM tr_page WHERE page_accueil=:page_accueil");
+			$query->bindValue(':page_accueil', 1);
 			$query->execute();
 			$_SESSION['slug_accueil'] = $query->fetchall();
 			return $_SESSION['slug_accueil'];
@@ -368,7 +354,8 @@ class Database
 	public function updatePageAccueil(){
 		if(!empty($_GET['idPage']) && !empty($_POST['pageAccueil'])){
 			$idPage = $_GET['idPage'];
-			$query = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$idPage);
+			$query = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=:id_page");
+			$query->bindValue(':id_page', $idPage);
 			$query->execute();
 			$data = $query->fetchall();
 			return $data;
@@ -380,7 +367,8 @@ class Database
 			$MaxId = $query1->fetchall();
 
 			if(!empty($_POST['pageAccueil'])){
-				$query2 = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=".$MaxId[0][0]);
+				$query2 = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=:max_id");
+				$query->bindValue(':max_id', $MaxId[0][0]);
 				$query2->execute();
 				$data = $query2->fetchall();
 				return $data;
@@ -392,7 +380,8 @@ class Database
 	public function checkboxState(){
 		if(!empty($_GET['idPage'])){
 			$idPage = $_GET['idPage'];
-			$query = $this->pdo->prepare("SELECT page_accueil FROM tr_page WHERE id =".$idPage);
+			$query = $this->pdo->prepare("SELECT page_accueil FROM tr_page WHERE id = :id_page");
+			$query->bindValue(':id_page', $idPage);
 			$query->execute();
 			$_SESSION['checkbox_state'] = $query->fetchall();
 			return $_SESSION['checkbox_state'];
@@ -400,6 +389,13 @@ class Database
 		else{
 			$_SESSION['checkbox_state'] = 0;
 		}
+	}
+
+	public function getIdUserConnected(){
+		$query = $this->pdo->prepare("SELECT id FROM tr_user WHERE connected = 1");
+		$query->execute();
+		$_SESSION['connectedUser'] = $query->fetchall();
+		// var_dump($_SESSION['connectedUser']);
 	}
 
 	public function routingPagesArticles(){

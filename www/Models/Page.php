@@ -13,6 +13,7 @@ class Page extends Database{
     protected $slug;
     protected $createdAt;
     protected $page_accueil;
+    protected $id_user;
 
     public function __construct(){
         parent::__construct();
@@ -44,5 +45,9 @@ class Page extends Database{
 
     public function setPageAccueil($page_accueil){
         $this->page_accueil = $page_accueil;
+    }
+
+    public function setIdUser($id_user){
+        $this->id_user = $id_user;
     }
 }

@@ -22,13 +22,37 @@
                 <title>Template de Back</title>
                 <meta name="description" content="ceci est la page de template">
                 <link rel="stylesheet" href="framework/dist/main.css">
-                <!-- <script type="text/javascript" src="dist/main.js"></script> -->
-                <script type="text/javascript" src="framework/src/js/ckeditor/ckeditor.js"></script>
-                <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script>
+
+                <link rel="stylesheet" href="framework/dist/main.css">
+		<script src="framework/src/js/jquery-3.5.1.min.js"></script>
+		<script src="framework/src/js/node_modules/jquery-resizable-dom/dist/jquery-resizable.min.js"></script>
+
+                <!-- <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script> -->
                 <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.dataTables.js"></script>
-                <!-- <script type="text/javascript" src="framework/src/js/jquery-3.5.1.min.js"></script> -->
                 <link rel="stylesheet" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
-                <!-- <script type="text/javascript" src="framework/src/js/modal.js"></script> -->
+		
+                <link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/ui/trumbowyg.min.css">
+		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/colors/ui/trumbowyg.colors.min.css">
+		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/emoji/ui/trumbowyg.emoji.min.css">
+		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/table/ui/trumbowyg.table.min.css">
+		<link rel="stylesheet" href="framework/dist/site-pages.css">
+        
+                <script src="framework/src/js/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/colors/trumbowyg.colors.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/emoji/trumbowyg.emoji.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/history/trumbowyg.history.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/indent/trumbowyg.indent.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/insertaudio/trumbowyg.insertaudio.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/lineheight/trumbowyg.lineheight.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/noembed/trumbowyg.noembed.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/table/trumbowyg.table.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/upload/trumbowyg.upload.min.js"></script>
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/resizimg/trumbowyg.resizimg.min.js"></script>
+
+
+                
 	</head>
 	<body style="display:flex; flex-direction:column;">
 		
@@ -45,7 +69,7 @@
                                                 <a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
                                         </div>
                                         <a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
-                                                <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
+                                                <?php echo 'Bonjour ' .$_SESSION['pseudo']. '';?>
                                                 <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
                                         </a>
                                                  
@@ -76,11 +100,6 @@
                             <div class="col-m-8"><a href="/pages" class="link-left-nav">Pages</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                    <div class="menu container-flexbox-nav commentaires col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/commentaires.png" alt="logo commentaires" ></div>
-                            <div class="col-m-8"><p>Commentaires</p></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
-                    </div>
                     <div class="menu container-flexbox-nav medias col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/medias.png" alt="logo médias" ></div>
                             <div class="col-m-8"><p>Medias</p></div>
@@ -93,18 +112,12 @@
                     </div>
                     <div class="menu container-flexbox-nav faq col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/faq.png" alt="logo FAQ" ></div>
-                            <div class="col-m-8"><p>FAQ</p></div>
+                            <div class="col-m-8"><a  class="link-left-nav" href="/FAQ">FAQ</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div>
-                            <div class="col-m-8"><p>Paramètres</p></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
-                    </div>
-                    <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
-                            <!-- <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div> -->
-                            <div class="col-m-8"><a href='\tableau-de-bord?deconnexion=true' style="color:red" ><span>Déconnexion</span></a></div>
-                            <!-- <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div> -->
+                            <div class="col-m-8"><a href="/logout?deconnexion=true&id=<?php echo $_SESSION['id'][0]['id'];?>" style="color:red" ><span>Déconnexion</span></a></div>
+                            <?php //echo $_SESSION['id'][0]['id'] ?>
                     </div>
                 </div>
             </div>

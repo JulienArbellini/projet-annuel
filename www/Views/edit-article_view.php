@@ -1,14 +1,14 @@
 
-    <div class="row col-m-12 col-m-up-2">
+    <div class="row col-m-12 col-m-up-1 col-m-down-5">
         <div class="col-m-3">
             <img src="../../framework/img/fleche_retour.png" alt="flèche retour" width="12px" height="12px"/>
             <a href="/articles" class="link">Retour à la page précédente</a>
         </div>
         <div class="col-m-3 col-m-center">
-            <h1>Modifier un article</h1>
+            <p class="titre-article">Modifier un article</p>
         </div>
     </div>
-    <div class="row col-m-10 col-m-up-3">
+    <div class="row col-m-12 col-m-up-1">
         <form method="post" class="update_form">
             <div class="col-m-7 col-m-padding-1 col-m-center form__field_articles_input">
                 <div class="col-m-12 col-m-center form__field_articles_input">
@@ -20,14 +20,18 @@
             </div>
 
             <div class="col-m-12 col-m-up-5 col-m-center">
-                    <textarea class="ckeditor" id="contenu_article" name="contenu_article"><?php echo $data[0]["content"];?></textarea>
+                    <textarea id="trumbowyg" id="contenu_article" name="contenu_article"><?php echo $data[0]["content"];?></textarea>
             </div>  
 
-            <div class="col-m-2 col-m-center col-m-padding-down-2">
-                <!-- <button class="button">Enregistrer</button> -->
-                <input type="submit" class="button" value="Enregistrer" onclick="alert('Vos modifications ont bien été enregistrées !')">
+            <input type="hidden" value="<?php echo $_SESSION["connectedUser"]?>">
+
+            <div class="col-m-2 col-m-center">
+                <input type="submit" class="button-apparence" value="Enregistrer" onclick="alert('Vos modifications ont bien été enregistrées !')">
             </div>
         </form>
     </div>
 
-<script type="text/javascript" src="framework/src/js/ckeditor/styles.js"></script>
+<script type="text/javascript" src="framework/src/js/trumbowyg-call.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.0.min.js"><\/script>')</script>

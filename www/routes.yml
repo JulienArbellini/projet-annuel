@@ -70,3 +70,7 @@
 /profil:
   controller: Base
   action: profile
+  
+/FAQ:
+  controller: Base
+  action: FAQ
