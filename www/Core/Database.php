@@ -62,7 +62,10 @@ class Database
 											)");
 
 			$query->execute($data);
-			$_SESSION['id'] = $this->pdo->lastInsertId();
+			
+			if($_SERVER['REQUEST_URI'] == "/s-inscrire") {
+				$_SESSION['id'] = $this->pdo->lastInsertId();
+			}
 						
 		}else{	
 			//UPDATE 

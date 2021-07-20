@@ -84,9 +84,6 @@ class Base{
 			$article->save();
 	   }
 	}
-	public function registerAction(){
-		$view = new View("register", "back");
-	}
 
 	public function usersAction(){
 		$view = new View("users", "back");
@@ -150,7 +147,7 @@ class Base{
 		$view = new View("pages", "back");
 		$page = new Page();
 		$page->connectedUserId();
-		// var_dump($_SESSION['id']);
+		
 
 		$page->deletePage();
 
