@@ -59,10 +59,10 @@ class Database
 											:".implode(",:", $columns)."
 											)");
 
+			$query->execute($data);
 			$_SESSION['id'] = $this->pdo->lastInsertId();
-			echo $_SESSION['id'];			
-		}else{
-			
+						
+		}else{	
 			//UPDATE 
 			$columns = array_keys($data);
 			foreach ($columns as $column) {
@@ -71,8 +71,9 @@ class Database
         	}
 
         $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
-		}
 		$query->execute($data);
+		}
+		
 	}
 
 	public function getArticle(){

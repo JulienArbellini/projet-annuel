@@ -58,7 +58,7 @@ class Security{
 				';
 				$mailer->mailer($to,$from, $name ,$subj, $msg);
 				
-				//header("Location: /login");
+				header("Location: /login");
 				
 			} else{
 				$view->assign("formErrors", $errors);
