@@ -59,7 +59,8 @@ class Database
 											:".implode(",:", $columns)."
 											)");
 
-			$_SESSION['id'] = $this->pdo->lastInsertId();					
+			$_SESSION['id'] = $this->pdo->lastInsertId();
+			echo $_SESSION['id'];			
 		}else{
 			
 			//UPDATE 

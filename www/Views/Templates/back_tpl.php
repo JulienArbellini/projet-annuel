@@ -44,10 +44,11 @@
                                         <div class="link-nav-bar col-m-2 col-l-pull-4">
                                                 <a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
                                         </div>
-                                        <div id="profile_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
-                                        <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
+                                        <a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
+                                                <?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
                                                 <img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
-                                        </div>
+                                        </a>
+                                                 
                                 </div>
                         </div>
 		</header>

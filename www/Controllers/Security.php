@@ -27,8 +27,8 @@ class Security{
 		$mailer = new Mailer();
 		$form = $user->buildFormRegister();
 		$view->assign("form", $form);
-		session_start();
-		
+		//session_start();
+		//var_dump($_SESSION);
 		if(!empty($_POST)){
 			$user->verifMailUniq();
 			$errors = Form::validator($_POST, $form);
@@ -58,7 +58,7 @@ class Security{
 				';
 				$mailer->mailer($to,$from, $name ,$subj, $msg);
 				
-				header("Location: /login");
+				//header("Location: /login");
 				
 			} else{
 				$view->assign("formErrors", $errors);
@@ -102,7 +102,7 @@ class Security{
 		$view = new View("login", "login");
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
-		session_start();
+		//session_start();
 		if(isset($_POST['email']) && isset($_POST['pwd']))
 		{
 			$email = htmlspecialchars($_POST['email']); 
@@ -115,7 +115,7 @@ class Security{
 					if ($user->verifConfirmed())
 					{
 						$_SESSION['id'] = $user->getId();
-						$_SESSION['pseudo'] = $user->getPseudo($email);
+						$_SESSION['prenom'] = $user->getPseudo($email);
 						$user->connectedOn($email);
 						$_SESSION['loggedIn']=true;
 						$_SESSION['avatar'] = $user->getAvatar();

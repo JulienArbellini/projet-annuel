@@ -671,7 +671,6 @@ img.image-grayscale {
   margin-left: 10px;
 }
 
-<<<<<<< HEAD
 .button-form-page-position {
   display: flex;
   justify-content: space-evenly;
@@ -738,12 +737,6 @@ img.image-grayscale {
   font-weight: bold;
 }
 
-.button,
-.button-left-nav-front-tpl,
-.button-apparence,
-.button-formulaire-page,
-.button-add-page {
-=======
 #list-profile {
   display: flex;
   flex-direction: column;
@@ -955,8 +948,11 @@ img.image-grayscale {
   border-radius: 10px;
 }
 
-.button {
->>>>>>> feature/profile
+.button,
+.button-left-nav-front-tpl,
+.button-apparence,
+.button-formulaire-page,
+.button-add-page {
   border-style: none;
   width: 150px;
   height: 45px;

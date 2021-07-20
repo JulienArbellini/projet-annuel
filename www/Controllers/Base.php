@@ -47,7 +47,7 @@ class Base{
 		$page = new Page();
 
 		$page->definirPageAccueil();		
-		session_start();	
+		// session_start();	
 	
 	}
 
@@ -240,9 +240,7 @@ class Base{
 		$view = new View("profile", "back");
 		$form = $user->buildFormProfile();
 		$view->assign("form", $form);
-		
-		session_start();
-		
+				
 		$data = $user->recupDataProfile();
 		$view->assign("data",$data);
 		$user = $user->getUserByMail($_SESSION['email']);

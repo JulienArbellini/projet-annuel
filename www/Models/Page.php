@@ -3,6 +3,8 @@ namespace App\Models;
 
 use App\Core\Database;
 
+date_default_timezone_set('Europe/Paris');
+
 class Page extends Database{
 
     private $id;
