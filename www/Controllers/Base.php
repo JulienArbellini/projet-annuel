@@ -72,11 +72,14 @@ class Base{
 		$data = $article->getContent();
 		$view->assign("data", $data);
 
+		// $data = $article->getContent();
+
 		if(!empty($_POST)){ 
 			$article->setId($_GET['idArticle']);
 			$article->setTitle(htmlspecialchars($_POST["titre_article"]));
 			$article->setSlug(htmlspecialchars($_POST["slug_article"]));
-			$article->setContent(htmlspecialchars($_POST["contenu_article"]));
+			$article->setContent($_POST["contenu_article"]);
+			$article->setIdUser($_POST["idConnectedUser"]);
 			$article->setCreatedAt(date("Y-m-d H:i:s"));
 			$article->save();
 	   }
@@ -183,7 +186,7 @@ class Base{
 			$page->setId($_GET['idPage']);
 			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
 			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
-			$page->setContent(htmlspecialchars($_POST["affichage-page"]));
+			$page->setContent($_POST["affichage-page"]);
 			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
 
 			// $page->setPageAccueil($_POST["pageAccueil"]);
@@ -211,7 +214,7 @@ class Base{
 
 			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
 			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
-			$page->setContent(htmlspecialchars($_POST["affichage-page"]));
+			$page->setContent($_POST["affichage-page"]);
 			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
 			// $page->setPageAccueil($_POST["pageAccueil"]);
 

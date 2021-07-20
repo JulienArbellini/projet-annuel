@@ -88,7 +88,7 @@ class Security{
 				
 				$article->setTitle(htmlspecialchars($_POST["titre"]));
 				$article->setSlug(htmlspecialchars($_POST["slug"]));
-				$article->setContent(htmlspecialchars($_POST["contenu"]));
+				$article->setContent($_POST["contenu"]);
 				$article->setCreatedAt(date("Y-m-d H:i:s"));
 				// $article->setAuteur($_POST["auteur"]);
 				$article->setIdUser(htmlspecialchars($_POST["auteur"]));
@@ -124,8 +124,7 @@ class Security{
 						$_SESSION['loggedIn']=true;
 						$_SESSION['avatar'] = $user->getAvatar();
 						$_SESSION['email'] = $user->getEmail();
-						$_SESSION['prenom'] = $user->getFirstname($email);
-						$user->connectedOn($email);
+						$_SESSION['prenom'] = $user->getFirstnameByEmail($email);
 						$_SESSION['loggedIn']=true;
 						$user->connectedUserId();
 						header('Location: \tableau-de-bord');

@@ -75,6 +75,7 @@ class Database
         $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		$query->execute($data);
 		}
+		// $query->execute($data);
 		
 	}
 
@@ -84,6 +85,8 @@ class Database
 									  INNER JOIN tr_article AS a ON a.id_user = u.id");
 		$query->execute();
 		$donnees = $query->fetchall();
+
+		// var_dump($donnees);
 		return $donnees;
 		
 		// $_SESSION['id'] = $this->pdo->lastInsertId();
@@ -118,7 +121,7 @@ class Database
 	public function connectedUserId(){
         $query=$this->pdo->prepare("SELECT id FROM tr_user WHERE connected=1");
         $query->execute();
-        $_SESSION['id']= $query->fetchall();
+        $_SESSION['idUserConnected']= $query->fetchall();
         // var_dump($_SESSION['id']);
     }
 
@@ -191,7 +194,7 @@ class Database
 		return $result['pseudo'];
 	}
 
-	public function getFirstname($email){
+	public function getFirstnameByEmail($email){
         $prenom = $this->pdo->prepare("SELECT firstname FROM tr_user WHERE email = "."'".$email."'");
         $prenom->execute();
         $result = $prenom->fetch(\PDO::FETCH_ASSOC);

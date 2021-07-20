@@ -23,7 +23,7 @@
                     <textarea id="trumbowyg" id="contenu_article" name="contenu_article"><?php echo $data[0]["content"];?></textarea>
             </div>  
 
-            <input type="hidden" value="<?php echo $_SESSION["connectedUser"]?>">
+            <input type="hidden" name="idConnectedUser" value="<?php echo $_SESSION['idUserConnected'][0]["id"]?>">
 
             <div class="col-m-2 col-m-center">
                 <input type="submit" class="button-apparence" value="Enregistrer" onclick="alert('Vos modifications ont bien été enregistrées !')">

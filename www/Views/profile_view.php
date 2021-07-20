@@ -1,4 +1,5 @@
 <h1 class = "title_profile"> <U><b>Mon profil</b></U></h1>
+<?php echo $_SESSION['id'][0]; ?>
 
 <section class="presentation">
     <div class="container-img">
@@ -30,7 +31,7 @@
 					<li><?= $error ;?>
 				<?php endforeach;?>
             </div>
-				
+		
     <?php endif;?>			
         
     <?php App\Core\Form::showFormProfile($form, $data);?> 

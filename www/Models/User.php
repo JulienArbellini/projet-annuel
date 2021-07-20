@@ -47,6 +47,7 @@ class User extends Database
 	public function getFirstname() {
 		return $this->firstname;
 	} 
+	
 	public function getEmail(){
         return $this->email;
     }

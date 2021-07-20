@@ -10,7 +10,7 @@
                 </div>
     
                 <textarea id="trumbowyg" name="affichage-page"><div id="wysiwyg"><?php echo $data[0]["content"] ?></div></textarea>
-                <input type="hidden" name="id_user_page" value="<?php echo $_SESSION['id'][0]["id"]?>">
+                <input type="hidden" name="id_user_page" value="<?php echo $_SESSION['idUserConnected'][0]["id"]?>">
         
             <div class="col-m-2 col-m-push-5 col-m-down-2">
                 <input type="submit" value="Enregistrer" class="button-apparence">
