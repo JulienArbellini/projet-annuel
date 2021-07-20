@@ -247,8 +247,4 @@ class Base{
 		$view = new View("FAQ", "back");
 	}
 
-	public function parametresAction(){
-		$view = new View("parametres", "back");
-	}
-
 }

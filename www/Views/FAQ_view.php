@@ -14,7 +14,7 @@
         </ul>
     </div>
 
-    <h3>Comment changer mon mot de passe</h3><br />
+    <h3>Comment changer mon mot de passe ?</h3><br />
 
     <div class="shadow-box-square">
         <p class="text-faq">Cliquez sur votre nom en haut à droite de votre écran, vous accèderez aux réglages de votre profil.<br />
