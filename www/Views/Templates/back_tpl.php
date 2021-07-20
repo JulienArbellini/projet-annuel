@@ -116,7 +116,7 @@
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
                     <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-8"><a href="/logout?deconnexion=true&id=<?php echo $_SESSION['id'][0]['id'];?>" style="color:red" ><span>Déconnexion</span></a></div>
+                            <div class="col-m-8"><a href="/logout?deconnexion=true&id=<?php echo $_SESSION['idUserConnected'][0]["id"];?>" style="color:red" ><span>Déconnexion</span></a></div>
                             <?php //echo $_SESSION['id'][0]['id'] ?>
                     </div>
                 </div>
