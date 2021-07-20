@@ -6,7 +6,6 @@
   controller: Base
   action: dashboard
 
-
 /s-inscrire:
   controller: Security
   action: register
@@ -51,16 +50,11 @@
 /display-articles:
   controller: Base
   action: displayArticle
-<<<<<<< HEAD
   
-=======
-
->>>>>>> feature/profile
 /utilisateurs:
   controller: Base
   action: users
 
-<<<<<<< HEAD
 /pages:
   controller: Base
   action: pages
@@ -72,8 +66,7 @@
 /apparence:
   controller: Base
   action: apparence
-=======
+
 /profil:
   controller: Base
   action: profile
->>>>>>> feature/profile
