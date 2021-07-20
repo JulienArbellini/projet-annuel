@@ -13,7 +13,7 @@
                     <label for="add-page-title" id="label" style="display: none;">Nouvelle page :</label>
                     <input type="text" id="add-page-title"  name="add-page-title" placeholder="Titre" style="display: none;">
                     <input type="text" id="add-page-slug"  name="add-page-slug" placeholder="/slug" style="display: none;">
-                    <input type="hidden" name="id_user_page" value="<?php echo $_SESSION['id'][0]["id"]?>">
+                    <input type="hidden" name="id_user_page" value="<?php echo $_SESSION['idUserConnected'][0]["id"]?>">
 
                     <!-- <div class="button-form-page-position"> -->
                         <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
