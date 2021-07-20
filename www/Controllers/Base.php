@@ -147,7 +147,7 @@ class Base{
 
 	public function profileAction(){
 		$user = new User();
-		$view = new View("profile", "backProfile");
+		$view = new View("profile", "back");
 		$form = $user->buildFormProfile();
 		$view->assign("form", $form);
 		

@@ -24,16 +24,17 @@
 	</div>
     
     <?php if(!empty($formErrors)):?>
+        <div style="width:40%;">
+            <div class='error_profile'>
 				<?php foreach($formErrors as $error):?>
-					<div class='error'>
-						<li><?= $error ;?>
+					<li><?= $error ;?>
 				<?php endforeach;?>
-				</div>
-    <?php endif;?>
+            </div>
 				
+    <?php endif;?>			
+        
     <?php App\Core\Form::showFormProfile($form, $data);?> 
-    
+
 </section>
 
 <script src="../framework/src/js/main.js"></script>
-<script type="text/javascript" src="framework/src/js/modal.js"></script>
