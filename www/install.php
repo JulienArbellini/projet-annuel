@@ -31,6 +31,10 @@
                 <label class="control-label" for="bdd-host">Hôte</label>
                 <input class="input" id="bdd-host" name="bdd-host" type="text" required>
             </div>
+            <div class="form-group">
+                <label class="control-label" for="bdd-port">Port</label>
+                <input class="input" id="bdd-port" name="bdd-port" type="number">
+            </div>
             <div class="form-group sgbd">
                 <p>Attention ! Le SGBD utilisé doit être MySQL.</p>
             </div>
