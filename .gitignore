@@ -1,9 +1,8 @@
-
-
 www/.env
 www/.env.dev
 www/.env.prod
-
+db_data
+db_data2
 
 .DS_Store
 .idea

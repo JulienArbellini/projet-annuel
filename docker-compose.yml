@@ -36,3 +36,7 @@ services:
       - 8888:80
     environment:
         - PMA_ARBITRARY=1
+<<<<<<< HEAD
+=======
+
+>>>>>>> 278cb9853a0d8d34fb883278573dd7791d5328fd
