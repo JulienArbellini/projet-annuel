@@ -1,17 +1,22 @@
 <?php
         //session_start();
-        if (!($_SESSION['loggedIn'])){
-                header('Location:/login');
-        } 
-        if(isset($_GET['deconnexion']))
-        { 
-           if($_GET['deconnexion']==true)
-           {  
-              //unset($_SESSION['loggedIn']);
-              session_unset();
-              header('Location: \login');
-           }
+        if (file_exists('install.php')){
+                header('Location:/install.php');
+        }else{
+            if (!($_SESSION['loggedIn'])){
+                    header('Location:/login');
+            } 
+            if(isset($_GET['deconnexion']))
+            { 
+            if($_GET['deconnexion']==true)
+            {  
+            //unset($_SESSION['loggedIn']);
+            session_unset();
+            header('Location: \login');
+            }
+            }
         }
+                
 ?>
    
 <!DOCTYPE html>

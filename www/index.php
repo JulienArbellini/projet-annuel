@@ -25,11 +25,6 @@ $dataSlug = $route->getAction();
 
 $cWithNamespace = $route->getControllerWithNamespace();
 
-// if(file_exists("./install.php")){
-// 	fopen("install.php", "r+b");
-// }
-   
-
 
 //Appeler le bon controller et la bonne action en fonction de $c et $a
 //et en faisant les bonnes vérifications
