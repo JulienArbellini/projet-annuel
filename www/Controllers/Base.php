@@ -90,17 +90,9 @@ class Base{
 		$userSelect = new User();
 		$mailer = new Mailer();
 
-		$donnees = $userSelect->requestRole();
-		$view->assign("donnees", $donnees);
-		
 		$userSelect->userDelete();
 
-		$data = $userSelect->roleShow();
-		$view->assign("data", $data);
-
 		$form = $userSelect->buildFormAddUser();
-		$view->assign("form", $form);
-		
 
 		if(empty($_GET["updateId"])){
 
@@ -112,11 +104,16 @@ class Base{
 					$userSelect->setLastname(htmlspecialchars($_POST["lastname"]));
 					$userSelect->setEmail(htmlspecialchars($_POST["email"]));
 					$userSelect->setPseudo(htmlspecialchars($_POST["pseudo"]));
-					$userSelect->setPwd(htmlspecialchars($_POST["password"]));
-					//password_hash($_POST["password"], PASSWORD_BCRYPT)
 					$userSelect->setRole(htmlspecialchars($_POST["role"]));
+					$userSelect->setConfirmation(1);
+					$userSelect->setCreatedAtUser(date("Y-m-d H:i:s"));
+					$password = uniqid();
+					$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+					// $userSelect->createConfirmationKey($password, $_POST['email']);
+					$userSelect->setCodeConfirmationMdp($password);
 					$userSelect->save();
 					$test = $userSelect->userMail();
+					$expediteurMail = $userSelect->userAdminConnect();
 					$mailer->sendMailUser();
 				}else{
 					$view->assign("formErrors", $errors);
@@ -126,13 +123,27 @@ class Base{
 		
 		else{
 			if(!empty($_POST)){
-				$userSelect->setId(htmlspecialchars($_GET["updateId"]));
+				$userSelect->setId($_GET["updateId"]);
 				$userSelect->setLastname(htmlspecialchars($_POST["lastname"]));
 				$userSelect->setFirstname(htmlspecialchars($_POST["firstname"]));
+				$userSelect->setPseudo(htmlspecialchars($_POST["pseudo"]));
 				$userSelect->setRole(htmlspecialchars($_POST["role"]));
+				$userSelect->setCreatedAtUser(date("Y-m-d H:i:s"));
 				$userSelect->updateUser();
 			}
 		}
+
+		$view->assign("form", $form);
+
+		$donnees = $userSelect->requestRole();
+		$view->assign("donnees", $donnees);
+
+		$gestionRole = $userSelect->userAdminConnect();
+		$view->assign("gestionRole", $gestionRole);
+
+		$data = $userSelect->roleShow();
+		$view->assign("data", $data);
+
 	}
 
 	public function displayArticleAction(){

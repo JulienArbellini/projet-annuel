@@ -301,7 +301,7 @@ class Database
     }
 
 	public function userMail(){
-		$query = $this->pdo->prepare("SELECT email, pseudo, password FROM ".$this->table." WHERE id = (SELECT MAX(id) FROM ".$this->table.")");
+		$query = $this->pdo->prepare("SELECT email, pseudo, code_confirmation_mdp FROM ".$this->table." WHERE id = (SELECT MAX(id) FROM ".$this->table.")");
 		$query->execute();
 		$_SESSION['tab'] = $query->fetchall();
 		return $_SESSION['tab'];
@@ -309,14 +309,25 @@ class Database
 
 	public function updateUser(){
 		if(!empty($_GET['updateId'])){
-			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = :lastname, firstname = :firstname, Role_idRole = :Role_idRole WHERE id = :id");
+			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = :lastname, firstname = :firstname, pseudo= :pseudo, Role_idRole = :Role_idRole WHERE id = :id");
 			$query->bindValue(':lastname', $_POST["lastname"]);
 			$query->bindValue(':firstname', $_POST["firstname"]);
+			$query->bindValue(':pseud', $_POST["pseudo"]);
 			$query->bindValue(':Role_idRole', $_POST["role"]);
 			$query->bindValue(':id', $_GET['updateId']);
 			$query->execute();
 		}
 	}
+
+	public function userAdminConnect() {
+		$query = $this->pdo->prepare("SELECT email, pseudo, firstname, lastname FROM ".$this->table." WHERE connected = :connected AND Role_idRole = :role");
+		$query->bindValue(':connected', 1);
+		$query->bindValue(':role', 1);
+		$query->execute();
+		$_SESSION['gestionRole'] = $query->fetchall();
+		return $_SESSION['gestionRole'];
+	}
+
 	public function getPage(){
 		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u
 									  INNER JOIN tr_page AS p ON p.id_user = u.id");

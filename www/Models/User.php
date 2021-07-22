@@ -18,8 +18,9 @@ class User extends Database
 	protected $avatar;
     protected $createdAtUser;
     protected $Role_idRole = 1;
-    public $confirmKey;
-	public $confirmation;
+    protected $confirmKey;
+	protected $confirmation;
+	protected $code_confirmation_mdp;
 
     public function __construct(){
         parent::__construct();
@@ -75,9 +76,14 @@ class User extends Database
 		$this->confirmKey = $confirmKey;
 	}
 
-	public function setConfirmation($confirmation){
+	public function setConfirmation($confirmation) {
 		$this->confirmation = $confirmation;
 	}
+
+	public function setCodeConfirmationMdp($code_confirmation_mdp) {
+		$this->code_confirmation_mdp = $code_confirmation_mdp;
+	}
+
 
 	public function getConfirmation(){
         return $this->confirmation;
@@ -218,16 +224,10 @@ class User extends Database
                 "pseudo"=>[
                             "type"=>"text",
                             "label"=>"Pseudo",
-                            "placeholder"=>"Pseudo"
-                            ],
-                "password"=>[
-                            "type"=>"password",
-                            "label"=>"Mot de passe",
-                            "lengthMin"=>"8",
-                            "required"=>true,
-                            "error"=>"Votre mot de passe doit faire plus de 8 caractères",
-                            "placeholder"=>"Votre mot de passe"
-                            ]   
+                            "placeholder"=>"Pseudo",
+							"required"=>true,
+							"error"=>"Votre pseudo doit faire entre 2 et 255 caractères"
+                            ]  
             ],
 
             "select"=>[
