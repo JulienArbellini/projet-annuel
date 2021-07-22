@@ -45,10 +45,13 @@ class Base{
 		$view = new View("dashboard", "back");
 
 		$page = new Page();
+		$article = new Article();
 
 		$numberOfPage = $page->getNumberofPage();
 		$numberOfArticle = $page->getNumberofArticle();
-		$view->assign("donnees", [$numberOfPage, $numberOfArticle]);
+		$lastPage = $page->getLastPage();
+		$lastArticle = $page->getLastArticle();
+		$view->assign("donnees", [$numberOfPage, $numberOfArticle, $lastPage, $lastArticle]);
 
 		$page->definirPageAccueil();		
 	

@@ -308,6 +308,20 @@ class Database
 		return $donnees;
 	}
 
+	public function getLastPage(){
+		$query = $this->pdo->prepare("SELECT *  FROM tr_page ORDER BY id DESC LIMIT 1");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
+		return $donnees;
+	}
+
+	public function getLastArticle(){
+		$query = $this->pdo->prepare("SELECT *  FROM tr_article ORDER BY id DESC LIMIT 1");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
+		return $donnees;
+	}
+
 	public function getPage(){
 		$dataPages = array_diff_key (
 					

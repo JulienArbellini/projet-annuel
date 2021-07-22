@@ -44,7 +44,4 @@ class Page extends Database{
         $this->page_accueil = $page_accueil;
     }
 
-    public function getNumberPage(){
-        return $this->lastId();
-    }
 }

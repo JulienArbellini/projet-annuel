@@ -53,9 +53,33 @@
 	</div>
 	<div class='shadow-box-square three'>
 		<div id="text">
-			<h1>Activités</h1>
-			<p>Nombre de visites sur votre site: 2</p>
-			<p>Nombre d'apparitions dans les recherches internet: 50</p>
+			<h1>Dernières créations</h1>
+<table class="responstable">
+  
+  <tr>
+    <th>Type</th>
+    <th data-th="Driver details"><span>Auteur</span></th>
+    <th>Créé le</th>
+	<th>Regarder</th>
+  </tr>
+  
+  <tr>
+    <td>Article</td>
+    <td>Steve</td>
+    <td><?php print_r($donnees[2]['createdAt']);?></td>
+	<td>Clique ici</td>
+  </tr>
+  
+  <tr>
+    <td>Page</td>
+    <td>Steffie</td>
+    <td><?php print_r($donnees[2]['createdAt']);?></td>
+	<td>Clique ici</td>
+
+  </tr>
+  
+  
+</table>
 		</div>
 	</div>
 	<div class='shadow-box-square four'>
