@@ -21,30 +21,52 @@
 		<div id="text">
 			<h1>Tutoriel</h1>
 			<!-- <h2>Essaie les fonctionnalités de Teach'r:</h2> -->
-			<div>
-				<img <?php $count = 0; if($donnees[0]->nb == 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'>Crée une page</img>
+			<div class='taches'>
+				<div class='image-tache'>
+					<img <?php $count = 0; if($donnees[0]->nb == 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'></img>
+				</div>
+				<div class='texte-tache'>
+					<p>Crée une page</p>
+				</div>
 			</div>
-			<div>
-				<img <?php if($donnees[1]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'>Crée un article</img>
+			<div class='taches'>
+				<div class='image-tache'>
+					<img <?php if($donnees[1]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'></img>
+				</div>
+				<div class='texte-tache'>
+					<p>Crée un article</p>
+				</div>
 			</div>
-			<div>
-				<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'>Ajoute une image</input>
+			<div class='taches'>
+				<div class='image-tache'>
+					<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'></input>
+				</div>
+				<div class='texte-tache'>
+					<p>Ajoute une image</p>
+				</div>
 			</div>
-			<div>
-				<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'>Invite un utilisateur</input>
-			</div>			
+			<div class='taches'>
+				<div class='image-tache'>
+					<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'></input>
+				</div>	
+				<div class='texte-tache'>
+					<p>Invite un utilisateur</p>
+				</div>		
+			</div>
 
 			<div id="avancement">
-				<?php echo $count*100/4?>%
 				<div class="progress">
 					<style>
-					@keyframes load {
-						0% { width: 0; }
-						100% { width: <?php echo $count*100/4 ?>%; }
-					}
-					</style>
+						@keyframes load {
+							0% { width: 0; }
+							100% { width: <?php echo $count*100/4 ?>%; }
+						}
+						</style>
 					<div class="progress-value" ></div>
 					
+				</div>
+				<div class='percent'>
+					<?php echo $count*100/4 . '%'?>
 				</div>
 			</div>
 			

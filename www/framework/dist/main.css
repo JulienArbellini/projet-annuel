@@ -95,6 +95,11 @@ body {
     font-size: 24px;
   }
 
+  body #avancement {
+    background-color: red;
+    display: flex;
+  }
+
   body #avancement .progress {
     height: 50%;
   }
@@ -111,6 +116,11 @@ body {
 
   body h2 {
     font-size: 24px;
+  }
+
+  body #avancement {
+    display: flex;
+    background-color: green;
   }
 
   body #avancement .progress {
@@ -131,8 +141,19 @@ body {
     font-size: 18px;
   }
 
-  body .progress {
+  body #avancement {
+    display: flex;
+    flex-direction: row;
+  }
+
+  body #avancement .progress {
+    width: 70%;
     height: 100%;
+  }
+
+  body #avancement .percent {
+    height: 100%;
+    margin-left: 5%;
   }
 }
 
@@ -204,6 +225,9 @@ body {
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  display: flex;
+  flex-direction: row;
+  background-color: red;
 }
 
 #main-content .one #text #avancement .progress {
@@ -254,6 +278,28 @@ body {
   justify-content: center;
   align-items: center;
   font-weight: bold;
+}
+
+#main-content .two .taches {
+  display: flex;
+  flex-direction: row;
+}
+
+#main-content .two .taches .image-tache {
+  width: 7%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#main-content .two .taches .image-tache img {
+  height: 20px;
+  width: 20px;
+}
+
+#main-content .two .taches .texte-tache {
+  width: 90%;
 }
 
 #main-content .three {

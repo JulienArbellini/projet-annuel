@@ -31,7 +31,8 @@ body{ font-size:1.4vw; }
         }
         #avancement{
             // height: 60%;
-            // background-color: red;
+            background-color: red;
+            display: flex;
             .progress{
                 height: 50%;
                 // background-color: blue;
@@ -50,9 +51,11 @@ body{ font-size:1.4vw; }
         h2{
             font-size: 24px;
         }
+        
         #avancement{
+            display: flex;
             // height: 60%;
-            // background-color: green;
+            background-color: green;
             .progress{
                 height: 50%;
                 // background-color: blue;
@@ -71,10 +74,24 @@ body{ font-size:1.4vw; }
         h2{
             font-size: 18px;
         }
-        .progress{
+        #avancement{
+            display: flex;
+            flex-direction: row;
+            // height: 60%;
+            // background-color: green;
+            .progress{
+                width: 70%;
                 height: 100%;
-                // background-color: blue;
+                // background-color: red;
+                
             }
+            .percent{
+                height: 100%;
+                margin-left: 5%;
+                // background-color: blue;
+                
+            }
+        }
     }
 }
 
@@ -144,8 +161,11 @@ body{ font-size:1.4vw; }
                 box-sizing: border-box;
                 display: flex;
                 align-items: center;
-                // background-color: red;
+                display: flex;
+                flex-direction: row;
+                background-color: red;
                 .progress{
+
                     margin-left: 5%;
                     margin-right: 5%;
                     // height: 100%;
@@ -187,6 +207,28 @@ body{ font-size:1.4vw; }
                 justify-content: center;
                 align-items: center;
                 font-weight: bold;
+            }
+        }
+
+        .taches{
+            display: flex;
+            flex-direction: row;
+            // background:blue;
+            .image-tache{
+                width: 7%;
+                height: 100%;
+                // background-color: red;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                img{
+                    height: 20px;
+                    width: 20px;
+                }
+                
+            }
+            .texte-tache{
+                width: 90%;
             }
         }
 
