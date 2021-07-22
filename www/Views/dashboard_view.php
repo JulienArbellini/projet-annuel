@@ -2,41 +2,49 @@
 
 <div id="top-content">
 	<h1>Tableau de bord</h1>
-	<div class="search-box">
-		<input type="text" placeholder="Rechercher ..." >
-	</div>
 </div>
 
 <div id="main-content">
 	<div class='shadow-box-square one'>
 		<div id="text">
-			<h1>Votre projet</h1>
-			<p>Nom: MonSite</p>
-			<p>URL: www.monsite.fr</p>
-			<p>Pages: 4</p>
-			<p>Visibilité: Public</p>
-			<div id="avancement">
-				Avancement du projet
-				<div class="progress">
-					<div class="progress-value"></div>
-				</div>
-				50%
+				<h1>Votre projet</h1>
+				<p>Nom: MonSite</p>
+				<p>URL: www.monsite.fr</p>
+				<p>Pages: <?php echo $donnees[0]->nb;?></p>
+				<p>Articles: <?php echo $donnees[1]->nb;?></p>
 			</div>
-			
 		</div>
-	</div>
 	<div class='shadow-box-square two'>
 		<div id="text">
-			<h1>Ajout rapide d'un article</h1>
-			<p>Titre</p>
-			
-			<textarea class="text_area" placeholder="Tapez votre texte ici" ></textarea>
+				<h1>Tutoriel</h1>
+				<!-- <h2>Essaie les fonctionnalités de Teach'r:</h2> -->
+				<div>
+					<img <?php $count = 0; if($donnees[0]->nb == 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'>Crée une page</img>
+				</div>
+				<div>
+					<img <?php if($donnees[1]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'>Crée un article</img>
+				</div>
+				<div>
+					<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'>Ajoute une image</input>
+				</div>
+				<div>
+					<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'>Invite un utilisateur</input>
+				</div>			
 
-			<div class="box-button">
-				<div class="button">Valider</div>
+				<div id="avancement">
+					<?php echo $count*100/4?>%
+					<div class="progress">
+						<style>
+						@keyframes load {
+							0% { width: 0; }
+							100% { width: <?php echo $count*100/4 ?>%; }
+						}
+						</style>
+						<div class="progress-value" ></div>
+						
+				</div>
+				
 			</div>
-			
-		</div>
 		
 	</div>
 	<div class='shadow-box-square three'>
