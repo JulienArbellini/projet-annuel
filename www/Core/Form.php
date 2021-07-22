@@ -81,7 +81,8 @@ class Form
 
 	public static function validatorProfile($data, $config){
 		$errors = [];
-		$count = count($data) + 1;
+		$count = count($data);
+		//echo "data $count";
 		if( $count == count($config["input"])){
 
 			foreach ($config["input"] as $name => $configInput) {
@@ -161,7 +162,7 @@ class Form
 			}
 		}
 
-		$html .= "<input type='submit' class='button-profile' id='btn-profile' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
+		$html .= "<input type='submit' name='submit_profile' class='button-profile' id='btn-profile' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
 		
 		echo $html;
 	}

@@ -253,26 +253,73 @@ class Base{
 		$view->assign("data",$data);
 		$user = $user->getUserByMail($_SESSION['email']);
 		$data = $user->recupDataProfile();
-		
-		$errors = Form::validatorProfile($_POST, $form);
-		if (!empty($_POST)) {
-			if(empty($errors)){
+		if (isset($_POST['submit_profile'])){
+			$errors = Form::validatorProfile($_POST, $form);
+			if (!empty($_POST)) {
+				if(empty($errors)){
 
-				$user->setFirstname(htmlspecialchars($_POST["firstname"]));
-				$user->setLastname(htmlspecialchars($_POST["lastname"]));
-				$user->setPseudo(htmlspecialchars($_POST["pseudo"]));
-				$user->setPwd(password_hash(htmlspecialchars($_POST["pwd"]), PASSWORD_BCRYPT));
+					$user->setFirstname(htmlspecialchars($_POST["firstname"]));
+					$user->setLastname(htmlspecialchars($_POST["lastname"]));
+					$user->setPseudo(htmlspecialchars($_POST["pseudo"]));
+					$user->setPwd(password_hash(htmlspecialchars($_POST["pwd"]), PASSWORD_BCRYPT));
 
-				$user->save();
-				$_SESSION['pseudo'] = $_POST['pseudo'];
-				$data = $user->recupDataProfile();
-				$view->assign("data",$data);
-				echo "<script>alert('Votre profil a bien été mis à jour')</script>";
-			} else{
-				$view->assign("formErrors", $errors);
+					$user->save();
+					$_SESSION['pseudo'] = $_POST['pseudo'];
+					$data = $user->recupDataProfile();
+					$view->assign("data",$data);
+					echo "<script>alert('Votre profil a bien été mis à jour')</script>";
+				} else{
+					$view->assign("formErrors", $errors);
+				}
+			}	
+		} else {
+			if(isset($_FILES['file'])){
+				$tmpName = $_FILES['file']['tmp_name'];
+				$name = $_FILES['file']['name'];
+				$size = $_FILES['file']['size'];
+				$error = $_FILES['file']['error'];
+
+				$tabExtension = explode('.', $name);
+				$extension = strtolower(end($tabExtension));
+			
+				$extensions = ['jpg', 'png', 'jpeg', 'gif'];
+				$maxSize = 400000;
+			
+				if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
+					
+					$dossier = "public/img/" . $_SESSION['id'] . "/";  
+ 
+					if (!is_dir($dossier)){ 
+						mkdir($dossier);
+					}else{
+						if(file_exists("public/img/". $_SESSION['id'] . "/" . $_SESSION['avatar']) && isset($_SESSION['avatar'])){
+							unlink("public/img/". $_SESSION['id'] . "/" . $_SESSION['avatar']);
+						}
+					}
+					
+					$uniqueName = uniqid('', true);
+
+					$file = $uniqueName.".".$extension;
+
+					$url = 'public/img/'.$_SESSION['id']."/".$file;
+
+					move_uploaded_file($tmpName, $url);
+			
+					$user->setAvatar($url);
+					$user->uploadAvatar($url, $_SESSION['id']);
+					
+					$_SESSION['avatar'] = $url;
+					echo "<script>alert('Votre avatar a bien été mis à jour')</script>";
+				}
+				else{
+					echo "Une erreur est survenue";
+				}
 			}
+
 		}	
+			
 	}
+
 	public function FAQAction(){
 		$view = new View("FAQ", "back");
 	}

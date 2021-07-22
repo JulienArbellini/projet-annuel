@@ -487,8 +487,16 @@ class Database
 			$user->setRole($data['Role_idRole']);
 			$user->setConfirmation($data['confirmation']);
 			$user->setConfirmKey($data['confirmkey']);
+			$user->setAvatar($data['avatar']);
 		}
 		return $user;
+	}
+
+	public function uploadAvatar($avatar, $id) {
+		// $DB->insert("UPDATE utilisateur SET avatar = ? WHERE  id = ?", 
+		// 	array(($nom.".".$extensionUpload), $_SESSION['id']));
+		$query = $this->pdo->prepare("UPDATE tr_user SET avatar = ? WHERE id = ?");
+		$query->execute(array($avatar, $id));
 	}
 
 	
