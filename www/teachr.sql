@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tr_article` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `content` longtext,
   `slug` varchar(100) NOT NULL,
@@ -50,7 +50,7 @@ INSERT INTO `tr_article` (`id`, `title`, `content`, `slug`, `id_user`, `createdA
 --
 
 CREATE TABLE `tr_category` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `category_name` varchar(120) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -72,7 +72,7 @@ CREATE TABLE `tr_category_has_Article` (
 --
 
 CREATE TABLE `tr_comment` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `content` longtext,
   `date` timestamp(3) NULL DEFAULT NULL,
   `User_idUser` int(11) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE `tr_comment` (
 --
 
 CREATE TABLE `tr_media` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `media_name` varchar(120) DEFAULT NULL,
   `link` varchar(2083) DEFAULT NULL,
   `createdAt` timestamp(3) NULL DEFAULT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE `tr_media` (
 --
 
 CREATE TABLE `tr_page` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `content` longtext,
   `slug` varchar(50) NOT NULL,
@@ -124,7 +124,7 @@ INSERT INTO `tr_page` (`id`, `title`, `content`, `slug`, `page_accueil`, `id_use
 --
 
 CREATE TABLE `tr_role` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `status` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -144,7 +144,7 @@ INSERT INTO `tr_role` (`id`, `status`) VALUES
 --
 
 CREATE TABLE `tr_setting` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `site_url` varchar(2083) DEFAULT NULL,
   `site_name` varchar(255) DEFAULT NULL,
   `visibility` tinyint(4) DEFAULT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE `tr_setting` (
 --
 
 CREATE TABLE `tr_user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `lastname` varchar(255) DEFAULT NULL,
   `firstname` varchar(120) DEFAULT NULL,
   `email` varchar(320) DEFAULT NULL,
@@ -256,7 +256,7 @@ ALTER TABLE `tr_setting_has_User`
 -- Index pour la table `tr_user`
 --
 ALTER TABLE `tr_user`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id`) ,
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_User_Role1_idx` (`Role_idRole`);
 
@@ -268,49 +268,49 @@ ALTER TABLE `tr_user`
 -- AUTO_INCREMENT pour la table `tr_article`
 --
 ALTER TABLE `tr_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11);
 
 --
 -- AUTO_INCREMENT pour la table `tr_category`
 --
 ALTER TABLE `tr_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11);
 
 --
 -- AUTO_INCREMENT pour la table `tr_comment`
 --
 ALTER TABLE `tr_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11);
 
 --
 -- AUTO_INCREMENT pour la table `tr_media`
 --
 ALTER TABLE `tr_media`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11);
 
 --
 -- AUTO_INCREMENT pour la table `tr_page`
 --
 ALTER TABLE `tr_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int(11);
 
 --
 -- AUTO_INCREMENT pour la table `tr_role`
 --
 ALTER TABLE `tr_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11);
 
 --
 -- AUTO_INCREMENT pour la table `tr_setting`
 --
 ALTER TABLE `tr_setting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11);
 
 --
 -- AUTO_INCREMENT pour la table `tr_user`
 --
 ALTER TABLE `tr_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11);
 
 --
 -- Contraintes pour les tables déchargées
