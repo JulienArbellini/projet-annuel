@@ -18,6 +18,7 @@ class User extends Database
     protected $Role_idRole = 1;
     protected $confirmKey;
 	protected $confirmation;
+	protected $code_confirmation_mdp;
 
     public function __construct(){
         parent::__construct();
@@ -62,6 +63,10 @@ class User extends Database
 
 	public function setConfirmation($confirmation) {
 		$this->confirmation = $confirmation;
+	}
+
+	public function setCodeConfirmationMdp($code_confirmation_mdp) {
+		$this->code_confirmation_mdp = $code_confirmation_mdp;
 	}
 
 

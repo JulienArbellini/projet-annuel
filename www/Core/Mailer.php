@@ -70,11 +70,12 @@ class Mailer{
                                     <body>
                                         <h1>Bienvenue sur Teachr !</h1></br>
                                         <p>L\'utilisateur <strong>'.$_SESSION['gestionRole'][0]['firstname'].' '.$_SESSION['gestionRole'][0]['lastname'].'</strong> vous invite à rejoindre son projet sur notre plateforme.</br>
-                                        Pour y accéder, rendez-vous à l\'adresse suivante : <p style="text-decoration:underline; color:blue;"> https://localhost/mot-de-passe-oublie</p></br>
-                                        Renseignez l\'adresse mail inscrite ci-dessous pour pouvoir créer un mot de passe</p></br>
+                                        Pour y accéder, rendez-vous à l\'adresse suivante : <p style="text-decoration:underline; color:blue;"> '.$_SERVER['HTTP_ORIGIN'].'/changement-mdp</p></br>
+                                        Renseignez les identifiants inscrits ci-dessous pour pouvoir créer un mot de passe</p></br>
                                         <p>Votre identifiant de connexion :</p>
                                             <ol style="list-style: none;">
                                                 <li> - Identifiant : '.$_SESSION['tab'][0]['email'].'</li>
+                                                <li> - Code de confirmation : '.$_SESSION['tab'][0]['code_confirmation_mdp'].'</li>
                                             </ol>
                                             <p>Toute l\'équipe vous souhaite la bienvenue sur teachr</br>
                                                 https://teachr.com</p>

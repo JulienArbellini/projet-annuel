@@ -298,7 +298,7 @@ class Database
     }
 
 	public function userMail(){
-		$query = $this->pdo->prepare("SELECT email, pseudo, password FROM ".$this->table." WHERE id = (SELECT MAX(id) FROM ".$this->table.")");
+		$query = $this->pdo->prepare("SELECT email, pseudo, code_confirmation_mdp FROM ".$this->table." WHERE id = (SELECT MAX(id) FROM ".$this->table.")");
 		$query->execute();
 		$_SESSION['tab'] = $query->fetchall();
 		return $_SESSION['tab'];

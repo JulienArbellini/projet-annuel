@@ -102,6 +102,10 @@ class Base{
 					$userSelect->setRole($_POST["role"]);
 					$userSelect->setConfirmation(1);
 					$userSelect->setCreatedAtUser(date("Y-m-d H:i:s"));
+					$password = uniqid();
+					$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+					// $userSelect->createConfirmationKey($password, $_POST['email']);
+					$userSelect->setCodeConfirmationMdp($password);
 					$userSelect->save();
 					$test = $userSelect->userMail();
 					$expediteurMail = $userSelect->userAdminConnect();
