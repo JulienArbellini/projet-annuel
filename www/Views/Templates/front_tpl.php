@@ -49,9 +49,18 @@
 							<a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
 						</div>
 						<a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
-							<?php echo 'Bonjour ' .$_SESSION['pseudo']. '';?>
-							<img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
-						</a>
+                                                <?php echo 'Bonjour ' .$_SESSION['pseudo']. '';?>
+                                                <?php if(file_exists($_SESSION['avatar']) && isset($_SESSION['avatar'])) {
+                                                        ?>
+                                                        <img src="<?= "../".$_SESSION['avatar'];?>" width="180" class="sz-image"/>
+                                                        <?php    
+                                                        }else {
+                                                        ?>
+                                                        <img src="../public/img/default-avatar.jpg" width="120" class="sz-image"/>
+                                                        <?php
+                                                        }
+                                                        ?>
+                        </a>
 
 					</div>
 			</div>

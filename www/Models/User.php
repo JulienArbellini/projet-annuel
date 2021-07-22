@@ -353,6 +353,7 @@ class User extends Database
 			[
 				"method"=>"POST",
 				"Submit"=>"Enregistrer",
+				"id"=>"form_profile",
 				"class"=>"form_profile"
 			],
 
