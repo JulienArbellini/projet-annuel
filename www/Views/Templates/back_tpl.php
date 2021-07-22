@@ -74,16 +74,7 @@
                             <div class="col-m-8"><a href="/pages" class="link-left-nav">Pages</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                    <div class="menu container-flexbox-nav commentaires col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/commentaires.png" alt="logo commentaires" ></div>
-                            <div class="col-m-8"><p>Commentaires</p></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
-                    </div>
-                    <div class="menu container-flexbox-nav medias col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/medias.png" alt="logo médias" ></div>
-                            <div class="col-m-8"><p>Medias</p></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
-                    </div>
+                    
                     <div class="menu container-flexbox-nav utlilisateurs col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" ></div>
                             <div class="col-m-8"><a href="/utilisateurs" class="link-left-nav">Utilisateurs</a></div>
@@ -94,11 +85,7 @@
                             <div class="col-m-8"><p>FAQ</p></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                    <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div>
-                            <div class="col-m-8"><p>Paramètres</p></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
-                    </div>
+                    
                     <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
                             <!-- <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div> -->
                             <div class="col-m-8"><a href='\tableau-de-bord?deconnexion=true' style="color:red" ><span>Déconnexion</span></a></div>

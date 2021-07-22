@@ -45,7 +45,7 @@
 					</style>
 					<div class="progress-value" ></div>
 					
-				</div><?php echo $count*100/4?>%
+				</div>
 			</div>
 			
 		</div>
