@@ -10,7 +10,7 @@
     <div class="shadow-box-square col-m-12 col-s-12">
         <table id='tab' class="display">
             <thead>
-                <tr><th>Pseudo</th><th>Nom</th><th>Prénom</th><th>Adresse email</th><th>Rôle</th><th>Dernière connexion</th><th>Modifier</th><th>Supprimer</th></tr>
+                <tr><th>Pseudo</th><th>Nom</th><th>Prénom</th><th>Adresse email</th><th>Rôle</th><th>Modifier</th><th>Supprimer</th></tr>
             </thead>
             <tbody>
             <?php

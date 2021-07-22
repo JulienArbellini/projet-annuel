@@ -151,16 +151,6 @@ CREATE TABLE `tr_setting` (
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `tr_setting_has_User`
---
-
-CREATE TABLE `tr_setting_has_User` (
-  `Setting_idSetting` int(11) NOT NULL,
-  `User_idUser` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
