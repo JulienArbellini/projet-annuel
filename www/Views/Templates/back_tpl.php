@@ -22,7 +22,7 @@ else{
 	<head>
                 <meta charset="iso-8859-1">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Template de Back</title>
+                <title>Teach'r</title>
                 <meta name="description" content="ceci est la page de template">
                 <link rel="stylesheet" href="framework/dist/main.css">
 
