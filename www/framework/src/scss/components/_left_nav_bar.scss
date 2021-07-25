@@ -4,49 +4,142 @@
 }
 
 #nav-left{
-    background-color: $theme-dark-grey;
+    background-color: #131720;
+    margin-top: 50px;
     height: 100%;
-    width: 15%;
+    width: 220px;
+    position: fixed;
+    .hr-style{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        hr{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            height: 3px;
+            border-color: #444953;
+            width: 85%;
+        }
+        .hr-complete{
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            height: 3px;
+            border-color: #444953;
+        }
+    }
+
+    
 }
 
 main{
     display: flex;
     justify-content: space-between;
     height: 100%;
+    
 }
 
 #liste{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    // background-color: green;
     height: 100%;
     color: #ffff;
+    .left-nav-bar-description{
+        color:#667797;
+        width: 100%;
+        // background-color: blue;
+        display: flex;
+        justify-content: center;
+        .text-inside{
+            font-family: 'Lato' , sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            width: 85%;
+            // background-color: red;
+        }
+    }
 }
 
 .menu{
     display: flex;
+    // background-color: red;
     //font-weight: bolder;
+    font-family: 'Roboto' , sans-serif;
     font-size: 17px;
+    font-weight: 800;
     letter-spacing: 1px;
-    margin: 2px;
-    height: 100%;
+    margin-top: 10px;
+    height: 4%;
     &:hover{
-        color: #328DAA;
+        // color: #328DAA;
+        background-color: #2B2E36;
         cursor: pointer;
     }
+    
     
 }
 
 .container-flexbox-nav{ 
+    // background-color: red;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .link-left-nav{
     text-decoration: none;
     color: white;
+    font-size: 13px;
+    font-weight: bolder;
+    // background-color: red;
+}
 
+.actual-page{
+    background-color: #424650;
+    margin-bottom: 13px;
+    font-weight: bolder;
+    font-size: larger;
     &:hover{
-        color: $dark-blue;
+        // color: #328DAA;
+        background-color: #2B2E36;
+        cursor: pointer;
     }
+}
+.indic-etape{
+    width:100%;
+    height:10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    // background-color: green;
+    .elem-etape{
+        width: 83%;
+        height: 30%;
+        // background-color: blue;
+    }
+    #avancement{
+        display: flex;
+        flex-direction: row;
+        height: 10%;
+        width: 83%;
+        // background-color: red;
+        .progress{
+            width: 70%;
+            height: 4px;
+            // background-color: red;
+            
+        }
+    }
+    .etape-restante{
+        width: 83%;
+        height: 30%;
+        // background-color: purple;
+    }
+
+    
+   
 }

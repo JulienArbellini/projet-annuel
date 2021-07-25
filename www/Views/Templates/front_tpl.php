@@ -45,24 +45,25 @@
 	<body style="display: flex;">
 		<header>
 			<div class="row col-m-12">
-					<div id="nav-top-left">
-						<div class="logo col-s-3 col-m-2 col-l-2">
-							<a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60" /></a>
+								<div id="nav-top">
+										<div class='nav-top-left'>
+												<div class="logo col-s-3 col-m-2 col-l-2">
+														<a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60"></a>
+												</div>
+										</div>
+										
+										<div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
+												<a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
+										</div>
+										<div class="link-nav-bar col-m-2 col-l-pull-4">
+												<a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
+										</div>
+										<div id="profile_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
+										<?php echo 'Bonjour ' .$_SESSION['prenom']. '';?>
+												<img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
+										</div>
+								</div>
 						</div>
-						<div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
-							<a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
-							<!-- Mon site -->
-						</div>
-						<div class="link-nav-bar col-m-2 col-l-pull-4">
-							<a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
-						</div>
-						<div id="profile_id" class="link-nav-bar col-s-2 col-m-2 col-l-1">
-							John Doe
-							<img src="../../framework/img/user.png" alt="user button" width="19" height="18"></img>
-						</div>
-
-					</div>
-			</div>
 		</header>
 
 		<main>

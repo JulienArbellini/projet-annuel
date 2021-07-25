@@ -1,118 +1,240 @@
-
-
-<div id="top-content">
-	<h1>Tableau de bord</h1>
-</div>
-
 <div id="main-content">
 	<div class='shadow-box-square one'>
-		<div id="text">
-			<h1>Votre projet</h1>
-			<p>Nom: MonSite</p>
-			<p>URL: www.monsite.fr</p>
-			<p>Pages: <?php echo $donnees[0]->nb;?></p>
-			<p>Articles: <?php echo $donnees[1]->nb;?></p>
-			
-		
+		<div class='preview'>
+			<img src="/framework/dist/images/website.png"></img>
+		</div>
+		<div class="projet-dashboard">
+			<div class='title-project'>
+				<h1>Bonjour <?php echo $_SESSION['prenom']?> ! </h1>
+			</div>
+			<div class="subtitle">
+				Votre projet est hébergé sur: <?php echo 'http://'.$_SERVER['HTTP_HOST'];?>	
+			</div>
+
+			<div class='hr-style'>
+				<hr class='hr-complete'>
+			</div>
+
+			<div class="text">
+				<div class="text-deux">	
+					<p>Page d'accueil: <a href='/Accueil'>voir</a></p>
+				</div>
+				<div class="vl"></div>
+				<div class="text-deux">	
+					<p>Nombre de pages: <?php echo $donnees[0]->nb;?></p>
+				</div>
+
+				<div class="vl"></div>
+				<div class='text-deux'>
+					<p>Nombre d'articles: <?php echo $donnees[1]->nb;?></p>		
+				</div>
+			</div>
 			
 		</div>
+		
+
 	</div>
-	<div class='shadow-box-square two'>
+	<div class='two'>
 		<div id="text">
-			<h1>Tutoriel</h1>
-			<!-- <h2>Essaie les fonctionnalités de Teach'r:</h2> -->
-			<div class='taches'>
-				<div class='image-tache'>
-					<img <?php $count = 0; if($donnees[0]->nb == 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'></img>
+			<div class='top-box-two'>
+				<div class="text-top-box">
+					<h1>Débutez avec Teach'r</h1>	
 				</div>
-				<div class='texte-tache'>
-					<p>Crée une page</p>
-				</div>
-			</div>
-			<div class='taches'>
-				<div class='image-tache'>
-					<img <?php if($donnees[1]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'></img>
-				</div>
-				<div class='texte-tache'>
-					<p>Crée un article</p>
-				</div>
-			</div>
-			<div class='taches'>
-				<div class='image-tache'>
-					<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'></input>
-				</div>
-				<div class='texte-tache'>
-					<p>Ajoute une image</p>
-				</div>
-			</div>
-			<div class='taches'>
-				<div class='image-tache'>
-					<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'></input>
-				</div>	
-				<div class='texte-tache'>
-					<p>Invite un utilisateur</p>
+				<div id="avancement">
+					<div class='avancement-text'>
+						<?php if(4-$_SESSION['count']>1){echo 4-$_SESSION['count']  . ' étapes restantes'; }else{echo '1 étape restante';} ?>
+					</div>
+					<div class="progress">
+						<style>
+							@keyframes load {
+								0% { width: 0; }
+								100% { width: <?php $_SESSION['count']=$count; echo $count*100/4 ?>%; }
+							}
+							</style>
+						<div class="progress-value" ></div>
+					</div>
 				</div>		
 			</div>
+
+			<div class='hr-style'>
+				<hr class='hr-complete'>
+			</div>
+
+			<div class='bottom-box-two'>
+				<div class="bottom-box-two-list">
+					<a href='/pages' class='taches'>
+						<div class='image-tache'>
+							<?php $count = 0; if($donnees[0]->nb == 0){echo '<img src="../framework/img/checked.png"></img>'; $count+=1;}?> 
+						</div>
+						<div class='texte-tache'>
+							<div class='text-tache-here <?php if($donnees[0]->nb > 0){echo 'no';}?>'>Créez une page</div>
+						</div>
+					</a>
+					<a href='/articles' class='taches'>
+						<div class='image-tache'>
+							<img <?php if($donnees[1]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'></img>
+						</div>
+						<div class='texte-tache'>
+							<div class='text-tache-here <?php if($donnees[0]->nb == 0){echo 'no';}?>'>Créez un article</div>
+						</div>
+					</a>
+					<a href='' class='taches'>
+						<div class='image-tache'>
+							<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'></input>
+						</div>
+						<div class='texte-tache'>
+							<div class='text-tache-here <?php if($donnees[0]->nb == 0){echo 'no';}?>'>Ajoutez une photo de profil</div>
+						</div>
+					</a>
+					<a href='/utilisateurs' class='taches'>
+						<div class='image-tache'>
+							<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'></input>
+						</div>	
+						<div class='texte-tache'>
+							<div class='text-tache-here <?php if($donnees[0]->nb == 0){echo 'no';}?>'>Invitez un utilisateur</div>
+						</div>		
+					</a>
+				</div>
+				<div class='bottom-box-two-number'>
+					<?php echo $count . ' / 4'?> 
+				</div>
+				
+			</div>
+			
+			
 
 			<div id="avancement">
 				<div class="progress">
 					<style>
 						@keyframes load {
 							0% { width: 0; }
-							100% { width: <?php echo $count*100/4 ?>%; }
+							100% { width: <?php $_SESSION['count']=$count; echo $count*100/4 ?>%;}
 						}
 						</style>
-					<div class="progress-value" ></div>
+					<!-- <div class="progress-value" ></div> -->
 					
-				</div>
-				<div class='percent'>
-					<?php echo $count*100/4 . '%'?>
 				</div>
 			</div>
 			
 		</div>
 		
 	</div>
-	<div class='shadow-box-square three'>
-		<div id="text">
-			<h1>Dernières créations</h1>
-<table class="responstable">
-  
-  <tr>
-    <th>Type</th>
-    <th data-th="Driver details"><span>Auteur</span></th>
-    <th>Créé le</th>
-	<th>Regarder</th>
-  </tr>
-  
-  <tr>
-    <td>Article</td>
-    <td>Steve</td>
-    <td><?php print_r($donnees[2]['createdAt']);?></td>
-	<td>Clique ici</td>
-  </tr>
-  
-  <tr>
-    <td>Page</td>
-    <td>Steffie</td>
-    <td><?php print_r($donnees[2]['createdAt']);?></td>
-	<td>Clique ici</td>
 
-  </tr>
-  
-  
-</table>
+	<div class='three'>
+		<div id="text">
+			<div class="">
+
+			</div>
+
+			<div class="">
+				<h1>Données analytiques</h1>
+			</div>
+			
+			<div class='hr-style'>
+				<hr class='hr-complete'>
+			</div>
+			
+			<div class="tree-type">
+				<div class="tree-title">
+					Articles
+				</div>
+				<div class="tree-total">
+					total: <?php echo $donnees[1]->nb;?>
+				</div>
+				<div class="tree-last">
+					dernier article créé: <?php print_r($donnees[3]['title']);?>
+				</div>
+				<div class="tree-author">
+					par: <?php print_r($donnees[3]['createdAt']);?>
+				</div>
+				<div class="tree-date">
+					date: <?php print_r($donnees[3]['createdAt']);?>
+				</div>
+				<div class="tree-see">
+					voir: <a href='<?php print_r($donnees[3]['slug']);?>'><?php print_r($donnees[3]['slug']);?></a>
+				</div>		
+			</div>
+			
+			<div class='hr-style'>
+				<hr class='hr-complete'>
+			</div>
+
+			<div class="tree-type">
+				<div class="tree-title">
+					Pages
+				</div>
+				<div class="tree-total">
+					total: <?php echo $donnees[0]->nb;?>
+				</div>
+				<div class="tree-last">
+					derniere page créée: <?php print_r($donnees[2]['title']);?>
+				</div>
+				<div class="tree-author">
+					par: <?php print_r($donnees[2]['createdAt']);?>
+				</div>
+				<div class="tree-date">
+					date: <?php print_r($donnees[2]['createdAt']);?>
+				</div>
+				<div class="tree-see">
+					voir: <a href='<?php print_r($donnees[2]['slug']);?>'><?php print_r($donnees[2]['slug']);?></a>
+				</div>	
+			</div>
+
+			<div class='hr-style'>
+				<hr class='hr-complete'>
+			</div>
+
+			<div class="tree-type">
+				<div class="tree-title">
+					Utilisateurs
+				</div>
+				<div class="tree-total">
+					total:  <?php echo $donnees[5]->nb;?>
+				</div>
+				<div class="tree-last">
+					dernier utilisateur ajouté: <?php print_r($donnees[4]['firstname']);?>
+				</div>
+				<div class="tree-role">
+					rôle: <?php print_r($donnees[4]['Role_idRole']);?>
+				</div>
+				<div class="tree-date">
+					date: <?php print_r($donnees[4]['createdAtUser']);?>
+				</div>	
+			</div>
+			
 		</div>
 	</div>
-	<div class='shadow-box-square four'>
+	<div class='four'>
 		<div id="text">
-			<h1>FAQ</h1>
-			<h2>Comment ajouter une page à votre site ?</h2>
-			<p>Cliquez sur l’icone “+” situé à droite de la page. </p>
-			<h2>Comment changer le thème de la page ?</h2>
-			<p>Cliquez sur l’onglet “Thèmes” à sur la barre de navigation.</p>
+		<div class="four-type">
+				<div class="four-title">
+					<h1>FAQ</h1>
+				</div>
+
+				<div class='hr-style'>
+					<hr class='hr-complete'>
+				</div>
+
+				<div class="four-question">
+					<h2>Comment ajouter une page à votre site ?</h2>
+				</div>
+				<div class="four-answer">
+					<p>Cliquez sur l’icone “+” situé à droite de la page. </p>
+				</div>
+				<div class="four-question">
+					<h2>Comment changer le thème de la page ?</h2>
+				</div>
+				<div class="four-answer">
+					<p>Cliquez sur l’onglet “Thèmes” à sur la barre de navigation.</p>
+				</div>	
+			</div>
+			
+			
+			
+			
+			
 			<div class="box-link">
-				<div class="link">Voir plus de questions</div>
+				<div class="link-faq"><a href='/faq'>Voir plus de questions</a></div>
 			</div>
 		</div>
 		

@@ -46,12 +46,15 @@ class Base{
 
 		$page = new Page();
 		$article = new Article();
+		$user = new User();
 
 		$numberOfPage = $page->getNumberofPage();
 		$numberOfArticle = $page->getNumberofArticle();
+		$numberOfUser = $user->getNumberofUser();
 		$lastPage = $page->getLastPage();
 		$lastArticle = $page->getLastArticle();
-		$view->assign("donnees", [$numberOfPage, $numberOfArticle, $lastPage, $lastArticle]);
+		$lastUser = $user->getLastUser();
+		$view->assign("donnees", [$numberOfPage, $numberOfArticle, $lastPage, $lastArticle, $lastUser, $numberOfUser]);
 
 		$page->definirPageAccueil();		
 	

@@ -33,10 +33,13 @@
 		
 		<header>
 			<div class="row col-m-12">
-                                <div id="nav-top-left">
-                                        <div class="logo col-s-3 col-m-2 col-l-2">
-                                                <a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60"></a>
+                                <div id="nav-top">
+                                        <div class='nav-top-left'>
+                                                <div class="logo col-s-3 col-m-2 col-l-2">
+                                                        <a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60"></a>
+                                                </div>
                                         </div>
+                                        
                                         <div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
                                                 <a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
                                         </div>
@@ -54,46 +57,67 @@
 		<main>
             <div id="nav-left">
                 <div id="liste">
-                    <div class="menu container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/dashboard.png" alt="logo dashboard"></div>
+                        <div class="indic-etape">
+                                <div class='elem-etape'><a class="link-left-nav config">Configurez votre site</a></div>
+                                <div id="avancement">
+                                        <div class="progress">
+                                                <style>
+                                                        @keyframes load {
+                                                                0% { width: 0; }
+                                                                100% { width: <?php echo $_SESSION['count']*100/4 .'%'; ?>; }
+                                                        }
+                                                        </style>
+                                                <div class="progress-value" ></div>    
+                                        </div>
+                                </div>
+                                <div class='elem-etape'><a class="link-left-nav config"><?php if(4-$_SESSION['count']>1){echo 4-$_SESSION['count']  . 'étapes restantes'; }else{echo '1 étape restante';} ?></a></div>
+                        </div>
+                    <div class='hr-style'>
+                        <hr class='hr-complete'>
+                    </div>
+                    <div class="menu container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12 actual-page">
                             <div class="col-m-9"><a href="/tableau-de-bord" class="link-left-nav">Tableau de bord</a></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
-                    <div class="menu container-flexbox-nav apparence cols-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/paint.png" alt="logo apparence"></div>
-                            <div class="col-m-8"><a href="/apparence" class="link-left-nav">Apparence</a></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                    <div class='hr-style'>
+                        <hr>
                     </div>
-                    <div class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/articles.png" alt="logo articles"></div>
-                            <div class="col-m-8"><a href="/articles" class="link-left-nav">Articles</a></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                    <div class='left-nav-bar-description'>
+                        <div class='text-inside'>Créations</div>
                     </div>
-                    <div class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/pages.png" alt="logo pages"></div>
-                            <div class="col-m-8"><a href="/pages" class="link-left-nav">Pages</a></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                    <a href="/apparence" class="menu container-flexbox-nav apparence cols-s-12 col-m-12 col-l-12">
+                            <div class="col-m-8"><div class="link-left-nav">Apparence</div></div>
+                    </a>
+                    <a href="/articles" class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12">
+                            <div class="col-m-8"><div href="/articles" class="link-left-nav">Articles</div></div>
+                    </a>
+                    <a href="/pages" class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12">
+                            <div class="col-m-8"><div class="link-left-nav">Pages</div></div>
+                    </a>
+                    <div class='hr-style'>
+                        <hr>
                     </div>
-                    
-                    <div class="menu container-flexbox-nav utlilisateurs col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/utilisateur.png" alt="logo utilisateurs" ></div>
-                            <div class="col-m-8"><a href="/utilisateurs" class="link-left-nav">Utilisateurs</a></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                    <div class='left-nav-bar-description'>
+                        <div class='text-inside'>Gestion utilisateurs</div>
                     </div>
-                    <div class="menu container-flexbox-nav faq col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-2"><img src="../../framework/img/faq.png" alt="logo FAQ" ></div>
-                            <div class="col-m-8"><p>FAQ</p></div>
-                            <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
+                    <a href="/utilisateurs" class="menu container-flexbox-nav utlilisateurs col-s-12 col-m-12 col-l-12">
+                            <div class="col-m-8"><div class="link-left-nav">Utilisateurs</div></div>
+                    </a>
+                    <div class='hr-style'>
+                        <hr>
                     </div>
+                    <div class='left-nav-bar-description'>
+                        <div class='text-inside'>Questions</div>
+                    </div>
+                    <a href='/faq' class="menu container-flexbox-nav faq col-s-12 col-m-12 col-l-12">
+                            <div class="col-m-8"><div class="link-left-nav">FAQ</div></div>
+                    </a>
                     
                     <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
-                            <!-- <div class="col-m-2"><img src="../../framework/img/parametre.png" alt="logo parametres" ></div> -->
                             <div class="col-m-8"><a href='\tableau-de-bord?deconnexion=true' style="color:red" ><span>Déconnexion</span></a></div>
-                            <!-- <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div> -->
                     </div>
                 </div>
             </div>
-			<div id="content">
+			<div id="content" style='margin-left: 220px;'>
 				<?php include $this->view ?>
 			</div>
 		</main>

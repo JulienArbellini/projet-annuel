@@ -60,10 +60,11 @@
 // }
 
 #nav-left-front{
-    background-color: $theme-dark-grey;
+    background-color: #131720;
     height: 100%;
     width: 15%;
     overflow: scroll;
+    margin-top: 50px;
 }
 
 // #menuToggle{
@@ -190,6 +191,8 @@
     margin-bottom: 30px;
     margin-top: 20px;
     margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #imgInp{
