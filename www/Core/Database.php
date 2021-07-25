@@ -319,6 +319,57 @@ class Database
 		}
 	}
 
+	public function getNumberofPage(){
+		$query = $this->pdo->prepare("SELECT COUNT(*) AS nb FROM tr_page");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_OBJ);
+		return $donnees;
+	}
+
+	public function getNumberofArticle(){
+		$query = $this->pdo->prepare("SELECT COUNT(*) AS nb FROM tr_article");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_OBJ);
+		return $donnees;
+	}
+
+	public function getNumberofUser(){
+		$query = $this->pdo->prepare("SELECT COUNT(*) AS nb FROM tr_user");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_OBJ);
+		return $donnees;
+	}
+
+	public function getLastPage(){
+		$query = $this->pdo->prepare("SELECT *  FROM tr_page ORDER BY id DESC LIMIT 1");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
+		return $donnees;
+	}
+
+	public function getLastArticle(){
+		$query = $this->pdo->prepare("SELECT *  FROM tr_article ORDER BY id DESC LIMIT 1");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
+		return $donnees;
+	}
+
+	public function getLastUser(){
+		$query = $this->pdo->prepare("SELECT *  FROM tr_user ORDER BY id DESC LIMIT 1");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
+		return $donnees;
+	}
+
+	// public function getPage(){
+	// 	$dataPages = array_diff_key (
+					
+	// 		get_object_vars($this), 
+
+	// 		get_class_vars(get_class())
+	// 	);
+	// }
+
 	public function userAdminConnect() {
 		$query = $this->pdo->prepare("SELECT email, pseudo, firstname, lastname FROM ".$this->table." WHERE connected = :connected AND Role_idRole = :role");
 		$query->bindValue(':connected', 1);
@@ -394,7 +445,7 @@ class Database
 
 			if(!empty($_POST['pageAccueil'])){
 				$query2 = $this->pdo->prepare("UPDATE tr_page SET page_accueil = 0 WHERE NOT id=:max_id");
-				$query->bindValue(':max_id', $MaxId[0][0]);
+				$query2->bindValue(':max_id', $MaxId[0][0]);
 				$query2->execute();
 				$data = $query2->fetchall();
 				return $data;

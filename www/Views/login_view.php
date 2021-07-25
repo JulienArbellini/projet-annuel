@@ -7,9 +7,9 @@
 		<link rel="stylesheet" href="framework/dist/main.css">
 	</head>
 	<body>
-		<div class=container>
+		<div class="container">
 			<div class="logo col-l-2">
-				<img class="imagelogo" src="../../framework/img/Logo teach'r.svg">
+				<img class="col-m-center" src="../../framework/img/Logo teach'r.svg">
 			</div> 
 			<?php if(!empty($formErrors)):?>
 				<?php foreach($formErrors as $error):?>

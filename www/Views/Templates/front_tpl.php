@@ -37,9 +37,33 @@
 	<body style="display: flex;">
 		<header>
 			<div class="row col-m-12">
-					<div id="nav-top-left">
-						<div class="logo col-s-3 col-m-2 col-l-2">
-							<a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60" /></a>
+								<div id="nav-top">
+										<div class='nav-top-left'>
+												<div class="logo col-s-3 col-m-2 col-l-2">
+														<a href="/tableau-de-bord"><img class="col-s-9 col-m-9" src="../../framework/img/Logo teach'r.svg" width="50" height="60"></a>
+												</div>
+										</div>
+										
+										<div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
+												<a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
+										</div>
+										<div class="link-nav-bar col-m-2 col-l-pull-4">
+												<a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
+										</div>
+										<a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
+                                                <?php echo $_SESSION['pseudo'];?>
+                                                <?php if(file_exists($_SESSION['avatar']) && isset($_SESSION['avatar'])) {
+                                                        ?>
+                                                        <img src="<?= "../".$_SESSION['avatar'];?>" width="35" style='margin-left: 10px;'/>
+                                                        <?php    
+                                                        }else {
+                                                        ?>
+                                                        <img src="../public/img/default-avatar.jpg" width="35" style='margin-left: 10px;'/>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                        </a>
+								</div>
 						</div>
 						<div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
 							<a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
@@ -48,19 +72,6 @@
 						<div class="link-nav-bar col-m-2 col-l-pull-4">
 							<a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
 						</div>
-						<a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
-                                                <?php echo 'Bonjour ' .$_SESSION['pseudo']. '';?>
-                                                <?php if(file_exists($_SESSION['avatar']) && isset($_SESSION['avatar'])) {
-                                                        ?>
-                                                        <img src="<?= "../".$_SESSION['avatar'];?>" width="180" class="sz-image"/>
-                                                        <?php    
-                                                        }else {
-                                                        ?>
-                                                        <img src="../public/img/default-avatar.jpg" width="120" class="sz-image"/>
-                                                        <?php
-                                                        }
-                                                        ?>
-                        </a>
 
 					</div>
 			</div>

@@ -17,13 +17,15 @@
     overflow-x: hidden;
 }
 
-.shadow-box-square {
+.shadow-box-square-registration {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 15px 40px  !important; 
     margin-bottom: 10px;    
     box-shadow: 0px 4px 4px rgba(50, 141, 170, 0.4);
+    background-color: white;
+    border-radius: 11px;  
    
 }
 

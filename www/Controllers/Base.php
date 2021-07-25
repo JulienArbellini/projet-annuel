@@ -47,6 +47,16 @@ class Base{
 
 		$page = new Page();
 		$userSpec = new User();
+		$article = new Article();
+		$user = new User();
+
+		$numberOfPage = $page->getNumberofPage();
+		$numberOfArticle = $page->getNumberofArticle();
+		$numberOfUser = $user->getNumberofUser();
+		$lastPage = $page->getLastPage();
+		$lastArticle = $page->getLastArticle();
+		$lastUser = $user->getLastUser();
+		$view->assign("donnees", [$numberOfPage, $numberOfArticle, $lastPage, $lastArticle, $lastUser, $numberOfUser]);
 
 		$page->definirPageAccueil();
 		$notSpectateur = $userSpec->userSpectateur();		
@@ -318,7 +328,8 @@ class Base{
 				$extension = strtolower(end($tabExtension));
 			
 				$extensions = ['jpg', 'png', 'jpeg', 'gif'];
-				$maxSize = 400000;
+				// $maxSize = 400000;
+				$maxSize= 3221225472;
 			
 				if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
 					

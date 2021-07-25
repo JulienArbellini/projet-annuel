@@ -106,7 +106,7 @@ class User extends Database
 				"method"=>"POST",
 				"Action"=>"/login",
 				"Submit"=>"S'inscrire",
-				"class"=>"shadow-box-square col-l-4 col-m-6 col-s-12"
+				"class"=>"shadow-box-square-registration col-l-4 col-m-6 col-s-12"
 			],
 
 			"input"=>[
@@ -247,7 +247,7 @@ class User extends Database
 					"method"=>"POST",
 					"Action"=>"",
 					"Submit"=>"Se connecter",
-					"class"=>"shadow-box-square col-m-8 col-l-4"
+					"class"=>"shadow-box-square-registration col-m-8 col-l-4"
 				],
 				"input"=>[
 					

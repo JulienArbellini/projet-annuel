@@ -1,0 +1,22 @@
+.menu-profil{
+    font-size: 17px;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.logout{
+    color: $red;
+    margin-top: 90%;
+}
+
+.logout-link{
+    text-decoration: underline $red;
+    &:hover{
+        text-decoration: underline;
+        color: lighten($red, 15%);
+    }
+}

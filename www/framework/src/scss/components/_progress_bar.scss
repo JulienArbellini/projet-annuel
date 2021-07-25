@@ -1,15 +1,17 @@
 /* Progress Bar */
+$percent:70%;
+
 
 .progress {
-    background: #DAEFFE;
+    background: #DFE5EB;
     justify-content: flex-start;
     align-items: center;
     display: flex;
-    border-style: solid;
+    // border-style: solid;
     border-radius: 100px;
-    padding: 0 2px;
-    border-color: rgba(50, 141, 170, 0.7);  
-    border-width: 1px; 
+    // padding: 0 2px;
+    // border-color: rgba(50, 141, 170, 0.7);  
+    // border-width: 1px; 
   }
   
   .progress-value {
@@ -17,13 +19,8 @@
     box-shadow: 0 10px 40px -10px #fff;
     border-radius: 20px;
   
-    background: rgba(170, 77, 200, 0.5);
-    height: 90%;
+    background: #00bf30;
+    height: 100%;
     width: 0;
-  }
-
-  @keyframes load {
-    0% { width: 0; }
-    100% { width: $percent; }
   }
   
