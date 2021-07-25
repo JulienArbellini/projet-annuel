@@ -42,7 +42,7 @@
 				</div>
 				<div id="avancement">
 					<div class='avancement-text'>
-						<?php if(4-$_SESSION['count']>1){echo 4-$_SESSION['count']  . ' étapes restantes'; }else{echo '1 étape restante';} ?>
+						<?php if(4-$_SESSION['count']>1){echo 4-$_SESSION['count']  . ' étapes restantes'; }elseif(4-$_SESSION['count']==1){echo '1 étape restante';}else{echo '0 étape restante';} ?>
 					</div>
 					<div class="progress">
 						<style>
@@ -64,34 +64,45 @@
 				<div class="bottom-box-two-list">
 					<a href='/pages' class='taches'>
 						<div class='image-tache'>
-							<?php $count = 0; if($donnees[0]->nb == 0){echo '<img src="../framework/img/checked.png"></img>'; $count+=1;}?> 
+							<?php $count = 0; if($donnees[0]->nb > 1){echo '<img src="../framework/img/checked.png"></img>'; $count+=1;}?> 
 						</div>
 						<div class='texte-tache'>
-							<div class='text-tache-here <?php if($donnees[0]->nb > 0){echo 'no';}?>'>Créez une page</div>
+							<div class='text-tache-here <?php if($donnees[0]->nb == 1){echo 'no';}?>'>Créez une page</div>
 						</div>
 					</a>
 					<a href='/articles' class='taches'>
 						<div class='image-tache'>
-							<img <?php if($donnees[1]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/not_checked.png"';}?> width='3%'></img>
+							<?php if($donnees[1]->nb > 1){echo '<img src="../framework/img/checked.png"></img>'; $count+=1;}?> 
+						
 						</div>
 						<div class='texte-tache'>
-							<div class='text-tache-here <?php if($donnees[0]->nb == 0){echo 'no';}?>'>Créez un article</div>
+							<div class='text-tache-here <?php if($donnees[1]->nb <= 1){echo 'no';}?>'>Créez un article</div>
 						</div>
 					</a>
-					<a href='' class='taches'>
+					<a href='/profil' class='taches'>
 						<div class='image-tache'>
-							<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'></input>
+							<?php 
+								if($donnees[6]['avatar'] != NULL){
+									echo '<img src="../framework/img/checked.png"></img>' ;
+									$count+=1 ;
+								}
+							?>
 						</div>
 						<div class='texte-tache'>
-							<div class='text-tache-here <?php if($donnees[0]->nb == 0){echo 'no';}?>'>Ajoutez une photo de profil</div>
+							<div class='text-tache-here 
+							<?php
+								if($donnees[6]['avatar'] == NULL){
+								echo 'no';
+								}
+							?>'>Ajoutez une photo de profil</div>
 						</div>
 					</a>
 					<a href='/utilisateurs' class='taches'>
 						<div class='image-tache'>
-							<img <?php if($donnees[0]->nb > 0){echo 'src="../framework/img/checked.png"'; $count+=1;}else{echo 'src="../framework/img/noy_checked.png"';}?> width='3%'></input>
+							<?php if($donnees[5]->nb > 2){echo '<img src="../framework/img/checked.png"></img>'; $count+=1;}?>
 						</div>	
 						<div class='texte-tache'>
-							<div class='text-tache-here <?php if($donnees[0]->nb == 0){echo 'no';}?>'>Invitez un utilisateur</div>
+							<div class='text-tache-here <?php if($donnees[5]->nb <= 2){echo 'no';}?>'>Invitez un utilisateur</div>
 						</div>		
 					</a>
 				</div>
@@ -145,7 +156,7 @@
 					dernier article créé: <?php print_r($donnees[3]['title']);?>
 				</div>
 				<div class="tree-author">
-					par: <?php print_r($donnees[3]['createdAt']);?>
+					par: <?php print_r($donnees[3]['firstname']);?>
 				</div>
 				<div class="tree-date">
 					date: <?php print_r($donnees[3]['createdAt']);?>
@@ -170,7 +181,7 @@
 					derniere page créée: <?php print_r($donnees[2]['title']);?>
 				</div>
 				<div class="tree-author">
-					par: <?php print_r($donnees[2]['createdAt']);?>
+					par: <?php print_r($donnees[2]['firstname']);?>
 				</div>
 				<div class="tree-date">
 					date: <?php print_r($donnees[2]['createdAt']);?>
@@ -234,7 +245,7 @@
 			
 			
 			<div class="box-link">
-				<div class="link-faq"><a href='/faq'>Voir plus de questions</a></div>
+				<div class="link-faq"><a href='/FAQ'>Voir plus de questions</a></div>
 			</div>
 		</div>
 		

@@ -48,7 +48,7 @@
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/noembed/trumbowyg.noembed.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/table/trumbowyg.table.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/upload/trumbowyg.upload.min.js"></script>
-		<script src="framework/src/js/Trumbowyg-master/dist/plugins/resizimg/trumbowyg.resizimg.min.js"></script>- <script type="text/javascript" src="framework/src/js/modal.js"></script> -->
+		<script src="framework/src/js/Trumbowyg-master/dist/plugins/resizimg/trumbowyg.resizimg.min.js"></script>
 	</head>
 	<body style="display:flex; flex-direction:column;">
 		
@@ -102,12 +102,12 @@
                                                 <div class="progress-value" ></div>    
                                         </div>
                                 </div>
-                                <div class='elem-etape'><a class="link-left-nav config"><?php if(4-$_SESSION['count']>1){echo 4-$_SESSION['count']  . 'étapes restantes'; }else{echo '1 étape restante';} ?></a></div>
+                                <div class='elem-etape'><a class="link-left-nav config"><?php if(4-$_SESSION['count']>1){echo 4-$_SESSION['count']  . ' étapes restantes'; }elseif(4-$_SESSION['count']==1){echo '1 étape restante';}else{echo '0 étape restante';} ?></a></div>
                         </div>
                     <div class='hr-style'>
                         <hr class='hr-complete'>
                     </div>
-                    <div class="menu container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12 actual-page">
+                    <div class="menu container-flexbox-nav dashboard col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/tableau-de-bord'){echo 'actual-page';}?>">
                             <div class="col-m-9"><a href="/tableau-de-bord" class="link-left-nav">Tableau de bord</a></div>
                     </div>
                     <div class='hr-style'>
@@ -118,14 +118,14 @@
                     </div>
 
                     <?php if(isset($_SESSION['notSpectateur'][0]['Role_idRole']) == 1 || isset($_SESSION['notSpectateur'][0]['Role_idRole']) == 2) { ?>
-                    <a href="/apparence" class="menu container-flexbox-nav apparence cols-s-12 col-m-12 col-l-12">
+                    <a href="/apparence" class="menu container-flexbox-nav apparence cols-s-12 col-m-12 col-l-12 ">
                             <div class="col-m-8"><div class="link-left-nav">Apparence</div></div>
                     </a>
                     <?php } ?>
-                    <a href="/articles" class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12">
+                    <a href="/articles" class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/articles'|| $_SESSION["uri"]=='/articles-add' || $_SESSION["uri"]=='/articles-edit'){echo 'actual-page';}?>">
                             <div class="col-m-8"><div href="/articles" class="link-left-nav">Articles</div></div>
                     </a>
-                    <a href="/pages" class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12">
+                    <a href="/pages" class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/pages'){echo 'actual-page';}?>">
                             <div class="col-m-8"><div class="link-left-nav">Pages</div></div>
                     </a>
                     <div class='hr-style'>
@@ -134,7 +134,7 @@
                     <div class='left-nav-bar-description'>
                         <div class='text-inside'>Gestion utilisateurs</div>
                     </div>
-                    <a href="/utilisateurs" class="menu container-flexbox-nav utlilisateurs col-s-12 col-m-12 col-l-12">
+                    <a href="/utilisateurs" class="menu container-flexbox-nav utlilisateurs col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/utilisateurs'){echo 'actual-page';}?>">
                             <div class="col-m-8"><div class="link-left-nav">Utilisateurs</div></div>
                     </a>
                     <div class='hr-style'>
@@ -143,12 +143,12 @@
                     <div class='left-nav-bar-description'>
                         <div class='text-inside'>Questions</div>
                     </div>
-                    <a href='/FAQ' class="menu container-flexbox-nav faq col-s-12 col-m-12 col-l-12">
+                    <a href='/FAQ' class="menu container-flexbox-nav faq col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/FAQ'){echo 'actual-page';}?>">
                             <div class="col-m-8"><div class="link-left-nav">FAQ</div></div>
                     </a>
                     
                     <div class="menu container-flexbox-nav parametres col-s-12 col-m-12 col-l-12">
-                            <div class="col-m-8"><a href='\tableau-de-bord?deconnexion=true' style="color:red; font-size: 13px;" ><span>Déconnexion</span></a></div>
+                            <div class="col-m-8"><a href='\logout?deconnexion=true&id=<?php echo $_SESSION['id'] ?>' style="color:red; font-size: 13px;" ><span>Déconnexion</span></a></div>
                     </div>
                 </div>
             </div>

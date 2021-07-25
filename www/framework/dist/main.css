@@ -819,7 +819,6 @@ img.image-grayscale {
 
 .logo img {
   width: 70%;
-  height: 40%;
 }
 
 .container {
@@ -1449,7 +1448,7 @@ header {
 
 #nav-left {
   background-color: #131720;
-  margin-top: 30px;
+  margin-top: 50px;
   height: 100%;
   width: 220px;
   position: fixed;

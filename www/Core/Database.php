@@ -284,9 +284,12 @@ class Database
 		$donnees = $query->fetchall();
 		return $donnees;
 	}
+	
+
 
 	public function requestRole(){
-		$query = $this->pdo->prepare("SELECT * FROM tr_role as r INNER JOIN ".$this->table. " as u ON r.id = u.role_idRole");
+		$query = $this->pdo->prepare("SELECT * FROM tr_role as r INNER JOIN ".$this->table. " as u ON r.id = u.role_idRole WHERE NOT connected = :connected");
+		$query->bindValue(':connected', 1);
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
@@ -341,14 +344,22 @@ class Database
 	}
 
 	public function getLastPage(){
-		$query = $this->pdo->prepare("SELECT *  FROM tr_page ORDER BY id DESC LIMIT 1");
+		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u INNER JOIN tr_page AS p ON p.id_user = u.id ORDER BY p.id DESC LIMIT 1");
 		$query->execute();
 		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
 		return $donnees;
 	}
 
+	public function checkPhoto($id){
+		// var_dump($id);
+		$query = $this->pdo->prepare("SELECT avatar FROM tr_user WHERE id = $id");
+		$query->execute();
+		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
+		return $donnees;
+	}
+	
 	public function getLastArticle(){
-		$query = $this->pdo->prepare("SELECT *  FROM tr_article ORDER BY id DESC LIMIT 1");
+		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u INNER JOIN tr_article AS a ON a.id_user = u.id ORDER BY a.id DESC LIMIT 1");
 		$query->execute();
 		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
 		return $donnees;

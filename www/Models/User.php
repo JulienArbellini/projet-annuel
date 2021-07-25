@@ -172,13 +172,7 @@ class User extends Database
 					"required"=>true,
 					"value"=>$_POST['email'] ?? '',
 					"error"=>"Les deux mots de passe ne correspondent pas"
-				],
-				"checkbox"=>[
-					"type"=>"checkbox",
-					"label"=>"J'ai lu et j'accepte la <a href ='#'>politique de confidentialité</a>",
-					"class"=>"",
-					"required"=>true
-				]		
+				]	
 			]
 		];
 	}

@@ -97,6 +97,7 @@ class Security{
 						$_SESSION['email'] = $user->getEmail();
 						$_SESSION['prenom'] = $user->getFirstnameByEmail($email);
 						$_SESSION['loggedIn']=true;
+						$_SESSION['count']=0;
 						
 						$user->connectedUserId();
 						header('Location: \tableau-de-bord');

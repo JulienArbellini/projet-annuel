@@ -16,22 +16,7 @@ use App\Models\Page;
 class Base{
 
 
-	public function defaultAction(){
-
-		//Je vais cherche en bdd le pseudo du user
-		$pseudo = "Prof";
-
-		//Affiche moi la vue home;
-		$view = new View();
-		$view->assign("pseudo", $pseudo);
-		$view->assign("age", 17);
-		$view->assign("genre", "h");
-
-		//envoyer le pseudo à la vue
-	}
-
-
-
+	
 
 	//Must be connected
 	public function dashboardAction(){
@@ -56,7 +41,10 @@ class Base{
 		$lastPage = $page->getLastPage();
 		$lastArticle = $page->getLastArticle();
 		$lastUser = $user->getLastUser();
-		$view->assign("donnees", [$numberOfPage, $numberOfArticle, $lastPage, $lastArticle, $lastUser, $numberOfUser]);
+		$connectedUser = $user->getIdUserConnected();
+		$profilPhotoCheck = $user->checkPhoto($_SESSION['id']);
+		// var_dump($profilPhotoCheck);
+		$view->assign("donnees", [$numberOfPage, $numberOfArticle, $lastPage, $lastArticle, $lastUser, $numberOfUser, $profilPhotoCheck]);
 
 		$page->definirPageAccueil();
 		$notSpectateur = $userSpec->userSpectateur();		
@@ -213,7 +201,6 @@ class Base{
 
 		$notSpectateur = $userSpec->userSpectateur();
 		$view->assign("notSpectateur", $notSpectateur);
-		// var_dump($notSpectateur);
 
 	}
 
