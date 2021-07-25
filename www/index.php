@@ -21,7 +21,6 @@ $_SESSION["uri"] = $uriExploded[0];
 $route = new Routing($_SESSION["uri"]);
 $c = $route->getController();
 $a = $route->getAction();
-$dataSlug = $route->getAction();
 
 $cWithNamespace = $route->getControllerWithNamespace();
 
@@ -42,8 +41,6 @@ if( file_exists("./Controllers/".$c.".php")){
 			//$a = loginAction // defaultAction
 			$cObject->$a();
 			// var_dump($a);
-		}else{
-			$cObject->$a();
 		}
 
 	}else{

@@ -6,6 +6,7 @@ use App\Core\Security;
 use App\Core\View;
 use App\Core\Database;
 use App\Models\Article;
+use App\Core\AddArticleForm;
 use App\Core\Form;
 use App\Models\User;
 use App\Core\Mailer;
@@ -45,8 +46,10 @@ class Base{
 		$view = new View("dashboard", "back");
 
 		$page = new Page();
+		$userSpec = new User();
 
-		$page->definirPageAccueil();		
+		$page->definirPageAccueil();
+		$notSpectateur = $userSpec->userSpectateur();		
 		// session_start();	
 	
 	}
@@ -54,6 +57,7 @@ class Base{
 	public function articlesAction(){
 		$view = new View("articles", "back");
 		$article = new Article();
+		$userSpec = new User();
 		$article->connectedUserId();
 		
 		$article->deleteArticle();
@@ -61,6 +65,8 @@ class Base{
 		$donnees = $article->getArticle();
 		$view->assign("donnees", $donnees);
 
+		$notSpectateur = $userSpec->userSpectateur();
+		$view->assign("notSpectateur", $notSpectateur);
 	}
 
 	public function editArticleAction(){
@@ -109,7 +115,6 @@ class Base{
 					$userSelect->setCreatedAtUser(date("Y-m-d H:i:s"));
 					$password = uniqid();
 					$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-					// $userSelect->createConfirmationKey($password, $_POST['email']);
 					$userSelect->setCodeConfirmationMdp($password);
 					$userSelect->save();
 					$test = $userSelect->userMail();
@@ -146,17 +151,39 @@ class Base{
 
 	}
 
-	public function displayArticleAction(){
-		$view = new View("displayArticle", "back");
-		$article = new Article();
+	public function addArticleAction(){
 
-		$data = $article->getContent();
-		$view->assign("data", $data);
+		$article = new Article();
+		$view = new View("addArticles", "back");
+		$article->getIdUserConnected();
+		$form = $article->buildFormAddArticle();
+		$view->assign("form", $form);
+
+
+		 if(!empty($_POST)){
+		 	$errors = AddArticleForm::validatorAddArticle($_POST, $form);
+
+			if(empty($errors)){
+				
+				$article->setTitle(htmlspecialchars($_POST["titre"]));
+				$article->setSlug(htmlspecialchars($_POST["slug"]));
+				$article->setContent($_POST["contenu"]);
+				$article->setCreatedAt(date("Y-m-d H:i:s"));
+				// $article->setAuteur($_POST["auteur"]);
+				$article->setIdUser(htmlspecialchars($_POST["auteur"]));
+				$article->save();
+
+			}else{
+				$view->assign("formErrors", $errors);
+			}
+
+		}
 	}
 
 	public function pagesAction(){
 		$view = new View("pages", "back");
 		$page = new Page();
+		$userSpec = new User();
 		$page->connectedUserId();
 		
 
@@ -174,15 +201,12 @@ class Base{
 		$donnees = $page->getPage();
 		$view->assign("donnees", $donnees);
 
+		$notSpectateur = $userSpec->userSpectateur();
+		$view->assign("notSpectateur", $notSpectateur);
+		// var_dump($notSpectateur);
+
 	}
 
-	public function displayPageAction(){
-		$view = new View("displayPage", "back");
-		$page = new Page();
-
-		$data = $page->getContentPage();
-		$view->assign("data", $data);
-	}
 
 	public function apparenceAction(){
 		$view = new View("apparence", "front");

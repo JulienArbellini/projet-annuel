@@ -40,16 +40,12 @@
   action: articles
 
 /articles-add:
-  controller: Security
+  controller: Base
   action: addArticle
 
 /articles-edit:
   controller: Base
   action: editArticle
-
-/display-articles:
-  controller: Base
-  action: displayArticle
   
 /utilisateurs:
   controller: Base
@@ -58,10 +54,6 @@
 /pages:
   controller: Base
   action: pages
-
-/display-pages:
-  controller: Base
-  action: displayPage
 
 /apparence:
   controller: Base

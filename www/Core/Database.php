@@ -312,7 +312,7 @@ class Database
 			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = :lastname, firstname = :firstname, pseudo= :pseudo, Role_idRole = :Role_idRole WHERE id = :id");
 			$query->bindValue(':lastname', $_POST["lastname"]);
 			$query->bindValue(':firstname', $_POST["firstname"]);
-			$query->bindValue(':pseud', $_POST["pseudo"]);
+			$query->bindValue(':pseudo', $_POST["pseudo"]);
 			$query->bindValue(':Role_idRole', $_POST["role"]);
 			$query->bindValue(':id', $_GET['updateId']);
 			$query->execute();
@@ -326,6 +326,15 @@ class Database
 		$query->execute();
 		$_SESSION['gestionRole'] = $query->fetchall();
 		return $_SESSION['gestionRole'];
+	}
+
+	public function userSpectateur() {
+		$query = $this->pdo->prepare("SELECT * FROM " .$this->table." WHERE connected = :connected AND NOT Role_idRole = :role");
+		$query->bindValue(':connected', 1);
+		$query->bindValue(':role', 3);
+		$query->execute();
+		$_SESSION['notSpectateur'] = $query->fetchall();
+		return $_SESSION['notSpectateur'];
 	}
 
 	public function getPage(){

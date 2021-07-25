@@ -5,22 +5,25 @@
 </div>
 
 <div class="row col-m-12 col-m-up-4">
-    
-    <div class="col-m-3 col-m-padding-1 col-m-center col-m-pull-3">
-        <button class="button-add-page" id="button-add-page" onclick="displayForm()" style="">Ajouter</button>
-            <form method="POST" action="">
-                <div class="button-form-page-position col-m-center">
-                    <label for="add-page-title" id="label" style="display: none;">Nouvelle page :</label>
-                    <input type="text" id="add-page-title"  name="add-page-title" placeholder="Titre" style="display: none;">
-                    <input type="text" id="add-page-slug"  name="add-page-slug" placeholder="/slug" style="display: none;">
-                    <input type="hidden" name="id_user_page" value="<?php echo $_SESSION['idUserConnected'][0]["id"]?>">
+    <?php if($notSpectateur) { ?>
+        <div class="col-m-3 col-m-padding-1 col-m-center col-m-pull-3">
+            <button class="button-add-page" id="button-add-page" onclick="displayForm()" style="">Ajouter</button>
+                <form method="POST" action="">
+                    <div class="button-form-page-position col-m-center">
+                        <label for="add-page-title" id="label" style="display: none;">Nouvelle page :</label>
+                        <input type="text" id="add-page-title"  name="add-page-title" placeholder="Titre" style="display: none;">
+                        <input type="text" id="add-page-slug"  name="add-page-slug" placeholder="/slug" style="display: none;">
+                        <input type="hidden" name="id_user_page" value="<?php echo $_SESSION['idUserConnected'][0]["id"]?>">
 
-                    <!-- <div class="button-form-page-position"> -->
-                        <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
-                        <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="document.location.reload()">Enregistrer</button>
-                </div>
-            </form>
-    </div>
+                        <!-- <div class="button-form-page-position"> -->
+                            <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
+                            <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="document.location.reload()">Enregistrer</button>
+                    </div>
+                </form>
+        </div>
+    <?php 
+        } 
+    ?>
 
 
     <div class="shadow-box-square col-s-10 col-m-10 col-m-center">
@@ -35,19 +38,17 @@
 
             <tbody>
                 <?php
-                    foreach ($donnees as $key => $value){
-                        $html = "
+                    foreach ($donnees as $key => $value){ ?>
                         <tr>
-                            <td>".($value["title"])."</br>
-                                <a href=\"/apparence?idPage=".($value["id"])."&module=base&action=apparence\" class=\"link-tab-page\">Modifier</a>
-                                <a href=\"".($value["slug"])."\" class=\"link-tab-page\"> | Afficher |</a>
-                                <a href=\"#modal".($value["id"])."\" class=\"js-modal link-tab-page\">Supprimer</a>
+                            <td><?= $value["title"] ?></br>
+                                <?php if($notSpectateur) { ?><a href="/apparence?idPage=<?= $value["id"] ?>&module=base&action=apparence" class="link-tab-page">Modifier</a><?php } ?>
+                                <a href="<?= $value["slug"] ?>" class="link-tab-page"> | Afficher |</a>
+                                <?php if($notSpectateur) { ?><a href="#modal<?= $value["id"] ?>" class="js-modal link-tab-page">Supprimer</a><?php } ?>
                             </td>
-                            <td>".($value["firstname"])."</td>
-                            <td>".($value["createdAt"])."</td>
-                        </tr>";
-
-                        echo $html;
+                            <td><?= $value["firstname"] ?></td>
+                            <td><?= $value["createdAt"] ?></td>
+                        </tr>
+                <?php    
                     }
                 ?>
             </tbody>

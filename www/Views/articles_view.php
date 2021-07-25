@@ -9,7 +9,7 @@
     
         <!-- <div class="row col-m-10 col-m-up-3"> -->
             <div class="col-m-3 col-m-padding-1 col-m-center col-m-pull-3">
-                <a href="/articles-add" class="link-add-article"><p>+ Ajouter un article</p></a>
+            <?php if($notSpectateur) { ?><a href="/articles-add" class="link-add-article"><p>+ Ajouter un article</p></a><?php } ?>
             </div>
         <!-- </div> -->
     <!-- </div> -->
@@ -25,22 +25,16 @@
                 </thead>
                 <tbody>
                     <?php 
-                        foreach ($donnees as $key => $value){
-                            
-                            $html = "
+                        foreach ($donnees as $key => $value){ ?>
                             <tr>
-                                <td><a href=\"".($value["slug"])."\" class=\"link\">".($value["title"])."</a></td><td>".($value["firstname"])."</td>
-                                <td>".($value["createdAt"])."</td>
-                                <td id=\"content\" style=\"display: none;\">".($value["content"])."</td>
-                                <td><a href=\"/articles-edit?&idArticle=".($value['id'])."&module=base&action=editArticle\" id=\"pen\" onclick='document.getElementById('content').style.color='red';' class=\"edit\"><img src=\"../../framework/img/pen-edit.svg\" alt=\"pen-edit\" width=\"15\" height=\"15\"></a></td>
-                                <td><a href=\"#modal".($value["id"])."\" class=\"js-modal supp\">&#x2717;</a></td>
+                                <td><a href="<?= $value["slug"] ?>" class="link"><?= $value["title"] ?></a></td><td><?= $value["firstname"] ?></td>
+                                <td><?= $value["createdAt"] ?></td>
+                                <td><?php if($notSpectateur) { ?><a href="/articles-edit?&idArticle=<?= $value['id']?>&module=base&action=editArticle" id="pen" class="edit"><img src="../../framework/img/pen-edit.svg" alt="pen-edit" width="15" height="15"></a><?php } else { ?>&#128274<?php } ?></td>
+                                <td><?php if($notSpectateur) { ?><a href="#modal<?= $value["id"]?>" class="js-modal supp">&#x2717</a><?php } else { ?>&#128274<?php } ?></td>
                             </tr>
-                            ";
 
-                            echo $html;
-                            
-
-                        }
+                    <?php 
+                       }
                     ?>
                     <!-- /display-articles?idArticle=".($value["id"])." -->
                 </tbody>
@@ -58,7 +52,7 @@
                                             <div class=\"container2\">
                                                 <button class=\"js-modal-close\">Annuler</button>
                                               
-                                                <button class=\"\" onclick=\"window.location.href='/articles?id=".($value['id'])."&module=base&action=articles'\">Supprimer</button>
+                                                <button class=\"\" onclick=\"window.location.href='/articles?id=".($value['id'])."'\">Supprimer</button>
                                               
                                             </div>
                                         </div>

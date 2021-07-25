@@ -71,7 +71,9 @@
                                                 <a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
                                         </div>
                                         <div class="link-nav-bar col-m-2 col-l-pull-4">
+                                            <?php if(isset($_SESSION['notSpectateur'][0]['Role_idRole']) == 1 || isset($_SESSION['notSpectateur'][0]['Role_idRole']) == 2) { ?>
                                                 <a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
+                                            <?php } ?>
                                         </div>
                                         <a href="profil" class="link-nav-bar col-s-2 col-m-2 col-l-1" style="cursor: pointer;">
                                                 <?php echo 'Bonjour ' .$_SESSION['pseudo']. '';?>
@@ -99,11 +101,13 @@
                             <div class="col-m-9"><a href="/tableau-de-bord" class="link-left-nav">Tableau de bord</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
+                    <?php if(isset($_SESSION['notSpectateur'][0]['Role_idRole']) == 1 || isset($_SESSION['notSpectateur'][0]['Role_idRole']) == 2) { ?>
                     <div class="menu container-flexbox-nav apparence cols-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/paint.png" alt="logo apparence"></div>
                             <div class="col-m-8"><a href="/apparence" class="link-left-nav">Apparence</a></div>
                             <div class="col-m-2"><img id="fleche" src="../../framework/img/fleche_blanche.png" alt="fleche blanche"></img></div>
                     </div>
+                    <?php } ?>
                     <div class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12">
                             <div class="col-m-2"><img src="../../framework/img/articles.png" alt="logo articles"></div>
                             <div class="col-m-8"><a href="/articles" class="link-left-nav">Articles</a></div>

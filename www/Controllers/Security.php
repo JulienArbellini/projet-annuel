@@ -72,35 +72,6 @@ class Security{
 		$user->confirmation();
 	}
 
-	public function addArticleAction(){
-
-		$article = new Article();
-		$view = new View("addArticles", "back");
-		$article->getIdUserConnected();
-		$form = $article->buildFormAddArticle();
-		$view->assign("form", $form);
-
-
-		 if(!empty($_POST)){
-		 	$errors = AddArticleForm::validatorAddArticle($_POST, $form);
-
-			if(empty($errors)){
-				
-				$article->setTitle(htmlspecialchars($_POST["titre"]));
-				$article->setSlug(htmlspecialchars($_POST["slug"]));
-				$article->setContent($_POST["contenu"]);
-				$article->setCreatedAt(date("Y-m-d H:i:s"));
-				// $article->setAuteur($_POST["auteur"]);
-				$article->setIdUser(htmlspecialchars($_POST["auteur"]));
-				$article->save();
-
-			}else{
-				$view->assign("formErrors", $errors);
-			}
-
-		}
-	}
-
 	public function loginAction(){
 		$user = new User();
 		$view = new View("login", "login");
