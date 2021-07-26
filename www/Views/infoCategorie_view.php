@@ -34,3 +34,5 @@
         </table>
     </div>
 </div>
+
+<script type="text/javascript" src="framework/src/js/int-datatables.js"></script>

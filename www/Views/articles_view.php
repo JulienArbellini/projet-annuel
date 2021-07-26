@@ -21,7 +21,7 @@
             <table id='tab' class='display'>
                 <!-- <caption>Articles</caption> -->
                 <thead>
-                    <tr><th>Nom Article</th><th>Auteur</th><th>Dernières modifications</th><th>Modifier</th><th>Supprimer</th><th style="display: none;">Contenu</th></tr>
+                    <tr><th>Nom Article</th><th>Auteur</th><th>Dernières modifications</th><th>Modifier</th><th>Supprimer</th></tr>
                 </thead>
                 <tbody>
                     <?php 
