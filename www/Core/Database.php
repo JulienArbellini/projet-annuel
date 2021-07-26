@@ -33,7 +33,6 @@ class Database
 		$classExploded = explode("\\", get_called_class());
 		$this->table = DBPREFIX.end($classExploded);
 		$this->table=strtolower($this->table);
-		//echo "Nom de la table : " .$this->table. "</br>";
 	}
 
 
@@ -47,12 +46,9 @@ class Database
 					get_object_vars($this), 
 					get_class_vars(get_class())
 				);
-		//var_dump($data);
-		// var_dump($data);
 	
 		if(is_null($this->getId())){
 
-			//INSERT 
 
 			$columns = array_keys($data); 
 			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
@@ -68,7 +64,6 @@ class Database
 			}
 						
 		}else{	
-			//UPDATE 
 			$columns = array_keys($data);
 			foreach ($columns as $column) {
 
@@ -78,7 +73,6 @@ class Database
         $query = $this->pdo->prepare("UPDATE ".$this->table." SET ".implode(",",$columnsToUpdate)." WHERE id=".$this->getId());
 		$query->execute($data);
 		}
-		// $query->execute($data);
 		
 	}
 
@@ -89,10 +83,7 @@ class Database
 		$query->execute();
 		$donnees = $query->fetchall();
 
-		// var_dump($donnees);
 		return $donnees;
-		
-		// $_SESSION['id'] = $this->pdo->lastInsertId();
 
 	}
 
@@ -125,7 +116,6 @@ class Database
         $query=$this->pdo->prepare("SELECT id FROM tr_user WHERE connected=1");
         $query->execute();
         $_SESSION['idUserConnected']= $query->fetchall();
-        // var_dump($_SESSION['id']);
     }
 
 
@@ -256,7 +246,6 @@ class Database
 
 	public function verifConfirmed() {
 		$user = $this->getUserByMail($_POST['email']);
-		//var_dump($user);
 		$id = $user->getId();
 		$query = $this->pdo->prepare("SELECT confirmation FROM tr_user WHERE id = $id");
 		$query->execute();
@@ -351,7 +340,6 @@ class Database
 	}
 
 	public function checkPhoto($id){
-		// var_dump($id);
 		$query = $this->pdo->prepare("SELECT avatar FROM tr_user WHERE id = $id");
 		$query->execute();
 		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
@@ -371,15 +359,6 @@ class Database
 		$donnees = $query->fetch(\PDO::FETCH_ASSOC);
 		return $donnees;
 	}
-
-	// public function getPage(){
-	// 	$dataPages = array_diff_key (
-					
-	// 		get_object_vars($this), 
-
-	// 		get_class_vars(get_class())
-	// 	);
-	// }
 
 	public function userAdminConnect() {
 		$query = $this->pdo->prepare("SELECT email, pseudo, firstname, lastname FROM ".$this->table." WHERE connected = :connected AND Role_idRole = :role");
@@ -483,7 +462,6 @@ class Database
 		$query = $this->pdo->prepare("SELECT id FROM tr_user WHERE connected = 1");
 		$query->execute();
 		$_SESSION['connectedUser'] = $query->fetchall();
-		// var_dump($_SESSION['connectedUser']);
 	}
 
 	public function routingPagesArticles(){
@@ -532,7 +510,6 @@ class Database
 			}
 			else{
 				die("erreur 404 : Route not found");
-				// fopen('test.php', 'r');
 			}
 
 		}
@@ -575,8 +552,6 @@ class Database
 	}
 
 	public function uploadAvatar($avatar, $id) {
-		// $DB->insert("UPDATE utilisateur SET avatar = ? WHERE  id = ?", 
-		// 	array(($nom.".".$extensionUpload), $_SESSION['id']));
 		$query = $this->pdo->prepare("UPDATE tr_user SET avatar = ? WHERE id = ?");
 		$query->execute(array($avatar, $id));
 	}

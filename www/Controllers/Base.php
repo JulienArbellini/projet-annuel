@@ -15,9 +15,6 @@ use App\Models\Page;
 
 class Base{
 
-
-	
-
 	//Must be connected
 	public function dashboardAction(){
 		

@@ -69,9 +69,7 @@ class User extends Database
 	public function setCreatedAtUser($createdAtUser){
 		$this->createdAtUser = $createdAtUser;
 	}
-	// public function setRole($role){
-	// 	$this->role = $role;
-	// }
+	
 	public function setConfirmKey($confirmKey){
 		$this->confirmKey = $confirmKey;
 	}
@@ -229,7 +227,7 @@ class User extends Database
                             "label"=>"Rôle",
                             "required"=>true,
                             "error"=>"Veuillez sélectionner un rôle",
-                                ]
+							]
             ]
         ];
     }

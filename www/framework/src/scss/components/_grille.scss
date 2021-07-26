@@ -36,15 +36,6 @@
             margin-bottom: $i * 5vh;
         }
 
-        .col#{$suffix}-long{
-            // height: 95vh;
-        }
-
-        .col#{$suffix}-large{
-            // width: 100vh;
-            // height: 5vh;
-        }
-
         .col#{$suffix}-height-#{$i}{
             height: $i * 5vh;
         }

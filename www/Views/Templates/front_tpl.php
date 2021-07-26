@@ -1,7 +1,3 @@
-<?php
-    //session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -67,7 +63,6 @@
 						</div>
 						<div class="link-nav-bar col-s-2 col-m-2 col-l-pull-2">
 							<a href="<?php echo $_SESSION['slug_accueil'][0]["slug"]; ?>" class="link-top-nav-front"><img src="../../framework/img/home.png" alt="Home button" width="19" height="18" />Mon site</a>
-							<!-- Mon site -->
 						</div>
 						<div class="link-nav-bar col-m-2 col-l-pull-4">
 							<a href="/apparence" class="link-top-nav-front"><img src="../../framework/img/add.png" alt="plus button" width="19" height="18">Créer</a>
@@ -125,36 +120,11 @@
 
 				<hr class="separateur-tpl">
 
-				<!-- <p class="titre-menu-tpl">Pied de page</p>
-				<div class="buttons-tpl">
-					<button class="button-left-nav-front-tpl" onclick="addFooter()">Bleu foncé</button>
-				</div> -->
-
-				<!-- <p class="titre-menu-tpl">Images</p>
-				<div class="buttons-tpl">
-					<form runat="server">
-						<div class="container-upload-img">
-							<input accept="image/*" type='file' id="imgInp" />
-							<img id="imgTrumbowyg" src="../../framework/img/iconeImage.png" alt="your image" width="50px" height="50px"/>
-						</div>
-						<p class="text-dragAndDrop">Glissez et déposez votre image !</p>
-					</form>
-				</div> -->
-
 				<p class="titre-menu-tpl">Templates</p>
 				<div class="buttons-tpl">
 					<button class="button-left-nav-front-tpl" onclick="addTemplateUn()">Template 1</button>
 					<button class="button-left-nav-front-tpl" onclick="addTemplateDeux()">Template 2</button>
 				</div>
-
-				<!-- <script>
-					imgInp.onchange = evt => {
-						const [file] = imgInp.files
-						if (file) {
-							imgTrumbowyg.src = URL.createObjectURL(file)
-						}
-					}
-				</script> -->
 				
 			</div>
 			
