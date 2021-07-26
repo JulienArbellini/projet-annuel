@@ -19,9 +19,8 @@
     <div class="shadow-box-square col-s-10 col-m-10 col-m-center">
 
             <table id='tab' class='display'>
-                <!-- <caption>Articles</caption> -->
                 <thead>
-                    <tr><th>Nom Article</th><th>Auteur</th><th>Dernières modifications</th><th>Modifier</th><th>Supprimer</th><th style="display: none;">Contenu</th></tr>
+                    <tr><th>Nom Article</th><th>Auteur</th><th>Dernières modifications</th><th>Modifier</th><th>Supprimer</th></tr>
                 </thead>
                 <tbody>
                     <?php 
@@ -36,7 +35,6 @@
                     <?php 
                        }
                     ?>
-                    <!-- /display-articles?idArticle=".($value["id"])." -->
                 </tbody>
             </table>
             
@@ -64,11 +62,8 @@
             ?>
     </div>
            
-            <script type="text/javascript" src="framework/src/js/int-datatables.js"></script>
-            <script type="text/javascript" src="framework/src/js/modal.js"></script>
+<script type="text/javascript" src="framework/src/js/int-datatables.js"></script>
+<script type="text/javascript" src="framework/src/js/modal.js"></script>
             
-            
-
-            <!-- <script type="text/javascript" src="framework/src/js/Ajax.js"></script> -->
 
        

@@ -619,6 +619,10 @@ body {
   text-decoration: none;
 }
 
+.flex-category-form {
+  display: flex;
+}
+
 .titre-article {
   font-size: 25px;
 }

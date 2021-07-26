@@ -13,7 +13,6 @@ class Mailer{
         $mail = new PHPMailer();
     
         try{
-            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $mail->IsSMTP();
             $mail->SMTPAuth = true; 
     
@@ -22,9 +21,6 @@ class Mailer{
             $mail->Port = 465;
             $mail->Username = 'teachr.contact.pa@gmail.com';
             $mail->Password = PHPMailer::PWD;  
-    
-    //   $path = 'reseller.pdf';
-    //   $mail->AddAttachment($path);
     
             $mail->IsHTML(true);
             $mail->From=$_POST["email"];
@@ -37,21 +33,18 @@ class Mailer{
             return $mail->send();
             
             
-            //echo "<script>alert(\"L\'invitation a bien été envoyée\")</script>";
         } catch (Exception $e){
                 echo "Le message n'a pas pu être envoyé. Mailer Error: {$mail->ErrorInfo}";
         }
     }
 
-// require 'vendor/autoload.php';
-// echo !extension_loaded('openssl')?"Not available":"Available";
 
 
     public function sendMailUser(){
 
         $mail = new PHPMailer(true);
             try{
-                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                
                 $mail->isSMTP();
                 $mail->Host = 'ssl://smtp.gmail.com';
                 $mail->SMTPAuth = true;

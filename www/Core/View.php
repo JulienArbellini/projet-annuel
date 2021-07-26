@@ -7,7 +7,7 @@ use App\Core\Form;
 class View
 {
 	private $template; 
-	private $view; // default, dashboard, profile, ....
+	private $view;
 	private $data = [];
 
 	public function __construct($view="default", $template="back"){
@@ -43,7 +43,6 @@ class View
 
 
 	public function __destruct(){
-		// $this->data = ["pseudo"=>"Prof"];  ----> $pseudo = "Prof";
 			extract($this->data);
 			if (is_null($this->template)){
 				include $this->view;

@@ -14,10 +14,9 @@
                         <input type="text" id="add-page-title"  name="add-page-title" placeholder="Titre" style="display: none;">
                         <input type="text" id="add-page-slug"  name="add-page-slug" placeholder="/slug" style="display: none;">
                         <input type="hidden" name="id_user_page" value="<?php echo $_SESSION['idUserConnected'][0]["id"]?>">
-
-                        <!-- <div class="button-form-page-position"> -->
-                            <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
-                            <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="document.location.reload()">Enregistrer</button>
+                
+                        <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
+                        <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="document.location.reload()">Enregistrer</button>
                     </div>
                 </form>
         </div>
@@ -76,8 +75,6 @@
                     echo $modal;
                 }
             ?>
- <!-- <button class=\"\" onclick=\"window.location.href='/pages?id=".($value['id'])."'\">Supprimer</button> -->
- <!-- <button class=\"\" onclick=\"refresh(".$value['id'].")\">Supprimer</button> -->
     </div>
 </div>
 
