@@ -17,7 +17,7 @@
     <h3>Comment changer mon mot de passe ?</h3><br />
 
     <div class="shadow-box-square">
-        <p class="text-faq">Cliquez sur votre nom en haut à droite de votre écran, vous accèderez aux réglages de votre profil.<br />
+        <p class="text-faq">Cliquez sur votre nom en haut à droite de votre écran, vous accéderez aux réglages de votre profil.<br />
             Vous pourrez changer votre mot de passe dans l'onglet "Réglages".
         </p>
     </div>

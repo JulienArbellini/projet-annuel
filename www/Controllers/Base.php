@@ -17,7 +17,10 @@ use App\Models\category_has_Article;
 
 class Base{
 
-	//Must be connected
+	/* ----- DASHBOARD ----- */
+
+	// Must be connected
+
 	public function dashboardAction(){
 		
 		$security = new Security(); 
@@ -46,6 +49,8 @@ class Base{
 		$notSpectateur = $userSpec->userSpectateur();		
 	
 	}
+
+	/* ----- ARTICLES ----- */
 
 	public function articlesAction(){
 		$view = new View("articles", "back");
@@ -91,6 +96,154 @@ class Base{
    		}
 
 	}
+
+	public function addArticleAction(){
+
+		$article = new Article();
+		$view = new View("addArticles", "back");
+		$article->getIdUserConnected();
+		$form = $article->buildFormAddArticle();
+		$view->assign("form", $form);
+
+
+		 if(!empty($_POST)){
+		 	$errors = AddArticleForm::validatorAddArticle($_POST, $form);
+
+			if(empty($errors)){
+				
+				$article->setTitle(htmlspecialchars($_POST["titre"]));
+				$article->setSlug(htmlspecialchars($_POST["slug"]));
+				$article->setContent($_POST["contenu"]);
+				$article->setCreatedAt(date("Y-m-d H:i:s"));
+				$article->setIdUser(htmlspecialchars($_POST["auteur"]));
+				$article->save();
+
+			}else{
+				$view->assign("formErrors", $errors);
+			}
+
+		}
+	}
+
+	/* ----- PAGES ----- */
+
+	public function pagesAction(){
+		$view = new View("pages", "back");
+		$page = new Page();
+		$userSpec = new User();
+		$page->connectedUserId();
+		
+
+		$page->deletePage();
+
+		if(!empty($_POST)){
+			$page->setTitle(htmlspecialchars($_POST["add-page-title"]));
+			$page->setSlug(htmlspecialchars($_POST["add-page-slug"]));
+			$page->setCreatedAt(date("Y-m-d H:i:s"));
+			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
+			$page->save();
+		}
+
+		$donnees = $page->getPage();
+		$view->assign("donnees", $donnees);
+
+		$notSpectateur = $userSpec->userSpectateur();
+		$view->assign("notSpectateur", $notSpectateur);
+
+	}
+
+	/* ----- CATEGORIES ----- */
+
+	public function categoriesAction(){
+		$view = new View("Categories", "back");
+		$categorie = new Category();
+		$userSpec = new User();
+
+		$categorie->deleteCategorie();
+
+		if(!empty($_POST)){
+			$categorie->setCategoryName(htmlspecialchars($_POST["add-category"]));
+			$categorie->save();
+		}
+
+		$categorie_data = $categorie->getcategoriesArticles();
+		$view->assign("categorie_data", $categorie_data);
+
+		$notSpectateur = $userSpec->userSpectateur();
+		$view->assign("notSpectateur", $notSpectateur);
+	}
+
+	public function editCategorieAction(){
+		$view = new View("infoCategorie", "back");
+		$categorie = new Category();
+
+		$list_articles = $categorie->listArticleCategorie();
+		$view->assign("list_articles", $list_articles);
+
+		$titleCategorie = $categorie->getTitleCategorie();
+		$view->assign("titleCategorie", $titleCategorie);
+
+		if(!empty($_POST)){
+			$categorie->setId($_GET["idCategorie"]);
+			$categorie->setCategoryName(htmlspecialchars($_POST["titre-categorie"]));
+			$categorie->save();
+		}
+	}
+
+	/* ----- APPARENCE ----- */
+
+	public function apparenceAction(){
+		$view = new View("apparence", "front");
+		$page = new Page();
+		$page->connectedUserId();
+
+		if(!empty($_POST) && !empty($_GET['idPage'])){ 
+			$page->setId($_GET['idPage']);
+			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
+			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
+			$page->setContent($_POST["affichage-page"]);
+			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
+
+			if(!empty($_POST['pageAccueil'])){
+				$page->setPageAccueil("1");
+			}
+			else{
+				$page->setPageAccueil("0");
+			}
+			$page->save();
+
+			$page->updatePageAccueil();
+
+	   }
+
+	   if(!empty($_POST) && empty($_GET['idPage'])){
+
+			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
+			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
+			$page->setContent($_POST["affichage-page"]);
+			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
+
+			if(!empty($_POST['pageAccueil'])){
+				$page->setPageAccueil("1");
+			}
+			else{
+				$page->setPageAccueil("0");
+			}
+			$page->save();
+
+			$page->updatePageAccueil();
+	   }
+
+	   $page->checkboxState();
+
+	   $page->definirPageAccueil();
+
+	   $data = $page->getContentPage();
+	   $view->assign("data", $data);
+
+	}
+
+	/* ----- UTILISATEURS ----- */
 
 	public function usersAction(){
 		$view = new View("users", "back");
@@ -152,116 +305,15 @@ class Base{
 
 	}
 
-	public function addArticleAction(){
 
-		$article = new Article();
-		$view = new View("addArticles", "back");
-		$article->getIdUserConnected();
-		$form = $article->buildFormAddArticle();
-		$view->assign("form", $form);
-
-
-		 if(!empty($_POST)){
-		 	$errors = AddArticleForm::validatorAddArticle($_POST, $form);
-
-			if(empty($errors)){
-				
-				$article->setTitle(htmlspecialchars($_POST["titre"]));
-				$article->setSlug(htmlspecialchars($_POST["slug"]));
-				$article->setContent($_POST["contenu"]);
-				$article->setCreatedAt(date("Y-m-d H:i:s"));
-				$article->setIdUser(htmlspecialchars($_POST["auteur"]));
-				$article->save();
-
-			}else{
-				$view->assign("formErrors", $errors);
-			}
-
-		}
-	}
-
-	public function pagesAction(){
-		$view = new View("pages", "back");
-		$page = new Page();
-		$userSpec = new User();
-		$page->connectedUserId();
-		
-
-		$page->deletePage();
-
-		if(!empty($_POST)){
-			$page->setTitle(htmlspecialchars($_POST["add-page-title"]));
-			$page->setSlug(htmlspecialchars($_POST["add-page-slug"]));
-			$page->setCreatedAt(date("Y-m-d H:i:s"));
-			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
-			$page->save();
-		}
-
-		$donnees = $page->getPage();
-		$view->assign("donnees", $donnees);
-
-		$notSpectateur = $userSpec->userSpectateur();
-		$view->assign("notSpectateur", $notSpectateur);
-
-	}
-
-
-	public function apparenceAction(){
-		$view = new View("apparence", "front");
-		$page = new Page();
-		$page->connectedUserId();
-
-		if(!empty($_POST) && !empty($_GET['idPage'])){ 
-			$page->setId($_GET['idPage']);
-			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
-			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
-			$page->setContent($_POST["affichage-page"]);
-			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
-
-			if(!empty($_POST['pageAccueil'])){
-				$page->setPageAccueil("1");
-			}
-			else{
-				$page->setPageAccueil("0");
-			}
-			$page->save();
-
-			$page->updatePageAccueil();
-
-	   }
-
-	   if(!empty($_POST) && empty($_GET['idPage'])){
-
-			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
-			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
-			$page->setContent($_POST["affichage-page"]);
-			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
-
-			if(!empty($_POST['pageAccueil'])){
-				$page->setPageAccueil("1");
-			}
-			else{
-				$page->setPageAccueil("0");
-			}
-			$page->save();
-
-			$page->updatePageAccueil();
-	   }
-
-	   $page->checkboxState();
-
-	   $page->definirPageAccueil();
-
-	   $data = $page->getContentPage();
-	   $view->assign("data", $data);
-
-
-	}
+	/* ----- ROUTING ARTICLES & PAGES ----- */
 
 	public function routesPagesArticlesAction(){
 		$article = new Article();
 		$article->routingPagesArticles();
 	}
+
+	/* ----- PROFIL ----- */
 
 	public function profileAction(){
 		$user = new User();
@@ -341,44 +393,10 @@ class Base{
 			
 	}
 
+	/* ----- FAQ ----- */
+
 	public function FAQAction(){
 		$view = new View("FAQ", "back");
-	}
-
-	public function categoriesAction(){
-		$view = new View("Categories", "back");
-		$categorie = new Category();
-		$userSpec = new User();
-
-		$categorie->deleteCategorie();
-
-		if(!empty($_POST)){
-			$categorie->setCategoryName(htmlspecialchars($_POST["add-category"]));
-			$categorie->save();
-		}
-
-		$categorie_data = $categorie->getcategoriesArticles();
-		$view->assign("categorie_data", $categorie_data);
-
-		$notSpectateur = $userSpec->userSpectateur();
-		$view->assign("notSpectateur", $notSpectateur);
-	}
-
-	public function editCategorieAction(){
-		$view = new View("infoCategorie", "back");
-		$categorie = new Category();
-
-		$list_articles = $categorie->listArticleCategorie();
-		$view->assign("list_articles", $list_articles);
-
-		$titleCategorie = $categorie->getTitleCategorie();
-		$view->assign("titleCategorie", $titleCategorie);
-
-		if(!empty($_POST)){
-			$categorie->setId($_GET["idCategorie"]);
-			$categorie->setCategoryName(htmlspecialchars($_POST["titre-categorie"]));
-			$categorie->save();
-		}
 	}
 
 }

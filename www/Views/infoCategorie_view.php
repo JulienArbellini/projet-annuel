@@ -4,7 +4,7 @@
                 <div class="button-form-page-position col-m-center">
                     <input type="text" class="form__field" name="titre-categorie" value="<?php echo $titleCategorie[0]["category_name"]?>" <?php if($titleCategorie[0]["category_name"] == "Non catégorisé"){echo "disabled";} ?>/>
 
-                    <input type="submit" class="button-apparence" value="Enregistrer">
+                    <input type="submit" class="button-apparence" value="Enregistrer" <?php if($titleCategorie[0]["category_name"] == "Non catégorisé"){echo "style='display:none;'";} ?> />
                 </div>
             </form>
         </div>

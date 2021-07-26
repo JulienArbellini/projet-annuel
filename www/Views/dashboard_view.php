@@ -230,13 +230,13 @@
 					<h2>Comment ajouter une page à votre site ?</h2>
 				</div>
 				<div class="four-answer">
-					<p>Cliquez sur l’icone “+” situé à droite de la page. </p>
+					<p>Sur la page "pages" cliquez sur le bouton "ajouter" et renseignez les informations sur votre page...</p>
 				</div>
 				<div class="four-question">
-					<h2>Comment changer le thème de la page ?</h2>
+					<h2>Comment changer mon mot de passe ?</h2>
 				</div>
 				<div class="four-answer">
-					<p>Cliquez sur l’onglet “Thèmes” à sur la barre de navigation.</p>
+					<p>Cliquez sur votre nom en haut à droite de votre écran, vous accéderez aux réglages de votre profil...</p>
 				</div>	
 			</div>
 			

@@ -66,9 +66,8 @@ class Mailer{
                                                 <li> - Identifiant : '.$_SESSION['tab'][0]['email'].'</li>
                                                 <li> - Code de confirmation : '.$_SESSION['tab'][0]['code_confirmation_mdp'].'</li>
                                             </ol>
-                                            <p style="color: red; font-weight: bold;">Attention ce code est temporaire, il sert uniquement à la création d\'un mot de passe et ne peut être utilisé qu\'une seule fois ! </p></br>
+                                            <p style="color: red; font-weight: bold;">Attention ce code est temporaire (3 heures), il sert uniquement à la création d\'un mot de passe et ne peut être utilisé qu\'une seule fois ! </p></br>
                                             <p>Toute l\'équipe vous souhaite la bienvenue sur teachr</br><p>
-                                            <p>https://teachr.com</p>
                                     </body>
                                 </html>';
                 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';

@@ -1,9 +1,8 @@
 <?php
 
-
 namespace App\Core;
-use App\Core\Form;
 
+use App\Core\Form;
 use App\Models\User;
 
 $mailexists = 0;
@@ -34,10 +33,8 @@ class Database
 		$this->table = DBPREFIX.end($classExploded);
 		$this->table=strtolower($this->table);
 	}
-
-
 	
-
+	/* ----- METHODE SAVE ----- */
 
 	public function save(){
 
@@ -76,6 +73,8 @@ class Database
 		
 	}
 
+	/* ----- ARTICLES ----- */ 
+
 	public function getArticle(){
 
 		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u
@@ -86,6 +85,8 @@ class Database
 		return $donnees;
 
 	}
+
+	/* ----- GESTION DES MOTS DE PASSE ----- */
 
 	public function createConfirmationKey($password, $email){
 		$this->pdo->query("UPDATE tr_user SET code_confirmation_mdp="."'".$password."'". "WHERE email="."'".$email."'");
@@ -103,21 +104,6 @@ class Database
 			return false;
 		}
 	}
-
-	public function connectedOn($email){
-		$this->pdo->query("UPDATE tr_user SET connected= 1 WHERE email="."'".$email."'");
-	}
-
-	public function connectedOff(){
-        $this->pdo->query("UPDATE tr_user SET connected= 0 WHERE id=".$_GET['id']);
-    }
-
-	public function connectedUserId(){
-        $query=$this->pdo->prepare("SELECT id FROM tr_user WHERE connected=1");
-        $query->execute();
-        $_SESSION['idUserConnected']= $query->fetchall();
-    }
-
 
 	public function checkConfirmationKeyTmtp($confirmationKey){ 
 		$check = $this->pdo->prepare("SELECT confirmationKeyTmtp FROM tr_user WHERE code_confirmation_mdp = ?");
@@ -138,28 +124,12 @@ class Database
 		
 	}
 
-	public function getUserId($confirmationKey){
-		$id = $this->pdo->prepare("SELECT id FROM tr_user WHERE code_confirmation_mdp = "."'".$confirmationKey."'");
-		$id->execute();
-		$result = $id->fetch(\PDO::FETCH_ASSOC);
-		return $result['id'];
+	public function deleteConfirmationKey($confirmationKey, $id){
+		$this->pdo->query("UPDATE tr_user SET code_confirmation_mdp = NULL WHERE id = " . "'".$id."'"." AND code_confirmation_mdp = " . "'".$confirmationKey."'"."");
 	}
 
 	public function updatePwd($id, $pwd){
 		$this->pdo->query("UPDATE tr_user SET password="."'".password_hash($pwd, PASSWORD_DEFAULT)."'". "WHERE id="."'".$id."'");
-	}
-
-	public function verifMail(){
-		if(isset($_POST['email'])){
-			$email = $_POST['email'];
-			$reqmail = $this->pdo->prepare('SELECT id FROM tr_user WHERE email = ?');
-			$reqmail->execute(array($email));			
-			if($reqmail->rowCount() > 0) {
-				return 1;
-			}else{
-				return 0;
-			}
-		}
 	}
 
 	public function checkPwd($pwd_request, $email){
@@ -176,8 +146,46 @@ class Database
 
 	}
 
-	public function deleteConfirmationKey($confirmationKey, $id){
-		$this->pdo->query("UPDATE tr_user SET code_confirmation_mdp = NULL WHERE id = " . "'".$id."'"." AND code_confirmation_mdp = " . "'".$confirmationKey."'"."");
+	/* ------ GESTION CONNEXION UTILISATEUR ----- */
+
+	public function connectedOn($email){
+		$this->pdo->query("UPDATE tr_user SET connected= 1 WHERE email="."'".$email."'");
+	}
+
+	public function connectedUserId(){
+        $query=$this->pdo->prepare("SELECT id FROM tr_user WHERE connected=1");
+        $query->execute();
+        $_SESSION['idUserConnected']= $query->fetchall();
+    }
+
+	/* ------ GESTION DECONNEXION UTILISATEUR ----- */
+
+	public function connectedOff(){
+        $this->pdo->query("UPDATE tr_user SET connected= 0 WHERE id=".$_GET['id']);
+    }
+
+
+	/* ----- GESTION UTILISATEUR ----- */
+
+	public function getUserId($confirmationKey){
+		$id = $this->pdo->prepare("SELECT id FROM tr_user WHERE code_confirmation_mdp = "."'".$confirmationKey."'");
+		$id->execute();
+		$result = $id->fetch(\PDO::FETCH_ASSOC);
+		return $result['id'];
+	}
+
+
+	public function verifMail(){
+		if(isset($_POST['email'])){
+			$email = $_POST['email'];
+			$reqmail = $this->pdo->prepare('SELECT id FROM tr_user WHERE email = ?');
+			$reqmail->execute(array($email));			
+			if($reqmail->rowCount() > 0) {
+				return 1;
+			}else{
+				return 0;
+			}
+		}
 	}
 
 	public function getPseudo($email){
@@ -194,31 +202,72 @@ class Database
         return $result['firstname'];
     }
 
-	public function deleteArticle(){
+	public function verifMailUniq(){
+		global $mailexists;
+		$email = $_POST["email"];
+		$reqmail = $this->pdo->prepare('SELECT id FROM tr_user WHERE email = ?');
+        $reqmail->execute(array($email));
+         if($reqmail->rowCount() > 0) {
+			 $mailexists = 1;
+		 }
+	}
 
-		if(!empty($_GET['id'])){
-			$Del_Id = $_GET['id'];
+	public function getIdUserConnected(){
+		$query = $this->pdo->prepare("SELECT id FROM tr_user WHERE connected = 1");
+		$query->execute();
+		$_SESSION['connectedUser'] = $query->fetchall();
+	}
 
-			$query = $this->pdo->prepare("DELETE FROM tr_category_has_Article WHERE Article_idArticle= :del_id");
-			$query->bindvalue(':del_id', $Del_Id);
+	public function getUserByMail($email):User{
+		$query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE email = ?");
+		$query->execute(array($email));
+		$result = $query->fetchAll(\PDO::FETCH_ASSOC);
+		$data = $result[0];
+		$user = new User();
+		foreach ($data as $key => $value) {
+			$id = $user->setId($data['id']);
+			$user->setLastname($data['lastname']);
+			$user->setFirstname($data['firstname']);
+			$user->setEmail($data['email']);
+			$user->setPwd($data['password']);
+			$user->setPseudo($data['pseudo']);
+			$user->setCreatedAtUser($data['createdAtUser']);
+			$user->setRole($data['Role_idRole']);
+			$user->setConfirmation($data['confirmation']);
+			$user->setConfirmKey($data['confirmkey']);
+			$user->setAvatar($data['avatar']);
+		}
+		return $user;
+	}
+
+	public function userDelete(){
+		if(!empty($_GET['deleteId'])){
+			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id = :delete_id");
+			$query->bindValue(':delete_id', $_GET['deleteId']);
 			$query->execute();
+		}
+    }
 
-			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id= :del_id");
-			$query2->bindValue(':del_id', $Del_Id);
-			$query2->execute();
+	public function updateUser(){
+		if(!empty($_GET['updateId'])){
+			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = :lastname, firstname = :firstname, pseudo= :pseudo, Role_idRole = :Role_idRole WHERE id = :id");
+			$query->bindValue(':lastname', $_POST["lastname"]);
+			$query->bindValue(':firstname', $_POST["firstname"]);
+			$query->bindValue(':pseudo', $_POST["pseudo"]);
+			$query->bindValue(':Role_idRole', $_POST["role"]);
+			$query->bindValue(':id', $_GET['updateId']);
+			$query->execute();
 		}
 	}
 
-	public function getContent(){
-		if(!empty($_GET['idArticle'])){
-			$id = $_GET['idArticle'];
-			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE id = :id");
-			$query->bindValue(':id', $id);
-			$query->execute();
-			$data = $query->fetchall();
-			return $data;
-		}
+	public function userMail(){
+		$query = $this->pdo->prepare("SELECT email, pseudo, code_confirmation_mdp FROM ".$this->table." WHERE id = (SELECT MAX(id) FROM ".$this->table.")");
+		$query->execute();
+		$_SESSION['tab'] = $query->fetchall();
+		return $_SESSION['tab'];
 	}
+
+	/* ----- CONFIRMATION DE COMPTE ----- */
 
 	public function confirmation(){
 
@@ -261,24 +310,63 @@ class Database
 		}
 	}
 
-	public function verifMailUniq(){
-		global $mailexists;
-		$email = $_POST["email"];
-		$reqmail = $this->pdo->prepare('SELECT id FROM tr_user WHERE email = ?');
-        $reqmail->execute(array($email));
-         if($reqmail->rowCount() > 0) {
-			 $mailexists = 1;
-		 }
+
+	/* ----- ARTICLES ----- */
+	
+	public function deleteArticle(){
+
+		if(!empty($_GET['id'])){
+			$Del_Id = $_GET['id'];
+
+			$query = $this->pdo->prepare("DELETE FROM tr_category_has_Article WHERE Article_idArticle= :del_id");
+			$query->bindvalue(':del_id', $Del_Id);
+			$query->execute();
+
+			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id= :del_id");
+			$query2->bindValue(':del_id', $Del_Id);
+			$query2->execute();
+		}
 	}
+
+	public function getContent(){
+		if(!empty($_GET['idArticle'])){
+			$id = $_GET['idArticle'];
+			$query = $this->pdo->prepare("SELECT content, title, slug FROM tr_article WHERE id = :id");
+			$query->bindValue(':id', $id);
+			$query->execute();
+			$data = $query->fetchall();
+			return $data;
+		}
+	}
+
+	
+	/* ----- GESTION DES ROLES ----- */
+	
 	public function roleShow(){
 		$query = $this->pdo->prepare("SELECT * FROM tr_role");
 		$query->execute();
 		$donnees = $query->fetchall();
 		return $donnees;
 	}
+
+	public function userAdminConnect() {
+		$query = $this->pdo->prepare("SELECT email, pseudo, firstname, lastname FROM ".$this->table." WHERE connected = :connected AND Role_idRole = :role");
+		$query->bindValue(':connected', 1);
+		$query->bindValue(':role', 1);
+		$query->execute();
+		$_SESSION['gestionRole'] = $query->fetchall();
+		return $_SESSION['gestionRole'];
+	}
+
+	public function userSpectateur() {
+		$query = $this->pdo->prepare("SELECT * FROM " .$this->table." WHERE connected = :connected AND NOT Role_idRole = :role");
+		$query->bindValue(':connected', 1);
+		$query->bindValue(':role', 3);
+		$query->execute();
+		$_SESSION['notSpectateur'] = $query->fetchall();
+		return $_SESSION['notSpectateur'];
+	}
 	
-
-
 	public function requestRole(){
 		$query = $this->pdo->prepare("SELECT * FROM tr_role as r INNER JOIN ".$this->table. " as u ON r.id = u.role_idRole WHERE NOT connected = :connected");
 		$query->bindValue(':connected', 1);
@@ -287,33 +375,8 @@ class Database
 		return $donnees;
 	}
 
-	public function userDelete(){
-		if(!empty($_GET['deleteId'])){
-			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id = :delete_id");
-			$query->bindValue(':delete_id', $_GET['deleteId']);
-			$query->execute();
-		}
-    }
-
-	public function userMail(){
-		$query = $this->pdo->prepare("SELECT email, pseudo, code_confirmation_mdp FROM ".$this->table." WHERE id = (SELECT MAX(id) FROM ".$this->table.")");
-		$query->execute();
-		$_SESSION['tab'] = $query->fetchall();
-		return $_SESSION['tab'];
-	}
-
-	public function updateUser(){
-		if(!empty($_GET['updateId'])){
-			$query = $this->pdo->prepare("UPDATE " .$this->table. " SET lastname = :lastname, firstname = :firstname, pseudo= :pseudo, Role_idRole = :Role_idRole WHERE id = :id");
-			$query->bindValue(':lastname', $_POST["lastname"]);
-			$query->bindValue(':firstname', $_POST["firstname"]);
-			$query->bindValue(':pseudo', $_POST["pseudo"]);
-			$query->bindValue(':Role_idRole', $_POST["role"]);
-			$query->bindValue(':id', $_GET['updateId']);
-			$query->execute();
-		}
-	}
-
+	/* ----- DASHBOARD ----- */
+	
 	public function getNumberofPage(){
 		$query = $this->pdo->prepare("SELECT COUNT(*) AS nb FROM tr_page");
 		$query->execute();
@@ -363,23 +426,7 @@ class Database
 		return $donnees;
 	}
 
-	public function userAdminConnect() {
-		$query = $this->pdo->prepare("SELECT email, pseudo, firstname, lastname FROM ".$this->table." WHERE connected = :connected AND Role_idRole = :role");
-		$query->bindValue(':connected', 1);
-		$query->bindValue(':role', 1);
-		$query->execute();
-		$_SESSION['gestionRole'] = $query->fetchall();
-		return $_SESSION['gestionRole'];
-	}
-
-	public function userSpectateur() {
-		$query = $this->pdo->prepare("SELECT * FROM " .$this->table." WHERE connected = :connected AND NOT Role_idRole = :role");
-		$query->bindValue(':connected', 1);
-		$query->bindValue(':role', 3);
-		$query->execute();
-		$_SESSION['notSpectateur'] = $query->fetchall();
-		return $_SESSION['notSpectateur'];
-	}
+	/* ----- PAGES ----- */
 
 	public function getPage(){
 		$query = $this->pdo->prepare("SELECT * FROM tr_user AS u
@@ -461,11 +508,7 @@ class Database
 		}
 	}
 
-	public function getIdUserConnected(){
-		$query = $this->pdo->prepare("SELECT id FROM tr_user WHERE connected = 1");
-		$query->execute();
-		$_SESSION['connectedUser'] = $query->fetchall();
-	}
+	/* ----- ROUTING PAGES & ARTICLES ----- */
 
 	public function routingPagesArticles(){
 		$slug = $_SESSION["uri"];
@@ -520,9 +563,7 @@ class Database
 		
 	}
 
-	
-
-
+	/* ----- GESTION DE PROFIL ----- */
 
 	public function recupDataProfile() {
 		$id = $_SESSION['id'];
@@ -532,32 +573,12 @@ class Database
 		return $data;
 	}
 
-	public function getUserByMail($email):User{
-		$query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE email = ?");
-		$query->execute(array($email));
-		$result = $query->fetchAll(\PDO::FETCH_ASSOC);
-		$data = $result[0];
-		$user = new User();
-		foreach ($data as $key => $value) {
-			$id = $user->setId($data['id']);
-			$user->setLastname($data['lastname']);
-			$user->setFirstname($data['firstname']);
-			$user->setEmail($data['email']);
-			$user->setPwd($data['password']);
-			$user->setPseudo($data['pseudo']);
-			$user->setCreatedAtUser($data['createdAtUser']);
-			$user->setRole($data['Role_idRole']);
-			$user->setConfirmation($data['confirmation']);
-			$user->setConfirmKey($data['confirmkey']);
-			$user->setAvatar($data['avatar']);
-		}
-		return $user;
-	}
-
 	public function uploadAvatar($avatar, $id) {
 		$query = $this->pdo->prepare("UPDATE tr_user SET avatar = ? WHERE id = ?");
 		$query->execute(array($avatar, $id));
 	}
+
+	/* ----- CATEGORIES ----- */
 
 	public function getcategoriesArticles(){
 		$query = $this->pdo->prepare("SELECT * FROM tr_category");
@@ -570,7 +591,7 @@ class Database
 		if(!empty($_GET['id'])){
 			$Del_Id = $_GET['id'];
 
-			$query = $this->pdo->prepare("UPDATE `tr_category_has_Article` SET `Category_idCategory`= 10 WHERE Category_idCategory = :del_id");
+			$query = $this->pdo->prepare("UPDATE `tr_category_has_Article` SET `Category_idCategory`= 1 WHERE Category_idCategory = :del_id");
 			$query->bindValue(':del_id', $Del_Id);
 			$query->execute();
 
