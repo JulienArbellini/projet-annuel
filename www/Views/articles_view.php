@@ -64,8 +64,8 @@
             ?>
     </div>
            
-            <script type="text/javascript" src="framework/src/js/int-datatables.js"></script>
-            <script type="text/javascript" src="framework/src/js/modal.js"></script>
+    <script type="text/javascript" src="framework/src/js/int-datatables.js"></script>
+    <script type="text/javascript" src="framework/src/js/modal.js"></script>
             
             
 

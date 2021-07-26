@@ -206,13 +206,16 @@ class Database
 
 	public function deleteArticle(){
 
-
-
 		if(!empty($_GET['id'])){
 			$Del_Id = $_GET['id'];
-			$query = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id= :del_id");
-			$query->bindValue(':del_id', $Del_Id);
+
+			$query = $this->pdo->prepare("DELETE FROM tr_category_has_Article WHERE Article_idArticle= :del_id");
+			$query->bindvalue(':del_id', $Del_Id);
 			$query->execute();
+
+			$query2 = $this->pdo->prepare("DELETE FROM ".$this->table." WHERE id= :del_id");
+			$query2->bindValue(':del_id', $Del_Id);
+			$query2->execute();
 		}
 	}
 
@@ -579,6 +582,63 @@ class Database
 		// 	array(($nom.".".$extensionUpload), $_SESSION['id']));
 		$query = $this->pdo->prepare("UPDATE tr_user SET avatar = ? WHERE id = ?");
 		$query->execute(array($avatar, $id));
+	}
+
+	public function getcategoriesArticles(){
+		$query = $this->pdo->prepare("SELECT * FROM tr_category");
+		$query->execute();
+		$categorie_data = $query->fetchall();
+		return $categorie_data;
+	}
+
+	public function deleteCategorie(){
+		if(!empty($_GET['id'])){
+			$Del_Id = $_GET['id'];
+
+			$query = $this->pdo->prepare("UPDATE `tr_category_has_Article` SET `Category_idCategory`= 10 WHERE Category_idCategory = :del_id");
+			$query->bindValue(':del_id', $Del_Id);
+			$query->execute();
+
+			$query2 = $this->pdo->prepare("DELETE FROM tr_category WHERE id= :del_id");
+			$query2->bindValue(':del_id', $Del_Id);
+			$query2->execute();
+		}
+	}
+
+	public function listArticleCategorie(){
+		if(!empty($_GET['idCategorie'])){
+			$idCategorie = $_GET['idCategorie'];
+			$query = $this->pdo->prepare("SELECT *
+										  FROM tr_category AS c
+										  INNER JOIN tr_category_has_Article AS l ON c.id = l.Category_idCategory
+										  INNER JOIN tr_Article AS a ON a.id = l.Article_idArticle
+										  WHERE c.id =".$idCategorie
+										);
+			$query->execute();
+			$list_articles = $query->fetchall();
+			return $list_articles;
+		}
+	}
+
+	public function getTitleCategorie(){
+		if(!empty($_GET['idCategorie'])){
+			$idCategorie = $_GET['idCategorie'];
+			$query = $this->pdo->prepare("SELECT category_name FROM tr_category WHERE id = :idCat");
+			$query->bindValue(':idCat', $idCategorie);
+			$query->execute();
+			$titleCategorie = $query->fetchall();
+			return $titleCategorie;
+		}
+	}
+
+
+	public function saveCategorie(){
+		if(!empty($_POST["categories"]) && !empty($_GET["idArticle"])){
+			$Articleid = $_GET["idArticle"];
+			$query = $this->pdo->prepare("UPDATE `tr_category_has_Article` SET `Category_idCategory`=".$_POST["categories"]." WHERE Article_idArticle = :article_id");
+			$query->bindValue(':article_id', $Articleid);
+			$query->execute();
+		}
 	}
 
 	

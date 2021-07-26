@@ -129,6 +129,9 @@
                     <a href="/articles" class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/articles'|| $_SESSION["uri"]=='/articles-add' || $_SESSION["uri"]=='/articles-edit'){echo 'actual-page';}?>">
                             <div class="col-m-8"><div href="/articles" class="link-left-nav">Articles</div></div>
                     </a>
+                    <a href="/categories" class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/categories'){echo 'actual-page';}?>">
+                            <div class="col-m-8"><div href="/categories" class="link-left-nav">Catégories</div></div>
+                    </a>
                     <a href="/pages" class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/pages'){echo 'actual-page';}?>">
                             <div class="col-m-8"><div class="link-left-nav">Pages</div></div>
                     </a>
