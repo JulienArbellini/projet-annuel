@@ -1,16 +1,20 @@
 <?php
-        // session_start();
-        if (!($_SESSION['loggedIn'])){
-                header('Location:/login');
-        } 
-        if(isset($_GET['deconnexion']))
-        { 
-           if($_GET['deconnexion']==true)
-           {  
-              session_unset();
-              header('Location: \login');
-           }
-        }
+     // session_start();
+     if (file_exists('install.php')){
+          header('Location:/install.php');
+     }else{
+          if (!($_SESSION['loggedIn'])){
+               header('Location:/login');
+          } 
+          if(isset($_GET['deconnexion']))
+          { 
+               if($_GET['deconnexion']==true)
+               {  
+                    session_unset();
+                    header('Location: \login');
+               }
+          }
+     }
 ?>
    
 <!DOCTYPE html>
@@ -18,8 +22,8 @@
 	<head>
                 <meta charset="iso-8859-1">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Template de Back</title>
-                <meta name="description" content="ceci est la page de template">
+                <title>Teach'r</title>
+                <meta name="description" content="Backoffice Teach'r">
                 <link rel="stylesheet" href="framework/dist/main.css">
 
                 <link rel="stylesheet" href="framework/dist/main.css">
