@@ -1,10 +1,8 @@
-//Mediaqueries etc
 #content{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // margin-left: 220px; 
     margin-top: 50px;
 }
 
@@ -49,5 +47,9 @@
 .link-add-article{
     color: black;
     text-decoration: none;
+}
+
+.flex-category-form{
+    display: flex;
 }
 

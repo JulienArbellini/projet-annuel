@@ -18,8 +18,6 @@ use App\Models\category_has_Article;
 class Base{
 
 
-	
-
 	//Must be connected
 	public function dashboardAction(){
 		
@@ -28,8 +26,6 @@ class Base{
 			die("Error not authorized");
 		}
 
-
-		//Affiche moi la vue dashboard;
 		$view = new View("dashboard", "back");
 
 		$page = new Page();
@@ -45,12 +41,10 @@ class Base{
 		$lastUser = $user->getLastUser();
 		$connectedUser = $user->getIdUserConnected();
 		$profilPhotoCheck = $user->checkPhoto($_SESSION['id']);
-		// var_dump($profilPhotoCheck);
 		$view->assign("donnees", [$numberOfPage, $numberOfArticle, $lastPage, $lastArticle, $lastUser, $numberOfUser, $profilPhotoCheck]);
 
 		$page->definirPageAccueil();
 		$notSpectateur = $userSpec->userSpectateur();		
-		// session_start();	
 	
 	}
 
@@ -177,7 +171,6 @@ class Base{
 				$article->setSlug(htmlspecialchars($_POST["slug"]));
 				$article->setContent($_POST["contenu"]);
 				$article->setCreatedAt(date("Y-m-d H:i:s"));
-				// $article->setAuteur($_POST["auteur"]);
 				$article->setIdUser(htmlspecialchars($_POST["auteur"]));
 				$article->save();
 
@@ -198,7 +191,6 @@ class Base{
 		$page->deletePage();
 
 		if(!empty($_POST)){
-			//var_dump($_POST);
 			$page->setTitle(htmlspecialchars($_POST["add-page-title"]));
 			$page->setSlug(htmlspecialchars($_POST["add-page-slug"]));
 			$page->setCreatedAt(date("Y-m-d H:i:s"));
@@ -221,14 +213,11 @@ class Base{
 		$page->connectedUserId();
 
 		if(!empty($_POST) && !empty($_GET['idPage'])){ 
-			//echo "coucou";
 			$page->setId($_GET['idPage']);
 			$page->setTitle(htmlspecialchars($_POST["titre_page"]));
 			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
 			$page->setContent($_POST["affichage-page"]);
 			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
-
-			// $page->setPageAccueil($_POST["pageAccueil"]);
 
 			if(!empty($_POST['pageAccueil'])){
 				$page->setPageAccueil("1");
@@ -240,14 +229,7 @@ class Base{
 
 			$page->updatePageAccueil();
 
-			// $page->checkboxState();
 	   }
-
-	//    if(!empty($_GET['idPage'])){
-	// 		$page->checkboxState();
-	//    }
-
-	//    $page->checkboxState();
 
 	   if(!empty($_POST) && empty($_GET['idPage'])){
 
@@ -255,7 +237,6 @@ class Base{
 			$page->setSlug(htmlspecialchars($_POST["slugPage"]));
 			$page->setContent($_POST["affichage-page"]);
 			$page->setIdUser(htmlspecialchars($_POST["id_user_page"]));
-			// $page->setPageAccueil($_POST["pageAccueil"]);
 
 			if(!empty($_POST['pageAccueil'])){
 				$page->setPageAccueil("1");
@@ -266,8 +247,6 @@ class Base{
 			$page->save();
 
 			$page->updatePageAccueil();
-
-			// $page->checkboxState();
 	   }
 
 	   $page->checkboxState();
@@ -325,7 +304,7 @@ class Base{
 				$extension = strtolower(end($tabExtension));
 			
 				$extensions = ['jpg', 'png', 'jpeg', 'gif'];
-				// $maxSize = 400000;
+
 				$maxSize= 3221225472;
 			
 				if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
@@ -375,7 +354,6 @@ class Base{
 		$categorie->deleteCategorie();
 
 		if(!empty($_POST)){
-			//var_dump($_POST);
 			$categorie->setCategoryName(htmlspecialchars($_POST["add-category"]));
 			$categorie->save();
 		}
@@ -398,7 +376,7 @@ class Base{
 		$view->assign("titleCategorie", $titleCategorie);
 
 		if(!empty($_POST)){
-			$categorie->setId(htmlspecialchars($_POST["id_category"]));
+			$categorie->setId($_GET["idCategorie"]);
 			$categorie->setCategoryName(htmlspecialchars($_POST["titre-categorie"]));
 			$categorie->save();
 		}

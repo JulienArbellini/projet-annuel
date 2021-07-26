@@ -33,17 +33,19 @@
 
         <div class="col-m-12 col-m-center form__field_articles_input">
             <form method="post" class="update_form">
-                <label for="select-category">Catégories</label>
-                <select name="categories" id="select-category">
-                    <option>Choisir une catégorie</option>
-                    <?php foreach($list_category as $key => $value){?>
-                            <option value="<?php echo $value["id"] ?>"><?php echo $value['category_name'] ?></option>
-                    <?php       
-                        }
-                    ?>
-                </select>
-                
-                <input type="submit" value="Appliquer la catégorie" class="button-apparence"/>
+                <div class="flex-category-form">
+                    <label for="select-category">Catégories</label>
+                    <select name="categories" id="select-category">
+                        <option>Choisir une catégorie</option>
+                        <?php foreach($list_category as $key => $value){?>
+                                <option value="<?php echo $value["id"] ?>"><?php echo $value['category_name'] ?></option>
+                        <?php       
+                            }
+                        ?>
+                    </select>
+                    
+                    <input type="submit" value="Appliquer" class="button-formulaire-page"/>
+                </div>
             </form>
         </div>
     </div>
