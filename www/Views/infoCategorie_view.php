@@ -2,7 +2,7 @@
         <div class="col-m-3 col-m-center">
             <form method="post">
                 <div class="button-form-page-position col-m-center">
-                    <input type="text" class="form__field" name="titre-categorie" value="<?php echo $titleCategorie[0]["category_name"]?>"/>
+                    <input type="text" class="form__field" name="titre-categorie" value="<?php echo $titleCategorie[0]["category_name"]?>" <?php if($titleCategorie[0]["category_name"] == "Non catégorisé"){echo "disabled";} ?>/>
 
                     <input type="submit" class="button-apparence" value="Enregistrer">
                 </div>
