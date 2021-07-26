@@ -17,7 +17,6 @@ use App\Models\category_has_Article;
 
 class Base{
 
-
 	//Must be connected
 	public function dashboardAction(){
 		

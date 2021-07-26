@@ -1,5 +1,4 @@
 .affichage-article{
-    // background-color: white;
     height: 65vh;
     overflow: auto;
 }
@@ -8,26 +7,6 @@
     text-align: center;
 }
 
-/*
-Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
-*/
-
-// body
-// {
-// 	/* Font */
-// 	/* Emoji fonts are added to visualise them nicely in Internet Explorer. */
-// 	font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-// 	font-size: 12px;
-
-// 	/* Text color */
-// 	color: #333;
-
-// 	/* Remove the background color to make it transparent. */
-// 	background-color: #fff;
-
-// 	margin: 20px;
-// }
 .affichage-article > p{
     font-size: 14px;
 }
@@ -64,11 +43,6 @@ blockquote
 	padding-right: 20px;
 	border-right-width: 5px;
 }
-
-// a
-// {
-// 	color: #0782C1;
-// }
 
 ol,ul,dl
 {
@@ -145,7 +119,6 @@ a > img {
 	padding: 1px;
 	margin: 1px;
 	border: none;
-	//outline: 1px solid #0782C1;
 }
 
 /* Widget Styles */

@@ -26,7 +26,11 @@ class Form
 
 				}
 			}
+		} else{
+			$errors[] = "Tentative de Hack (Faille XSS)";
 		}
+
+		return $errors; //tableau des erreurs 
 	}
 
 	public static function validator($data, $config){
@@ -82,7 +86,6 @@ class Form
 	public static function validatorProfile($data, $config){
 		$errors = [];
 		$count = count($data);
-		//echo "data $count";
 		if( $count == count($config["input"])){
 
 			foreach ($config["input"] as $name => $configInput) {

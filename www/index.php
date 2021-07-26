@@ -35,12 +35,10 @@ if( file_exists("./Controllers/".$c.".php")){
 	if(class_exists($cWithNamespace)){
 		//$c = App\Security // User
 		$cObject = new $cWithNamespace();
-		// var_dump($cWithNamespace);
 
 		if(method_exists($cObject, $a)){
 			//$a = loginAction // defaultAction
 			$cObject->$a();
-			// var_dump($a);
 		}
 
 	}else{

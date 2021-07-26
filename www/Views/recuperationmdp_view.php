@@ -8,7 +8,6 @@
 			<?php  App\Core\Form::showFormRecuperation($form);?>
 			<?php
 			if(isset($errors)){
-				echo 'dddddddddddddddddddddddddddddddddddddddddd';
 				var_dump($errors);
 			}else{echo '';}
 			?>

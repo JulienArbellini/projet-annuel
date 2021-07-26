@@ -45,8 +45,3 @@ else
 			echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
 	}
 ?>
-
-<!-- DBHOST=database
-DBNAME=teachr
-DBUSER=root
-DBPWD=password -->

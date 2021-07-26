@@ -23,7 +23,6 @@
 }
 
 .details-part{
-    // display: flex;
     margin: 15px;
     > label {
         text-align: left;
@@ -31,6 +30,7 @@
     }
     > input {
         margin-left: 10px;
+        padding: 5px; 
     }
     > select {
         margin-left: 10px;

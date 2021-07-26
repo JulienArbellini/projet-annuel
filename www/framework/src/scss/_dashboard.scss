@@ -2,7 +2,6 @@
 
 body{
     font-size:1.4vw;
-    // background-color: green;
  }
 
 @media screen and (max-width:575px) {
@@ -32,12 +31,10 @@ body{
             font-size: 24px;
         }
         #avancement{
-            // height: 60%;
             background-color: red;
             display: flex;
             .progress{
                 height: 50%;
-                // background-color: blue;
             }
         }
     }
@@ -45,7 +42,6 @@ body{
 
 @media screen and (min-width:1200px) and  (max-width:1600px){
 	body{ 
-        // color: green;
         font-size: 23px;
         h1{
             font-size: 20px;
@@ -56,11 +52,9 @@ body{
         
         #avancement{
             display: flex;
-            // height: 60%;
             background-color: green;
             .progress{
                 height: 50%;
-                // background-color: blue;
                 
             }
         }
@@ -79,18 +73,14 @@ body{
         #avancement{
             display: flex;
             flex-direction: row;
-            // height: 60%;
-            // background-color: green;
             .progress{
                 width: 70%;
                 height: 100%;
-                // background-color: red;
                 
             }
             .percent{
                 height: 100%;
                 margin-left: 5%;
-                // background-color: blue;
                 
             }
         }
@@ -103,19 +93,15 @@ body{
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    // margin-left: 220px; 
-    // background-color: red;
     margin-top: 50px;
     
     #main-content{
         font-family: 'Roboto', sans-serif;
         margin-top: 50px;
         margin-bottom: 50px;
-        // background-color: red;
         width: 70%;
         height: 100%;
         display: grid;
-        // grid-template-rows: 20% 30% 50%;
         grid-template-columns: 70% 30%;
         grid-template-rows: 25% 30% 40%;
         grid-column-gap: 20px;
@@ -135,10 +121,8 @@ body{
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
-                // background-color: green;
                 height: 100%;
                 .title-project{
-                    // background-color: blue;
                     margin-bottom: 5px;
                     h1{
                         font-family: 'Fredoka One', cursive;
@@ -165,10 +149,8 @@ body{
                     justify-content: flex-start;
                     align-items: center;
                     box-sizing: border-box;
-                    // background-color: red;
                     .text-un{
                         width: 30%;
-                        // background-color: green;
                         margin-left: 20px;
                         height: 80%;
                         display: flex;
@@ -179,7 +161,6 @@ body{
                         
                         width: 30%;
                         height: 80%;
-                        // background-color: blue;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -206,7 +187,6 @@ body{
                     border:none;
                     width: 100%;
                     height: 100%;
-                    // zoom: 0.5;
 
                 }
                 
@@ -222,14 +202,11 @@ body{
             box-sizing: border-box;
             border-radius: 8px;
             padding: 30px 20px 30px 20px;
-            // background-color: red;
             #text{
-                // background-color: green;
                 width: 100%;
                 height: 100%;
                 letter-spacing: 1px;
                 display: flex;
-                // justify-content: space-between;
                 flex-direction: column;
                 box-sizing: border-box;
                 .top-box-two{
@@ -239,7 +216,6 @@ body{
                     flex-direction: row;
                     justify-content: space-between;
                     margin-bottom: 15px;
-                    // background-color: red;
                     font-size: 11px;
                     .hr-style{
                         display: flex;
@@ -260,7 +236,6 @@ body{
                             font-family: 'Fredoka One', cursive;
                             font-size: 13px;
                         }
-                        // background-color: green;
                     }
                     #avancement{
                         display: flex;
@@ -269,14 +244,12 @@ body{
                         align-items: center;
                         height: 100%;
                         width: 40%;
-                        // background-color: yellow;
                         .avancement-text{
                             width: 50%;
                         }
                         .progress{
                             width: 70%;
                             height: 4px;
-                            // background-color: red;
                             
                         }
                     }
@@ -285,8 +258,6 @@ body{
                     height: 80%;
                     margin-top: 10px;
                     margin-bottom: 10px;
-                    // background-color: red;
-                    // border-radius: 16px;
                     display: flex;
                     flex-direction: row;
                     
@@ -296,7 +267,6 @@ body{
                         .taches{
                             display: flex;
                             flex-direction: row;
-                            // background:blue;
                             height: 10%;
                             margin: 3px;
                             padding: 12px;
@@ -315,7 +285,6 @@ body{
                             .image-tache{
                                 width: 7%;
                                 height: 100%;
-                                // background-color: red;
                                 display: flex;
                                 align-items: center;
                                 justify-content: flex-start;
@@ -330,11 +299,9 @@ body{
                                 width: 90%;
                                 align-items: center;
                                 justify-content: flex-start;
-                                // background-color: purple;
                                 .text-tache-here{
                                     width:100%;
                                     height: 100%;
-                                    // background-color: red;
                                     text-align: center;
                                     vertical-align: middle;
                                     display: flex;
@@ -354,7 +321,6 @@ body{
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        // background-color: red;
                         border-style: solid;
                         border-width: 3px;
                         border-color: #00bf30;
@@ -447,7 +413,6 @@ body{
             border-radius: 11px;
             padding: 30px;
             width: 100%;
-            // background-color: red;
             
             #text{
                 width: 100%;
@@ -467,7 +432,6 @@ body{
                     h1{
                         font-family: 'Fredoka One', cursive;
                         font-size: 13px;
-                        // font-weight: 700;
                         font-size: 13px;
                     }
                 }
@@ -501,7 +465,6 @@ body{
                 justify-content: flex-end;
                 width: 100%;
                 height: 10%;
-                // background-color: red;
                 .link-faq{
                     background-color: #AA4DC8;
                     cursor: pointer;

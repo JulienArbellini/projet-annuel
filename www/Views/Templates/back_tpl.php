@@ -1,5 +1,4 @@
 <?php
-     // session_start();
      if (file_exists('install.php')){
           header('Location:/install.php');
      }else{
@@ -29,16 +28,13 @@
                 <link rel="stylesheet" href="framework/dist/main.css">
 		<script src="framework/src/js/jquery-3.5.1.min.js"></script>
 		<script src="framework/src/js/node_modules/jquery-resizable-dom/dist/jquery-resizable.min.js"></script>
-                
                 <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.dataTables.js"></script>
                 <link rel="stylesheet" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
-		
                 <link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/ui/trumbowyg.min.css">
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/colors/ui/trumbowyg.colors.min.css">
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/emoji/ui/trumbowyg.emoji.min.css">
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/table/ui/trumbowyg.table.min.css">
 		<link rel="stylesheet" href="framework/dist/site-pages.css">
-        
                 <script src="framework/src/js/Trumbowyg-master/dist/trumbowyg.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/colors/trumbowyg.colors.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/emoji/trumbowyg.emoji.min.js"></script>
