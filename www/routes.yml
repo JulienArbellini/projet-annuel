@@ -66,3 +66,11 @@
 /FAQ:
   controller: Base
   action: FAQ
+
+/categories:
+  controller: Base
+  action: categories
+
+/edit-categorie:
+  controller: Base
+  action: editCategorie

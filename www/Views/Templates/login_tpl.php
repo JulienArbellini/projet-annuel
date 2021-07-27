@@ -9,8 +9,6 @@
     </head>
     <body>
         
-        <!-- intégrer le vue -->
-
-            <?php include $this->view ?>
+        <?php include $this->view ?>
     </body>
 </html>

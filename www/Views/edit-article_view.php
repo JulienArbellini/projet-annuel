@@ -8,6 +8,7 @@
             <p class="titre-article">Modifier un article</p>
         </div>
     </div>
+
     <div class="row col-m-12 col-m-up-1">
         <form method="post" class="update_form">
             <div class="col-m-7 col-m-padding-1 col-m-center form__field_articles_input">
@@ -29,6 +30,24 @@
                 <input type="submit" class="button-apparence" value="Enregistrer" onclick="alert('Vos modifications ont bien été enregistrées !')">
             </div>
         </form>
+
+        <div class="col-m-12 col-m-center form__field_articles_input">
+            <form method="post" class="update_form">
+                <div class="flex-category-form">
+                    <label for="select-category">Catégories</label>
+                    <select name="categories" id="select-category">
+                        <option>Choisir une catégorie</option>
+                        <?php foreach($list_category as $key => $value){?>
+                                <option value="<?php echo $value["id"] ?>"><?php echo $value['category_name'] ?></option>
+                        <?php       
+                            }
+                        ?>
+                    </select>
+                    
+                    <input type="submit" value="Appliquer" class="button-formulaire-page"/>
+                </div>
+            </form>
+        </div>
     </div>
 
 <script type="text/javascript" src="framework/src/js/trumbowyg-call.js"></script>

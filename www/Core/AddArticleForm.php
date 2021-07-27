@@ -44,8 +44,6 @@ class AddArticleForm{
 
     public static function showFormAddArticle($form){
 
-        //  $_SESSION['prenom'];
-
         $html = "<div class=\"row col-m-12 col-m-up-1 container-article\">";
         $html .= "<form class='".($form["config"]["class"]??"")."' method='".( $form["config"]["method"] ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
         $html .= "<div class=\"col-m-7 col-m-padding-1 col-m-center form__field_articles_input\">";

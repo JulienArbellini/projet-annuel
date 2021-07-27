@@ -1,14 +1,9 @@
-/* ---- GENERAL ---- */
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap);
 
 body{
     font-family: "Roboto", sans-serif;
     margin: 0;
 }
-
-/* #trumbowyg{
-    margin: 0;
-} */
 
 /* ---- MENU 1 ---- */
 
@@ -555,7 +550,6 @@ body{
 
 .menu-left-template-carousel{
     background-color: #22263C;
-    /* height: 100%; */
     width: 15%;
     overflow: scroll;
 }
@@ -578,7 +572,6 @@ body{
 
 .h1-template-carousel{
     width: 80vw;
-    /* height: 10vh; */
     flex-direction: column;
 }
 
@@ -590,11 +583,6 @@ body{
 .menu-template-carousel a:hover{
     text-decoration: underline;
 }
-
-/* .carousel{
-    background-color: red;
-    width: 100%;
-} */
 
 .button-tpl1{
     float: right;
@@ -621,36 +609,6 @@ body{
     padding-top: 20px;
 }
 
-/* .text-zone-tpl2{
-    overflow: scroll;
-    width: 30vw;
-    height: 50vh;
-    margin-top: 20px;
-    padding: 20px;
-    box-shadow: 1px 1px 1px white;
-    border-radius: 5px;
-}
-
-.flex-zone-text{
-    display: flex;
-    justify-content: space-around;
-} */
-
-/* .description-img-tpl2{
-
-} */
-
-/* .div-img-tpl2 p{
-    width: 25vw;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.div-img-tpl2 img{
-    width: 400px;
-    height: 400px;
-} */
-
 .zone-texte-tpl2{
     margin: 0 auto;
     box-shadow: 2px 2px 5px #474747;
@@ -668,9 +626,3 @@ body{
     margin-right: 100px;
     margin-top: 100px;
 }
-
-/* .zone-texte-tpl2 p{
-    margin-top: auto;
-    margin-bottom: auto;
-} */
-

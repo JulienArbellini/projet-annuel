@@ -29,17 +29,13 @@
                 <link rel="stylesheet" href="framework/dist/main.css">
 		<script src="framework/src/js/jquery-3.5.1.min.js"></script>
 		<script src="framework/src/js/node_modules/jquery-resizable-dom/dist/jquery-resizable.min.js"></script>
-
-                <!-- <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.js"></script> -->
                 <script type="text/javascript" src="framework/src/js/DataTables/media/js/jquery.dataTables.js"></script>
                 <link rel="stylesheet" href="framework/src/js/DataTables/media/css/jquery.dataTables.css">
-		
                 <link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/ui/trumbowyg.min.css">
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/colors/ui/trumbowyg.colors.min.css">
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/emoji/ui/trumbowyg.emoji.min.css">
 		<link rel="stylesheet" href="framework/src/js/Trumbowyg-master/dist/plugins/table/ui/trumbowyg.table.min.css">
 		<link rel="stylesheet" href="framework/dist/site-pages.css">
-        
                 <script src="framework/src/js/Trumbowyg-master/dist/trumbowyg.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/colors/trumbowyg.colors.min.js"></script>
 		<script src="framework/src/js/Trumbowyg-master/dist/plugins/emoji/trumbowyg.emoji.min.js"></script>
@@ -128,6 +124,9 @@
                     <?php } ?>
                     <a href="/articles" class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/articles'|| $_SESSION["uri"]=='/articles-add' || $_SESSION["uri"]=='/articles-edit'){echo 'actual-page';}?>">
                             <div class="col-m-8"><div href="/articles" class="link-left-nav">Articles</div></div>
+                    </a>
+                    <a href="/categories" class="menu container-flexbox-nav articles col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/categories'){echo 'actual-page';}?>">
+                            <div class="col-m-8"><div href="/categories" class="link-left-nav">Catégories</div></div>
                     </a>
                     <a href="/pages" class="menu container-flexbox-nav pages col-s-12 col-m-12 col-l-12 <?php if($_SESSION["uri"]=='/pages'){echo 'actual-page';}?>">
                             <div class="col-m-8"><div class="link-left-nav">Pages</div></div>

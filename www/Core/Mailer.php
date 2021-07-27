@@ -13,7 +13,6 @@ class Mailer{
         $mail = new PHPMailer();
     
         try{
-            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $mail->IsSMTP();
             $mail->SMTPAuth = true; 
     
@@ -22,9 +21,6 @@ class Mailer{
             $mail->Port = 465;
             $mail->Username = 'teachr.contact.pa@gmail.com';
             $mail->Password = PHPMailer::PWD;  
-    
-    //   $path = 'reseller.pdf';
-    //   $mail->AddAttachment($path);
     
             $mail->IsHTML(true);
             $mail->From=$_POST["email"];
@@ -35,23 +31,16 @@ class Mailer{
             $mail->Body = $body;
             $mail->AddAddress($to);
             return $mail->send();
-            
-            
-            //echo "<script>alert(\"L\'invitation a bien été envoyée\")</script>";
         } catch (Exception $e){
                 echo "Le message n'a pas pu être envoyé. Mailer Error: {$mail->ErrorInfo}";
         }
     }
-
-// require 'vendor/autoload.php';
-// echo !extension_loaded('openssl')?"Not available":"Available";
 
 
     public function sendMailUser(){
 
         $mail = new PHPMailer(true);
             try{
-                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
                 $mail->Host = 'ssl://smtp.gmail.com';
                 $mail->SMTPAuth = true;
@@ -71,14 +60,14 @@ class Mailer{
                                         <h1>Bienvenue sur Teachr !</h1></br>
                                         <p>L\'utilisateur <strong>'.$_SESSION['gestionRole'][0]['firstname'].' '.$_SESSION['gestionRole'][0]['lastname'].'</strong> vous invite à rejoindre son projet sur notre plateforme.</br>
                                         Pour y accéder, rendez-vous à l\'adresse suivante : <p style="text-decoration:underline; color:blue;"> '.$_SERVER['HTTP_ORIGIN'].'/changement-mdp</p></br>
-                                        Renseignez les identifiants inscrits ci-dessous pour pouvoir créer un mot de passe</p></br>
-                                        <p>Votre identifiant de connexion :</p>
+                                        Renseignez le code de confirmation inscrit ci-dessous pour pouvoir créer un mot de passe</p></br>
+                                        <p>Vos identifiants de connexion :</p>
                                             <ol style="list-style: none;">
                                                 <li> - Identifiant : '.$_SESSION['tab'][0]['email'].'</li>
                                                 <li> - Code de confirmation : '.$_SESSION['tab'][0]['code_confirmation_mdp'].'</li>
                                             </ol>
-                                            <p>Toute l\'équipe vous souhaite la bienvenue sur teachr</br>
-                                                https://teachr.com</p>
+                                            <p style="color: red; font-weight: bold;">Attention ce code est temporaire (3 heures), il sert uniquement à la création d\'un mot de passe et ne peut être utilisé qu\'une seule fois ! </p></br>
+                                            <p>Toute l\'équipe vous souhaite la bienvenue sur teachr</br><p>
                                     </body>
                                 </html>';
                 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';

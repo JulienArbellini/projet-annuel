@@ -619,6 +619,10 @@ body {
   text-decoration: none;
 }
 
+.flex-category-form {
+  display: flex;
+}
+
 .titre-article {
   font-size: 25px;
 }
@@ -631,11 +635,6 @@ body {
 .titre-affichage-article {
   text-align: center;
 }
-
-/*
-Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
-*/
 
 .affichage-article > p {
   font-size: 14px;
@@ -916,6 +915,7 @@ img.image-grayscale {
 
 .details-part > input {
   margin-left: 10px;
+  padding: 5px;
 }
 
 .details-part > select {
@@ -3243,42 +3243,6 @@ input:checked + .slider:before {
 .container-upload-img {
   display: flex;
   align-items: center;
-}
-
-.content-accordion {
-  font-size: 0.9em;
-  margin: 10px 10px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height, 0.5s;
-}
-
-.p-accordionMenu:active ~ .content-accordion {
-  max-height: 400px;
-  transition: max-height, 1s;
-  display: block;
-}
-
-.separator {
-  border: solid white;
-  border-width: 0.2px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.p-accordionMenu {
-  color: white;
-  font-size: 16px;
-  text-align: center;
-}
-
-#fleche-accordion:after {
-  transform: rotate(90deg);
-  margin-top: -2px;
-}
-
-#fleche-accordion:active {
-  transform: rotate(180deg);
 }
 
 .link-top-nav-front {

@@ -6,12 +6,9 @@
 	<div class="col-m-3 col-m-center">
  		<p class="titre-article">Nouvel article</p>
     </div>
-	<!-- <div class="col-m-3">
-        <a href="/articles">Retour à la page précédente</a>
-	</div> -->
+
 </div>
 
-<!-- CODE PHP AFFICHAGE DU FORMULAIRE DEPUIS LE FORM BUILDER -->
 <?php if(!empty($formErrors)):?>
 	<?php foreach($formErrors as $error):?>
 		<li><?= $error ;?>

@@ -43,7 +43,7 @@
                     <p><strong>Rôle : </strong><?= $value['status']; ?><p>
                     <div class="container2">
                         <button class="js-modal-close">Annuler</button>
-                        <button class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?deleteId=<?= $value['id']; ?>&module=base&action=users'">Supprimer</button>
+                        <button class="js-modal-stop" value="<?= $value['id']; ?>" onclick="window.location.href='/utilisateurs?deleteId=<?= $value['id']; ?>'">Supprimer</button>
                     </div>
                 </div>
             </div>
@@ -86,12 +86,6 @@
         </aside>      
 <?php        
     }
-?>
-
-<?php
-// if($gestionRole) {
-//     echo 'coucou';
-// }
 ?>
 
 
