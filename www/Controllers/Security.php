@@ -15,11 +15,7 @@ use App\Core\Mailer;
 class Security{
 
 
-
-	public function defaultAction(){
-		echo "controller security action default";
-	}
-
+	/* ----- INSCRIPTION ----- */
 
 	public function registerAction(){
 		$user = new User();
@@ -27,8 +23,6 @@ class Security{
 		$mailer = new Mailer();
 		$form = $user->buildFormRegister();
 		$view->assign("form", $form);
-		//session_start();
-		//var_dump($_SESSION);
 		if(!empty($_POST)){
 			$user->verifMailUniq();
 			$errors = Form::validator($_POST, $form);
@@ -72,12 +66,14 @@ class Security{
 		$user->confirmation();
 	}
 
+	/* ----- CONNEXION ----- */
+
 	public function loginAction(){
 		$user = new User();
 		$view = new View("login", "login");
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
-		//session_start();
+
 		if(isset($_POST['email']) && isset($_POST['pwd']))
 		{
 			$email = htmlspecialchars($_POST['email']); 
@@ -121,6 +117,8 @@ class Security{
 		}					
 	}
 
+	/* ----- DECONNEXION ----- */
+
 	public function logoutAction(){
         $user = new User();
 
@@ -135,6 +133,8 @@ class Security{
            }
         }
     }
+
+	/* ----- RECUPERATION MOT DE PASSE ----- */
 
 	public function recuperationAction(){
 		$user = new User();
@@ -177,9 +177,7 @@ class Security{
 		$form = $user->buildFormChangementMdp();
 		$view->assign("form", $form);
 		if(!empty($_POST['confirmation_key'])){
-			echo 'test';
 			if($user->checkConfirmationKey($_POST['confirmation_key']) && $user->checkConfirmationKeyTmtp($_POST['confirmation_key'])){
-				echo 'ok';
 				$id = $user->getUserId($_POST['confirmation_key']);
 				if(isset($_POST['pwdConfirm']) && isset($_POST['pwd'])){
 					$errors = Form::validator($_POST['pwd'], $form);
@@ -191,20 +189,9 @@ class Security{
 					}
 				}
 			}else{
-				echo 'not ok';
+				echo 'Votre code de confirmation est incorrect';
 			}
 		}
 	}
-
-	public function listofusersAction(){
-
-		$security = new coreSecurity(); 
-		if(!$security->isConnected()){
-			die("Error not authorized");
-		}
-
-		echo "Là je liste tous les utilisateurs";
-	}
-
 
 }

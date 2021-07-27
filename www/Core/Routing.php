@@ -13,9 +13,8 @@ class Routing{
 
 
 	public function __construct($uri){
-		//Faut vérifier que le fichier existe
 		$this->routes = yaml_parse_file($this->routesPath);
-		//Faut vérifier qu'il y a un controller pour cette route
+		
 		if(!empty($this->routes[$uri])){
 			$this->setController($this->routes[$uri]["controller"]);
 			$this->setAction($this->routes[$uri]["action"]);
@@ -29,7 +28,6 @@ class Routing{
 	}
 
 
-	//PascalCase pour une class
 	public function setController($controller){
 		$this->controller=ucfirst(mb_strtolower($controller));
 	}
@@ -51,11 +49,6 @@ class Routing{
 	}
 
 
-	/*
-		/list-des-utilisateurs:
-	  	controller: Security
-	  	action: listofusers
-	 */
 	public function getUri($controller, $action){
 
 		if(!empty($this->slugs[$controller]) && !empty($this->slugs[$controller][$action]))

@@ -1,4 +1,0 @@
-- creer une nouvelle colonne: "mdp temporaire"
-- proposer de changer de mdp
-- trouver l'id de l'user qui a ce confirmkey
- - changer le mdp dans la bdd

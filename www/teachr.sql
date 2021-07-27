@@ -43,6 +43,50 @@ CREATE TABLE `tr_article` (
 INSERT INTO `tr_article` (`id`, `title`, `content`, `slug`, `id_user`, `createdAt`) VALUES
 (1, 'Example', '<h2 style=\"text-align: center; font-style: italic;\"><big>Le SQL&nbsp;</big></h2><p>&nbsp;</p><p><big><strong style=\"background-color: rgb(255, 255, 0);\">I- Qu\est-ce que le SQL ?&nbsp;</strong></big></p><p>&nbsp;</p><p>Le&nbsp;<span class=\"marker\"><strong>SQL</strong></span>&nbsp;(Structured Query Language) est un langage permettant de communiquer avec une base de données. Ce langage informatique est notamment très utilisé par les développeurs web pour communiquer avec les données d’un site web. SQL.sh recense des cours de SQL et des explications sur les principales commandes pour lire, insérer, modifier et supprimer des données dans une base.</p><p>&nbsp;</p><p><strong><big style=\"background-color: rgb(255, 255, 0);\">II- SGBD</big></strong></p><p>&nbsp;</p><p>Chaque SGBD possède ses propres spécificités et caractéristiques. Pour présenter ces différences, les logiciels de gestion de bases de données sont cités, tels que : MySQL, PostgreSQL, SQLite, Microsoft SQL Server&nbsp;ou encore&nbsp;Oracle.</p><p>Des SGBD de type NoSQL sont également présentés, tel que Cassandra, Redis ou MongoDB.</p><p><span style=\"background-color: rgb(255, 255, 255);\">&nbsp;</span></p><p><strong><big style=\"background-color: rgb(255, 255, 0);\">III- A quoi sert le SQL ?&nbsp;</big></strong></p><p>&nbsp;</p><p>&nbsp;</p><p>Comme dans la vie, pour que des personnes puissent se comprendre, elles doivent parler le même langage et bien en informatique, c’est pareil.</p><p>Pour que les différents logiciels et le moteur de base de données puissent se comprendre, ils utilisent un langage appelé SQL.</p><p>Ce langage est complet. Il va être utilisé pour :</p><ul><li>Lire les données,</li><li>Ecrire les données,</li><li>Modifier les données,</li><li>Supprimer les données</li><li>Il permettra aussi de modifier la structure de la base de données :</li><li>Ajouter des tables,</li><li>Modifier les tables,</li><li>les supprimer</li><li>Ajouter, ou supprimer des utilisateurs,</li><li>Gérer les droits des utilisateurs,</li><li>Gérer les bases de données&nbsp; : en créer de nouvelles, les modifier, etc …</li></ul><p>Comme vous pouvez le voir, les possibilités sont nombreuses.</p><p>Ce langage est structuré (comme son nom l’indique), c’est à dire que la syntaxe est toujours la même et respecte des normes très précises.&nbsp;</p><p>&nbsp;</p><p><big><strong><span style=\"background-color: rgb(255, 255, 0);\">IV- Optimisation</span>&nbsp;</strong></big></p><p>&nbsp;</p><p>Savoir effectuer des requêtes n’est pas trop difficile, mais il convient de véritablement comprendre comment fonctionne le stockage des données et la façon dont elles sont lues pour optimiser les performances. Les optimisations sont basées dans 2 catégories: les bons choix à faire lorsqu’il faut définir la structure de la base de données et les méthodes les plus adaptées pour lire les données.</p><p>&nbsp;</p><p><strong><span style=\"background-color: rgb(255, 255, 0);\">V- Exemple de code SQL</span>&nbsp;</strong></p><p><strong><br></strong></p><p><img src=\"https://lh3.googleusercontent.com/-S5HFFerJ0L8/Vq7-wsdZGhI/AAAAAAAAEBg/SK5zIdqWkiQ/insert-row5.png?imgmax=800\" alt=\"\" style=\"width: 100%; max-width: 359px; height: auto; max-height: 289px;\"><strong><br></strong></p><p><strong><br></strong></p><p>&nbsp;</p><div id=\"wysiwyg\"></div>', '/example-article', 1, '2021-07-08 15:45:13');
 
+--
+-- Déclencheurs `tr_article`
+--
+-- DELIMITER $$
+CREATE TRIGGER `after_insert_article` AFTER INSERT ON `tr_article` FOR EACH ROW INSERT INTO tr_category_has_Article(Article_idArticle)
+VALUES (NEW.id);
+-- $$
+-- DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tr_category`
+--
+
+CREATE TABLE `tr_category` (
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(120) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `tr_category`
+--
+
+INSERT INTO `tr_category` (`id`, `category_name`) VALUES
+(1, 'Non catégorisé');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tr_category_has_Article`
+--
+
+CREATE TABLE `tr_category_has_Article` (
+  `Category_idCategory` int(11) NOT NULL DEFAULT '1',
+  `Article_idArticle` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `tr_category_has_Article`
+--
+
+INSERT INTO `tr_category_has_Article` (`Category_idCategory`, `Article_idArticle`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +151,7 @@ CREATE TABLE `tr_user` (
   `confirmation` tinyint(4) DEFAULT '0',
   `code_confirmation_mdp` varchar(60) DEFAULT NULL,
   `confirmationKeyTmtp` datetime DEFAULT NULL,
-  `connected` tinyint(1) DEFAULT NULL,
+  `connected` tinyint(1) DEFAULT '0',
   `description` varchar(300) DEFAULT NULL,
   `avatar` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
@@ -128,6 +172,14 @@ ALTER TABLE `tr_article`
   ADD KEY `fk_id_user` (`id_user`),
   ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `tr_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+--
+-- Index pour la table `tr_category_has_Article`
+--
+ALTER TABLE `tr_category_has_Article`
+  ADD PRIMARY KEY (`Category_idCategory`,`Article_idArticle`),
+  ADD KEY `fk_Category_has_Article_Article1_idx` (`Article_idArticle`),
+  ADD KEY `fk_Category_has_Article_Category1_idx` (`Category_idCategory`);
+ 
 
 --
 -- Index pour la table `tr_page`

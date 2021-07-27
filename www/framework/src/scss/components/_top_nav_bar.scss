@@ -12,7 +12,6 @@ header{
   height: 50px !important;
   width: 100%;
   box-shadow: 0 4px 2px -2px rgb(207, 218, 221);
-  // background-color: red;
 }
 
 #nav-top{
@@ -21,15 +20,12 @@ header{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // background-color: red;
   
   
   .nav-top-left{
-    // background-color: green;
     width: 11.5%;
     .logo {
       bottom: 0;
-      // background: $logo-blue;
       width: 100%;
       height: 4px;
     

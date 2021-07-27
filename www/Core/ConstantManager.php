@@ -47,8 +47,6 @@ class ConstantManager
 
 			while (!feof($handle)) {
 				$line = trim(fgets($handle));
-				//  $line = "DBHOST=database #Voir le host de docker";
-				//  $data["DBHOST"]="database";
 				preg_match("/([^=]*)=([^#]*)/", $line, $results);
 				if(!empty($results[1]) && !empty($results[2])){
 					$this->data[$results[1]] = $results[2];
