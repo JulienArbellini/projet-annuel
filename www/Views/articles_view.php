@@ -5,14 +5,11 @@
 </div>
 
 <div class="row col-m-12 col-m-up-4">
-    <!-- <div class="add-article-search col-s-10 col-m-8 col-m-center"> -->
-    
-        <!-- <div class="row col-m-10 col-m-up-3"> -->
-            <div class="col-m-3 col-m-padding-1 col-m-center col-m-pull-3">
+   
+        <div class="col-m-3 col-m-padding-1 col-m-center col-m-pull-3">
             <?php if($notSpectateur) { ?><a href="/articles-add" class="link-add-article"><p>+ Ajouter un article</p></a><?php } ?>
-            </div>
-        <!-- </div> -->
-    <!-- </div> -->
+        </div>
+       
 
     
 

@@ -12,11 +12,9 @@
                         <div class="button-form-page-position col-m-center">
                             <label for="add-page-title" id="label" style="display: none;">Nouvelle catégorie:</label>
                             <input type="text" id="add-category-title"  name="add-category" placeholder="Titre" style="display: none;">
-                            <!-- <input type="hidden" name="id_user_page" value="<?php //echo $_SESSION['idUserConnected'][0]["id"]?>"> -->
-
-                            <!-- <div class="button-form-page-position"> -->
-                                <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
-                                <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="document.location.reload()">Enregistrer</button>
+                            
+                            <button type="reset" style="display: none;" class="button-formulaire-page" id="cancel-button" onclick="cancel()">Annuler</button>
+                            <button type="submit" id="submit-button" style="display: none;" class="button-formulaire-page" onclick="document.location.reload()">Enregistrer</button>
                         </div>
                     </form>
             </div>
