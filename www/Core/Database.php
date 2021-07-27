@@ -607,7 +607,7 @@ class Database
 			$query = $this->pdo->prepare("SELECT *
 										  FROM tr_category AS c
 										  INNER JOIN tr_category_has_Article AS l ON c.id = l.Category_idCategory
-										  INNER JOIN tr_Article AS a ON a.id = l.Article_idArticle
+										  INNER JOIN tr_article AS a ON a.id = l.Article_idArticle
 										  WHERE c.id =".$idCategorie
 										);
 			$query->execute();
