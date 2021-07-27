@@ -133,6 +133,7 @@
                     <div class='hr-style'>
                         <hr>
                     </div>
+		   <?php if(isset($_SESSION['notSpectateur'][0]['Role_idRole']) == 1 || isset($_SESSION['notSpectateur'][0]['Role_idRole']) == 2) { ?>
                     <div class='left-nav-bar-description'>
                         <div class='text-inside'>Gestion utilisateurs</div>
                     </div>
@@ -142,6 +143,7 @@
                     <div class='hr-style'>
                         <hr>
                     </div>
+		    <?php } ?>
                     <div class='left-nav-bar-description'>
                         <div class='text-inside'>Questions</div>
                     </div>

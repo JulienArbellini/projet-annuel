@@ -9,7 +9,7 @@
 <body>
     <?php
     if(isset($_POST['etape']) AND $_POST['etape'] == 1) { // si nous venons du formulaire alors
-        $fichier = './config.php';
+        
         
         $hote = trim($_POST['bdd-host']);
         $login = trim($_POST['bdd-user-name']);
